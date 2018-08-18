@@ -1,0 +1,9 @@
+sudo: enabled
+language: python
+
+before_install: docker-compose build
+
+script: 
+  - docker-compose up -d
+  - sleep 10
+  - docker-compose run web python manage.py test
