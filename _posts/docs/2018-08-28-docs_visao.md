@@ -2,6 +2,7 @@
 title: Documento de visão
 author: Emanoel
 layout: post
+categories: DEV
 ---
 
 

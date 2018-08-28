@@ -2,6 +2,7 @@
 title: Documento de arquitetura
 author: Bruno
 layout: post
+categories: DEV
 ---
 
 # Documento de Arquitetura
