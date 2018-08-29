@@ -46,6 +46,7 @@ Sumário
 
 * 8 . [Visão de Dados](#8-visao)
     * 8.1. [Steam Microservice](#81-steam)
+    * 8.2. [Twitch Microservice](#81-twitch)
 
 * 9 . [Qualidade](#9-qualidade)
 
@@ -104,5 +105,9 @@ cada microserviço, a manutenibilidade e evolução
 ### 8.1 Microserviço 1: Steam_Data
 
 ![](https://i.imgur.com/6RDvD0m.jpg)
+
+### 8.2 Microserviço 2: Twitch_Data
+
+![](https://i.imgur.com/5zh7FRj.jpg)
 
 ## 9. Qualidade
