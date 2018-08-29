@@ -86,20 +86,28 @@ Os padrões de arquitetura expressam formas de organizar a estrura do sistema e 
 
 <p align="middle"><img src="https://i.imgur.com/hYYq7q4.png" ></p>
 
-* Model
 ---
+
+* Model
+
 As Models do MVC e do MVT são equivalentes em responsabilidades. O framework Django facilita na interface com o banco de dados. Cada classe da modelo se compara a uma tabela do banco de dados, e as instâncias destas classes, representam os registros destas tabelas. Para adicionar valores ao banco, basta definí-los nas respectivas variáveis. Esta camada contém qualquer coisa e tudo sobre os dados: como acessá-lo , como validá-lo , quais comportamentos que tem e as relações entre os dados. Para o mapeamento dos dados, não será necessário utilizar códigos em SQL para garantir a persistência dos dados no banco.
 
-* View
 ---
+
+* View
+
 A camada View é responsável pela implementação das regras de apresentação e negócio do nosso sistema. É nela onde iremos nos comunicar com a Model e a Template, cadastrando e tratando as informações recebidas. Retornando para o usuário uma resposta em JSON, ou erros encontrados. Esta é equivalente a Controller na arquitetura MVC
 
-* Template
 ---
+
+* Template
+
 Templates é a camada que retorna a visão para o usuário do programa. Essa camada é composta por, HTML,CSS, javascript.
 
-* Detalhes arquiteturais
 ---
+
+* Detalhes arquiteturais
+
 As resoluções de urls, responsabilidade dada as controllers no MVC, é feita pela própria estrutura do framework
 
 O Django oferece um sistema ORM com o banco de dados que permite ao desenvolvedor não se preocupar com querys explicitamente escritas. Com a intrudução do Banco de dados Não-Relacional MongoDB, o ORM é substituído pelo DRM, por conta das características exclusivas do banco.
