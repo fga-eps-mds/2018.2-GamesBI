@@ -23,11 +23,11 @@ Sumário
     * 1.3. [Definições, acrônimos e abreviações](#13-Definições,-acrônimos-e-abreviações)
     * 1.4. [Referências](#14-referências)
     * 1.5. [Visão Geral](#15-Visão-Geral)
-    
+
 * 2 . [Representação da Arquitetura](#2-Representação-da-Arquitetura)
    * 2.1. [Representação do padrão de Arquitetura MVT](#21-Padrão-de-Arquitetura-MVT)
    * 2.2. [Representação da Arquitetura de Microserviços](#22-Arquitetura-de-Microserviços)   
-   
+
 * 3 . [Metas e Restrições da Arquitetura](#3-Metas-e-Restrições-da-Arquitetura)
 
 * 4 . [Visão de Casos de Uso](#4-Visão-de-Casos-de-Uso)
@@ -35,12 +35,12 @@ Sumário
    * 4.2. [Realizações de Casos de Uso](#42-Realizações-de-Casos-de-Uso)
 
 * 5 . [Visão de Processos](5-Visão-de-Procesos)
-   
+
 * 6 . [Visão de Implementação](#6-Visão-de-Implementação)
 	 * 6.1. [Visão Geral](#61-Visão-Geral)
    * 6.2. [Diagrama de Pacotes](#62-Diagrama-de-Pacotes)
    * 6.3. [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#63-Pacotes-de-Design-Significativos-do-Ponto-de-Vista-da-Arquitetura)
-   
+
 * 7 . [Arquitetura dos Serviços e visão de Implementação](#7-Arquitetura-dos-Serviços-e-visão-de-Implementação)
    * 7.1. [Micro Serviços e Camadas](#71-Micro-Serviços-e-Camadas)
 
@@ -59,8 +59,8 @@ Este documento mostra uma visão geral sobre a arquitetura e ferramentas utiliza
 
 ### 1.2 Escopo
 
-Neste documento serão retratados os modelos arquiteturais implementados, descrição e utilização de frameworks 
-que compõe o projeto GamesBI, plataforma de business intelligence com temática de jogos digitais. Exploramos 
+Neste documento serão retratados os modelos arquiteturais implementados, descrição e utilização de frameworks
+que compõe o projeto GamesBI, plataforma de business intelligence com temática de jogos digitais. Exploramos
 de maneira detalhada o funcionamento e a visão arquitetural do projeto.
 
 ### 1.3 Definições, acrônimos e abreviações
@@ -89,7 +89,7 @@ Os padrões de arquitetura expressam formas de organizar a estrura do sistema e 
 ---
 As Models do MVC e do MVT são equivalentes em responsabilidades. O framework Django facilita na interface com o banco de dados. Cada classe da modelo se compara a uma tabela do banco de dados, e as instâncias destas classes, representam os registros destas tabelas. Para adicionar valores ao banco, basta definí-los nas respectivas variáveis. Esta camada contém qualquer coisa e tudo sobre os dados: como acessá-lo , como validá-lo , quais comportamentos que tem e as relações entre os dados. Para o mapeamento dos dados, não será necessário utilizar códigos em SQL para garantir a persistência dos dados no banco.
 
-* View 
+* View
 ---
 A camada View é responsável pela implementação das regras de apresentação e negócio do nosso sistema. É nela onde iremos nos comunicar com a Model e a Template, cadastrando e tratando as informações recebidas. Retornando para o usuário uma resposta, como HTMLs, XML, ou erros encontrados. Esta é equivalente a Controller na arquitetura MVC
 
@@ -108,9 +108,14 @@ O Django oferece uma interface com o banco de dados que permite ao desenvolvedor
 
 ## 3. Metas e Restrições da Arquitetura
 
-A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sistemas em diferentes 
-microserviços, trazendo máxima independência possível, favorecendo o entendimento sobre o objetivo de 
-cada microserviço, a manutenibilidade e evolução
+### 3.1 Metas
+A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sistemas em diferentes microserviços, trazendo máxima independência possível, favorecendo o entendimento sobre o objetivo de cada microserviço, a manutenibilidade e evolução o sistema deve proporcionar facilidade para os usuários poderem aferir os dados, além de facilitar a análise dos mesmos.
+
+### 3.2 Restrições da Arquitetura
+- O projeto possui as seguintes restrições:
+- Framework Django 2.1 com Python 3.7
+- Padrão MVT
+- API's REST
 
 ## 4. Visão de Casos de Uso
 ### 4.1 Atores
