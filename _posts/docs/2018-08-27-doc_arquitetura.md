@@ -44,8 +44,8 @@ Sumário
 * 7 . [Arquitetura dos Serviços e visão de Implementação](#7-arquitetura)
    * 7.1. [Micro Serviços e Camadas](#71-microservicos)
 
-* 8 . [Tamanho e Desempenho](#8-tamanho)
-    * 8.1. [Visão de Dados](#81-visao)
+* 8 . [Visão de Dados](#8-visao)
+    * 8.1. [Steam Microservice](#81-steam)
 
 * 9 . [Qualidade](#9-qualidade)
 
