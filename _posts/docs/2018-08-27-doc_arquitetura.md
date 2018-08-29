@@ -133,6 +133,6 @@ cada microserviço, a manutenibilidade e evolução
 
 ### 8.2 Microserviço 2: Twitch_Data
 
-![](https://i.imgur.com/5zh7FRj.jpg)
+![](https://i.imgur.com/WT9bIfD.jpg)
 
 ## 9. Qualidade
