@@ -106,7 +106,7 @@ categories: DEV
 
 ### 3.1 Demográficos de mercado
 
-<p align="justify"> Atualmente no DF, as instituições de ensino sofrem com a criminalidade e a evasão escolar, e o método usado por essas escolas é obsoleto e arcaico, não se adaptando às novas forma de comunicação e integração. Apenas no DF, são mais de 667 escolas públicas que podem utilizar o nosso produto, e obter um real impacto na vida dos estudantes e responsáveis, que atualmente clamam por uma escola mais integrada e segura, de modo que nosso sistema ficará em destaque por ser de código aberto, e será disponibilizado para todas as escolas que desejarem usá-lo.</p>
+<p align="justify"> O mercado de games é um dos mercados mais crescente em todo o mundo, com o crescimento desse mercado encontramos os mais diversos jogos alguns muito jogados ou comentados e por consequencia bem remunerado enquanto outros não são tanto assim. O nosso sistema busca facilitar a anlise dos que são mais jogados e comentados e assim mostrar o que pode vir a ser a melhor escolha do que desenvolver, diversos programadores,  designer e animadores de games poderão utilizar o nosso produto.</p>
 
 ### 3.2 Resumo da parte interessada
 
@@ -115,7 +115,7 @@ categories: DEV
 | Equipe de desenvolvimento | Estudantes da Universidade de Brasília da disciplina de MDS. | Desenvolver e Implementar o _software_. |
 | Equipe de Gestão de Projeto | Estudantes da Universidade de Brasília da disciplina de EPS. | Gerir o desenvolvimento do produto identificando o problema e apontando caminhos e soluções. |
 | Equipe de avaliação e suporte | Professores colaboradores das disciplinas EPS e MDS. | Auxiliar as equipes durante o desenvolvimento do projeto. |
-| Clientes | Centro de Ensino Médio 01 do Gama. | Disponibilizar informações sobre os alunos . |
+| Cliente | Matheus Faria | Disponibilizar informações sobre os alunos . |
 
 ### 3.3 Resumo do usuário
 
