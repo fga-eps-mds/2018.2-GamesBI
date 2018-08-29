@@ -32,22 +32,18 @@ Sumário
 
 * 3 . [Metas e Restrições da Arquitetura](#3-Metas-e-Restrições-da-Arquitetura)
 
-* 4 . [Visão de Casos de Uso](#4-Visão-de-Casos-de-Uso)
-   * 4.1. [Atores](#41-atores)
-   * 4.2. [Realizações de Casos de Uso](#42-Realizações-de-Casos-de-Uso)
+* 4 . [Visão de Processos](4-Visão-de-Procesos)
 
-* 5 . [Visão de Processos](5-Visão-de-Procesos)
+* 5 . [Visão de Implementação](#5-Visão-de-Implementação)
+	 * 5.1. [Visão Geral](#51-Visão-Geral)
+   * 5.2. [Diagrama de Pacotes](#52-Diagrama-de-Pacotes)
+   * 5.3. [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#53-Pacotes-de-Design-Significativos-do-Ponto-de-Vista-da-Arquitetura)
 
-* 6 . [Visão de Implementação](#6-Visão-de-Implementação)
-	 * 6.1. [Visão Geral](#61-Visão-Geral)
-   * 6.2. [Diagrama de Pacotes](#62-Diagrama-de-Pacotes)
-   * 6.3. [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#63-Pacotes-de-Design-Significativos-do-Ponto-de-Vista-da-Arquitetura)
+* 6 . [Arquitetura dos Serviços e visão de Implementação](#6-Arquitetura-dos-Serviços-e-visão-de-Implementação)
+   * 6.1. [Visão Geral](#61-Micro-Serviços-e-Camadas)
+   * 6.2. [Microserviços e Camadas](#62-Visão-Geral)
 
-* 7 . [Arquitetura dos Serviços e visão de Implementação](#7-Arquitetura-dos-Serviços-e-visão-de-Implementação)
-   * 7.1. [Visão Geral](#71-Micro-Serviços-e-Camadas)
-   * 7.1. [Microserviços e Camadas](#72-Visão-Geral)
-
-* 8 . [Visão de Dados](#8-visao)
+* 7 . [Visão de Dados](#8-visao)
 
 
 ## 1. Introdução
@@ -131,27 +127,23 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 - Padrão MVT
 - API's REST
 
-## 4. Visão de Casos de Uso
-### 4.1 Atores
-### 4.2 Realizações de Casos de Uso
+## 4. Visão de Procesos
 
-## 5. Visão de Procesos
+## 5. Visão de Implementação
+### 5.1 Visão Geral
+### 5.2 Diagrama de Pacotes
+### 5.3 Pacotes de Design Significativos do Ponto de Vista da Arquitetura
 
-## 6. Visão de Implementação
+## 6. Arquitetura dos Serviços e visão de Implementação
+
 ### 6.1 Visão Geral
-### 6.2 Diagrama de Pacotes
-### 6.3 Pacotes de Design Significativos do Ponto de Vista da Arquitetura
-
-## 7. Arquitetura dos Serviços e visão de Implementação
-
-### 7.1 Visão Geral
 
 <p align="middle"><img src="https://i.imgur.com/XR9n6p2.jpg" ></p>
 
-### 7.2 Microserviços e camadas
+### 6.2 Microserviços e camadas
 
 O esquema acima demonstra bem a arquitetura adotada. Consiste em várias em quatro REST API's feitas usando Django REST, uma framework para Python, linguagem esta ja conhecida pela sua facilidade e desempenho relacionados a Data Science e Machine Learning. Três delas serão responsáveis por buscar dados relacionados a jogos da Steam, Twich, e Youtube. A quarta API é responsável por fazer um cruzamento de dados entre os dados obtidos nas demais API's do microserviço. Esta possui o objetivo de realizar estatísticas relacionadas ao consolidado de todos os dados.
 
 Todo este conteúdo será disponibilizado para a aplicação Front-End feita utilizando NodeJS, HTML, css até chegar ao usuário final. O usuário terá a possibilidade de ver as estatísticas e gráficos relacionados aos jogos de uma maneira interativa.
 
-## 8 Visão de dados
+## 7 Visão de dados
