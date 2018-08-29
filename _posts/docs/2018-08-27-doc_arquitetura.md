@@ -44,11 +44,10 @@ Sumário
    * 6.3. [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#63-Pacotes-de-Design-Significativos-do-Ponto-de-Vista-da-Arquitetura)
 
 * 7 . [Arquitetura dos Serviços e visão de Implementação](#7-Arquitetura-dos-Serviços-e-visão-de-Implementação)
-   * 7.1. [Micro Serviços e Camadas](#71-Micro-Serviços-e-Camadas)
+   * 7.1. [Visão Geral](#71-Micro-Serviços-e-Camadas)
+   * 7.1. [Microserviços e Camadas](#72-Visão-Geral)
 
 * 8 . [Visão de Dados](#8-visao)
-    * 8.1. [Steam Microservice](#81-steam)
-    * 8.2. [Twitch Microservice](#81-twitch)
 
 * 9 . [Qualidade](#9-Qualidade)
 
@@ -114,17 +113,10 @@ O Django oferece uma interface com o banco de dados que permite ao desenvolvedor
 * Otimização da utilização da infraestrutura de nuvem.
 * Redução da complexidade de manutenção.
 
-<p align="middle"><img src="https://i.imgur.com/qOv72O6.jpg" ></p>
-
-O esquema acima demonstra bem a arquitetura adotada. Consiste em várias em quatro REST API's feitas usando Django REST, uma framework para Python, linguagem esta ja conhecida pela sua facilidade e desempenho relacionados a Data Science e Machine Learning. Três delas serão responsáveis por buscar dados relacionados a jogos da Steam, Twich, e Youtube. A quarta API é responsável por fazer um cruzamento de dados entre os dados obtidos nas demais API's do microserviço. Esta possui o objetivo de realizar estatísticas relacionadas ao consolidado de todos os dados.
-
-Todo este conteúdo será disponibilizado para a aplicação Front-End feita utilizando NodeJS, HTML, css até chegar ao cliente final. O usuário terá a possibilidade de ver as estátiscas e gráficos relacionados aos jogos de uma maneira interativa. 
-
-
 ## 3. Metas e Restrições da Arquitetura
 
 ### 3.1 Metas
-A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sistemas em diferentes microserviços, trazendo máxima independência possível, favorecendo o entendimento sobre o objetivo de cada microserviço, a manutenibilidade e evolução o sistema deve proporcionar facilidade para os usuários poderem aferir os dados, além de facilitar a análise dos mesmos.
+A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sistemas em diferentes microserviços, trazendo máxima independência possível, favorecendo o entendimento sobre o objetivo de cada microserviço, a manutenibilidade e evolução. O sistema deve proporcionar facilidade para os usuários poderem aferir os dados, além de facilitar a análise dos mesmos.
 
 ### 3.2 Restrições da Arquitetura
 - O projeto possui as seguintes restrições:
@@ -139,20 +131,22 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 ## 5. Visão de Procesos
 
 ## 6. Visão de Implementação
-## 6.1 Visão Geral
+### 6.1 Visão Geral
 ### 6.2 Diagrama de Pacotes
 ### 6.3 Pacotes de Design Significativos do Ponto de Vista da Arquitetura
 
 ## 7. Arquitetura dos Serviços e visão de Implementação
-### 7.1 Micro Serviços e Camadas
+
+### 7.1 Visão Geral
+
+<p align="middle"><img src="https://i.imgur.com/XR9n6p2.jpg" ></p>
+
+### 7.2 Microserviços e camadas
+
+O esquema acima demonstra bem a arquitetura adotada. Consiste em várias em quatro REST API's feitas usando Django REST, uma framework para Python, linguagem esta ja conhecida pela sua facilidade e desempenho relacionados a Data Science e Machine Learning. Três delas serão responsáveis por buscar dados relacionados a jogos da Steam, Twich, e Youtube. A quarta API é responsável por fazer um cruzamento de dados entre os dados obtidos nas demais API's do microserviço. Esta possui o objetivo de realizar estatísticas relacionadas ao consolidado de todos os dados.
+
+Todo este conteúdo será disponibilizado para a aplicação Front-End feita utilizando NodeJS, HTML, css até chegar ao usuário final. O usuário terá a possibilidade de ver as estátiscas e gráficos relacionados aos jogos de uma maneira interativa.
 
 ## 8 Visão de dados
-### 8.1 Microserviço 1: Steam_Data
-
-![](https://i.imgur.com/6RDvD0m.jpg)
-
-### 8.2 Microserviço 2: Twitch_Data
-
-![](https://i.imgur.com/WT9bIfD.jpg)
 
 ## 9. Qualidade
