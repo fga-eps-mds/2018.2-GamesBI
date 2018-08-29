@@ -82,6 +82,10 @@ A arquitetura do projeto possuirá ambientes diferentes: API's REST, por debaixo
 
 ## 3. Metas e Restrições da Arquitetura
 
+A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sistemas em diferentes 
+microserviços, trazendo máxima independência possível, favorecendo o entendimento sobre o objetivo de 
+cada microserviço, a manutenibilidade e evolução
+
 ## 4. Visão de Casos de Uso
 ### 4.1 Atores
 ### 4.2 Realizações de Casos de Uso
@@ -96,7 +100,9 @@ A arquitetura do projeto possuirá ambientes diferentes: API's REST, por debaixo
 ## 7. Arquitetura dos Serviços e visão de Implementação
 ### 7.1 Micro Serviços e Camadas
 
-## 8. Tamanho e Desempenho
-### 8.1 Visão de Dados
+## 8 Visão de dados
+### 8.1 Microserviço 1: Steam_Data
+
+![](https://i.imgur.com/6RDvD0m.jpg)
 
 ## 9. Qualidade
