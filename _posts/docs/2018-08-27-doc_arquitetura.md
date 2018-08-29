@@ -13,6 +13,7 @@ categories: DEV
 |28/08/2018|0.1|Adição de tópicos|Bruno Rodrigues Santos|
 |29/08/2018|0.1|Adição de arquitetura MVT|Alan Lima|
 |29/08/2018|0.1|Adição de Arquitetura de Microserviços|Alan Lima|
+|29/08/2018|0.2|Atualizações e Correções|Bruno Rodrigues Santos|
 
 # Documento de Arquitetura
 
@@ -22,26 +23,26 @@ Sumário
 * 1 . [Introdução](#1-introdução)
     * 1.1. [Finalidade](#11-finalidade)
     * 1.2. [Escopo](#12-escopo)
-    * 1.3. [Definições, acrônimos e abreviações](#13-Definições,-acrônimos-e-abreviações)
+    * 1.3. [Definições, acrônimos e abreviações](#13-definições-acrônimos-e-abreviações)
     * 1.4. [Referências](#14-referências)
-    * 1.5. [Visão Geral](#15-Visão-Geral)
+    * 1.5. [Visão Geral](#15-visão-geral)
 
-* 2 . [Representação da Arquitetura](#2-Representação-da-Arquitetura)
-   * 2.1. [Representação do padrão de Arquitetura MVT](#21-Padrão-de-Arquitetura-MVT)
-   * 2.2. [Representação da Arquitetura de Microserviços](#22-Arquitetura-de-Microserviços)   
+* 2 . [Representação da Arquitetura](#2-representação-da-arquitetura)
+   * 2.1. [Representação do padrão de Arquitetura MVT](#21-padrão-de-arquitetura-mvt)
+   * 2.2. [Representação da Arquitetura de Microserviços](#22-arquitetura-de-microserviços)   
 
-* 3 . [Metas e Restrições da Arquitetura](#3-Metas-e-Restrições-da-Arquitetura)
+* 3 . [Metas e Restrições da Arquitetura](#3-metas-e-restrições-da-arquitetura)
 
-* 4 . [Visão de Processos](4-Visão-de-Procesos)
+* 4 . [Visão de Processos](4-visão-de-procesos)
 
-* 5 . [Visão de Implementação](#5-Visão-de-Implementação)
-	 * 5.1. [Visão Geral](#51-Visão-Geral)
-   * 5.2. [Diagrama de Pacotes](#52-Diagrama-de-Pacotes)
-   * 5.3. [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#53-Pacotes-de-Design-Significativos-do-Ponto-de-Vista-da-Arquitetura)
+* 5 . [Visão de Implementação](#5-visão-de-implementação)
+	 * 5.1. [Visão Geral](#51-visão-geral)
+   * 5.2. [Diagrama de Pacotes](#52-diagrama-de-pacotes)
+   * 5.3. [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#53-pacotes-de-design-significativos-do-ponto-de-vista-da-arquitetura)
 
-* 6 . [Arquitetura dos Serviços e visão de Implementação](#6-Arquitetura-dos-Serviços-e-visão-de-Implementação)
-   * 6.1. [Visão Geral](#61-Micro-Serviços-e-Camadas)
-   * 6.2. [Microserviços e Camadas](#62-Visão-Geral)
+* 6 . [Arquitetura dos Serviços e visão de Implementação](#6-arquitetura-dos-serviços-e-visão-de-implementação)
+   * 6.1. [Visão Geral](#61-microserviços-e-camadas)
+   * 6.2. [Microserviços e Camadas](#62-visão-geral)
 
 * 7 . [Visão de Dados](#8-visao)
 
