@@ -85,7 +85,7 @@ A arquitetura do projeto possuirá ambientes diferentes: API's REST, por debaixo
 
 Os padrões de arquitetura expressam formas de organizar a estrura do sistema e ajudam a lidar com a complexidade do software. O padrão utilizado neste projeto é o MVT, que por sua vez se assemelha bastante ao conhecido MVC. Tanto que, de acordo com o Django Book, o Django segue o padrão MVC suficientemente para ser considerado um framework MVC.
 
-<center>![Architeture MVT](https://i.imgur.com/hYYq7q4.png)</center>
+<p align="middle"><img src="https://i.imgur.com/hYYq7q4.png" ></p>
 
 * Model
 ---
@@ -114,7 +114,7 @@ O Django oferece uma interface com o banco de dados que permite ao desenvolvedor
 * Otimização da utilização da infraestrutura de nuvem.
 * Redução da complexidade de manutenção.
 
-<center>![](https://i.imgur.com/qOv72O6.jpg)</center>
+<p align="middle"><img src="https://i.imgur.com/qOv72O6.jpg" ></p>
 
 O esquema acima demonstra bem a arquitetura adotada. Consiste em várias em quatro REST API's feitas usando Django REST, uma framework para Python, linguagem esta ja conhecida pela sua facilidade e desempenho relacionados a Data Science e Machine Learning. Três delas serão responsáveis por buscar dados relacionados a jogos da Steam, Twich, e Youtube. A quarta API é responsável por fazer um cruzamento de dados entre os dados obtidos nas demais API's do microserviço. Esta possui o objetivo de realizar estatísticas relacionadas ao consolidado de todos os dados.
 
