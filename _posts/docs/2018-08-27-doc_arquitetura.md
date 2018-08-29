@@ -11,6 +11,8 @@ categories: DEV
 | --- | --- | --- | --- |
 |28/08/2018|0.1|Criação da estrutura do documento|Ingrid Soares|
 |28/08/2018|0.1|Adição de tópicos|Bruno Rodrigues Santos|
+|29/08/2018|0.1|Adição de arquitetura MVT|Alan Lima|
+|29/08/2018|0.1|Adição de Arquitetura de Microserviços|Alan Lima|
 
 # Documento de Arquitetura
 
@@ -83,7 +85,7 @@ A arquitetura do projeto possuirá ambientes diferentes: API's REST, por debaixo
 
 Os padrões de arquitetura expressam formas de organizar a estrura do sistema e ajudam a lidar com a complexidade do software. O padrão utilizado neste projeto é o MVT, que por sua vez se assemelha bastante ao conhecido MVC. Tanto que, de acordo com o Django Book, o Django segue o padrão MVC suficientemente para ser considerado um framework MVC.
 
-<center>![Architeture MVT](../../assets/images/architeture_MVT.png)</center>
+<center>![Architeture MVT](https://i.imgur.com/hYYq7q4.png)</center>
 
 * Model
 ---
@@ -91,11 +93,11 @@ As Models do MVC e do MVT são equivalentes em responsabilidades. O framework Dj
 
 * View
 ---
-A camada View é responsável pela implementação das regras de apresentação e negócio do nosso sistema. É nela onde iremos nos comunicar com a Model e a Template, cadastrando e tratando as informações recebidas. Retornando para o usuário uma resposta, como HTMLs, XML, ou erros encontrados. Esta é equivalente a Controller na arquitetura MVC
+A camada View é responsável pela implementação das regras de apresentação e negócio do nosso sistema. É nela onde iremos nos comunicar com a Model e a Template, cadastrando e tratando as informações recebidas. Retornando para o usuário uma resposta em JSON, ou erros encontrados. Esta é equivalente a Controller na arquitetura MVC
 
 * Template
 ---
-Templates é a camada que retorna a visão para o usuário do programa. Essa camada é composta por, HTML,CSS, javascript e etc. Geralmente linguagens focadas na apresentação do site para o usuário.
+Templates é a camada que retorna a visão para o usuário do programa. Essa camada é composta por, HTML,CSS, javascript.
 
 * Detalhes arquiteturais
 ---
@@ -105,6 +107,19 @@ O Django oferece uma interface com o banco de dados que permite ao desenvolvedor
 
 
 ### 2.2 Arquitetura de Microserviços
+
+ arquitetura orientada a micro serviços foi adotada para este projeto devido a suas vantagens em relação a estrutura monolítica, dentre elas estão:
+* Disponibilização de novos processos ou serviços sem impacto nos processos e serviços existentes.
+* Alterações em processos e serviços sem a necessidade de parada de todo o sistema.
+* Otimização da utilização da infraestrutura de nuvem.
+* Redução da complexidade de manutenção.
+
+<center>![](https://i.imgur.com/qOv72O6.jpg)</center>
+
+O esquema acima demonstra bem a arquitetura adotada. Consiste em várias em quatro REST API's feitas usando Django REST, uma framework para Python, linguagem esta ja conhecida pela sua facilidade e desempenho relacionados a Data Science e Machine Learning. Três delas serão responsáveis por buscar dados relacionados a jogos da Steam, Twich, e Youtube. A quarta API é responsável por fazer um cruzamento de dados entre os dados obtidos nas demais API's do microserviço. Esta possui o objetivo de realizar estatísticas relacionadas ao consolidado de todos os dados.
+
+Todo este conteúdo será disponibilizado para a aplicação Front-End feita utilizando NodeJS, HTML, css até chegar ao cliente final. O usuário terá a possibilidade de ver as estátiscas e gráficos relacionados aos jogos de uma maneira interativa. 
+
 
 ## 3. Metas e Restrições da Arquitetura
 
