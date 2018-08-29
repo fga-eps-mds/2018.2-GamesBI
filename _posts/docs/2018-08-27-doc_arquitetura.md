@@ -49,8 +49,6 @@ Sumário
 
 * 8 . [Visão de Dados](#8-visao)
 
-* 9 . [Qualidade](#9-Qualidade)
-
 
 ## 1. Introdução
 
@@ -68,6 +66,8 @@ de maneira detalhada o funcionamento e a visão arquitetural do projeto.
 
 - MVT - Model, View, Template
 - MVC - Model, View, Controller
+- ORM - Object Relational Mapper
+- DRM - Document Relational Mapper
 
 ### 1.4 Referências
 
@@ -102,8 +102,7 @@ Templates é a camada que retorna a visão para o usuário do programa. Essa cam
 ---
 As resoluções de urls, responsabilidade dada as controllers no MVC, é feita pela própria estrutura do framework
 
-O Django oferece uma interface com o banco de dados que permite ao desenvolvedor não se preocupar com a conexão entre suas classes de domínio e banco.
-
+O Django oferece um sistema ORM com o banco de dados que permite ao desenvolvedor não se preocupar com querys explicitamente escritas. Com a intrudução do Banco de dados Não-Relacional MongoDB, o ORM é substituído pelo DRM, por conta das características exclusivas do banco.
 
 ### 2.2 Arquitetura de Microserviços
 
@@ -145,8 +144,6 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 O esquema acima demonstra bem a arquitetura adotada. Consiste em várias em quatro REST API's feitas usando Django REST, uma framework para Python, linguagem esta ja conhecida pela sua facilidade e desempenho relacionados a Data Science e Machine Learning. Três delas serão responsáveis por buscar dados relacionados a jogos da Steam, Twich, e Youtube. A quarta API é responsável por fazer um cruzamento de dados entre os dados obtidos nas demais API's do microserviço. Esta possui o objetivo de realizar estatísticas relacionadas ao consolidado de todos os dados.
 
-Todo este conteúdo será disponibilizado para a aplicação Front-End feita utilizando NodeJS, HTML, css até chegar ao usuário final. O usuário terá a possibilidade de ver as estátiscas e gráficos relacionados aos jogos de uma maneira interativa.
+Todo este conteúdo será disponibilizado para a aplicação Front-End feita utilizando NodeJS, HTML, css até chegar ao usuário final. O usuário terá a possibilidade de ver as estatísticas e gráficos relacionados aos jogos de uma maneira interativa.
 
 ## 8 Visão de dados
-
-## 9. Qualidade
