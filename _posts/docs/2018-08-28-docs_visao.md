@@ -119,11 +119,7 @@ categories: DEV
 
 ### 3.3 Resumo do usuário
 
-| **Nome** | **Descrição** |
-| :--- | :--- |
-| Aluno | Utilizará o _software_ para validação de entrada e saída. |
-| Responsáveis | Serão notificados sobre a frequência dos alunos e comunicados em geral da direção. |
-| Diretoria | Poderá comunicar os responsáveis sobre alterações na entrada/saída, advertências, suspensões e boletim dos alunos. |
+O usuário obterá dados precisos como informações sobre a quantidade de horas por cada jogo, poderá interagir com os gráficos, filtrar as informações relevantes para ele.
 
 ### 3.4 Ambiente de usuário
 
@@ -224,6 +220,9 @@ categories: DEV
 
 
 ## 4. Visão geral do produto
+
+O objetivo do GamesBI é oferecer dados de determinadas empresas sobre jogos e de videos relacionados a gameplays de forma interativa.
+
 
 ### 4.1 Perspectiva do Produto
 
