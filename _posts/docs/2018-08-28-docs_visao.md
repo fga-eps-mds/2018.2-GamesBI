@@ -218,6 +218,8 @@ categories: DEV
 
 ## 3.8 Alternativas e Concorrência
 
+<p align="justify">Atualmente não há nenhuma aplicação que realize uma análise do mercado de jogos usando business inteligence - o que é proposto neste projeto. Há uma aplicação especifica da Steam(Valve L.L.C) para visualização de estatísticas de jogos  e usuários, entretanto não há um interpolação dos dados com outras plataformas . Existe também a plataforma Looker Data Sciences, que oferece BI para empresas mas que não possuí direcionamento especifico para jogos. </p>
+
 ### 3.8.1 Método tradicional de controle de entrada e saída de alunos
 
 
