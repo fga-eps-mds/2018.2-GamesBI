@@ -11,6 +11,7 @@ order: 4
 | --- | --- | --- | --- |
 |28/08/2018|0.1|Criação da estrutura do documento|Felipe Osório|
 |29/08/2018|0.2|Adição das políticas de branches|Felipe Osório|
+|30/08/2018|0.3|Adição dos tópicos de ferramentas utilizadas, ambientes e serviços|Felipe Osório|
 
 ### Sumário
 ---
@@ -22,6 +23,9 @@ order: 4
 	* 2.3 [Folha de estilo e Testes](#23-folha-de-estilo-e-testes)
 	* 2.4 [Pull requests](#24-pull-requests)
 	* 2.5 [Builds](#25-builds)
+    * 2.6 [Ferramentas utilizadas](#26-ferramentas-utilizadas)
+    * 2.7 [Ambientes](#27-ambientes)
+    * 2.8 [Serviços](#28-serviços)
 * 3  [Deploy Contínuo](#3-deploy-contínuo)
 	* 3.1  [Pipeline](#31-pipeline)
 
@@ -29,7 +33,7 @@ order: 4
 ---
 ## 1. Introdução
 
-Este documento visa apresentar todas as políticas adotadas pela equipe para atingir a integração contínua e o deploy contínuo da aplicação. Tendo isso em vista, este documento irá ser dividido em duas partes, visando a melhor apresentação dos dados. A primeira parte do documento irá ser apresentado como foi realizado a integração contínua, e na segunda parte, o deploy contínuo.
+Este documento visa apresentar todas as políticas adotadas pela equipe para atingir a integração contínua e o deploy contínuo da aplicação. Tendo isso em vista, este documento irá ser dividido em duas partes, visando a melhor apresentação das informações. A primeira parte do documento irá ser apresentado como foi realizado a integração contínua, e na segunda parte, o deploy contínuo.
 
 ## 2. Integração contínua
 
@@ -54,7 +58,10 @@ Para a política de branches, utilizamos seguir o padrão utilizado pelo gitflow
 
 * **master**, é utlizada para guardar a história oficial de releases do software, no qual está contido a versão mais recente e estável da aplicação.
 * **develop**, é utilizada para a integração de todas as features desenvolvidas neste novo insumo de código.
-* **feature**, é utilizada para a codificação da feature em questão. A nomeação dessa feature é dada da seguinte forma: feature_#0, no qual #0 é o número da issue(ex: feature_#23, caso a issue em questão seja a issue de número 23). Assim que a feature for completa, ela é integrada à branch develop.
+* **feature**, é utilizada para a codificação da feature em questão. 
+   * A nomeação dessa feature é dada da seguinte forma: feature_#0, no qual #0 é o número da issue(ex: feature_#23, caso a issue em questão seja a issue de número 23). 
+   * Essa branch deve ter como base a develop.
+   * Assim que a feature for completa, ela é integrada devolta à branch develop.
 * **release**, é utilizada após o insumo de código estiver apropriado para ser lançado como uma novo release. É possível realizar ajustes rápidos para poder ser lançado como uma nova release. Assim que estiver pronta, esta branch è integrada à master e à develop.
 * **hotfix**, caso haja algum problema urgente, é criado essa branch para realizar ajustes e logo após integrar à master.
 
@@ -70,6 +77,29 @@ Depois da criação do pull request, todos os CI's que estamos utilizando dever�
 
 ### 2.5 Builds
 Como dito anteriormente, as builds são geradas ao final de cada pull request, à fim de testar a criação desses insumos de código. Caso esse passo ou qualquer um dos outros CI's dê algum tipo de problema, essas ferramentas irão informar aos mantenedores do repositório via email e pelo próprio pull request também.
+
+### 2.6 Ferramentas utilizadas
+
+* Travis CI: Ferramenta de build para a integração contínua
+* Coveralls: Ferramenta de análise de cobertura de código
+* Codeclimate: Ferramenta de análise de qualidade de código
+* Docker e docker-compose: Ferramenta de conteinerização utilizada para construir os ambientes necessários (desenvolvimento, testes, homologação e produção).
+
+### 2.7 Ambientes
+Existirá, ao todo, 4 ambientes. São eles:
+* Desenvolvimento
+* Testes
+* Homologação
+* Produção
+
+Os ambientes de homologação e de produção irão ser atualizados sempre ao fim da sprint, ou seja, uma vez por semana, com exceção dos casos que se faça necessário utilizar hotfixes para atualização de um bug urgente dentro de um desses ambientes.
+
+O ambiente de desenvolvimento é exclusivo para cada desenvolvedor, cabe a ele utilizar do docker e docker-compose disponível no repositório para subir o seu próprio ambiente de desenvolvimento.
+
+### 2.8 Serviços
+A aplicação desenvolvida irá consistir de apenas 2 serviços, que são o back-end, na forma de uma API escrita em python utilizando a biblioteca REST do Django. E de um front end, desenvolvido em Node.js.
+
+Por se consistir de uma API, existe a possibilidade de criar novos serviços, como por exemplo um aplicativo mobile que consome essa API.
 
 ## 3. Deploy Contínuo
 
