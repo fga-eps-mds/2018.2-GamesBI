@@ -33,18 +33,11 @@ Sumário
 
 * 3 . [Metas e Restrições da Arquitetura](#3-metas-e-restrições-da-arquitetura)
 
-* 4 . [Visão de Processos](4-visão-de-procesos)
+* 4 . [Arquitetura dos Serviços e visão de Implementação](#4-arquitetura-dos-serviços-e-visão-de-implementação)
+   * 4.1. [Visão Geral](#41-microserviços-e-camadas)
+   * 4.2. [Microserviços e Camadas](#42-visão-geral)
 
-* 5 . [Visão de Implementação](#5-visão-de-implementação)
-	 * 5.1. [Visão Geral](#51-visão-geral)
-   * 5.2. [Diagrama de Pacotes](#52-diagrama-de-pacotes)
-   * 5.3. [Pacotes de Design Significativos do Ponto de Vista da Arquitetura](#53-pacotes-de-design-significativos-do-ponto-de-vista-da-arquitetura)
-
-* 6 . [Arquitetura dos Serviços e visão de Implementação](#6-arquitetura-dos-serviços-e-visão-de-implementação)
-   * 6.1. [Visão Geral](#61-microserviços-e-camadas)
-   * 6.2. [Microserviços e Camadas](#62-visão-geral)
-
-* 7 . [Visão de Dados](#8-visao)
+* 5 . [Visão de Dados](#5-visao)
 
 
 ## 1. Introdução
@@ -128,23 +121,31 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 - Padrão MVT
 - API's REST
 
-## 4. Visão de Procesos
+## 4. Arquitetura dos Serviços e visão de Implementação
 
-## 5. Visão de Implementação
-### 5.1 Visão Geral
-### 5.2 Diagrama de Pacotes
-### 5.3 Pacotes de Design Significativos do Ponto de Vista da Arquitetura
+### 4.1 Visão Geral
 
-## 6. Arquitetura dos Serviços e visão de Implementação
+<p align="middle"><img src="https://i.imgur.com/60PWDud.jpg"></p>
 
-### 6.1 Visão Geral
+### 4.2 Microserviços e camadas
 
-<p align="middle"><img src="https://i.imgur.com/XR9n6p2.jpg" ></p>
+A arquitetura e sua versão atual está particionada em 2 microserviços:
 
-### 6.2 Microserviços e camadas
+* 1 - Front-End (Node.js)
+  
+  Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Cross Data e 
+  apresentar para o usuário final.
 
-O esquema acima demonstra bem a arquitetura adotada. Consiste em várias em quatro REST API's feitas usando Django REST, uma framework para Python, linguagem esta ja conhecida pela sua facilidade e desempenho relacionados a Data Science e Machine Learning. Três delas serão responsáveis por buscar dados relacionados a jogos da Steam, Twich, e Youtube. A quarta API é responsável por fazer um cruzamento de dados entre os dados obtidos nas demais API's do microserviço. Esta possui o objetivo de realizar estatísticas relacionadas ao consolidado de todos os dados.
+* 2 - Cross Data
+  
+  Fronteira responsável por receber os dados das API's externas e persisti-los no banco de dados. Assim, 
+  fornecendo as estatísticas para o Front-End
 
-Todo este conteúdo será disponibilizado para a aplicação Front-End feita utilizando NodeJS, HTML, css até chegar ao usuário final. O usuário terá a possibilidade de ver as estatísticas e gráficos relacionados aos jogos de uma maneira interativa.
+APIs Externas:
+  Diferentes fontes de dados acerca de jogos digitais
+  * SteamSpy
+  * Twitch API
 
-## 7 Visão de dados
+## 5 Visão de dados
+
+<p align="middle"><img src="https://i.imgur.com/Z3IUUfw.jpg"></p>
