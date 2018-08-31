@@ -1,25 +1,75 @@
 ---
-title: Fourth Post
-author: Chris
+title: Planejamento
 layout: post
 categories: SPRINT
 ---
-Lorem ipsum dolor sit amet, harum malorum nominavi mea et. Atqui maluisset duo cu, summo dignissim voluptatum sit ut. Ad quo quidam delicatissimi. Cum nihil noster patrioque id. Per at maiorum definitiones. Cu vix sint aliquip. No duo alia sale persecuti.
+Sprint 0
 
-Pri id consul meliore luptatum, vix iudico impetus salutatus eu, duo at causae admodum complectitur. Qui eu salutandi dignissim, ea dictas audire commodo eos, vim cu autem dicam. Novum placerat moderatius sea ex, debet labitur reprehendunt mei ad. Tempor theophrastus et est, id tollit ponderum usu, at vis consul detraxit. Sit ut adhuc aeque.
+## Período
 
-Ut eum labore antiopam. Cum eu modus rationibus. Illud deleniti cum cu. At vix illum vitae tation, solet oporteat complectitur at vel. Vim te simul eleifend, et per insolens conceptam, ad sint posidonium est. Ad vocent propriae principes duo.
+**Duração**: 18/08 à 25/08
 
-Audire periculis id vis, cum eu sonet option patrioque, his dicam sanctus imperdiet ad. Ad sonet dolorum est. Eu dolore adipisci volutpat mei, eu nec nisl molestiae. Usu ad veri omnesque pertinacia, duis scripserit ad nam. Quo id eligendi legendos.
+## Reunião
 
-Eos cu partiendo vituperatoribus. Mel id duis delenit atomorum, mei tamquam nostrum ne, id eum hinc decore mediocrem. Mei feugiat habemus tincidunt ut, atqui detraxit ex usu. Vix ad commodo eripuit alienum, an has idque delicatissimi. Dolores reformidans mel ne, duis numquam disputando quo te.
+<b>Data</b>: 18/08 <br/>
+<b>Local</b>: Republica 9 Caudas<br/>
+<b>Horário</b>: 14h00 às 17h30<br/>
+<b>Descrição</b>: A reunião semanal ocorreu na sábado, ocorreu a coleta dos horários disponíveis pelos membros da equipe Na reunião deu-se uma explicação para MDS sobre o conceito das metodologias ágeis, e como elas seriam aplicadas durante o semestre. Foi passado o conceito de Scrum, Planning Poker, XP, PP, Tradicional x Agil, ROI, metricas. Fora feito também o quadro de conhecimentos inicial de todos os membros da equipe.
 
-Eum eu tritani accusata qualisque, pro ei purto vocent. Vim in insolens hendrerit similique. Nobis munere antiopam ei vix. Cum no labore partiendo conceptam. Sea id vide viderer mandamus, magna posidonium nam at. Ad populo persius duo, vel audire detracto scribentur ut.
+## Papéis
 
-Vim te fastidii sententiae. Vix ad facilis gloriatur, mei an diceret iracundia vituperatoribus. Iudico consetetur dissentiunt pri ut. Consul dictas pri ne. Nec an alia volumus scaevola, eos movet deleniti argumentum te. Latine abhorreant his ad, ut modus tempor euismod pri.
+|Membro|Papel|
+|-:|:-|
+|Augusto "augustovilarins" | Engenheiro de produto|
+|Bruno "BRZangado" | Arquiteto|
+|Emanoel "Nukdown" | Scrum Master|
+|Felipe "felipe72" | DevOps|  
+|Alan "alanrslima" | Desenvolvedor|
+|André "Andre-Eduardo" | Desenvolvedor|
+|Arthur "arthurarp" | Desenvolvedor|
+|Ingrid "ingrdst" | Desenvolvedor|
+|Marco "markinlimac" | Desenvolvedor|
 
-Amet illum at sea, est autem fabulas eu, quod nonumes lobortis no sed. Has ei fugit adipisci reprimique. Enim tamquam ornatus pri ei. Alii harum invidunt nec ex, pri vidit latine ne. Has vocent nominati rationibus ad, ex partiendo prodesset moderatius has, vim quod paulo ad. Ex nec etiam electram, pri illud appetere eu.
 
-An nobis instructior eos, eam libris aperiam corrumpit ex. Case omnesque eu per. Et vix iisque tritani. Autem posidonium eu vis, sit et mutat brute. Usu ne postulant intellegat omittantur, mazim saperet adolescens mel at.
 
-Nam at velit percipit detraxit, quas modus mea ut. Ius an natum doctus vivendum. Quo at debet vidisse viderer, mollis eripuit ex nec. Sed ut choro saepe, sale augue sea et. His nemore dolorum mnesarchum at, ius an adipisci aliquando, laoreet placerat ea ius.
+## Backlog
+
+
+## Pareamento
+
+<p align = "justify"> O pareamento não foi realizado pela decisão que os treinamentos teóricos e práticas "DOJO" seriam melhor para a integração da equipe e nivelamento de conhecimento.</p>
+
+## Presença
+### Sprint Planning
+
+Membro | Presente
+:-----: | :--------:
+Alan "alanrslima" | :white_check_mark:
+André "Andre-Eduardo" | :white_check_mark:
+Arthur "arthurarp" | :white_check_mark:
+Augusto "augustovilarins" | :white_check_mark:
+Bruno "BRZangado" | :x:
+Emanoel "Nukdown" | :white_check_mark:
+Felipe "felipe72" | :white_check_mark:
+Ingrid "ingrdst" | :white_check_mark:
+Marco "markinlimac" | :white_check_mark:
+
+### Daily Meetings
+
+
+Membro | Segunda | Terça | Quarta | Quinta | Sexta* | Sábado*
+-- |-- |-- |-- |-- |--|--
+Alan "alanrslima" | &#10004; | &#10004;| &#10004;| &#x2718; |&#10004;|&#10004;|
+André "Andre-Eduardo" | &#10004; | &#10004;| &#10004;| &#10004; |&#10004;|&#10004;|
+Arthur "arthurarp" | &#10004; | &#10004;| &#10004;| &#10004; |&#10004;|&#10004;|
+Augusto "augustovilarins" | &#10004; | &#10004;| &#10004;| &#x2718; |&#10004;|&#10004;|
+Bruno "BRZangado" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|&#x2718; |
+Emanoel "Nukdown" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|&#10004; |
+Felipe "felipe72" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|&#10004; |
+Ingrid "ingrdst" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|&#10004; |
+Marco "markinlimac" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|&#10004; |
+
+
+
+* Sexta -  Reunião feita remotamente devido ao evento corrido na FGA(10 anos)
+* Sabado -  Sprint Planing e Sprint Review
