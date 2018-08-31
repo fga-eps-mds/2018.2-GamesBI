@@ -7,13 +7,13 @@ Planejamento
 
 ## Período
 
-**Duração**: 18/08 à 25/08
+**Duração**: 25/08 à 01/09
 
 ## Reunião
 
-<b>Data</b>: 18/08 <br/>
+<b>Data</b>: 25/08 <br/>
 <b>Local</b>: Republica 9 Caudas<br/>
-<b>Horário</b>: 14h00 às 17h30<br/>
+<b>Horário</b>: 14h00 às 18h00<br/>
 <b>Descrição</b>: A reunião semanal para realizar o restrospectiva da sprint 0 e o planejamento da sprint 1 ocorreu na sábado, foi atualizado o quadro de conhecimento pelos membros da equipe de acordo com a evolução adquirida nos Treinamentos/DOJOS realizados durante a semana. Na reunião deu-se um treinamento de ambiente virtual e docker, e como o docker seria usado no projeto durante o semestre, alem de demostrar como foi determinado a politica de commit/issue/branch/code do repositorio. Foi realizado uma coleta de informações a cerca dos pontos positivos, negativos e a melhorar da sprint 0. Fora feito também o quadro de conhecimentos inicial de todos os membros da equipe.
 
 ## Papéis Definidos
@@ -36,20 +36,25 @@ Planejamento
 
 | *Issue* | ***História*** | **Pontuação** | **Responsáveis** | **Status** |
 | ------ | ------------ |     :---:     |  ---------------- | :---:  |
-| [#47](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/47) | Treinamento Docker |     -    |  Felipe Osorio | **Nova**  |
-| [#30](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/30) | Criar issue template |     -    |  Bruno  | **Nova**  |
-| [#26](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/29) | Definir local dos Rituais |     -    |  Emanoel  | **Nova**  |
+| [#56](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/56) | Elaborar doc. de visão |     5    |  Todos | **Nova**  |
+| [#32](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/32) | Roadmap das áreas |     5    |  Todos | **Nova**  |
+| [#32](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/32) | Escrever escopo |     5    |  Todos | **Nova**  |
+| [#50](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/50) | Prototipo de baixa fidelidade |     5    |  Desenvolvedores | **Nova**  |
+| [#63 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/63)[#64 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/64) | Desenhar MER |     3    |  Bruno | **Nova**  |
+| [#52 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/52) | Definir pipeline de devops |     5    |  Felipe | **Nova**  |
+| [#53](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/53) | Documento de arquitetura |     8    |  Todos | **Nova**  |
+
 
 ## Pareamento
 
-<p align = "justify"> O pareamento não foi realizado devido a meta de resultados estar focada em documentação, definição de escopo. Foi decidido que seria melhor para o grupo todos participarem da realização do backlog da sprint</p>
+<p align = "justify"> O pareamento não foi realizado devido a meta de resultados estar focada em documentação, definição de escopo. Foi decidido que seria melhor para o grupo todos participarem da realização dos artefatos</p>
 
 ## Presença
 ### Sprint Planning + Sprint Review
 
 Membro | Presente
 ---:|:---
-Alan "alanrslima" | &#10004; |
+Alan "alanrslima" | &#x2718; |
 André "Andre-Eduardo" | &#10004; |
 Arthur "arthurarp" |&#10004; |
 Augusto "augustovilarins" | &#10004; |
