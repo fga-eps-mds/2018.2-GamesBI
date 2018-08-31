@@ -34,10 +34,10 @@ Sumário
 * 3 . [Metas e Restrições da Arquitetura](#3-metas-e-restrições-da-arquitetura)
 
 * 4 . [Arquitetura dos Serviços e visão de Implementação](#4-arquitetura-dos-serviços-e-visão-de-implementação)
-   * 4.1. [Visão Geral](#41-microserviços-e-camadas)
-   * 4.2. [Microserviços e Camadas](#42-visão-geral)
+   * 4.1. [Visão Geral](#41-visão-geral)
+   * 4.2. [Microserviços e Camadas](#42-microserviços-e-camadas)
 
-* 5 . [Visão de Dados](#5-visao)
+* 5 . [Visão de Dados](#5-visão-de-dados)
 
 
 ## 1. Introdução
