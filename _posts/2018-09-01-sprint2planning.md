@@ -3,7 +3,7 @@ title: Sprint 2
 layout: post
 categories: SPRINT
 ---
-Planejamento
+Planning
 
 ## Período
 
@@ -14,12 +14,14 @@ Planejamento
 <b>Data</b>: 01/09 <br/>
 <b>Local</b>: Republica 9 Caudas<br/>
 <b>Horário</b>: 09h00 às 14h00<br/>
-<b>Descrição</b>: A reunião semanal para realizar o restrospectiva da sprint 1 e o planejamento da sprint 2 ocorreu na sábado de manhã devido as decisões tomadas na sprint 0, foi atualizado o quadro de conhecimento para definir os pareamentos. Foi realizado uma coleta de informações a cerca dos pontos positivos, negativos e a melhorar da sprint 1.
+<b>Descrição</b>: A reunião semanal para realizar o restrospectiva da sprint 1 e o planejamento da sprint 2 ocorreu na sábado de manhã devido as decisões tomadas na sprint 0, foi atualizado o quadro de conhecimento para definir os pareamentos. Foi realizado uma coleta de informações a cerca dos pontos positivos, negativos e a melhorar da sprint 1. Os epicos/features/us foram levantados e a pontuação foi definida para cada estória.
 
 
 #Decisões tomadas
 
-<b>Pareamento</b>: Parementos serão definidos com o objetivo de nivelar conhecimento
+<b>Pareamento</b>: Pareamentos foram definidos com o objetivo de nivelar conhecimento das tecnologias a partir do quadro de conhecimento e prioridade das estórias.<p>
+<b>Pit</b>: Foi definido que durante a reuniões semanais será exercitado a tecnica de PIT com os membros, com o intuito de amadurecer o problema e a visão de negocio.<p>
+<b>Sprint 3 planning e review</b>: A proxima reunião para planejamento e retrospectiva não irá ocorrer presencialmente no sabado devido a disponibilidade dos membros da equipe scrum. Será definido uma nova data no decorrer da semana.
 
 
 ## Papéis Definidos
@@ -36,49 +38,39 @@ Planejamento
 |Ingrid "ingrdst" | Desenvolvedor|
 |Marco "markinlimac" | Desenvolvedor|
 
+## Quadro de conhecimento
+<a href="https://imgur.com/gGoNj3T"><img src="https://i.imgur.com/gGoNj3T.png" title="source: imgur.com" /></a>
 
+<a href="https://imgur.com/npGVNie"><img src="https://i.imgur.com/npGVNie.png" title="source: imgur.com" /></a>
 
-## Backlog
+## Backlog Sprint 2
 
-| *Issue* | ***História*** | **Pontuação** | **Responsáveis** | **Status** |
+| *Identificador* | ***História*** | **Pontuação** | **Responsáveis** | **Status** |
 | ------ | ------------ |     :---:     |  ---------------- | :---:  |
-| [#56](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/56) | Elaborar doc. de visão |     5    |  Todos | **Nova**  |
-| [#32](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/32) | Roadmap das áreas |     5    |  Todos | **Nova**  |
-| [#32](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/32) | Escrever escopo |     5    |  Todos | **Nova**  |
-| [#50](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/50) | Prototipo de baixa fidelidade |     5    |  Desenvolvedores | **Nova**  |
-| [#63 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/63)[#64 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/64) | Desenhar MER |     3    |  Bruno | **Nova**  |
-| [#52 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/52) | Definir pipeline de devops |     5    |  Felipe | **Nova**  |
-| [#53](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/53) | Documento de arquitetura |     8    |  Todos | **Nova**  |
+| [#TS01](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/78) | Eu como desenvolvedor desejo criar models para a Steam/Steamspy API |     2    |  Alan e André | **Nova**  |
+| [#TS02](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/79) | Eu como desenvolvedor desejo Importar dados da Steam/SteamSpy API  |     2    |  Alan e André | **Nova**  |
+| [#TS03](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/82) | Eu como desenvolvedor desejo criar models para a Twitch API |     2    |  Ingrid e Marco | **Nova**  |
+| [#TS04](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/80) | Eu como desenvolvedor desejo Importar dados da Twitch API |     2    |  Ingrid e Marco | **Nova**  |
+|[#TS05 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/83) | Eu como desenvolvedor desejo criar models para a Youtube API |     2    |  Bruno e Arthur| **Nova**  |
+| [#TS06 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/81) | Eu como desenvolvedor desejo Importar dados da Youtube API |     8    |  Bruno e Arthur | **Nova**  |
+| [#77 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/77) | Prototipo de alta fidelidade |     5    |  Felipe e Augusto | **Nova**  |
 
 
-## Pareamento
-
-<p align = "justify"> O pareamento não foi realizado devido a meta de resultados estar focada em documentação, definição de escopo. Foi decidido que seria melhor para o grupo todos participarem da realização dos artefatos</p>
-
-## Presença
-## Backlog
-
-| *Issue* | ***História*** | **Pontuação** | **Responsáveis** | **Status** |
-| ------ | ------------ |     :---:     |  ---------------- | :---:  |
-
-
-## Pareamento
-e seria melhor para o grupo todos participarem da realização dos artefatos</p>
 
 ## Presença
 ### Sprint Planning + Sprint Review
 
 Membro | Presente
 ---:|:---
-Alan "alanrslima" | &#10004; |
-André "Andre-Eduardo" | &#10004; |
-Arthur "arthurarp" |&#10004; |
-Augusto "augustovilarins" | &#10004; |
+Alan "alanrslima" | &#10004;
+André "Andre-Eduardo" | &#10004;
+Arthur "arthurarp" |&#10004;
+Augusto "augustovilarins" | &#10004;
 Bruno "BRZangado" | &#10004;
-Emanoel "Nukdown" | &#10004; |
-Felipe "felipe72" | &#10004; |
-Ingrid "ingrdst" | &#10004; |
-Marco "markinlimac" | &#10004; |
+Emanoel "Nukdown" | &#10004;
+Felipe "felipe72" | &#10004;
+Ingrid "ingrdst" | &#10004;
+Marco "markinlimac" | &#10004;
 
 ### Daily Meetings
 
