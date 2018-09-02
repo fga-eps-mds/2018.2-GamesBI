@@ -86,3 +86,49 @@ Custo médio por aluno/hora:<br>
 ((custo anual por aluno)))÷((Créditos da Engenharia de Software ÷ 5 anos) × 15 horas por crédito) <br> ((R$ 26.040,00) ÷ ((240 ÷ 5 ) × 15)) = aproximadamente R$ 36,17 /h<br><br>
 &emsp;&emsp;Este valor serviu para estimarmos o custo da mão de obra do desenvolvefores, o cálculo foi feito utilizando a seguinte fórmula: 10hrs/semana × R$ 36,17/hr × 12 pessoas da equipe. Assim teremos que o custo por semana com mão de obra é de R$ 4.340,40.<br>&emsp;&emsp;Como o desenvolvimento dura o período letivo do segundo semestre de 2018, então será ao longo de 16 semanas. Assim temos um total de R$ 69.446,40 gasto com recursos humanos.<br>
 &emsp;&emsp;Adicionando também o custo de dois coaches que trabalham duas horas por semana (R$ 2.314,88) o total gasto com recursos humanos será de 71.761,28 reais. </p>
+
+#### 7.2 Custos com equipamentos e Serviços
+
+<p align="justify">&emsp;&emsp;Somando os valores das aquisições de uma máquina para cada integrante, internet e hospedagem anual do sistema, temos um custo total de R$ 25.928,60. O cálculo mais detalhado pode ser encontrado no link da planilha de orçamento logo a baixo.
+
+#### 7.3 Estimativa
+
+<p align="justify">&emsp;&emsp;O custo total estimado consiste no somatório entre os custos de Recursos Humanos e Equipamentos e serviços, além da adição de uma taxa de 10%, que é uma faixa de segurança. O resultado é expresso pela fórmula abaixo:<br><br>
+(Recursos Humanos + Equipamentos e Serviços)!1,1 = (R$ 71.761,28 + R$ 25.928,60)*1,1 = R$ 107.458,87" </p>
+
+[Planilha de orçamento]()
+
+
+## 8. Partes interessadas/Cronograma de marcos
+
+----
+
+
+<p align="justify">&emsp;&emsp;O aplicativo poderá ser utilizado por qualquer usuario com acesso a um dispositivo com internet.<br><br>
+Equipe de Gerência de Projetos e Portifólio de Software.<br>
+&emsp;&emsp;Esta equipe é formada por alunos de graduação de Engenharia de Software da Universidade de Brasília campus Gama que cursam a disciplina Engenharia do Produto de Software.<br>
+
+|Nome|GitHub|Email
+|----|------|--------|
+|Augusto Moreno Vilarins|[@augustovilarins](https://github.com/augustovilarins)|augusto.vilarins@gmail.com|
+|Bruno Rodrigues Santos|[@BRZangado](https://github.com/BRZangado)|bruesmanbruesman@hotmail.com|
+|Emanoel Belchior E de França|[@Nukdown](https://github.com/Nukdown)|nukdown@aluno.unb.br|
+|Felipe Osório de Oliveira|[@felipe72](https://github.com/felipe72)|felipe.osorio72@outlook.com.br|
+
+Equipe de  Métodos de Desenvolvimento de Software.<br>
+&emsp;&emsp;Esta equipe é formada por alunos de graduação de Engenharia de Software da Universidade de Brasília campus Gama que cursam a disciplina Métodos de Desenvolvimento de Software.<br>
+
+|Nome|GitHub|Email
+|----|------|--------|
+|Alan Ronison de Lima|[@alanrslima](https://github.com/alanrslima)|alanronison.lima@gmail.com|
+|André Eduardo|[@Andre-Eduardo](https://github.com/Andre-Eduardo)|andre.eduardo11@hotmail.com|
+|Arthur Alves Rodrigues|[@arthurarp](https://github.com/arthurarp)|arthurarp97@gmail.com|
+|Ingrid C. Soares|[@ingrdst](https://github.com/ingrdst)|ingr.dcg@gmail.com|
+|Marco Antônio de Lima|[@markinlimac](https://github.com/markinlimac)|markinlimac@gmail.com|
+
+Outros steakholders
+
+|Nome|Papel|
+|----|------|
+|Matheus Faria|Cliente|
+|Carla Rocha|Professora|
