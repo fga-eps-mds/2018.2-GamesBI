@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{%- assign _posts = site.categories.SPRINT | sort: 'date' | reverse -%}
+{%- assign _posts = site.categories.SPRINT | sort: 'order'  -%}
 {%- include header.html scrolly_nav=_posts -%}
 <!-- Main -->
 <div id="main">
