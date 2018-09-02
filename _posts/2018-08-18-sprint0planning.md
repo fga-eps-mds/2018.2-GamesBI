@@ -3,7 +3,7 @@ title: Sprint 0
 layout: post
 categories: SPRINT
 ---
-Planejamento
+Planning
 
 ## Período
 
