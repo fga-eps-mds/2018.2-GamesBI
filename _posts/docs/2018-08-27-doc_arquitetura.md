@@ -148,4 +148,18 @@ APIs Externas:
 
 ## 5 Visão de dados
 
-<p align="middle"><img src="https://i.imgur.com/Z3IUUfw.jpg"></p>
+  5.1 IGDB Data
+
+  <p align="middle"><img src="https://i.imgur.com/xzeykEY.jpg"></p>
+
+  5.2 Steam Data
+
+  <p align="middle"><img src="https://i.imgur.com/um3A0Kw.jpg"></p>
+
+  5.3 Twitch Data
+
+  <p align="middle"><img src="https://i.imgur.com/vkQr9ZR.jpg"></p>
+
+  5.4 Cross Data
+
+  <p align="middle"><img src="https://i.imgur.com/C1IriEs.jpg"></p>
