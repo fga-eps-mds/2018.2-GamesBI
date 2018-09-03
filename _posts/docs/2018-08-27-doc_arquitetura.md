@@ -125,13 +125,13 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 ### 4.1 Visão Geral
 
-<p align="middle"><img src="https://i.imgur.com/wEHrS4D.jpg"></p>
+<p align="middle"><img src="https://i.imgur.com/faDwAzt.jpg"></p>
 
 ### 4.2 Microserviços e camadas
 
-A arquitetura e sua versão atual está particionada em 2 microserviços:
+A arquitetura e sua versão atual está particionada em:
 
-* 1 - Front-End (Node.js)
+* 1 - Front-End
   
   Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Cross Data e 
   apresentar para o usuário final.
