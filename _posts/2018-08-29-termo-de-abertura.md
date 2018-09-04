@@ -94,7 +94,7 @@ Custo médio por aluno/hora:<br>
 #### 7.3 Estimativa
 
 <p align="justify">&emsp;&emsp;O custo total estimado consiste no somatório entre os custos de Recursos Humanos e Equipamentos e serviços, além da adição de uma taxa de 10%, que é uma faixa de segurança. O resultado é expresso pela fórmula abaixo:<br><br>
-(Recursos Humanos + Equipamentos e Serviços)!1,1 = (R$ 71.761,28 + R$ 25.928,60)*1,1 = R$ 107.458,87" </p>
+(Recursos Humanos + Equipamentos e Serviços)!1,1 = (R$ 71.761,28 + R$ 25.928,60)1,1 = R$ 107.458,87" </p>
 
 [Planilha de orçamento]()
 
