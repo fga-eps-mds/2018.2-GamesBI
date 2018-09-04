@@ -14,6 +14,7 @@ categories: DEV
 |29/08/2018|0.1|Adição de arquitetura MVT|Alan Lima|
 |29/08/2018|0.1|Adição de Arquitetura de Microserviços|Alan Lima|
 |29/08/2018|0.2|Atualizações e Correções|Bruno Rodrigues Santos|
+|03/09/2018|1.0|Atualização da visão geral e adição dos MER|Bruno Rodrigues Santos|
 
 # Documento de Arquitetura
 
@@ -125,13 +126,13 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 ### 4.1 Visão Geral
 
-<p align="middle"><img src="https://i.imgur.com/wEHrS4D.jpg"></p>
+<p align="middle"><img src="https://i.imgur.com/faDwAzt.jpg"></p>
 
 ### 4.2 Microserviços e camadas
 
-A arquitetura e sua versão atual está particionada em 2 microserviços:
+A arquitetura e sua versão atual está particionada em:
 
-* 1 - Front-End (Node.js)
+* 1 - Front-End
   
   Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Cross Data e 
   apresentar para o usuário final.
@@ -141,11 +142,39 @@ A arquitetura e sua versão atual está particionada em 2 microserviços:
   Fronteira responsável por receber os dados das API's externas e persisti-los no banco de dados. Assim, 
   fornecendo as estatísticas para o Front-End
 
+* 3 - IGDB Data
+
+  Fronteira responsável pela listagem dos jogos mais populares, será responsável por repassar para os outros microserviços quais jogos deveráo ser recuperados em suas respectivas fontes de dados.
+
+* 4 - Steam Data
+
+  Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e buscará por eles na API
+
+* 5 - Twitch Data
+  
+  Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e buscará por eles na respectiva API
+
 APIs Externas:
   Diferentes fontes de dados acerca de jogos digitais
   * SteamSpy
   * Twitch API
+  * IGDB API
+  * Youtube API
 
 ## 5 Visão de dados
 
-<p align="middle"><img src="https://i.imgur.com/Z3IUUfw.jpg"></p>
+  5.1 IGDB Data
+
+  <p align="middle"><img src="https://i.imgur.com/xzeykEY.jpg"></p>
+
+  5.2 Steam Data
+
+  <p align="middle"><img src="https://i.imgur.com/um3A0Kw.jpg"></p>
+
+  5.3 Twitch Data
+
+  <p align="middle"><img src="https://i.imgur.com/vkQr9ZR.jpg"></p>
+
+  5.4 Cross Data
+
+  <p align="middle"><img src="https://i.imgur.com/C1IriEs.jpg"></p>
