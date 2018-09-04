@@ -9,4 +9,6 @@ Review
 
 **Duração**: 25/08 à 01/09
 
-## Reunião
+##Quadro de conhecimento
+
+<a href="https://imgur.com/eFcSvq1"><img src="https://i.imgur.com/eFcSvq1.png" title="source: imgur.com" /></a>

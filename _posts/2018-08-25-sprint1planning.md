@@ -30,7 +30,9 @@ Planejamento
 |Ingrid "ingrdst" | Desenvolvedor|
 |Marco "markinlimac" | Desenvolvedor|
 
+## Quadro de conhecimento
 
+<a href="https://imgur.com/eFcSvq1"><img src="https://i.imgur.com/eFcSvq1.png" title="source: imgur.com" /></a>
 
 ## Backlog
 
