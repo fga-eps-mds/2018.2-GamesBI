@@ -238,7 +238,14 @@ O objetivo do GamesBI é oferecer dados de determinadas empresas sobre jogos e d
 
 ## 5. Recursos do produto
 
-### 5.1 Recurso X
+A aplicação GamesBI oferece ao usuário:
+
+* Gerenciamento de gráficos e integração com API's para fazer o uso de seus serviços;
+
+* Facilitar aos gamedevs, ao levantar de dados e indicadores acerca da análise do mercado ao longo do tempo;
+
+* Fornecer dados de forma interativa para o usuário final;
+
 
 <p align="justify"></p>
 
@@ -246,13 +253,19 @@ O objetivo do GamesBI é oferecer dados de determinadas empresas sobre jogos e d
 
 ### 6.1 Restrição de escopo
 
+Os fatores limitantes seriam recurso financeiro e implantação. Os escopos estão sendo restringidos à funcionalidades não-convencionais.
+
 <p align="justify"> </p>
 
 ### 6.2 Restrição de recursos financeiros
 
+Limitação no número de requisiçoes para abstrair os dados na API. Ao consumí-la, não deverá haver sobrecarga para não ultrapassar o numero estipulado de requisições pelo provedor.
+
 <p align="justify"></p>
 
 ### 6.3 Restrição de desenvolvimento e implantação
+
+O software encontra-se restrito para teste de usabilidade durante a fase de implementação. A partir dessa etapa que o usuário começará a testar a aplicação e analisar seu desempenho no uso.
 
 <p align="justify"> </p>
 
@@ -272,8 +285,12 @@ O objetivo do GamesBI é oferecer dados de determinadas empresas sobre jogos e d
 
 ### 8.3 Requisitos de desempenho
 
+O sistema deve ser capaz de se recuperar à falhas e responder ao usuário com os dados de maneira fluida.
+
 <p align="justify"> </p>
 
 ### 8.4 Requisitos de confiabilidade
+
+Os dados são oriundos de fontes externas (serviços). Isso torna o software mais confiável, pois como cada microserviço é independente, caso uma fonte de dados caia, apenas o microserviço ligado à esta fonte para de funcionar.
 
 <p align="justify"> </p>
