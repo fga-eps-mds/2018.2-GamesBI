@@ -50,37 +50,3 @@ Planejamento
 ## Pareamento
 
 <p align = "justify"> O pareamento não foi realizado devido a meta de resultados estar focada em documentação, definição de escopo. Foi decidido que seria melhor para o grupo todos participarem da realização dos artefatos</p>
-
-## Presença
-### Sprint Planning + Sprint Review
-
-Membro | Presente
----:|:---
-Alan "alanrslima" | &#x2718; |
-André "Andre-Eduardo" | &#10004; |
-Arthur "arthurarp" |&#10004; |
-Augusto "augustovilarins" | &#10004; |
-Bruno "BRZangado" | &#10004;
-Emanoel "Nukdown" | &#10004; |
-Felipe "felipe72" | &#10004; |
-Ingrid "ingrdst" | &#x2718; |
-Marco "markinlimac" | &#10004; |
-
-### Daily Meetings
-
-
-Membro | Segunda | Terça | Quarta | Quinta | Sexta* |
--- |-- |-- |-- |-- |--|--
-Alan "alanrslima" | &#10004; | &#10004;| &#x2718;| &#x2718; |&#10004;|
-André "Andre-Eduardo" | &#10004; | &#10004;| &#10004;| &#10004; |&#10004;|
-Arthur "arthurarp" | &#10004; | &#10004;| &#10004;| &#10004; |&#10004;|
-Augusto "augustovilarins" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Bruno "BRZangado" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Emanoel "Nukdown" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Felipe "felipe72" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Ingrid "ingrdst" | &#10004; | &#10004;| &#x2718;| &#10004;|&#10004;|
-Marco "markinlimac" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-
-
-
-* Sexta -  Reunião feita remotamente via hangout devido a demanda da equipe

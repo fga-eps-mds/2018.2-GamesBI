@@ -38,7 +38,7 @@ Planning
 |Ingrid "ingrdst" | Desenvolvedor|
 |Marco "markinlimac" | Desenvolvedor|
 
-## Quadro de conhecimento
+## Quadro de conhecimento inicial da sprint
 <a href="https://imgur.com/gGoNj3T"><img src="https://i.imgur.com/gGoNj3T.png" title="source: imgur.com" /></a>
 
 <a href="https://imgur.com/npGVNie"><img src="https://i.imgur.com/npGVNie.png" title="source: imgur.com" /></a>
@@ -51,42 +51,8 @@ Planning
 | [#TS02](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/79) | Eu como desenvolvedor desejo Importar dados da Steam/SteamSpy API  |     2    |  Alan e André | **Nova**  |
 | [#TS03](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/82) | Eu como desenvolvedor desejo criar models para a Twitch API |     2    |  Ingrid e Marco | **Nova**  |
 | [#TS04](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/80) | Eu como desenvolvedor desejo Importar dados da Twitch API |     2    |  Ingrid e Marco | **Nova**  |
-|[#TS05 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/83) | Eu como desenvolvedor desejo criar models para a Youtube API |     2    |  Bruno e Arthur| **Nova**  |
-| [#TS06 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/81) | Eu como desenvolvedor desejo Importar dados da Youtube API |     8    |  Bruno e Arthur | **Nova**  |
+|[#TS05 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/83) | Eu como desenvolvedor desejo criar models para a Youtube API |     2    |  Emanoel e Lucas| **Nova**  |
+| [#TS06 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/81) | Eu como desenvolvedor desejo Importar dados da Youtube API |     8    |  Emanoel e Lucas | **Nova**  |
+|[#TS05 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/83) | Eu como desenvolvedor desejo criar models para a IGDB API |     2    |  Bruno e Arthur | **Nova**  |
+| [#TS06 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/81) | Eu como desenvolvedor desejo Importar dados da IGDB API |     2    |  Bruno e Arthur  | **Nova**  |
 | [#77 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/77) | Prototipo de alta fidelidade |     5    |  Felipe e Augusto | **Nova**  |
-
-
-
-## Presença
-### Sprint Planning + Sprint Review
-
-Membro | Presente
----:|:---
-Alan "alanrslima" | &#10004;
-André "Andre-Eduardo" | &#10004;
-Arthur "arthurarp" |&#10004;
-Augusto "augustovilarins" | &#10004;
-Bruno "BRZangado" | &#10004;
-Emanoel "Nukdown" | &#10004;
-Felipe "felipe72" | &#10004;
-Ingrid "ingrdst" | &#10004;
-Marco "markinlimac" | &#10004;
-
-### Daily Meetings
-
-
-Membro | Segunda | Terça | Quarta | Quinta | Sexta* |
--- |-- |-- |-- |-- |--|--
-Alan "alanrslima" | &#10004; | &#10004;| &#x2718;| &#x2718; |&#10004;|
-André "Andre-Eduardo" | &#10004; | &#10004;| &#10004;| &#10004; |&#10004;|
-Arthur "arthurarp" | &#10004; | &#10004;| &#10004;| &#10004; |&#10004;|
-Augusto "augustovilarins" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Bruno "BRZangado" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Emanoel "Nukdown" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Felipe "felipe72" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Ingrid "ingrdst" | &#10004; | &#10004;| &#x2718;| &#10004;|&#10004;|
-Marco "markinlimac" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-
-
-
-* Sexta -  Reunião feita remotamente via hangout devido a demanda da equipe
