@@ -49,37 +49,3 @@ Planning
 ## Pareamento
 
 <p align = "justify"> O pareamento não foi realizado pela decisão que os treinamentos teóricos e práticas "DOJO" seriam melhor para a integração da equipe e nivelamento de conhecimento.</p>
-
-## Presença
-### Sprint Planning + Sprint Review
-
-Membro | Presente
----:|:---
-Alan "alanrslima" | &#10004; |
-André "Andre-Eduardo" | &#10004; |
-Arthur "arthurarp" |&#10004; |
-Augusto "augustovilarins" | &#10004; |
-Bruno "BRZangado" | &#x2718;
-Emanoel "Nukdown" | &#10004; |
-Felipe "felipe72" | &#10004; |
-Ingrid "ingrdst" | &#10004; |
-Marco "markinlimac" | &#10004; |
-
-### Daily Meetings
-
-
-Membro | Segunda | Terça | Quarta | Quinta | Sexta* |
--- |-- |-- |-- |-- |--|--
-Alan "alanrslima" | &#10004; | &#10004;| &#10004;| &#x2718; |&#10004;|
-André "Andre-Eduardo" | &#10004; | &#10004;| &#10004;| &#10004; |&#10004;|
-Arthur "arthurarp" | &#10004; | &#10004;| &#10004;| &#10004; |&#10004;|
-Augusto "augustovilarins" | &#10004; | &#10004;| &#10004;| &#x2718;|&#10004;|
-Bruno "BRZangado" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Emanoel "Nukdown" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Felipe "felipe72" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Ingrid "ingrdst" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-Marco "markinlimac" | &#10004; | &#10004;| &#10004;| &#10004;|&#10004;|
-
-
-
-* Sexta -  Reunião feita remotamente devido ao evento corrido na FGA(10 anos)

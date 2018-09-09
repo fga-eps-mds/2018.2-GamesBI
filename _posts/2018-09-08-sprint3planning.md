@@ -1,5 +1,5 @@
 ---
-title: Sprint 2
+title: Sprint 3
 layout: post
 categories: SPRINT
 ---
@@ -7,13 +7,13 @@ Planning
 
 ## Período
 
-**Duração**: 01/09 à 07/09
+**Duração**: 08/09 à 15/09
 
 ## Reunião
 
 <b>Data</b>: 01/09 <br/>
-<b>Local</b>: Republica 9 Caudas<br/>
-<b>Horário</b>: 09h00 às 14h00<br/>
+<b>Local</b>: Hangout<br/>
+<b>Horário</b>: 08h00 às 14h00<br/>
 <b>Descrição</b>: A reunião semanal para realizar o restrospectiva da sprint 1 e o planejamento da sprint 2 ocorreu na sábado de manhã devido as decisões tomadas na sprint 0, foi atualizado o quadro de conhecimento para definir os pareamentos. Foi realizado uma coleta de informações a cerca dos pontos positivos, negativos e a melhorar da sprint 1. Os epicos/features/us foram levantados e a pontuação foi definida para cada estória.
 
 
@@ -43,16 +43,13 @@ Planning
 
 <a href="https://imgur.com/npGVNie"><img src="https://i.imgur.com/npGVNie.png" title="source: imgur.com" /></a>
 
-## Backlog Sprint 2
+## Backlog Sprint 3
 
 | *Identificador* | ***História*** | **Pontuação** | **Responsáveis** | **Status** |
 | ------ | ------------ |     :---:     |  ---------------- | :---:  |
-| [#TS01](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/78) | Eu como desenvolvedor desejo criar models para a Steam/Steamspy API |     2    |  Alan e André | **Nova**  |
-| [#TS02](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/79) | Eu como desenvolvedor desejo Importar dados da Steam/SteamSpy API  |     2    |  Alan e André | **Nova**  |
-| [#TS03](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/82) | Eu como desenvolvedor desejo criar models para a Twitch API |     2    |  Ingrid e Marco | **Nova**  |
-| [#TS04](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/80) | Eu como desenvolvedor desejo Importar dados da Twitch API |     2    |  Ingrid e Marco | **Nova**  |
-|[#TS05 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/83) | Eu como desenvolvedor desejo criar models para a Youtube API |     2    |  Emanoel e Lucas| **Nova**  |
-| [#TS06 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/81) | Eu como desenvolvedor desejo Importar dados da Youtube API |     8    |  Emanoel e Lucas | **Nova**  |
-|[#TS05 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/83) | Eu como desenvolvedor desejo criar models para a IGDB API |     2    |  Bruno e Arthur | **Nova**  |
-| [#TS06 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/81) | Eu como desenvolvedor desejo Importar dados da IGDB API |     2    |  Bruno e Arthur  | **Nova**  |
-| [#77 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/77) | Prototipo de alta fidelidade |     5    |  Felipe e Augusto | **Nova**  |
+|[#TS02](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/79) | Eu como desenvolvedor desejo Importar dados da Steam/SteamSpy API  |     2    | André e Marco | **Divida técnica**  |
+| [#TS04](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/80) | Eu como desenvolvedor desejo Importar dados da Twitch API |     2    |  Ingrid e Emanoel | **Divida técnica**  |
+|[#TS05 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/83) | Eu como desenvolvedor desejo criar models para a Youtube API |     2    | Arthur e Lucas | **Divida técnica**  |
+| [#TS06 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/81) | Eu como desenvolvedor desejo Importar dados da Youtube API |     8    |  Arthur e Lucas | **Divida técnica**  |
+| [#US11 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/96) | Eu como usuário desejo vizualizar a homepage |     2    |  Felipe e Alan | **Nova**  |
+| [Issue #97 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/97) | Eu como desenvolvedor desejo realizar testes unitários |     8    | Bruno e Augusto  | **Nova**  |
