@@ -18,34 +18,32 @@ categories: DEV
  * 2.1. Oportunidade de Negócios]()
  * 2.2. Instrução do problema]()
  * 2.3. Instrução de posição do produto]()
-3. Descrições das Partes Interessadas e Usuários]()
+3. Descrições da parte interessadas e do usuário]()
  * 3.1. Demográficos de mercado]()
  * 3.2. Resumo da parte interessada]()
  * 3.3. Resumo do usuário]()
  * 3.4. Ambiente de usuário
  * 3.5. Perfis das partes interessadas
- * 3.5.1. Equipe de Gestão de Projeto
+ * 3.5.1. Equipe de Engenharia de Produto
  * 3.5.2. Equipe de Desenvolvimento
- * 3.5.3. Corpo docente
+ * 3.5.3. Mercado de jogos
  * 3.5.4. Equipe de avaliação e suporte
  * 3.6. Perfis dos usuários
- * 3.6.1. Corpo docente
- * 3.6.2. Alunos
- * 3.6.3. Responsáveis
+ * 3.6.1. Desenvolvedor de jogos
+ * 3.6.2. Jogadores
+ * 3.6.3. Produtores de conteúdo
 * 3.7. Principais necessidades da parte interessada ou do Usuário
 * 3.8. Alternativas e Concorrência
- * 3.8.1. Método tradicional de controle de entrada e saída de alunos
- * 3.8.2.
 * 4. Visão Geral do Produto
  * 4.1. Perspectiva do Produto
  * 4.2. Resumo das capacidades
-* 5. Recursos do Produto
+* 5. Recursos do produto
 * 6. Restrições
  * 6.1. Restrição de escopo
  * 6.2. Restrição de recursos financeiros
  * 6.3. Restrição de desenvolvimento e implantação
 * 7. Faixas de Qualidade
-* 8. Outros Requisitos do Produto
+* 8. Outros requisitos do produto
  * 8.1. Requisitos de usabilidade
  * 8.2. Requisitos do sistema
  * 8.3. Requisitos de desempenho
@@ -60,7 +58,7 @@ categories: DEV
 
 ### 1.2 Escopo
 
-<p align="justify">Realizar uma analise do mercado de jogos usando business inteligence.</p>
+<p align="justify">Realizar uma analise do mercado de jogos usando Business Inteligence.</p>
 <p align="justify">Buscar uma solução em software para facilitar a visão de negocio.</p>
 <p align="justify">O software, a ser implementado, deve fornecer informações sobre jogos.</p>
 
@@ -68,15 +66,15 @@ categories: DEV
 
 <p align="justify">Alguns dos acrônimos, definições e abreviações usados neste documento são:</p>
 
-+ BI - Business Inteligence.
-+ MDS - disciplina Métodos de Desenvolvimento de Software.
-+ EPS - disciplina Engenharia do Produto.
++ BI - Business Inteligence. É um conjunto de tecnologias e metodologias que são capazes de transformar dados brutos em informações significantes a fins estratégicos de negócios.
++ MDS - disciplina Métodos de Desenvolvimento de Software da Universidade de Brasília.
++ EPS - disciplina Engenharia do Produto da Universidade de Brasília.
 
 ### 1.4 Referências
 
 ### 1.5 Visão geral
 
-<p align="justify">Este documento descreve os detalhes sobre as características do GamesColorBI a ser desenvolvido, especificando os problemas que estimularam a criação dessa solução em software. O documento é dividido da seguinte maneira: inicialmente é especificado qual problema motivou o desenvolvimento da solução, em seguida as partes interessadas são descritas, e por fim todos os recursos, restrições e requisitos do produto são apresentados.</p>
+<p align="justify">Este documento descreve os detalhes sobre as características do software GamesColorBI a ser desenvolvido, especificando os problemas que estimularam a criação dessa solução. O documento é dividido da seguinte maneira: inicialmente é especificado qual problema motivou o desenvolvimento da solução, em seguida as partes interessadas são descritas, e por fim todos os recursos, restrições e requisitos do produto são apresentados.</p>
 
 ## 2. Posição
 ### 2.1 Oportunidade de Negócios
@@ -86,15 +84,16 @@ categories: DEV
 
 ### 2.2 Instrução do problema
 
-| **O problema seria** | a dificuldade em encontrar informações sobre jogos |
+| **O problema seria** | Dificuldade em encontrar informações mais remotas sobre jogos |
 | :--- | :--- |
-| **que afeta** | mercado de jogos |
-| **cujo impacto é** | jogos com pouca adesão, lançamento de jogos sem expectativas poupaveis |
-| **e uma boa solução seria** | identificar tendências a partir do atual mercado de jogos  |
+| **que afeta** | Mercado de jogos |
+| **cujo impacto é** | Jogos com pouca adesão, lançamento de jogos sem expectativas palpáveis |
+| **e uma boa solução seria** | Identificar tendências a partir de dados do atual mercado de jogos
+  |
 
 ### 2.3 Instrução de posição do produto
 
-| **Para** | desenvolvedores, analistas, produtores de conteúdo|
+| **Para** | Desenvolvedores, analistas, produtores de conteúdo|
 | :--- | :--- |
 | **que** | necessitam de uma ferramenta para analisar dados |
 | **o** | *Games BI* é uma aplicação |
@@ -106,7 +105,7 @@ categories: DEV
 
 ### 3.1 Demográficos de mercado
 
-<p align="justify"> O mercado de games é um dos mercados mais crescente em todo o mundo, com o crescimento desse mercado encontramos os mais diversos jogos alguns muito jogados ou comentados e por consequencia bem remunerado enquanto outros não são tanto assim. O nosso sistema busca facilitar a anlise dos que são mais jogados e comentados e assim mostrar o que pode vir a ser a melhor escolha do que desenvolver, diversos programadores,  designer e animadores de games poderão utilizar o nosso produto.</p>
+<p align="justify"> O mercado de games é um dos mercados mais crescente em todo o mundo. Com o crescimento desse mercado, estão surgindo diversos tipos de jogos. Algumas dessas categorias são muito procuradas ou comentadas e, por consequência, é boa opção saber quais gêneros estão sendo mais requisitados pelo público em geral para poder ter mais chance de sucesso.</p>
 
 ### 3.2 Resumo da parte interessada
 
@@ -119,11 +118,11 @@ categories: DEV
 
 ### 3.3 Resumo do usuário
 
-O usuário obterá dados precisos como informações sobre a quantidade de horas por cada jogo, poderá interagir com os gráficos, filtrar as informações relevantes para ele.
+O usuário terá acesso a dados como, por exemplo: jogos com mais interações em determinadas plataformas; quantidade de lives; gêneros mais procurados. O mesmo poderá interagir com os gráficos, filtrar informações relevantes sem mesmo precisar ser cadastrado no site.
 
 ### 3.4 Ambiente de usuário
 
-<p align="justify"> O <i>software</i> será usado em todos os navegadores, tendo seu uso otimizado para o Google chrome versão 56.0.2924.87 devido a sua performance e por ter a maior base instalada dentre os outros navegadores WEB.</p>
+<p align="justify"> O <i>software</i> poderá ser utilizado em todos os navegadores</p>
 
 ## 3.5 Perfis das partes interessadas
 
@@ -216,12 +215,9 @@ O usuário obterá dados precisos como informações sobre a quantidade de horas
 
 <p align="justify">Atualmente não há nenhuma aplicação que realize uma análise do mercado de jogos usando business inteligence - o que é proposto neste projeto. Há uma aplicação especifica da Steam(Valve L.L.C) para visualização de estatísticas de jogos  e usuários, entretanto não há um interpolação dos dados com outras plataformas . Existe também a plataforma Looker Data Sciences, que oferece BI para empresas mas que não possuí direcionamento especifico para jogos. </p>
 
-### 3.8.1 Método tradicional de controle de entrada e saída de alunos
-
-
 ## 4. Visão geral do produto
 
-O objetivo do GamesBI é oferecer dados de determinadas empresas sobre jogos e de videos relacionados a gameplays de forma interativa.
+O sistema contará com uma plataforma online capaz de disponibilizar dados a respeito de jogos e de vídeos relacionados a gameplays, fornecendo mecanismos para GameDevs e profissionais da área de games acessarem através de um dashboard, os indicadores gerados por meio de informações do projeto GamesBI.
 
 
 ### 4.1 Perspectiva do Produto
@@ -238,7 +234,14 @@ O objetivo do GamesBI é oferecer dados de determinadas empresas sobre jogos e d
 
 ## 5. Recursos do produto
 
-### 5.1 Recurso X
+A aplicação GamesBI oferece ao usuário:
+
+* Gerenciamento de gráficos e integração com API's para fazer o uso de seus serviços;
+
+* Facilitar aos gamedevs, ao levantar de dados e indicadores acerca da análise do mercado ao longo do tempo;
+
+* Fornecer dados de forma interativa para o usuário final;
+
 
 <p align="justify"></p>
 
@@ -246,13 +249,19 @@ O objetivo do GamesBI é oferecer dados de determinadas empresas sobre jogos e d
 
 ### 6.1 Restrição de escopo
 
+Os fatores limitantes seriam recurso financeiro e implantação. Os escopos estão sendo restringidos à funcionalidades não-convencionais.
+
 <p align="justify"> </p>
 
 ### 6.2 Restrição de recursos financeiros
 
+Limitação no número de requisiçoes para abstrair os dados na API. Ao consumí-la, não deverá haver sobrecarga para não ultrapassar o numero estipulado de requisições pelo provedor.
+
 <p align="justify"></p>
 
 ### 6.3 Restrição de desenvolvimento e implantação
+
+O software encontra-se restrito para teste de usabilidade durante a fase de implementação. A partir dessa etapa que o usuário começará a testar a aplicação e analisar seu desempenho no uso.
 
 <p align="justify"> </p>
 
@@ -272,8 +281,12 @@ O objetivo do GamesBI é oferecer dados de determinadas empresas sobre jogos e d
 
 ### 8.3 Requisitos de desempenho
 
+O sistema deve ser capaz de se recuperar à falhas e responder ao usuário com os dados de maneira fluida.
+
 <p align="justify"> </p>
 
 ### 8.4 Requisitos de confiabilidade
+
+Os dados são oriundos de fontes externas (serviços). Isso torna o software mais confiável, pois como cada microserviço é independente, caso uma fonte de dados caia, apenas o microserviço ligado à esta fonte para de funcionar.
 
 <p align="justify"> </p>

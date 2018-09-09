@@ -74,6 +74,7 @@ Recursos|Em relação a recursos externos, há o risco de os recursos necessári
 Desistência de Aluno|Como o projeto está no contexto de disciplinas de graduação, caso algum aluno desista, isso pode trazer dificuldades à equipe.
 Prazo de Entrega Fixo.|Como o prazo de entrega não é negociável, atrasos no cronograma podem trazer dificuldades.
 
+(Recursos Humanos + Equipamentos e Serviços)!1,1 = (R$ 71.761,28 + R$ 25.928,60)1,1 = R$ 107.458,87"
 
 ## 7. Resumo do orçamento
 
@@ -93,13 +94,10 @@ Custo médio por aluno/hora:<br>
 
 #### 7.3 Estimativa
 
-<p align="justify">&emsp;&emsp;O custo total estimado consiste no somatório entre os custos de Recursos Humanos e Equipamentos e serviços, além da adição de uma taxa de 10%, que é uma faixa de segurança. O resultado é expresso pela fórmula abaixo:<br><br>
-(Recursos Humanos + Equipamentos e Serviços)!1,1 = (R$ 71.761,28 + R$ 25.928,60)1,1 = R$ 107.458,87" </p>
-
-[Planilha de orçamento]()
+<p align="justify">&emsp;&emsp;O custo total estimado consiste no somatório entre os custos de Recursos Humanos e Equipamentos e serviços, além da adição de uma taxa de 10%, que é uma faixa de segurança. O resultado é expresso pela fórmula abaixo</p>
 
 
-## 8. Partes interessadas/Cronograma de marcos
+## 8. Partes interessadas
 
 ----
 
@@ -108,6 +106,7 @@ Custo médio por aluno/hora:<br>
 Equipe de Gerência de Projetos e Portifólio de Software.<br>
 &emsp;&emsp;Esta equipe é formada por alunos de graduação de Engenharia de Software da Universidade de Brasília campus Gama que cursam a disciplina Engenharia do Produto de Software.<br>
 
+
 |Nome|GitHub|Email
 |----|------|--------|
 |Augusto Moreno Vilarins|[@augustovilarins](https://github.com/augustovilarins)|augusto.vilarins@gmail.com|
@@ -115,8 +114,11 @@ Equipe de Gerência de Projetos e Portifólio de Software.<br>
 |Emanoel Belchior E de França|[@Nukdown](https://github.com/Nukdown)|nukdown@aluno.unb.br|
 |Felipe Osório de Oliveira|[@felipe72](https://github.com/felipe72)|felipe.osorio72@outlook.com.br|
 
+
 Equipe de  Métodos de Desenvolvimento de Software.<br>
 &emsp;&emsp;Esta equipe é formada por alunos de graduação de Engenharia de Software da Universidade de Brasília campus Gama que cursam a disciplina Métodos de Desenvolvimento de Software.<br>
+
+
 
 |Nome|GitHub|Email
 |----|------|--------|
