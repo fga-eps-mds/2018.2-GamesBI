@@ -15,6 +15,7 @@ categories: DEV
 |29/08/2018|0.1|Adição de Arquitetura de Microserviços|Alan Lima|
 |29/08/2018|0.2|Atualizações e Correções|Bruno Rodrigues Santos|
 |03/09/2018|1.0|Atualização da visão geral e adição dos MER|Bruno Rodrigues Santos|
+|10/09/2018|1.1|Adição do diagrama de pacotes|Bruno Rodrigues Santos|
 
 # Documento de Arquitetura
 
@@ -37,6 +38,7 @@ Sumário
 * 4 . [Arquitetura dos Serviços e visão de Implementação](#4-arquitetura-dos-serviços-e-visão-de-implementação)
    * 4.1. [Visão Geral](#41-visão-geral)
    * 4.2. [Microserviços e Camadas](#42-microserviços-e-camadas)
+   * 4.3. [Diagrama de pacotes](#43-diagrama-de-pacotes)
 
 * 5 . [Visão de Dados](#5-visão-de-dados)
 
@@ -160,6 +162,20 @@ APIs Externas:
   * Twitch API
   * IGDB API
   * Youtube API
+
+### 4.3 Diagrama de pacotes
+
+<p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
+
+* Acima é demonstrada a implementação geral dos pacotes de cada microserviço, onde o "<X>" será substituído pelo nome dos respectivos microserviços.
+
+Dentro de Aplicações Django, os pacotes são representados pelos apps.
+
+* IMPORTDATA
+O app importdata é responsável pela comunicação com as API's e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e persistência no banco de dados
+
+* API
+O app API é responsável pela disponibilização dos dados persistidos no banco de dados para os outros microserviços através de endpoints específicos, também podendo ser usado por qualquer outra aplicação que deseja acessar os dados.
 
 ## 5 Visão de dados
 
