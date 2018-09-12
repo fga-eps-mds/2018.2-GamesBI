@@ -13,12 +13,13 @@
 .tim-title.text-center{
     margin-bottom: 50px;
 }
-.tim-typo{
-    padding-left: 25%;
-    margin-bottom: 40px;
+.typography-line{
+    padding-left: 180px;
+    margin-bottom: 20px;
     position: relative;
+    width: 100%;
 }
-.tim-typo .tim-note{
+.typography-line .note{
     bottom: 10px;
     color: #c0c1c2;
     display: block;
@@ -70,7 +71,7 @@
 
 }
 .navigation-example{
-    background-image: url('../paper_img/red.jpg');
+    background-image: url('../img/ilya-yakover.jpg');
     background-position: center center;
     background-size: cover;
     background-attachment: fixed;
@@ -82,20 +83,25 @@
     width: 100%;
     position: relative;
 }
-.tim-note{
+#carousel{
+    padding-top: 0;
+}
+.note{
     text-transform: capitalize;
 }
 .subscribe-form{
     padding-top: 20px;
 }
-.subscribe-form .form-control{
-
+.page-header .card-register .title{
+    margin-bottom: 10px;
 }
-
 .space-100{
     height: 100px;
     display: block;
     width: 100%;
+}
+.sharing-area .btn{
+    padding: 0.5rem 10px !important;
 }
 
 .be-social{
@@ -109,37 +115,34 @@
 .txt-gray{
     color: #ddd !important;
 }
-.footer-demo{
+.footer{
     background-attachment: fixed;
     position: relative;
     line-height: 20px;
 }
-.footer-demo nav > ul {
+.footer nav > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   font-weight: normal;
 }
-.footer-demo nav > ul > li{
+.footer nav > ul > li{
     display: inline-block;
     padding: 10px 15px;
     margin: 15px 3px;
     line-height: 20px;
     text-align: center;
 }
-.footer-demo nav > ul > li:first-child{
-    margin: 0;
-    padding: 0;
-}
-.footer-demo nav > ul a:not(.btn) {
+
+.footer nav > ul a:not(.btn) {
   color: #777777;
   display: block;
   margin-bottom: 3px;
 }
-.footer-demo nav > ul a:not(.btn):hover, .footer nav > ul a:not(.btn):focus {
+.footer nav > ul a:not(.btn):hover, .footer nav > ul a:not(.btn):focus {
   color: #E3E3E3;
 }
-.footer-demo .copyright {
+.footer .copyright {
   color: #777777;
   padding: 10px 15px;
   font-size: 14px;
@@ -147,7 +150,7 @@
   line-height: 20px;
   text-align: center;
 }
-.footer-demo .heart{
+.footer .heart{
     color: #EB5E28;
 }
 
@@ -179,15 +182,13 @@
 }
 
 .parallax{
-  width:100%;
-  height:570px;
-
-  display: block;
-  background-attachment: fixed;
+    width:100%;
+    height:570px;
+    display: block;
+    background-attachment: fixed;
     background-repeat:no-repeat;
     background-size:cover;
     background-position: center center;
-
 }
 
 .logo-container .logo{
@@ -205,11 +206,11 @@
     float: left;
     margin-left: 10px;
     margin-top: 5px;
-    width: 50px;
+    width: 75px;
     height: 50px;
 }
 .logo-container{
-    margin-top: 10px;
+    margin-top: 5px;
 }
 .logo-container .logo img{
     width: 100%;
@@ -219,17 +220,23 @@
 }
 .demo-header{
     background-size: cover;
-    background-color: #FF8F5E;
+    /*background-color: #FF8F5E;*/
     background-position: center top;
     margin-top: -100px;
     min-height: 600px;
 }
+.demo-height{
+    min-height: 102vh;
+}
+.demo-height .motto{
+    padding-top: 20% !important;
+}
 .demo-header-image{
-    background-image: url('../paper_img/city.jpg');
+    background-image: url('../img/city.jpg');
 }
 .demo-header .motto{
     color: #FFFFFF;
-    padding-top: 25vh;
+    padding-top: 15%;
     text-align: center;
     z-index: 3;
 }
@@ -279,8 +286,9 @@
     }
 }
 
-@media (max-width: 768px){
-    .btn, .btn-morphing{
+@media screen{
+    .section-buttons .btn,
+    .section-buttons .btn-morphing{
         margin-bottom: 10px;
     }
     .parallax .motto{
@@ -326,9 +334,6 @@
     -moz-transition: all .2s;
     -o-transition: all .2s;
     transition: all .2s;
-}
-.presentation{
-
 }
 .presentation .section{
     padding: 100px 0;
@@ -583,7 +588,7 @@
         -ms-backface-visibility: visible;
         backface-visibility: visible;
     }
-    .rotating-car .back {
+    .rotating-card .back {
         visibility: hidden;
         -ms-transition: all 0.2s cubic-bezier(.92,.01,.83,.67);
     }
@@ -597,7 +602,17 @@
 }
 
 .fixed-section{
-    margin-top: 90px;
+    top: 100px;
+    max-height: 80vh;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    bottom: auto;
+}
+.fixed-section ul{
+    padding: 0 !important;
 }
 .fixed-section ul li{
     list-style: none;
@@ -611,21 +626,19 @@
 .fixed-section li a.active{
     color: #00bbff;
 }
-.fixed-section.float{
-    position: fixed;
-    top: 100px;
-    width: 200px;
-    margin-top: 0;
-}
+
 
 
 /* prettyprint */
-.presentation pre.prettyprint{
-    background-color: transparent;
-    border: 0px !important;
-    margin-bottom: 0;
+ pre.prettyprint{
+    background-color: #eee !important;
+    margin-bottom: 30px;
     margin-top: 30px;
+    padding: 20px !important;
+    font-size: 13px;
     text-align: left;
+    border-radius: 4px !important;
+    border: 1px transparent !important;
 }
 .presentation .atv,
 .presentation .str{
@@ -926,11 +939,9 @@
     fill: #75c3b6;
 }
 .navbar-header{
-    min-width: 120px;
+    min-width: 135px;
 }
-#notifications{
-    background-color: #F5F2EC;
-}
+
 #demo-navbar{
     border-radius: 0;
     margin-bottom: 0px;
@@ -945,15 +956,143 @@
     margin-top: 14px;
 }
 
-/* for components and tutorial page */
-pre.prettyprint{
-    background-color: #FFFCF5;
-    border: 0px;
-    margin-bottom: 0;
-    margin-top: 20px;
-    padding: 20px;
-    text-align: left;
+/* nucleo icons  */
+
+.demo-iconshtml {
+    font-size: 62.5%;
 }
+.demo-icons body {
+    font-size: 1.6rem;
+    font-family: sans-serif;
+    color: #333333;
+    background: white;
+}
+.demo-icons a {
+    color: #608CEE;
+    text-decoration: none;
+}
+.demo-icons header {
+    text-align: center;
+    padding: 100px 0 0;
+}
+.demo-icons header h1 {
+    font-size: 2.8rem;
+}
+.demo-icons header p {
+    font-size: 1.4rem;
+    margin-top: 1em;
+}
+.demo-icons header a:hover {
+    text-decoration: underline;
+}
+.demo-icons .nc-icon {
+    font-size: 34px;
+}
+.demo-icons section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+.demo-icons section h2 {
+    border-bottom: 1px solid #e2e2e2;
+    padding: 0 0 1em .2em;
+    margin-bottom: 1em;
+}
+.demo-icons ul::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+.demo-icons ul li {
+    width: 25%;
+    float: left;
+    padding: 16px 0;
+    text-align: center;
+    border-radius: .25em;
+    -webkit-transition: background 0.2s;
+    -moz-transition: background 0.2s;
+    transition: background 0.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+.demo-icons ul li:hover {
+    background: #f4f4f4;
+}
+.demo-icons ul p, .demo-icons ul em, .demo-icons ul input {
+    display: inline-block;
+    font-size: 1rem;
+    color: #999999;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.demo-icons ul p {
+    padding: 20px 0 0;
+    font-size: 12px;
+    margin: 0;
+}
+.demo-icons ul p::selection, .demo-icons ul em::selection {
+    background: #608CEE;
+    color: #efefef;
+}
+.demo-icons ul em {
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+.demo-icons ul em::before {
+    content: '[';
+}
+.demo-icons ul em::after {
+    content: ']';
+}
+.demo-icons ul input {
+    text-align: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .demo-icons ul li {
+        width: 20%;
+        float: left;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .demo-icons ul li {
+        width: 12.5%;
+        float: left;
+        padding: 32px 0;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .following .follows .row{
+        text-align: center;
+    }
+
+}
+
+/* for components and tutorial page */
+    /*pre.prettyprint{
+        background-color: #FFFCF5;
+        border: 0px;
+        margin-bottom: 0;
+        margin-top: 20px;
+        padding: 20px;
+        text-align: left;
+    }*/
 .atv, .str{
     color: #75c3b6;
 }
@@ -970,10 +1109,10 @@ pre.prettyprint{
     color: #999;
 }
 .space-top{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 .area-line{
-    border: 1px solid #999;
+    /*border: 1px solid #999;*/
     border-left: 0;
     border-right: 0;
     color: #666;
@@ -991,4 +1130,13 @@ pre.prettyprint{
 }
 .example-pages{
     margin-top: 50px;
+}
+.main .section:first-of-type{
+    position: relative;
+    z-index: 2;
+}
+.profile-content{
+    padding-top: 0;
+    position: relative;
+    z-index: 2;
 }
