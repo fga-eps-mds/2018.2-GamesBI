@@ -52,6 +52,8 @@ categories: DEV
 
 ## 1.Introdução
 
+----
+
 ### 1.1 Propósito
 
 <p align="justify">Este documento tem como objetivo definir e organizar as características sobre o desenvolvimento da solução BI.</p>
@@ -77,6 +79,9 @@ categories: DEV
 <p align="justify">Este documento descreve os detalhes sobre as características do software GamesColorBI a ser desenvolvido, especificando os problemas que estimularam a criação dessa solução. O documento é dividido da seguinte maneira: inicialmente é especificado qual problema motivou o desenvolvimento da solução, em seguida as partes interessadas são descritas, e por fim todos os recursos, restrições e requisitos do produto são apresentados.</p>
 
 ## 2. Posição
+
+----
+
 ### 2.1 Oportunidade de Negócios
 
 <p align="justify">O desenvolvimento para o mercado de jogos está cada vez mais competitivo, busca-se indícios a partir da análise de dados para identificar oportunidades de negócio.</p>
@@ -102,6 +107,8 @@ categories: DEV
 | **nosso produto** | é um alternativa gratuita e funcional para o problema existente. |
 
 ## 3. Descrições da parte interessada e do usuário
+
+----
 
 ### 3.1 Demográficos de mercado
 
@@ -217,6 +224,8 @@ O usuário terá acesso a dados como, por exemplo: jogos com mais interações e
 
 ## 4. Visão geral do produto
 
+----
+
 O sistema contará com uma plataforma online capaz de disponibilizar dados a respeito de jogos e de vídeos relacionados a gameplays, fornecendo mecanismos para GameDevs e profissionais da área de games acessarem através de um dashboard, os indicadores gerados por meio de informações do projeto GamesBI.
 
 
@@ -234,6 +243,8 @@ O sistema contará com uma plataforma online capaz de disponibilizar dados a res
 
 ## 5. Recursos do produto
 
+----
+
 A aplicação GamesBI oferece ao usuário:
 
 * Gerenciamento de gráficos e integração com API's para fazer o uso de seus serviços;
@@ -246,6 +257,8 @@ A aplicação GamesBI oferece ao usuário:
 <p align="justify"></p>
 
 ## 6. Restrições
+
+----
 
 ### 6.1 Restrição de escopo
 
@@ -267,9 +280,13 @@ O software encontra-se restrito para teste de usabilidade durante a fase de impl
 
 ## 7. Faixas de qualidade
 
+----
+
 <p align="justify"> O sistema deve ser utilizado de forma eficiente e estável em qualquer dispositivo com suporte o navegador Google Chrome e acesso à internet.</p>
 
 ## 8. Outros requisitos do produto
+
+----
 
 ### 8.1 Requisitos de usabilidade
 

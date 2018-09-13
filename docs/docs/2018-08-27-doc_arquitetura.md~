@@ -45,8 +45,6 @@ Sumário
 
 ## 1. Introdução
 
-----
-
 ### 1.1 Finalidade
 
 Este documento mostra uma visão geral sobre a arquitetura e ferramentas utilizadas no projeto GamesBI.
@@ -72,8 +70,6 @@ O presente documento faz o detalhamento e descrição de características da arq
 Estaremos descrevento o padrão arquitetural MVT, arquitetura de Microserviços e APIs Rest
 
 ## 2. Representação da Arquitetura
-
-----
 
 A arquitetura do projeto possuirá ambientes diferentes: API's REST, por debaixo do framework MVT Django, assim como o ambiente WEB de interação com usuário. Juntando todos os ambientes e coordenando-os, formamos assim uma arquitetura de Microserviços.
 
@@ -119,8 +115,6 @@ O Django oferece um sistema ORM com o banco de dados que permite ao desenvolvedo
 
 ## 3. Metas e Restrições da Arquitetura
 
-----
-
 ### 3.1 Metas
 A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sistemas em diferentes microserviços, trazendo máxima independência possível, favorecendo o entendimento sobre o objetivo de cada microserviço, a manutenibilidade e evolução. O sistema deve proporcionar facilidade para os usuários poderem aferir os dados, além de facilitar a análise dos mesmos.
 
@@ -131,8 +125,6 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 - API's REST
 
 ## 4. Arquitetura dos Serviços e visão de Implementação
-
-----
 
 ### 4.1 Visão Geral
 
@@ -186,8 +178,6 @@ O app importdata é responsável pela comunicação com as API's e fontes de dad
 O app API é responsável pela disponibilização dos dados persistidos no banco de dados para os outros microserviços através de endpoints específicos, também podendo ser usado por qualquer outra aplicação que deseja acessar os dados.
 
 ## 5 Visão de dados
-
-----
 
   5.1 IGDB Data
 
