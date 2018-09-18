@@ -55,9 +55,9 @@ class Stream(models.Model):
 		null=True
 	)
 
-	user = models.ManyToOneField(
-		Utream,
-		blank=True
+	user = models.ForeignKey(
+		User,
+		on_delete=models.CASCADE
 	)
 
 class User(models.Model):
@@ -100,19 +100,19 @@ class Game(models.Model):
 	id_igdb = models.IntegerField(
 		('IGDB ID'),
 		help_text=("Id do jogo na IGDB"),
-		primary_key=True,
+		null=True
 	)
 
 	id_steam = models.IntegerField(
 		('STEAM ID'),
 		help_text=("Id do jogo na Steam"),
-		primary_key=True,
+		null=True	
 	)
 
 	id_twitch = models.IntegerField(
 		('TWITCH ID'),
 		help_text=("Id do jogo na Twitch"),
-		primary_key=True,
+		null=True
 	)
 
 	name = models.CharField(
@@ -142,7 +142,7 @@ class Game(models.Model):
 
 	hypes = models.IntegerField(
 		('Hypes'),
-		help_text=(""),
+		help_text=("Number of access in the game befores its release"),
 		null=True
 	)
 
@@ -166,13 +166,13 @@ class Game(models.Model):
 
 	average_forever = models.IntegerField(
 		('Average Forever'),
-		help_text=(""),
+		help_text=("Average forever of the game"),
 		null=True
 	)
 
 	average_2weeks = models.IntegerField(
 		('Average 2 weeks'),
-		help_text=(""),
+		help_text=("Average forever of the game"),
 		null=True
 	)
 
@@ -190,12 +190,12 @@ class Game(models.Model):
 
 	genres = models.ManyToManyField(
 		Genre,
-		blank=True
+		on_delete=models.CASCADE
 	)
 
-	Streams = models.OneToManyField(
+	Streams = models.ForeignKey(
 		Stream,
-		blank=True
+		on_delete=models.CASCADE
 	)
 
 	def __str__(self):
