@@ -60,6 +60,11 @@ class Stream(models.Model):
 		on_delete=models.CASCADE
 	)
 
+	game = models.ForeignKey(
+		Game,
+		on_delete=models.CASCADE
+	)
+
 class User(models.Model):
 
 	user_id = models.IntegerField(
@@ -106,7 +111,7 @@ class Game(models.Model):
 	id_steam = models.IntegerField(
 		('STEAM ID'),
 		help_text=("Id do jogo na Steam"),
-		null=True	
+		null=True
 	)
 
 	id_twitch = models.IntegerField(
@@ -190,11 +195,6 @@ class Game(models.Model):
 
 	genres = models.ManyToManyField(
 		Genre,
-		on_delete=models.CASCADE
-	)
-
-	Streams = models.ForeignKey(
-		Stream,
 		on_delete=models.CASCADE
 	)
 
