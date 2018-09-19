@@ -1,24 +1,26 @@
 <!doctype html>
 <html lang="en" class="demo-icons">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-	<link rel="stylesheet" href="assets/css/nucleo-icons.css">
-	<link rel="stylesheet" href="assets/css/demo.css">
+    <link rel="stylesheet" href="assets/css/nucleo-icons.css">
+    <link rel="stylesheet" href="assets/css/demo.css">
 
-	<link rel="shortcut icon" href="demo/favicon.ico">
-	<title>Paper Kit 2 PRO Web Font</title>
+    <link rel="shortcut icon" href="demo/favicon.ico">
+    <title>Paper Kit 2 PRO Web Font</title>
 </head>
-<body>
-	<header>
-		<h1>Paper Kit 2 Icons</h1>
-		<p>Built with <a href="https://nucleoapp.com/?ref=1712">nucleoapp.com</a></p>
-	</header>
 
-	<div id="icons-wrapper">
-		<section>
-			<ul>
+<body>
+    <header>
+        <h1>Paper Kit 2 Icons</h1>
+        <p>Built with <a href="https://nucleoapp.com/?ref=1712">nucleoapp.com</a></p>
+    </header>
+
+    <div id="icons-wrapper">
+        <section>
+            <ul>
 
                 <li>
                     <i class="nc-icon nc-air-baloon"></i>
@@ -519,55 +521,57 @@
                     <i class="nc-icon nc-zoom-split"></i>
                     <p>nc-zoom-split</p>
                 </li>
-				<!-- list of icons here with the proper class-->
-			</ul>
-		</section>
-	</div>
-<script>
-    function SelectText(element) {
-	    var doc = document
-	        , text = element
-	        , range, selection;
-	    if (doc.body.createTextRange) {
-	        range = document.body.createTextRange();
-	        range.moveToElementText(text);
-	        range.select();
-	    } else if (window.getSelection) {
-	        selection = window.getSelection();
-	        range = document.createRange();
-	        range.selectNodeContents(text);
-	        selection.removeAllRanges();
-	        selection.addRange(range);
-	    }
-	}
-    window.onload = function() {
-    	var iconsWrapper = document.getElementById('icons-wrapper'),
-    		listItems = iconsWrapper.getElementsByTagName('li');
-        for (var i = 0; i < listItems.length; i++) {
-		    listItems[i].onclick  = function fun(event) {
-		    	var selectedTagName = event.target.tagName.toLowerCase();
-		    	if( selectedTagName == 'p' || selectedTagName == 'em' ) {
-		    		SelectText(event.target);
-		    	} else if( selectedTagName == 'input' ) {
-		    		event.target.setSelectionRange(0, event.target.value.length);
-		    	}
-		    }
+                <!-- list of icons here with the proper class-->
+            </ul>
+        </section>
+    </div>
+    <script>
+        function SelectText(element) {
+            var doc = document,
+                text = element,
+                range, selection;
+            if (doc.body.createTextRange) {
+                range = document.body.createTextRange();
+                range.moveToElementText(text);
+                range.select();
+            } else if (window.getSelection) {
+                selection = window.getSelection();
+                range = document.createRange();
+                range.selectNodeContents(text);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+        }
+        window.onload = function () {
+            var iconsWrapper = document.getElementById('icons-wrapper'),
+                listItems = iconsWrapper.getElementsByTagName('li');
+            for (var i = 0; i < listItems.length; i++) {
+                listItems[i].onclick = function fun(event) {
+                    var selectedTagName = event.target.tagName.toLowerCase();
+                    if (selectedTagName == 'p' || selectedTagName == 'em') {
+                        SelectText(event.target);
+                    } else if (selectedTagName == 'input') {
+                        event.target.setSelectionRange(0, event.target.value.length);
+                    }
+                }
 
-		    var beforeContentChar = window.getComputedStyle(listItems[i].getElementsByTagName('i')[0], '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, ""),
-		    	beforeContent = beforeContentChar.charCodeAt(0).toString(16);
-		    var beforeContentElement = document.createElement("em");
-		    beforeContentElement.textContent = "\\"+beforeContent;
-		    listItems[i].appendChild(beforeContentElement);
+                var beforeContentChar = window.getComputedStyle(listItems[i].getElementsByTagName('i')[0],
+                        '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, ""),
+                    beforeContent = beforeContentChar.charCodeAt(0).toString(16);
+                var beforeContentElement = document.createElement("em");
+                beforeContentElement.textContent = "\\" + beforeContent;
+                listItems[i].appendChild(beforeContentElement);
 
-		    //create input element to copy/paste chart
-		    var charCharac = document.createElement('input');
-		    charCharac.setAttribute('type', 'text');
-		    charCharac.setAttribute('maxlength', '1');
-		    charCharac.setAttribute('readonly', 'true');
-		    charCharac.setAttribute('value', beforeContentChar);
-		    listItems[i].appendChild(charCharac);
-		}
-    }
-</script>
+                //create input element to copy/paste chart
+                var charCharac = document.createElement('input');
+                charCharac.setAttribute('type', 'text');
+                charCharac.setAttribute('maxlength', '1');
+                charCharac.setAttribute('readonly', 'true');
+                charCharac.setAttribute('value', beforeContentChar);
+                listItems[i].appendChild(charCharac);
+            }
+        }
+    </script>
 </body>
+
 </html>
