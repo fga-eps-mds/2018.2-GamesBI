@@ -127,7 +127,7 @@ class Game(models.Model):
 		null=True
 	)
 
-	psitive_reviews_steam = models.IntegerField(
+	positive_reviews_steam = models.IntegerField(
 		('Positive Reviews'),
 		help_text=("Number of positive reviews at Steam"),
 		null=True
@@ -196,6 +196,37 @@ class Game(models.Model):
 	genres = models.ManyToManyField(
 		Genre,
 		on_delete=models.CASCADE
+	)
+
+	#YouTube
+	count_videos = models.IntegerField(
+		('count_videos'),
+		help_text=("Number of videos found in youtube request"),
+		null=True
+	)
+
+	count_views = models.IntegerField(
+		('count_views'),
+		help_text=("Number of views summed from youtube videos"),
+		null=True
+	)
+
+	count_likes = models.IntegerField(
+		('count_likes'),
+		help_text=("Number of likes summed from youtube videos"),
+		null=True
+	)
+
+	count_dislikes = models.IntegerField(
+		('count_dislikes'),
+		help_text=("Number of dislikes summed from youtube videos"),
+		null=True
+	)
+
+	count_comments = models.IntegerField(
+		('count_comments'),
+		help_text=("Number of comments summed from youtube videos"),
+		null=True
 	)
 
 	def __str__(self):
