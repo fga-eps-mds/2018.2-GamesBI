@@ -16,6 +16,7 @@ categories: DEV
 |29/08/2018|0.2|Atualizações e Correções|Bruno Rodrigues Santos|
 |03/09/2018|1.0|Atualização da visão geral e adição dos MER|Bruno Rodrigues Santos|
 |10/09/2018|1.1|Adição do diagrama de pacotes|Bruno Rodrigues Santos|
+|21/09/2018|1.2|Atualização dos Microserviços e camadas|Marco Antônio Lima|
 
 # Documento de Arquitetura
 
@@ -143,26 +144,33 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 A arquitetura e sua versão atual está particionada em:
 
 * 1 - Front-End
-  
-  Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Cross Data e 
+
+  Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Metabase e
   apresentar para o usuário final.
 
-* 2 - Cross Data
-  
-  Fronteira responsável por receber os dados das API's externas e persisti-los no banco de dados. Assim, 
-  fornecendo as estatísticas para o Front-End
+* 2 - Metabase
 
-* 3 - IGDB Data
+  Fronteira responsavel por receber os dados do Cross Data. Assim, gerando gráficos e estatísticas que serão apresentados no Front-End.  
+
+* 3 - Cross Data
+
+  Fronteira responsável por receber os dados das API's externas e persisti-los no banco de dados. Para posteriormente fornecer esses dados para o Metabase.
+
+* 4 - IGDB Data
 
   Fronteira responsável pela listagem dos jogos mais populares, será responsável por repassar para os outros microserviços quais jogos deveráo ser recuperados em suas respectivas fontes de dados.
 
-* 4 - Steam Data
+* 5 - Steam Data
 
-  Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e buscará por eles na API
+  Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e buscará por eles na API.
 
-* 5 - Twitch Data
-  
-  Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e buscará por eles na respectiva API
+* 6 - Twitch Data
+
+  Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e buscará por eles na respectiva API.
+
+* 7 - Youtube Data
+
+  Fronteira responsavel pela busca de dados na API do Youtube. Receberá os parâmetros de busca e buscará por eles na respectiva API.
 
 APIs Externas:
   Diferentes fontes de dados acerca de jogos digitais
@@ -204,4 +212,3 @@ O app API é responsável pela disponibilização dos dados persistidos no banco
   5.4 Cross Data
 
   <p align="middle"><img src="https://i.imgur.com/C1IriEs.jpg"></p>
-
