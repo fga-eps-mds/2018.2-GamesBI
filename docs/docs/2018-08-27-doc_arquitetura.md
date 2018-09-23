@@ -17,6 +17,7 @@ categories: DEV
 |03/09/2018|1.0|Atualização da visão geral e adição dos MER|Bruno Rodrigues Santos|
 |10/09/2018|1.1|Adição do diagrama de pacotes|Bruno Rodrigues Santos|
 |21/09/2018|1.2|Atualização dos Microserviços e camadas|Marco Antônio Lima|
+|23/09/2018|1.2|Definição do padrão de arquitetura REST|Alan Lima|
 
 # Documento de Arquitetura
 
@@ -31,8 +32,10 @@ Sumário
     * 1.5. [Visão Geral](#15-visão-geral)
 
 * 2 . [Representação da Arquitetura](#2-representação-da-arquitetura)
-   * 2.1. [Representação do padrão de Arquitetura MVT](#21-padrão-de-arquitetura-mvt)
+   * 2.1. [Representação do padrão de Arquitetura REST](#21-padrão-de-arquitetura-rest)
    * 2.2. [Representação da Arquitetura de Microserviços](#22-arquitetura-de-microserviços)   
+   * 2.3. [Representação da Arquitetura do REACT](#23-padrão-de-arquitetura-do-react)  
+
 
 * 3 . [Metas e Restrições da Arquitetura](#3-metas-e-restrições-da-arquitetura)
 
@@ -76,19 +79,50 @@ Estaremos descrevento o padrão arquitetural MVT, arquitetura de Microserviços 
 
 ----
 
-A arquitetura do projeto possuirá ambientes diferentes: API's REST, por debaixo do framework MVT Django, assim como o ambiente WEB de interação com usuário. Juntando todos os ambientes e coordenando-os, formamos assim uma arquitetura de Microserviços.
+A arquitetura do projeto possuirá ambientes diferentes: API's REST, por debaixo do framework Django, assim como o ambiente WEB de interação com usuário, feito em react. Juntando todos os ambientes e coordenando-os, formamos assim uma arquitetura de Microserviços.
 
-### 2.1 Padrão de Arquitetura MVT
+### 2.1 Padrão de Arquitetura REST
 
-Os padrões de arquitetura expressam formas de organizar a estrura do sistema e ajudam a lidar com a complexidade do software. O padrão utilizado neste projeto é o MVT, que por sua vez se assemelha bastante ao conhecido MVC. Tanto que, de acordo com o Django Book, o Django segue o padrão MVC suficientemente para ser considerado um framework MVC.
+O termo foi definido no ano 2000, na tese de doutorado de Roy Fielding e é a sigla para Representational State Transfer: é um design de arquitetura construído para servir aplicações em rede.
 
-<p align="middle"><img src="https://i.imgur.com/hYYq7q4.png" ></p>
+Conceitualmente falando, o modelo REST (REpresentational State Transfer) representa nada mais que uma possibilidade para a criação de web services, cujas principais diferenças em relação ao modelo tradicional (SOAP) estão na utilização semântica dos métodos HTTP (GET, POST, PUT e DELETE), na leveza dos pacotes de dados transmitidos na rede e na simplicidade, fazendo desnecessária a criação de camadas intermediárias (Ex.: Envelope SOAP) para encapsular os dados.
+
+<p align="middle"><img src="https://i.imgur.com/QtD42Z2.png" ></p>
 
 ---
 
-* Model
+#### Características de uma requisição REST:
 
-As Models do MVC e do MVT são equivalentes em responsabilidades. O framework Django facilita na interface com o banco de dados. Cada classe da modelo se compara a uma tabela do banco de dados, e as instâncias destas classes, representam os registros destas tabelas. Para adicionar valores ao banco, basta definí-los nas respectivas variáveis. Esta camada contém qualquer coisa e tudo sobre os dados: como acessá-lo , como validá-lo , quais comportamentos que tem e as relações entre os dados. Para o mapeamento dos dados, não será necessário utilizar códigos em SQL para garantir a persistência dos dados no banco.
+* O método HTTP é utilizado para determinar a operação a ser realizada em um determinado recurso. Em geral, utiliza-se o GET para recuperar, POST para criar, PUT para alterar e DELETE para apagar;
+* O recurso, por sua vez, é indicado na URL da requisição;
+Parâmetros podem ser passados na própria URL e/ou no corpo na requisição;
+* Os tipos de dados utilizados na requisição e na resposta devem ser acordados entre o servidor e o(s) cliente(s). JSON e XML estão entre os tipos mais utilizados.
+
+---
+
+#### REST x RESTful:
+
+Existe uma certa confusão quanto aos termos REST e RESTful. Entretanto, ambos representam os mesmo princípios. A diferença é apenas gramatical. Em outras palavras, sistemas que utilizam os princípios REST são chamados de RESTful.
+
+* REST: conjunto de princípios de arquitetura
+* RESTful: capacidade de determinado sistema aplicar os princípios de REST.
+
+#### Aplicação
+
+Tendo em vista estes conceitos, podemos mencionar a maneira pela qual são aplicados no GamesBI. Que se baseia em sua arquitetura de microserviços, de forma com que cada serviço se define como uma API RESTful que trabalha com JSON como dados de resposta.
+
+* <b>IGDB Service</b>: Realiza requisições GET para a API do IGDB e armazena os dados necessários.
+* <b>Youtube Service</b>: Realiza requisições GET para o microserviço da IGDB e API do Youtube e armazena os dados necessários.
+* <b>Steam Service</b>: Realiza requisições GET para o microserviço da IGDB e API da Steam e armazena os dados necessários.
+* <b>Twich Service</b>: Realiza requisições GET para o microserviço da IGDB e API da Twich e armazena os dados necessários.
+
+Por fim, todos estes dados são centralizados e tratados no CrossData para que posteriormente possam ser disponibilizados para o Front End da GamesBI.
+
+---
+
+<!-- * Model
+
+ O framework Django facilita na interface com o banco de dados. Cada classe da modelo se compara a uma tabela do banco de dados, e as instâncias destas classes, representam os registros destas tabelas. Para adicionar valores ao banco, basta definí-los nas respectivas variáveis. Esta camada contém qualquer coisa e tudo sobre os dados: como acessá-lo , como validá-lo , quais comportamentos que tem e as relações entre os dados. Para o mapeamento dos dados, não será necessário utilizar códigos em SQL para garantir a persistência dos dados no banco.
 
 ---
 
@@ -98,17 +132,11 @@ A camada View é responsável pela implementação das regras de apresentação 
 
 ---
 
-* Template
-
-Templates é a camada que retorna a visão para o usuário do programa. Essa camada é composta por, HTML,CSS, javascript.
-
----
-
 * Detalhes arquiteturais
 
 As resoluções de urls, responsabilidade dada as controllers no MVC, é feita pela própria estrutura do framework
 
-O Django oferece um sistema ORM com o banco de dados que permite ao desenvolvedor não se preocupar com querys explicitamente escritas. Com a intrudução do Banco de dados Não-Relacional MongoDB, o ORM é substituído pelo DRM, por conta das características exclusivas do banco.
+O Django oferece um sistema ORM com o banco de dados que permite ao desenvolvedor não se preocupar com querys explicitamente escritas. Com a intrudução do Banco de dados Não-Relacional MongoDB, o ORM é substituído pelo DRM, por conta das características exclusivas do banco. -->
 
 ### 2.2 Arquitetura de Microserviços
 
@@ -117,6 +145,8 @@ O Django oferece um sistema ORM com o banco de dados que permite ao desenvolvedo
 * Alterações em processos e serviços sem a necessidade de parada de todo o sistema.
 * Otimização da utilização da infraestrutura de nuvem.
 * Redução da complexidade de manutenção.
+
+### 2.3 Padrão de arquitetura do REACT
 
 ## 3. Metas e Restrições da Arquitetura
 
