@@ -282,8 +282,32 @@
                 </ul>
                 
                 <h3 id="23padrodearquiteturadoreact">2.3 Padrão de arquitetura do REACT</h3>
+                <br/>
+                <p align="middle"  ><img src="https://imgur.com/v64CEFp.jpg" width="600" height ="180"></p>
+                <br/>
+                <ul>
+                    <li>
+                        <p>
+                            View: um contêiner responsavel por escutar o estado da aplicação, atualizar e renderizar componentes. 
+                        </p>
+                    </li>
+                    <li>
+                        <p>Store: é o container que armazena e centraliza o estado geral da aplicação. Ela é imutável, ou seja, nunca se altera, apenas evolui.</p>
+                    </li>
+                    <li>
+                        <p>
+                            Actions: são fontes de informações que são enviadas da aplicação para a Store. São disparadas pelas Action Creators, que são simples funções que, ao serem executadas, ativam os Reducers.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Dispatcher: recebem e tratam as informações para que sejam (ou não) enviadas à Store.
+                        </p>
+                    </li>
+                </ul>
                 
                 <h2 id="3metaserestriesdaarquitetura">3. Metas e Restrições da Arquitetura</h2>
+                
                 
                 <hr />
                 
@@ -296,7 +320,7 @@
                 <ul>
                 <li>O projeto possui as seguintes restrições:</li>
                 
-                <li>Framework Django 2.1 com Python 3.7</li>
+                <li>Framework Django 2.1 com Python 3.6</li>
                 
                 <li>Padrão MVT</li>
                 
@@ -327,7 +351,7 @@
                 
                 <li><p>3 - Cross Data</p>
                 
-                <p>Fronteira responsável por receber os dados das API's externas e persisti-los no banco de dados. Para posteriormente fornecer esses dados para o Metabase.</p></li>
+                <p>Fronteira responsável por receber os dados das API's da IGDB Service, Steam Service, Twitch Service, Youtube Service para mescla-los e entao persistir apenas uma tabela no banco de dados, para posteriormente fornecer esses dados para o Metabase.</p></li>
                 
                 <li><p>4 - IGDB Data</p>
                 
@@ -361,7 +385,7 @@
                 
                 <h3 id="43diagramadepacotes">4.3 Diagrama de pacotes</h3>
                 
-                <p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
+                
                 
                 <ul>
                 <li>Acima é demonstrada a implementação geral dos pacotes de cada microserviço, onde o "<X>" será substituído pelo nome dos respectivos microserviços.</li>
