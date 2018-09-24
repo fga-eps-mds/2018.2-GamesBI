@@ -23,6 +23,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+**/**/migrations/*
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
