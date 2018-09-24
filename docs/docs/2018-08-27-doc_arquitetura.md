@@ -18,7 +18,7 @@ categories: DEV
 |10/09/2018|1.1|Adição do diagrama de pacotes|Bruno Rodrigues Santos|
 |21/09/2018|1.2|Atualização dos Microserviços e camadas|Marco Antônio Lima|
 |23/09/2018|1.2|Definição do padrão de arquitetura REST|Alan Lima|
-|24/09/2018|1.3|Adição do MER do Youtube|Marco Antônio Lima|
+|24/09/2018|1.3|Adição do MER do Youtube e atualização do MER da Twich|Marco Antônio Lima|
 
 # Documento de Arquitetura
 
@@ -238,7 +238,7 @@ O app API é responsável pela disponibilização dos dados persistidos no banco
 
   5.3 Twitch Data
 
-  <p align="middle"><img src="https://i.imgur.com/2duWVJ7.jpeg"></p>
+  <p align="middle"><img src="https://i.imgur.com/Zqpc89u.jpeg"></p>
 
   5.4 Youtube Data
 
