@@ -18,6 +18,7 @@ categories: DEV
 |10/09/2018|1.1|Adição do diagrama de pacotes|Bruno Rodrigues Santos|
 |21/09/2018|1.2|Atualização dos Microserviços e camadas|Marco Antônio Lima|
 |23/09/2018|1.2|Definição do padrão de arquitetura REST|Alan Lima|
+|24/09/2018|1.3|Adição do MER do Youtube|Marco Antônio Lima|
 
 # Documento de Arquitetura
 
@@ -239,6 +240,10 @@ O app API é responsável pela disponibilização dos dados persistidos no banco
 
   <p align="middle"><img src="https://i.imgur.com/2duWVJ7.jpeg"></p>
 
-  5.4 Cross Data
+  5.4 Youtube Data
+
+  <p align="middle"><img src="https://i.imgur.com/Z5j6D3t.jpeg"></p>
+
+  5.5 Cross Data
 
   <p align="middle"><img src="https://i.imgur.com/C1IriEs.jpg"></p>
