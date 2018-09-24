@@ -1,13 +1,13 @@
 version: '3.5'
 
 services:
-  db:
+  crossdb:
     image: mongo
     ports:
       - "27021:27017"
     networks:
       - proxynet
-  web:
+  crossweb:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
@@ -15,7 +15,7 @@ services:
     ports:
       - "8004:8000"
     depends_on:
-      - db
+      - crossdb
     networks:
       - proxynet
     environment:

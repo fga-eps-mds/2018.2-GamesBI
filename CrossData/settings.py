@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'CrossData.importdata'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'mongo',
-        'HOST': 'db'
+        'HOST': 'crossdb'
     }
 }
 

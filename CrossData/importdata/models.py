@@ -14,57 +14,6 @@ class Genre(models.Model):
 		max_length=100,
 	)
 
-class Stream(models.Model):
-
-	id = models.IntegerField(
-		('Stream ID'),
-		help_text=("Id da stream na Twitch"),
-		primary_key=True,
-	)
-
-	game_id = models.IntegerField(
-		('Game ID'),
-		help_text=("Id do jogo na Twitch")
-	)
-
-	language = models.CharField(
-		('Language'),
-		help_text=("Language of stream"),
-		max_length=100,
-		null=True
-	)
-
-	started_at = models.CharField(
-		('Started date'),
-		help_text=("Date when stream started"),
-		max_length=100,
-		null=True
-	)
-
-	type = models.CharField(
-		('Type'),
-		help_text=("Type of stream"),
-		max_length=100,
-		null=True
-	)
-
-	viewer_count = models.IntegerField(
-		('Viewer count'),
-		help_text=("Number of views in stream"),
-		max_length=100,
-		null=True
-	)
-
-	user = models.ForeignKey(
-		User,
-		on_delete=models.CASCADE
-	)
-
-	game = models.ForeignKey(
-		Game,
-		on_delete=models.CASCADE
-	)
-
 class User(models.Model):
 
 	user_id = models.IntegerField(
@@ -98,7 +47,6 @@ class User(models.Model):
 		help_text=("Number of followers"),
 		null=True
 	)
-
 
 class Game(models.Model):
 
@@ -190,12 +138,12 @@ class Game(models.Model):
 	language = models.CharField(
 		('Languages'),
 		help_text=("Language of the game"),
-		null=True
+		null=True,
+		max_length=150
 	)
 
 	genres = models.ManyToManyField(
-		Genre,
-		on_delete=models.CASCADE
+		Genre
 	)
 
 	#YouTube
@@ -243,3 +191,54 @@ class Game(models.Model):
 	    """
 	    verbose_name = ("Game BI")
 	    verbose_name_plural = ("Games BI")
+
+
+class Stream(models.Model):
+
+	id = models.IntegerField(
+		('Stream ID'),
+		help_text=("Id da stream na Twitch"),
+		primary_key=True,
+	)
+
+	# game_id = models.IntegerField(
+	# 	('Game ID'),
+	# 	help_text=("Id do jogo na Twitch")
+	# )
+
+	language = models.CharField(
+		('Language'),
+		help_text=("Language of stream"),
+		max_length=100,
+		null=True
+	)
+
+	started_at = models.CharField(
+		('Started date'),
+		help_text=("Date when stream started"),
+		max_length=100,
+		null=True
+	)
+
+	type = models.CharField(
+		('Type'),
+		help_text=("Type of stream"),
+		max_length=100,
+		null=True
+	)
+
+	viewer_count = models.IntegerField(
+		('Viewer count'),
+		help_text=("Number of views in stream"),
+		null=True
+	)
+
+	user = models.ForeignKey(
+		User,
+		on_delete=models.CASCADE
+	)
+
+	game = models.ForeignKey(
+		Game,
+		on_delete=models.CASCADE
+	)
