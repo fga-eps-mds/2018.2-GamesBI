@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'GameColorBI.urls'
+ROOT_URLCONF = 'CrossData.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'GameColorBI.wsgi.application'
+WSGI_APPLICATION = 'CrossData.wsgi.application'
 
 
 # Database
