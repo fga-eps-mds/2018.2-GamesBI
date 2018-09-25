@@ -37,6 +37,10 @@ class GamesView(APIView):
         url = 'http://igdbweb:8000/api/get_igdb_games_list/all'
         header = {'Accept': 'application/json'}
         gamedata = requests.get(url, headers=header)
+        print(gamedata.json())
+        print("-----------")
+        print("-----------")
+        print("-----------")
         return gamedata.json()
 
 
@@ -44,6 +48,10 @@ class GamesView(APIView):
         url = 'http://steamweb:8000/api/get_steam_games_list/'
         header = {'Accept': 'application/json'}
         gamedata = requests.get(url, headers=header)
+        print(gamedata.json())
+        print("-----------")
+        print("-----------")
+        print("-----------")
         return gamedata.json()
 
 
@@ -51,6 +59,10 @@ class GamesView(APIView):
         url = 'http://twitchweb:8000/api/request_stream_list/'
         header = {'Accept': 'application/json'}
         gamedata = requests.get(url, headers=header)
+        print(gamedata.json())
+        print("-----------")
+        print("-----------")
+        print("-----------")
         return gamedata.json()
 
 
@@ -58,4 +70,8 @@ class GamesView(APIView):
         url = 'http://youtubeweb:8000/api/get_youtube_games_list/'
         header = {'Accept': 'application/json'}
         gamedata = requests.get(url, headers=header)
+        print(gamedata.json())
+        print("-----------")
+        print("-----------")
+        print("-----------")
         return gamedata.json()
