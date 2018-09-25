@@ -23,7 +23,14 @@ class GamesView(APIView):
         games_twich = self.get_games_twich()
         games_youtube = self.get_games_youtube()
 
-        return Response(data=games_igdb)
+        data = {
+            'data1':games_igdb,
+            'data2':games_steam,
+            'data3':games_twich,
+            'data4':games_youtube,
+        }
+
+        return Response(data=data)
 
 
     def get_games_igdb(self):
@@ -34,21 +41,21 @@ class GamesView(APIView):
 
 
     def get_games_steam(self):
-        url = 'http://steamweb:8001/api/get_steam_games_list/'
+        url = 'http://steamweb:8000/api/get_steam_games_list/'
         header = {'Accept': 'application/json'}
         gamedata = requests.get(url, headers=header)
         return gamedata.json()
 
 
     def get_games_twich(self):
-        url = 'http://twitchweb:8002/api/request_stream_list/'
+        url = 'http://twitchweb:8000/api/request_stream_list/'
         header = {'Accept': 'application/json'}
         gamedata = requests.get(url, headers=header)
         return gamedata.json()
 
 
     def get_games_youtube(self):
-        url = 'http://youtubeweb:8003/api/get_youtube_games_list/'
+        url = 'http://youtubeweb:8000/api/get_youtube_games_list/'
         header = {'Accept': 'application/json'}
         gamedata = requests.get(url, headers=header)
         return gamedata.json()
