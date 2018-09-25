@@ -52,6 +52,13 @@ class GeneralData(object):
 		null=True
 	)
 
+	genres = models.CharField(
+		('Game Genre'),
+		help_text=("Name of the Game Genre"),
+		max_length=50,
+		null=True
+	)
+
 	#Steam
 	positive_reviews_steam = models.IntegerField(
 		('Steam Positive Reviews'),
@@ -96,12 +103,6 @@ class GeneralData(object):
 		max_length=150
 	)
 
-	genres = models.CharField(
-		('Game Genre'),
-		help_text=("Name of the Game Genre"),
-		max_length=50,
-		null=True
-	)
 
 	#YouTube
 	count_videos = models.IntegerField(
