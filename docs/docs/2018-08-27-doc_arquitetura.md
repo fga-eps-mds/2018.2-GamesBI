@@ -18,7 +18,8 @@ categories: DEV
 |10/09/2018|1.1|Adição do diagrama de pacotes|Bruno Rodrigues Santos|
 |21/09/2018|1.2|Atualização dos Microserviços e camadas|Marco Antônio Lima|
 |23/09/2018|1.2|Definição do padrão de arquitetura REST|Alan Lima|
-|24/09/2018|1.2|Definição do esquema de arquitetura React|Ingrid, Andre|
+|25/09/2018|1.2|Atualização do MER do Youtube e da Twitch |Marco Antônio Lima|
+|26/09/2018|1.2|Atualização do MER do Crossdata |Ingrid, Lucas|
 
 ## Documento de Arquitetura
 
@@ -208,30 +209,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 5.5 Cross Data
 
-<p align="middle"><img src="https://i.imgur.com/C1IriEs.jpg"></p>
+<p align="middle"><img src="https://i.imgur.com/6CZt5fQ.jpg"></p>
 
-</div>
 
-</div>
 
-<footer class="footer">
-
-<div class="container">
-
-<div class="row">
-
-</div>
-
-</div>
-
-</footer>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
