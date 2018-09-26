@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'mongo',
-        'HOST': 'crossdb'
+        'HOST': 'db'
     }
 }
 
