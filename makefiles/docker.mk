@@ -35,20 +35,20 @@ down:
 
 migrations:
 	# Create migrations from importdata models
-	sudo docker-compose run crossweb python manage.py makemigrations importdata
+	sudo docker-compose run web python manage.py makemigrations importdata
 
 migrate:
 	# Migrate migrations from importdata on database
-	sudo docker-compose run crossweb python manage.py migrate importdata
+	sudo docker-compose run web python manage.py migrate importdata
 
 fixture:
 	# Generate fixtures saved upon importdata models
-	sudo docker-compose run crossweb python manage.py dumpdata importdata --format json > CrossData/importdata/fixtures/data.json
+	sudo docker-compose run web python manage.py dumpdata importdata --format json > CrossData/importdata/fixtures/data.json
 
 loaddata:
 	# load fixtures saved upon importdata models
-	sudo docker-compose run crossweb python manage.py loaddata data.json
+	sudo docker-compose run web python manage.py loaddata data.json
 
 test:
 	# run unit tests
-	sudo docker-compose run crossweb python manage.py test
+	sudo docker-compose run web python manage.py test
