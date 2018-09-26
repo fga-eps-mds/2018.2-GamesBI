@@ -165,163 +165,240 @@
                 <h2 align="center"> Documento de Arquitetura </h2>
 
 
-
-                <h2 id="1-introdu-o">1. Introdução</h2>
-                <hr>
-                <h3 id="1-1-finalidade">1.1 Finalidade</h3>
-                <p>Este documento mostra uma visão geral sobre a arquitetura e ferramentas utilizadas no projeto
-                  GamesBI.</p>
-                <h3 id="1-2-escopo">1.2 Escopo</h3>
-                <p>Neste documento serão retratados os modelos arquiteturais implementados, descrição e utilização de
-                  frameworks
-                  que compõe o projeto GamesBI, plataforma de business intelligence com temática de jogos digitais.
-                  Exploramos
-                  de maneira detalhada o funcionamento e a visão arquitetural do projeto.</p>
-                <h3 id="1-3-defini-es-acr-nimos-e-abrevia-es">1.3 Definições, acrônimos e abreviações</h3>
+                <hr />
+                
+                <h2 id="1introduo">1. Introdução</h2>
+                
+                <hr />
+                
+                <h3 id="11finalidade">1.1 Finalidade</h3>
+                
+                <p>Este documento mostra uma visão geral sobre a arquitetura e ferramentas utilizadas no projeto GamesBI.</p>
+                
+                <h3 id="12escopo">1.2 Escopo</h3>
+                
+                <p>Neste documento serão retratados os modelos arquiteturais implementados, descrição e utilização de frameworks
+                que compõe o projeto GamesBI, plataforma de business intelligence com temática de jogos digitais. Exploramos
+                de maneira detalhada o funcionamento e a visão arquitetural do projeto.</p>
+                
+                <h3 id="13definiesacrnimoseabreviaes">1.3 Definições, acrônimos e abreviações</h3>
+                
                 <ul>
-                  <li>MVT - Model, View, Template</li>
-                  <li>MVC - Model, View, Controller</li>
-                  <li>ORM - Object Relational Mapper</li>
-                  <li>DRM - Document Relational Mapper</li>
+                <li>MVT - Model, View, Template</li>
+                
+                <li>MVC - Model, View, Controller</li>
+                
+                <li>ORM - Object Relational Mapper</li>
+                
+                <li>DRM - Document Relational Mapper</li>
                 </ul>
-                <h3 id="1-4-refer-ncias">1.4 Referências</h3>
-                <h3 id="1-5-vis-o-geral">1.5 Visão Geral</h3>
-                <p>O presente documento faz o detalhamento e descrição de características da arquitetura escolhidas
-                  pela equipe.
-                  Estaremos descrevento o padrão arquitetural MVT, arquitetura de Microserviços e APIs Rest</p>
-                <h2 id="2-representa-o-da-arquitetura">2. Representação da Arquitetura</h2>
-                <hr>
-                <p>A arquitetura do projeto possuirá ambientes diferentes: API&#39;s REST, por debaixo do framework MVT
-                  Django, assim como o ambiente WEB de interação com usuário. Juntando todos os ambientes e
-                  coordenando-os, formamos assim uma arquitetura de Microserviços.</p>
-                <h3 id="2-1-padr-o-de-arquitetura-mvt">2.1 Padrão de Arquitetura MVT</h3>
-                <p>Os padrões de arquitetura expressam formas de organizar a estrura do sistema e ajudam a lidar com a
-                  complexidade do software. O padrão utilizado neste projeto é o MVT, que por sua vez se assemelha
-                  bastante ao conhecido MVC. Tanto que, de acordo com o Django Book, o Django segue o padrão MVC
-                  suficientemente para ser considerado um framework MVC.</p>
-                <p align="middle"><img src="https://i.imgur.com/hYYq7q4.png"></p>
-
-                <hr>
+                
+                <h3 id="14referncias">1.4 Referências</h3>
+                
+                <h3 id="15visogeral">1.5 Visão Geral</h3>
+                
+                <p>O presente documento faz o detalhamento e descrição de características da arquitetura escolhidas pela equipe.
+                Estaremos descrevento o padrão arquitetural MVT, arquitetura de Microserviços e APIs Rest</p>
+                
+                <h2 id="2representaodaarquitetura">2. Representação da Arquitetura</h2>
+                
+                <hr />
+                
+                <p>A arquitetura do projeto possuirá ambientes diferentes: API's REST, por debaixo do framework Django, assim como o ambiente WEB de interação com usuário, feito em react. Juntando todos os ambientes e coordenando-os, formamos assim uma arquitetura de Microserviços.</p>
+                
+                <h3 id="21padrodearquiteturarest">2.1 Padrão de Arquitetura REST</h3>
+                
+                <p>O termo foi definido no ano 2000, na tese de doutorado de Roy Fielding e é a sigla para Representational State Transfer: é um design de arquitetura construído para servir aplicações em rede.</p>
+                
+                <p>Conceitualmente falando, o modelo REST (REpresentational State Transfer) representa nada mais que uma possibilidade para a criação de web services, cujas principais diferenças em relação ao modelo tradicional (SOAP) estão na utilização semântica dos métodos HTTP (GET, POST, PUT e DELETE), na leveza dos pacotes de dados transmitidos na rede e na simplicidade, fazendo desnecessária a criação de camadas intermediárias (Ex.: Envelope SOAP) para encapsular os dados.</p>
+                
+                <p align="middle"><img src="https://i.imgur.com/QtD42Z2.png" ></p>
+                
+                <hr />
+                
+                <h4 id="caractersticasdeumarequisiorest">Características de uma requisição REST:</h4>
+                
                 <ul>
-                  <li>Model</li>
+                <li>O método HTTP é utilizado para determinar a operação a ser realizada em um determinado recurso. Em geral, utiliza-se o GET para recuperar, POST para criar, PUT para alterar e DELETE para apagar;</li>
+                
+                <li>O recurso, por sua vez, é indicado na URL da requisição;
+                Parâmetros podem ser passados na própria URL e/ou no corpo na requisição;</li>
+                
+                <li>Os tipos de dados utilizados na requisição e na resposta devem ser acordados entre o servidor e o(s) cliente(s). JSON e XML estão entre os tipos mais utilizados.</li>
                 </ul>
-                <p>As Models do MVC e do MVT são equivalentes em responsabilidades. O framework Django facilita na
-                  interface com o banco de dados. Cada classe da modelo se compara a uma tabela do banco de dados, e as
-                  instâncias destas classes, representam os registros destas tabelas. Para adicionar valores ao banco,
-                  basta definí-los nas respectivas variáveis. Esta camada contém qualquer coisa e tudo sobre os dados:
-                  como acessá-lo , como validá-lo , quais comportamentos que tem e as relações entre os dados. Para o
-                  mapeamento dos dados, não será necessário utilizar códigos em SQL para garantir a persistência dos
-                  dados no banco.</p>
-                <hr>
+                
+                <hr />
+                
+                <h4 id="restxrestful">REST x RESTful:</h4>
+                
+                <p>Existe uma certa confusão quanto aos termos REST e RESTful. Entretanto, ambos representam os mesmo princípios. A diferença é apenas gramatical. Em outras palavras, sistemas que utilizam os princípios REST são chamados de RESTful.</p>
+                
                 <ul>
-                  <li>View</li>
+                <li>REST: conjunto de princípios de arquitetura</li>
+                
+                <li>RESTful: capacidade de determinado sistema aplicar os princípios de REST.</li>
                 </ul>
-                <p>A camada View é responsável pela implementação das regras de apresentação e negócio do nosso
-                  sistema. É nela onde iremos nos comunicar com a Model e a Template, cadastrando e tratando as
-                  informações recebidas. Retornando para o usuário uma resposta em JSON, ou erros encontrados. Esta é
-                  equivalente a Controller na arquitetura MVC</p>
-                <hr>
+                
+                <h4 id="aplicao">Aplicação</h4>
+                
+                <p>Tendo em vista estes conceitos, podemos mencionar a maneira pela qual são aplicados no GamesBI. Que se baseia em sua arquitetura de microserviços, de forma com que cada serviço se define como uma API RESTful que trabalha com JSON como dados de resposta.</p>
+                
                 <ul>
-                  <li>Template</li>
+                <li><b>IGDB Service</b>: Realiza requisições GET para a API do IGDB e armazena os dados necessários.</li>
+                
+                <li><b>Youtube Service</b>: Realiza requisições GET para o microserviço da IGDB e API do Youtube e armazena os dados necessários.</li>
+                
+                <li><b>Steam Service</b>: Realiza requisições GET para o microserviço da IGDB e API da Steam e armazena os dados necessários.</li>
+                
+                <li><b>Twich Service</b>: Realiza requisições GET para o microserviço da IGDB e API da Twich e armazena os dados necessários.</li>
                 </ul>
-                <p>Templates é a camada que retorna a visão para o usuário do programa. Essa camada é composta por,
-                  HTML,CSS, javascript.</p>
-                <hr>
+                
+                <p>Por fim, todos estes dados são centralizados e tratados no CrossData para que posteriormente possam ser disponibilizados para o Front End da GamesBI.</p>
+                
+                <hr />
+                
+                <!-- * Model
+                 O framework Django facilita na interface com o banco de dados. Cada classe da modelo se compara a uma tabela do banco de dados, e as instâncias destas classes, representam os registros destas tabelas. Para adicionar valores ao banco, basta definí-los nas respectivas variáveis. Esta camada contém qualquer coisa e tudo sobre os dados: como acessá-lo , como validá-lo , quais comportamentos que tem e as relações entre os dados. Para o mapeamento dos dados, não será necessário utilizar códigos em SQL para garantir a persistência dos dados no banco.
+                ---
+                * View
+                A camada View é responsável pela implementação das regras de apresentação e negócio do nosso sistema. É nela onde iremos nos comunicar com a Model e a Template, cadastrando e tratando as informações recebidas. Retornando para o usuário uma resposta em JSON, ou erros encontrados. Esta é equivalente a Controller na arquitetura MVC
+                ---
+                * Detalhes arquiteturais
+                As resoluções de urls, responsabilidade dada as controllers no MVC, é feita pela própria estrutura do framework
+                O Django oferece um sistema ORM com o banco de dados que permite ao desenvolvedor não se preocupar com querys explicitamente escritas. Com a intrudução do Banco de dados Não-Relacional MongoDB, o ORM é substituído pelo DRM, por conta das características exclusivas do banco. -->
+                
+                <h3 id="22arquiteturademicroservios">2.2 Arquitetura de Microserviços</h3>
+                
+                <p>arquitetura orientada a micro serviços foi adotada para este projeto devido a suas vantagens em relação a estrutura monolítica, dentre elas estão:</p>
+                
                 <ul>
-                  <li>Detalhes arquiteturais</li>
+                <li>Disponibilização de novos processos ou serviços sem impacto nos processos e serviços existentes.</li>
+                
+                <li>Alterações em processos e serviços sem a necessidade de parada de todo o sistema.</li>
+                
+                <li>Otimização da utilização da infraestrutura de nuvem.</li>
+                
+                <li>Redução da complexidade de manutenção.</li>
                 </ul>
-                <p>As resoluções de urls, responsabilidade dada as controllers no MVC, é feita pela própria estrutura
-                  do framework</p>
-                <p>O Django oferece um sistema ORM com o banco de dados que permite ao desenvolvedor não se preocupar
-                  com querys explicitamente escritas. Com a intrudução do Banco de dados Não-Relacional MongoDB, o ORM
-                  é substituído pelo DRM, por conta das características exclusivas do banco.</p>
-                <h3 id="2-2-arquitetura-de-microservi-os">2.2 Arquitetura de Microserviços</h3>
-                <p> arquitetura orientada a micro serviços foi adotada para este projeto devido a suas vantagens em
-                  relação a estrutura monolítica, dentre elas estão:</p>
+                
+                <h3 id="23padrodearquiteturadoreact">2.3 Padrão de arquitetura do REACT</h3>
+                <br/>
+                <p align="middle"  ><img src="https://imgur.com/v64CEFp.jpg" width="600" height ="180"></p>
+                <br/>
                 <ul>
-                  <li>Disponibilização de novos processos ou serviços sem impacto nos processos e serviços existentes.</li>
-                  <li>Alterações em processos e serviços sem a necessidade de parada de todo o sistema.</li>
-                  <li>Otimização da utilização da infraestrutura de nuvem.</li>
-                  <li>Redução da complexidade de manutenção.</li>
+                    <li>
+                        <p>
+                            View: um contêiner responsavel por escutar o estado da aplicação, atualizar e renderizar componentes. 
+                        </p>
+                    </li>
+                    <li>
+                        <p>Store: é o container que armazena e centraliza o estado geral da aplicação. Ela é imutável, ou seja, nunca se altera, apenas evolui.</p>
+                    </li>
+                    <li>
+                        <p>
+                            Actions: são fontes de informações que são enviadas da aplicação para a Store. São disparadas pelas Action Creators, que são simples funções que, ao serem executadas, ativam os Reducers.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Dispatcher: recebem e tratam as informações para que sejam (ou não) enviadas à Store.
+                        </p>
+                    </li>
                 </ul>
-                <h2 id="3-metas-e-restri-es-da-arquitetura">3. Metas e Restrições da Arquitetura</h2>
-                <hr>
-                <h3 id="3-1-metas">3.1 Metas</h3>
-                <p>A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sistemas em diferentes
-                  microserviços, trazendo máxima independência possível, favorecendo o entendimento sobre o objetivo de
-                  cada microserviço, a manutenibilidade e evolução. O sistema deve proporcionar facilidade para os
-                  usuários poderem aferir os dados, além de facilitar a análise dos mesmos.</p>
-                <h3 id="3-2-restri-es-da-arquitetura">3.2 Restrições da Arquitetura</h3>
+                
+                <h2 id="3metaserestriesdaarquitetura">3. Metas e Restrições da Arquitetura</h2>
+                
+                
+                <hr />
+                
+                <h3 id="31metas">3.1 Metas</h3>
+                
+                <p>A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sistemas em diferentes microserviços, trazendo máxima independência possível, favorecendo o entendimento sobre o objetivo de cada microserviço, a manutenibilidade e evolução. O sistema deve proporcionar facilidade para os usuários poderem aferir os dados, além de facilitar a análise dos mesmos.</p>
+                
+                <h3 id="32restriesdaarquitetura">3.2 Restrições da Arquitetura</h3>
+                
                 <ul>
-                  <li>O projeto possui as seguintes restrições:</li>
-                  <li>Framework Django 2.1 com Python 3.7</li>
-                  <li>Padrão MVT</li>
-                  <li>API&#39;s REST</li>
+                <li>O projeto possui as seguintes restrições:</li>
+                
+                <li>Framework Django 2.1 com Python 3.6</li>
+                
+                <li>Padrão MVT</li>
+                
+                <li>API's REST</li>
                 </ul>
-                <h2 id="4-arquitetura-dos-servi-os-e-vis-o-de-implementa-o">4. Arquitetura dos Serviços e visão de
-                  Implementação</h2>
-                <hr>
-                <h3 id="4-1-vis-o-geral">4.1 Visão Geral</h3>
+                
+                <h2 id="4arquiteturadosserviosevisodeimplementao">4. Arquitetura dos Serviços e visão de Implementação</h2>
+                
+                <hr />
+                
+                <h3 id="41visogeral">4.1 Visão Geral</h3>
+                
                 <p align="middle"><img src="https://i.imgur.com/faDwAzt.jpg"></p>
-
-                <h3 id="4-2-microservi-os-e-camadas">4.2 Microserviços e camadas</h3>
+                
+                <h3 id="42microserviosecamadas">4.2 Microserviços e camadas</h3>
+                
                 <p>A arquitetura e sua versão atual está particionada em:</p>
+                
                 <ul>
-                  <li>
-                    <p>1 - Front-End</p>
-                    <p>Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Cross Data e
-                      apresentar para o usuário final.</p>
-                  </li>
-                  <li>
-                    <p>2 - Cross Data</p>
-                    <p>Fronteira responsável por receber os dados das API&#39;s externas e persisti-los no banco de
-                      dados. Assim,
-                      fornecendo as estatísticas para o Front-End</p>
-                  </li>
-                  <li>
-                    <p>3 - IGDB Data</p>
-                    <p>Fronteira responsável pela listagem dos jogos mais populares, será responsável por repassar para
-                      os outros microserviços quais jogos deveráo ser recuperados em suas respectivas fontes de dados.</p>
-                  </li>
-                  <li>
-                    <p>4 - Steam Data</p>
-                    <p>Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e
-                      buscará por eles na API</p>
-                  </li>
-                  <li>
-                    <p>5 - Twitch Data</p>
-                    <p>Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e
-                      buscará por eles na respectiva API</p>
-                  </li>
+                <li><p>1 - Front-End</p>
+                
+                <p>Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Metabase e
+                apresentar para o usuário final.</p></li>
+                
+                <li><p>2 - Metabase</p>
+                
+                <p>Fronteira responsavel por receber os dados do Cross Data. Assim, gerando gráficos e estatísticas que serão apresentados no Front-End.  </p></li>
+                
+                <li><p>3 - Cross Data</p>
+                
+                <p>Fronteira responsável por receber os dados das API's da IGDB Service, Steam Service, Twitch Service, Youtube Service para mescla-los e entao persistir apenas uma tabela no banco de dados, para posteriormente fornecer esses dados para o Metabase.</p></li>
+                
+                <li><p>4 - IGDB Data</p>
+                
+                <p>Fronteira responsável pela listagem dos jogos mais populares, será responsável por repassar para os outros microserviços quais jogos deveráo ser recuperados em suas respectivas fontes de dados.</p></li>
+                
+                <li><p>5 - Steam Data</p>
+                
+                <p>Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e buscará por eles na API.</p></li>
+                
+                <li><p>6 - Twitch Data</p>
+                
+                <p>Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e buscará por eles na respectiva API.</p></li>
+                
+                <li><p>7 - Youtube Data</p>
+                
+                <p>Fronteira responsavel pela busca de dados na API do Youtube. Receberá os parâmetros de busca e buscará por eles na respectiva API.</p></li>
                 </ul>
+                
                 <p>APIs Externas:
                   Diferentes fontes de dados acerca de jogos digitais</p>
+                
                 <ul>
-                  <li>SteamSpy</li>
-                  <li>Twitch API</li>
-                  <li>IGDB API</li>
-                  <li>Youtube API</li>
+                <li>SteamSpy</li>
+                
+                <li>Twitch API</li>
+                
+                <li>IGDB API</li>
+                
+                <li>Youtube API</li>
                 </ul>
-                <h3 id="4-3-diagrama-de-pacotes">4.3 Diagrama de pacotes</h3>
-                <p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
-
+                
+                <h3 id="43diagramadepacotes">4.3 Diagrama de pacotes</h3>
+                
+                
+                
                 <ul>
-                  <li>Acima é demonstrada a implementação geral dos pacotes de cada microserviço, onde o &quot;<X>&quot;
-                      será substituído pelo nome dos respectivos microserviços.</li>
+                <li>Acima é demonstrada a implementação geral dos pacotes de cada microserviço, onde o "<X>" será substituído pelo nome dos respectivos microserviços.</li>
                 </ul>
+                
                 <p>Dentro de Aplicações Django, os pacotes são representados pelos apps.</p>
+                
                 <ul>
-                  <li>
-                    <p>IMPORTDATA
-                      O app importdata é responsável pela comunicação com as API&#39;s e fontes de dados externas.
-                      Tendo como tarefa a importação dos dados, tratamento e persistência no banco de dados</p>
-                  </li>
-                  <li>
-                    <p>API
-                      O app API é responsável pela disponibilização dos dados persistidos no banco de dados para os
-                      outros microserviços através de endpoints específicos, também podendo ser usado por qualquer
-                      outra aplicação que deseja acessar os dados.</p>
-                  </li>
+                <li><p>IMPORTDATA
+                O app importdata é responsável pela comunicação com as API's e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e persistência no banco de dados</p></li>
+                
+                <li><p>API
+                O app API é responsável pela disponibilização dos dados persistidos no banco de dados para os outros microserviços através de endpoints específicos, também podendo ser usado por qualquer outra aplicação que deseja acessar os dados.</p></li>
                 </ul>
                 <h2 id="5-vis-o-de-dados">5 Visão de dados</h2>
                 <hr>
@@ -339,9 +416,6 @@
 
                 <p> 5.4 Cross Data</p>
                 <p align="middle"><img src="https://i.imgur.com/6CZt5fQ.jpg"></p>
-
-
-          
 
 
               </div>
