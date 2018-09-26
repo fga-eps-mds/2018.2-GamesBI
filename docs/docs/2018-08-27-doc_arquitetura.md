@@ -209,7 +209,6 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 5.5 Cross Data
 
+
 <p align="middle"><img src="https://i.imgur.com/6CZt5fQ.jpg"></p>
-
-
 
