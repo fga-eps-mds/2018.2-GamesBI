@@ -151,7 +151,7 @@ class GamesView(APIView):
         array_average_forever = []
         array_average_2weeks = []
         array_price = []
-        # array_lenguages = []
+        array_languages = []
 
         for game in games_steam:
             array_id.append(game['id'])
@@ -162,7 +162,7 @@ class GamesView(APIView):
             array_average_forever.append(game['average_forever'])
             array_average_2weeks.append(game['average_2weeks'])
             array_price.append(game['price'])
-            # array_lenguages.append(game['lenguages'])
+            array_languages.append(game['lenguages'])
 
         filtered_game = {
             'id': array_id,
@@ -172,8 +172,8 @@ class GamesView(APIView):
             'owners': array_owners,
             'average_forever': array_average_forever,
             'average_2weeks': array_average_2weeks,
-            'price': array_price
-            # 'lenguages_game': array_lenguages
+            'price': array_price,
+            'languages_game': array_languages
         }
 
         return pd.DataFrame(filtered_game)
@@ -201,7 +201,7 @@ class GamesView(APIView):
         dataframe_all['average_forever'].fillna(0, inplace=True)
         dataframe_all['average_2weeks'].fillna(0, inplace=True)
         dataframe_all['genres'].fillna("", inplace=True)
-        # dataframe_all['lenguages_game'].fillna("", inplace=True)
+        dataframe_all['languages_game'].fillna("", inplace=True)
         dataframe_all['count_videos'].fillna(0, inplace=True)
         dataframe_all['count_views'].fillna(0, inplace=True)
         dataframe_all['count_likes'].fillna(0, inplace=True)
@@ -233,7 +233,7 @@ class GamesView(APIView):
             	average_forever=int(game['average_forever']),
             	average_2weeks=int(game['average_2weeks']),
             	price=int(game['price']),
-            	# languages_game=str(game['languages_game']),
+            	languages_game=str(game['languages_game']),
             	count_videos=int(game['count_videos']),
             	count_views=int(game['count_views']),
             	count_likes=int(game['count_likes']),
