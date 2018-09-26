@@ -199,9 +199,12 @@ O app API é responsável pela disponibilização dos dados persistidos no banco
 
   5.3 Twitch Data
 
-  <p align="middle"><img src="https://i.imgur.com/2duWVJ7.jpeg"></p>
+  <p align="middle"><img src="https://i.imgur.com/Zqpc89u.jpeg"></p>
 
   5.4 Cross Data
 
-  <p align="middle"><img src="https://i.imgur.com/C1IriEs.jpg"></p>
+  <p align="middle"><img src="https://i.imgur.com/Z5j6D3t.jpeg"></p>
 
+  5.5 Cross Data
+
+  <p align="middle"><img src="https://i.imgur.com/6CZt5fQ.jpg"></p>
