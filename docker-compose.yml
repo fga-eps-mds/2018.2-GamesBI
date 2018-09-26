@@ -11,7 +11,7 @@ services:
     networks:
       - proxynet
     environment:
-      MONGO_INITDB_DATABASE: ${MONGO_DB_NAME}
+      MONGO_INITDB_DATABASE: mongo
   
   web:
     build: .
