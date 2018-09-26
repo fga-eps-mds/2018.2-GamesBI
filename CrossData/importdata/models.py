@@ -1,6 +1,6 @@
 from django.db import models
 
-class GeneralData(object):
+class GeneralData(models.Model):
 
 	id_igdb = models.IntegerField(
 		('IGDB ID'),
