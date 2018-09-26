@@ -1,25 +1,43 @@
+
 version: '3.5'
 
 services:
-  crossdb:
-    image: mongo
+  db:
+    build:
+      dockerfile: Dockerfile-db
+      context: .
     ports:
       - "27021:27017"
     networks:
       - proxynet
-  crossweb:
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_DB_NAME}
+  
+  web:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: /code/runserver.sh
     volumes:
       - .:/code
     ports:
       - "8004:8000"
     depends_on:
-      - crossdb
+      - db
     networks:
       - proxynet
     environment:
       - COVERALLS_REPO_TOKEN
+      - MONGO_USERNAME
+      - MONGO_PASSWORD
+      - MONGO_DB_NAME
+
+  metabase:
+    image: metabase/metabase
+    ports:
+      - "4000:3000"
+    networks:
+      - proxynet
+    depends_on:
+      - db
 
 networks:
   proxynet:
