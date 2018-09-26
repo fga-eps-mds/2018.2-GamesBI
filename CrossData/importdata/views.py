@@ -30,6 +30,7 @@ class GamesView(APIView):
         dataFrame_youtube = self.filter_games_youtube(games_youtube)
 
         dataframe_all = self.merge_dataFrames(dataFrame_igdb, dataFrame_steam, dataFrame_youtube)
+        print(dataframe_all)
         self.save_games(dataframe_all)
 
         return Response(data=games_igdb )
@@ -144,6 +145,7 @@ class GamesView(APIView):
 
 
     def filter_games_steam(self, games_steam):
+        array_id = []
         array_name = []
         array_positive_reviews_steam = []
         array_negative_reviews_steam = []
@@ -185,19 +187,33 @@ class GamesView(APIView):
         return merge_all
 
 
-    def valid_nan_values(self, serie):
-        count = 0
-        number_sections = serie.count()
-        while count < number_sections:
-            if (str(serie[count]) == 'nan'):
-                serie.at[0] = Null
+    def valid_nan_values(self, dataframe_all):
+        dataframe_all['name'].fillna("", inplace=True)
+        dataframe_all['time_to_beat'].fillna(0, inplace=True)
+        dataframe_all['hypes'].fillna(0, inplace=True)
+        dataframe_all['popularity'].fillna(0, inplace=True)
+        dataframe_all['price'].fillna(0, inplace=True)
+        dataframe_all['critics_rating'].fillna(0, inplace=True)
+        dataframe_all['positive_reviews_steam'].fillna(0, inplace=True)
+        dataframe_all['negative_reviews_steam'].fillna(0, inplace=True)
+        dataframe_all['owners'].fillna(0, inplace=True)
+        dataframe_all['average_forever'].fillna(0, inplace=True)
+        dataframe_all['average_2weeks'].fillna(0, inplace=True)
+        dataframe_all['count_videos'].fillna(0, inplace=True)
+        dataframe_all['count_views'].fillna(0, inplace=True)
+        dataframe_all['count_likes'].fillna(0, inplace=True)
+        dataframe_all['count_dislikes'].fillna(0, inplace=True)
+        dataframe_all['count_comments'].fillna(0, inplace=True)
+
+        return dataframe_all
 
     def save_games(self, dataframe_all):
         number_rows = dataframe_all.count()['name']
+        dataframe = self.valid_nan_values(dataframe_all)
         count = 0
         while count < number_rows:
-            game = dataframe_all.loc[count]
-            print('nome: ' + str(game.name))
+            game = dataframe.loc[count]
+            print('nome: ' + str(game['name']))
             print('time_to_beat: ' + str(game.time_to_beat))
             print('hypes: ' + str(game.hypes))
             print('popularity: ' + str(game.popularity))
@@ -213,29 +229,31 @@ class GamesView(APIView):
             print('count_likes: ' + str(game.count_likes))
             print('count_dislikes: ' + str(game.count_dislikes))
             print('count_comments: ' + str(game.count_comments))
+            print("\n--------\n---------\n")
+
 
             new_game = GeneralData(
                 # id_igdb
             	# id_steam
             	# id_twitch
-            	name=str(game.name),
-            	time_to_beat=float(game.time_to_beat),
-            	# hypes=int(game.hypes),
-            	popularity=float(game.popularity),
-            	critics_rating=float(game.critics_rating),
+            	name=str(game['name']),
+            	time_to_beat=float(game['time_to_beat']),
+            	hypes=int(game['hypes']),
+            	popularity=float(game['popularity']),
+            	critics_rating=float(game['critics_rating']),
             	# genres
-            	positive_reviews_steam=int(game.positive_reviews_steam),
-            	negative_reviews_steam=int(game.negative_reviews_steam),
-            	owners=int(game.owners),
-            	average_forever=int(game.average_forever),
-            	average_2weeks=int(game.average_2weeks),
-            	price=int(game.price),
+            	positive_reviews_steam=int(game['positive_reviews_steam']),
+            	negative_reviews_steam=int(game['negative_reviews_steam']),
+            	owners=int(game['owners']),
+            	average_forever=int(game['average_forever']),
+            	average_2weeks=int(game['average_2weeks']),
+            	price=int(game['price']),
             	# language
-            	count_videos=int(game.count_videos),
-            	count_views=int(game.count_views),
-            	count_likes=int(game.count_likes),
-            	count_dislikes=int(game.count_dislikes),
-            	count_comments=int(game.count_comments),
+            	count_videos=int(game['count_videos']),
+            	count_views=int(game['count_views']),
+            	count_likes=int(game['count_likes']),
+            	count_dislikes=int(game['count_dislikes']),
+            	count_comments=int(game['count_comments']),
             	# view_count
             	# follows
             	# language
