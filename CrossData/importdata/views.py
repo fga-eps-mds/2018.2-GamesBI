@@ -32,7 +32,8 @@ class GamesView(APIView):
         dataframe_all = self.merge_dataFrames(dataFrame_igdb, dataFrame_steam, dataFrame_youtube, dataFrame_twich)
         self.save_games(dataframe_all)
 
-        return Response(data=games_igdb)
+        sucess = {'mensagem':'Importação feita com sucesso!'}
+        return Response(data=sucess)
 
 
     def get_games_igdb(self):
