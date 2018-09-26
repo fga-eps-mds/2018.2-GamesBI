@@ -192,19 +192,23 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 5.1 IGDB Data
 
-![](https://i.imgur.com/xzeykEY.jpg)
+  <p align="middle"><img src="https://i.imgur.com/xzeykEY.jpg"></p>
 
 5.2 Steam Data
 
-![](https://i.imgur.com/um3A0Kw.jpg)
+   <p align="middle"><img src="https://i.imgur.com/um3A0Kw.jpg"></p>
 
 5.3 Twitch Data
 
-![](https://i.imgur.com/2duWVJ7.jpeg)
+  <p align="middle"><img src="https://i.imgur.com/Zqpc89u.jpeg"></p>
 
-5.4 Cross Data
+5.4 Youtube Data
 
-![](https://i.imgur.com/C1IriEs.jpg)
+  <p align="middle"><img src="https://i.imgur.com/Z5j6D3t.jpeg"></p>
+
+5.5 Cross Data
+
+<p align="middle"><img src="https://i.imgur.com/C1IriEs.jpg"></p>
 
 </div>
 
@@ -215,16 +219,6 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 <div class="container">
 
 <div class="row">
-
-<nav class="footer-nav">
-
-*   [Creative Tim](http://www.creative-tim.com)
-*   [Blog](http://blog.creative-tim.com)
-*   [Licenses](http://www.creative-tim.com/license)
-
-</nav>
-
-<div class="credits ml-auto"><span class="copyright">© <script>document.write(new Date().getFullYear())</script> , made with by Creative Tim</span></div>
 
 </div>
 
