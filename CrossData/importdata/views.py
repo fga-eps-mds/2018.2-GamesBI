@@ -33,7 +33,7 @@ class GamesView(APIView):
         print(dataframe_all)
         self.save_games(dataframe_all)
 
-        return Response(data=games_igdb )
+        return Response(data=dataframe_all)
 
 
     def get_games_igdb(self):
@@ -262,4 +262,8 @@ class GamesView(APIView):
             	# viewer_count
             )
             new_game.save()
+            print("JOGO SALVO " + new_game.name)
+            print("----------------------")
+            print("----------------------")
+            print("----------------------")
             count+=1
