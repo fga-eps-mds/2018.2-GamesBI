@@ -96,7 +96,7 @@ class GeneralData(models.Model):
 		null=True
 	)
 
-	language = models.CharField(
+	languages_game = models.CharField(
 		('Languages'),
 		help_text=("Language of the game"),
 		null=True,
@@ -148,7 +148,7 @@ class GeneralData(models.Model):
 		null=True
 	)
 
-	language = models.CharField(
+	language_stream = models.CharField(
 		('Twitch stream Language'),
 		help_text=("Language of stream"),
 		max_length=100,
