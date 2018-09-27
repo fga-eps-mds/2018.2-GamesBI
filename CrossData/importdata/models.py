@@ -1,23 +1,12 @@
-from django.db import models
+from djongo import models
 
 class GeneralData(models.Model):
 
-	id_igdb = models.IntegerField(
-		('IGDB ID'),
-		help_text=("Id do jogo na IGDB"),
-		null=True
-	)
-
-	id_steam = models.IntegerField(
-		('STEAM ID'),
-		help_text=("Id do jogo na Steam"),
-		null=True
-	)
-
-	id_twitch = models.IntegerField(
-		('TWITCH ID'),
-		help_text=("Id do jogo na Twitch"),
-		null=True
+	id = models.IntegerField(
+		('ID'),
+		help_text=("Id"),
+		primary_key=True,
+		null=False
 	)
 
 	name = models.CharField(
@@ -174,6 +163,8 @@ class GeneralData(models.Model):
 		help_text=("Number of views in stream"),
 		null=True
 	)
+
+	objects = models.DjongoManager()
 
 	def __str__(self):
 	    """
