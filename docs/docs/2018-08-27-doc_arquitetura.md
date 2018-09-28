@@ -202,11 +202,11 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 5.4 Youtube Data
 
-  <p align="middle"><img src="https://i.imgur.com/Z5j6D3t.jpeg"></p>
+  <p align="middle"><img src="https://i.imgur.com/SD1MvBq.jpg"></p>
 
 5.5 Cross Data
 
-<p align="middle"><img src="https://i.imgur.com/6CZt5fQ.jpg"></p>
+<p align="middle"><img src="https://i.imgur.com/exqiVJS.jpg"></p>
 
 
 
