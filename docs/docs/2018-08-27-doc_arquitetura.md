@@ -127,8 +127,8 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 *   O projeto possui as seguintes restrições:
 *   Framework Django 2.1 com Python 3.6
-*   Padrão MVT
 *   API's REST
+*   ReactJS 
 
 ## 4\. Arquitetura dos Serviços e visão de Implementação
 
@@ -156,19 +156,19 @@ A arquitetura e sua versão atual está particionada em:
 
 *   4 - IGDB Data
 
-    Fronteira responsável pela listagem dos jogos mais populares, será responsável por repassar para os outros microserviços quais jogos deveráo ser recuperados em suas respectivas fontes de dados.
+    Fronteira responsável pela listagem dos jogos mais populares, será responsável por repassar a informação para os outros microserviços a respeito de quais jogos deveráo ser recuperados em suas respectivas fontes de dados.
 
 *   5 - Steam Data
 
-    Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e buscará por eles na API.
+    Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e buscará por eles na API e oferecerá endpoint GET para recuperar informações por meio de requisições.
 
 *   6 - Twitch Data
 
-    Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e buscará por eles na respectiva API.
+    Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e buscará por eles na respectiva API e disponibilizará informações por meio de requisições do tipo GET.
 
 *   7 - Youtube Data
 
-    Fronteira responsavel pela busca de dados na API do Youtube. Receberá os parâmetros de busca e buscará por eles na respectiva API.
+    Fronteira responsavel pela busca de dados na API do Youtube. Receberá os parâmetros de busca e buscará por eles na respectiva API e oferecerá endpoint GET para recuperar informações por meio de requisições.
 
 APIs Externas: Diferentes fontes de dados acerca de jogos digitais
 
@@ -178,6 +178,8 @@ APIs Externas: Diferentes fontes de dados acerca de jogos digitais
 *   Youtube API
 
 ### 4.3 Diagrama de pacotes
+
+<p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
 
 *   Acima é demonstrada a implementação geral dos pacotes de cada microserviço, onde o "<x>" será substituído pelo nome dos respectivos microserviços.</x>
 
