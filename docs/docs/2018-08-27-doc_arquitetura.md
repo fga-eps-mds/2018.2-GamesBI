@@ -85,11 +85,6 @@ Existe uma certa confusão quanto aos termos REST e RESTful. Entretanto, ambos r
 
 Tendo em vista estes conceitos, podemos mencionar a maneira pela qual são aplicados no GamesBI. Que se baseia em sua arquitetura de microserviços, de forma com que cada serviço se define como uma API RESTful que trabalha com JSON como dados de resposta.
 
-*   **IGDB Service**: Realiza requisições GET para a API do IGDB e armazena os dados necessários.
-*   **Youtube Service**: Realiza requisições GET para o microserviço da IGDB e API do Youtube e armazena os dados necessários.
-*   **Steam Service**: Realiza requisições GET para o microserviço da IGDB e API da Steam e armazena os dados necessários.
-*   **Twich Service**: Realiza requisições GET para o microserviço da IGDB e API da Twich e armazena os dados necessários.
-
 Por fim, todos estes dados são centralizados e tratados no CrossData para que posteriormente possam ser disponibilizados para o Front End da GamesBI.
 
 * * *
