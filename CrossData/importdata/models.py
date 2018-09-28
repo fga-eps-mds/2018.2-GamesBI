@@ -175,6 +175,10 @@ class GeneralData(models.Model):
 		null=True
 	)
 
+	date = models.DateField(
+	    default=None
+	)
+
 	def __str__(self):
 	    """
 	    Returns the object as a string, the attribute that will represent
