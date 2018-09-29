@@ -28,6 +28,16 @@ categories: DEV
 
 ## 1\. Introdução
 
+* 3 . [Metas e Restrições da Arquitetura](#3-metas-e-restrições-da-arquitetura)
+
+* 4 . [Arquitetura dos Serviços e visão de Implementação](#4-arquitetura-dos-serviços-e-visão-de-implementação)
+   * 4.1. [Visão Geral](#41-visão-geral)
+   * 4.2. [Microserviços e Camadas](#42-microserviços-e-camadas)
+   * 4.3. [Diagrama de pacotes](#43-diagrama-de-pacotes)
+
+* 5 . [Visão de Dados](#5-visão-de-dados)
+
+
 * * *
 
 ### 1.1 Finalidade
@@ -206,6 +216,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   <p align="middle"><img src="https://i.imgur.com/SD1MvBq.jpg"></p>
 
 5.5 Cross Data
+
 
 <p align="middle"><img src="https://i.imgur.com/hKkerGx.jpg"></p>
 
