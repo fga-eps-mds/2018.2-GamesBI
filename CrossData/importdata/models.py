@@ -162,6 +162,9 @@ class GeneralData(models.Model):
 	)
 
 	objects = models.DjongoManager()
+	date = models.DateField(
+	    default=None
+	)
 
 	def __str__(self):
 	    """
