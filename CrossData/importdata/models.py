@@ -2,11 +2,8 @@ from djongo import models
 
 class GeneralData(models.Model):
 
-	id = models.IntegerField(
-		('ID'),
-		help_text=("Id"),
-		primary_key=True,
-		null=False
+	id = models.AutoField(
+		primary_key=True
 	)
 
 	name = models.CharField(

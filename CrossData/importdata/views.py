@@ -222,6 +222,7 @@ class GamesView(APIView):
                 # id_igdb
             	# id_steam
             	# id_twitch
+                'id':count,
             	'name': str(game['name']),
             	'time_to_beat': float(game['time_to_beat']),
             	'hypes': int(game['hypes']),
