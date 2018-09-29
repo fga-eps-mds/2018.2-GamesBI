@@ -209,4 +209,3 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 <p align="middle"><img src="https://i.imgur.com/exqiVJS.jpg"></p>
 
 
-
