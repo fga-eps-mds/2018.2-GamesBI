@@ -23,6 +23,7 @@ categories: DEV
 
 ## Documento de Arquitetura
 
+
 * * *
 
 ## 1\. Introdução
@@ -206,6 +207,6 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 5.5 Cross Data
 
-<p align="middle"><img src="https://i.imgur.com/exqiVJS.jpg"></p>
+<p align="middle"><img src="https://i.imgur.com/hKkerGx.jpg"></p>
 
 
