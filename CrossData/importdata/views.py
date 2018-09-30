@@ -218,37 +218,40 @@ class GamesView(APIView):
         count = 0
         while count < number_rows:
             game = dataframe.loc[count]
-            new_game = GeneralData(
+            new_game = {
                 # id_igdb
             	# id_steam
             	# id_twitch
-            	name=str(game['name']),
-            	time_to_beat=float(game['time_to_beat']),
-            	hypes=int(game['hypes']),
-            	popularity=float(game['popularity']),
-            	critics_rating=float(game['critics_rating']),
-            	genres=str(game['genres']),
-            	positive_reviews_steam=int(game['positive_reviews_steam']),
-            	negative_reviews_steam=int(game['negative_reviews_steam']),
-            	owners=int(game['owners']),
-            	average_forever=int(game['average_forever']),
-            	average_2weeks=int(game['average_2weeks']),
-            	price=int(game['price']),
-            	languages_game=str(game['languages_game']),
-            	count_videos=int(game['count_videos']),
-            	count_views=int(game['count_views']),
-            	count_likes=int(game['count_likes']),
-            	count_dislikes=int(game['count_dislikes']),
-            	count_comments=int(game['count_comments']),
-            	view_count=int(game['views'])
+                'id':count,
+            	'name': str(game['name']),
+            	'time_to_beat': float(game['time_to_beat']),
+            	'hypes': int(game['hypes']),
+            	'popularity': float(game['popularity']),
+            	'critics_rating': float(game['critics_rating']),
+            	'genres': str(game['genres']),
+            	'positive_reviews_steam':int(game['positive_reviews_steam']),
+            	'negative_reviews_steam':int(game['negative_reviews_steam']),
+            	'owners':int(game['owners']),
+            	'average_forever':int(game['average_forever']),
+            	'average_2weeks':int(game['average_2weeks']),
+            	'price':int(game['price']),
+            	'languages_game':str(game['languages_game']),
+            	'count_videos':int(game['count_videos']),
+            	'count_views':int(game['count_views']),
+            	'count_likes':int(game['count_likes']),
+            	'count_dislikes':int(game['count_dislikes']),
+            	'count_comments':int(game['count_comments']),
+            	'view_count':int(game['views'])
             	# follows
             	# language
             	# started_at
             	# type
             	# viewer_count
-            )
-            new_game.save()
-            print("JOGO SALVO " + new_game.name)
+            }
+
+            GeneralData.objects.mongo_insert_one(new_game)
+
+            print("JOGO SALVO " + new_game['name'])
             print("----------------------")
             print("----------------------")
             print("----------------------")

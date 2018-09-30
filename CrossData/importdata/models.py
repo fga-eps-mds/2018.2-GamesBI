@@ -1,23 +1,9 @@
-from django.db import models
+from djongo import models
 
 class GeneralData(models.Model):
 
-	id_igdb = models.IntegerField(
-		('IGDB ID'),
-		help_text=("Id do jogo na IGDB"),
-		null=True
-	)
-
-	id_steam = models.IntegerField(
-		('STEAM ID'),
-		help_text=("Id do jogo na Steam"),
-		null=True
-	)
-
-	id_twitch = models.IntegerField(
-		('TWITCH ID'),
-		help_text=("Id do jogo na Twitch"),
-		null=True
+	id = models.AutoField(
+		primary_key=True
 	)
 
 	name = models.CharField(
@@ -175,6 +161,7 @@ class GeneralData(models.Model):
 		null=True
 	)
 
+	objects = models.DjongoManager()
 	date = models.DateField(
 	    default=None
 	)
