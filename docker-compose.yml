@@ -29,6 +29,9 @@ services:
       - MONGO_USERNAME
       - MONGO_PASSWORD
       - MONGO_DB_NAME
+      - MB_USERNAME
+      - MB_PASSWORD
+      - DB_NAME
 
   metabase:
     image: metabase/metabase

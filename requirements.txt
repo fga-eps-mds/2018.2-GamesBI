@@ -8,3 +8,4 @@ model_mommy
 numpy
 scipy
 pandas
+djangorestframework-jwt

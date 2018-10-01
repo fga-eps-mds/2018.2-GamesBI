@@ -1,0 +1,82 @@
+import requests
+import time
+import os
+
+from .models import MetabaseSession
+
+MB_USERNAME = os.environ['MB_USERNAME']
+MB_PASSWORD = os.environ['MB_PASSWORD']
+
+MB_URL = 'http://metabase:3000/api'
+
+
+def login_metabase():
+    url_session = MB_URL + '/session'
+    url_current = MB_URL + '/user/current'
+
+    data = {'username': MB_USERNAME, 'password': MB_PASSWORD}
+    session = MetabaseSession.objects.first()
+
+    if session:
+        session_id = session.session_id
+        header = {'Cookie': 'metabase.SESSION_ID=' + session_id}
+        if requests.get(url_current, headers=header).status_code == 401:
+            response = requests.post(url_session, json=data)
+            session_id = response.json()['id']
+            session.session_id = session_id
+            session.save()
+    else:
+        login = requests.post(url_session, json=data)
+        if login.status_code == 200:
+            from pprint import pprint
+            pprint(login.json()['id'])
+            session = MetabaseSession.objects.create(session_id=login.json()['id'])
+            session_id = session.session_id
+        else:
+            raise Exception('Cannot login on metabase - ' +
+                            login.json()['errors']['username'])
+
+    return session_id
+
+
+def get_database_id(database_name):
+    url = MB_URL + '/database'
+    session_id = login_metabase()
+    header = {'Cookie': 'metabase.SESSION_ID=' + session_id}
+
+    databases = requests.get(url, headers=header)
+
+    for database in databases.json():
+        if database['name'] == database_name:
+            return database['id']
+
+    return None
+
+
+def get_table_id(database_id, table_name):
+    url = MB_URL + '/database'
+    params = {'include_tables': 'true'}
+
+    session_id = login_metabase()
+    header = {'Cookie': 'metabase.SESSION_ID=' + session_id}
+
+    databases = requests.get(url, headers=header, params=params)
+
+    for database in databases.json():
+        if database['id'] == database_id:
+            for table in database['tables']:
+                if table['name'] == table_name:
+                    return table['id']
+
+    return None
+
+def sync_schema(database_id):
+    url = MB_URL + '/database/{}/sync_schema'.format(database_id)
+
+    session_id = login_metabase()
+    header = {'Cookie': 'metabase.SESSION_ID=' + session_id}
+    response = requests.post(url, headers=header)
+    if(response.status_code == 200):
+        time.sleep(2)
+        return True
+    return False
