@@ -23,19 +23,10 @@ categories: DEV
 
 ## Documento de Arquitetura
 
-Sumário
-----------------
 
-* 1 . [Introdução](#1-introdução)
-    * 1.1. [Finalidade](#11-finalidade)
-    * 1.2. [Escopo](#12-escopo)
-    * 1.3. [Definições, acrônimos e abreviações](#13-definições-acrônimos-e-abreviações)
-    * 1.4. [Referências](#14-referências)
-    * 1.5. [Visão Geral](#15-visão-geral)
+* * *
 
-* 2 . [Representação da Arquitetura](#2-representação-da-arquitetura)
-   * 2.1. [Representação do padrão de Arquitetura MVT](#21-padrão-de-arquitetura-mvt)
-   * 2.2. [Representação da Arquitetura de Microserviços](#22-arquitetura-de-microserviços)   
+## 1\. Introdução
 
 * 3 . [Metas e Restrições da Arquitetura](#3-metas-e-restrições-da-arquitetura)
 
@@ -46,9 +37,6 @@ Sumário
 
 * 5 . [Visão de Dados](#5-visão-de-dados)
 
-* * *
-
-## 1\. Introdução
 
 * * *
 
@@ -229,6 +217,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 5.5 Cross Data
 
-<p align="middle"><img src="https://i.imgur.com/exqiVJS.jpg"></p>
+
+<p align="middle"><img src="https://i.imgur.com/hKkerGx.jpg"></p>
 
 
