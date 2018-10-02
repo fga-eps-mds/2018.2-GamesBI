@@ -12,8 +12,16 @@ Before anything, you need to install [docker](https://docs.docker.com/install/) 
 # Starting the application
 
 It's as easy as:
+
+Running migrations
 ```bash
-$ (sudo) docker-compose up
+$ make migrations
+$ make migrate
+```
+And then
+
+```bash
+$ make up
 ```
 
 And after you download all the necessary dependencies the application will be running locally.
@@ -21,7 +29,7 @@ And after you download all the necessary dependencies the application will be ru
 You can also build your docker container without executing it with:
 
 ```bash
-$ (sudo) docker-compose build
+$ make build
 ```
 
 And you can execute without showing any logs with:
@@ -33,7 +41,7 @@ $ (sudo) docker-compose up -d
 
 If you want to execute some django commands inside your docker container, use:
 ```bash
-$ (sudo) docker-compose run web [command]
+$ (sudo) docker-compose exec web [command]
 ```
 
 These commands can be:
