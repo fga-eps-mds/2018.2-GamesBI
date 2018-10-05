@@ -134,7 +134,7 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 *   O projeto possui as seguintes restrições:
 *   Framework Django 2.1 com Python 3.6
 *   API's REST
-*   ReactJS 
+*   ReactJS
 
 ## 4\. Arquitetura dos Serviços e visão de Implementação
 
@@ -199,25 +199,139 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 * * *
 
-5.1 IGDB Data
+5.1.1 IGDB Data
 
   <p align="middle"><img src="https://i.imgur.com/xzeykEY.jpg"></p>
 
-5.2 Steam Data
+5.1.2 Dicionacio de dados IGDB Data
+
+  ##### Entidade: Game
+
+  |Atributo|Dominio|Descrição|
+  | --- | --- | --- |
+  |id_igdb|int|Chave do jogo na IGDB|
+  |name|string|Nome do jogo|
+  |hypes|int|Quantidade de procuras naquele jogo antes do lançamento|
+  |popularity|double|Popularidade do jogo|
+  |critics_rating|double|Avaliação do jogo|
+  |time_to_beat|int|Horas jogadas|
+  |genres|Genre|Objeto genres|
+
+  ##### Entidade: Genre
+  |Atributo|Dominio|Descrição|
+  | --- | --- | --- |
+  |id_igdb|int|Chave do jogo na IGDB|
+  |name|string|Nome do jogo|
+
+
+5.2.1 Steam Data
 
    <p align="middle"><img src="https://i.imgur.com/um3A0Kw.jpg"></p>
 
-5.3 Twitch Data
+5.2.2 Dicionacio de dados Steam Data
+
+ ##### Entidade: Game
+
+ |Atributo|Dominio|Descrição|
+ | --- | --- | --- |
+ |id_steam |int|Chave do jogo na Steam|
+ |name|string|Nome do jogo|
+ |positive_reviews_steam|int|Valor das avaliações positivas|
+ |negative_reviews_steam|int|Valor das avaliações negativas|
+ |owners|int|Média de quantidade de donos daquele jogo|
+ |avarage_forever|int|Media da avaliação do jogo|
+ |avarage_2weeks|int|Media da avaliação do jogo das ultimas duas semanas|
+ |price|int|Preço do jogo|
+ |languages|string|Linguages do jogo|
+
+
+5.3.1 Twitch Data
 
   <p align="middle"><img src="https://i.imgur.com/Zqpc89u.jpeg"></p>
 
-5.4 Youtube Data
+5.3.2 Dicionacio de dados Twitch Data
+
+  ##### Entidade: Game
+
+  |Atributo|Dominio|Descrição|
+  | --- | --- | --- |
+  |game_name|string|Nome do jogo|
+  |game_id|int|Chave do jogo na IGDB|
+  |total_views|int|Total de visualizações do jogo|
+
+  ##### Entidade: User
+  |Atributo|Dominio|Descrição|
+  | --- | --- | --- |
+  |user_id|int|Chave do jogo na Twitch|
+  |display_name|string|Nome do usuário|
+  |type|string|Tipo de video|
+  |view_count|int|Quantidade de visualizações|
+  |follows|int|Quantidade de seguidores|
+
+  ##### Entidade: Stream
+  |Atributo|Dominio|Descrição|
+  | --- | --- | --- |
+  |id|int|Chave da Stream|
+  |language|string|Linguagens da stream|
+  |started_at|date|Momento que inicia a stream|
+  |type|string|Tipo de video|
+  |game|Game|Objeto Game|
+  |user|User|Objeto User|
+
+5.4.1 Youtube Data
 
   <p align="middle"><img src="https://i.imgur.com/SD1MvBq.jpg"></p>
 
-5.5 Cross Data
+5.4.2 Dicionacio de dados Youtube Data
+
+  ##### Entidade: YoutubeSearch
+
+  |Atributo|Dominio|Descrição|
+  | --- | --- | --- |
+  |id|string|Chave do video|
+  |name|string|Nome do jogo|
+  |count_views|int|Quantidade de visualizações|
+  |count_likes|int|Quantidade de likes|
+  |count_dislikes|int|Quantidade de dislikes|
+  |count_comments|int|Quantidade de comentarios|
+  |count_favorites|int|Quantidade de vezes que foi marcado como favorito|
+
+
+5.5.1 Cross Data
 
 
 <p align="middle"><img src="https://i.imgur.com/hKkerGx.jpg"></p>
 
+5.5.2 Dicionacio de dados Youtube Data
 
+  ##### Entidade: GeneralData
+
+  |Atributo|Dominio|Descrição|
+  | --- | --- | --- |
+  |id_igdb|int|Chave do jogo na IGdB|
+  |id_steam |int|Chave do jogo na Steam|
+  |id_twitch|int|Chave da Stream|
+  |name|string|Nome do jogo|
+  |time_to_beat|int|Horas jogadas|
+  |hypes|int|Quantidade de procuras naquele jogo antes do lançamento|
+  |popularity|double|Popularidade do jogo|
+  |critics_rating|double|Avaliação do jogo|
+  |genres|string|Genero do jogo|
+  |positive_reviews_steam|int|Valor das avaliações positivas|
+  |negative_reviews_steam|int|Valor das avaliações negativas|
+  |owners|int|Média de quantidade de donos daquele jogo|
+  |avarage_forever|int|Media da avaliação do jogo|
+  |avarage_2weeks|int|Media da avaliação do jogo das ultimas duas semanas|
+  |price|int|Preço do jogo|
+  |languages_game|string|Linguages do jogo|
+  |youtube_count_views|int|Quantidade de visualizações|
+  |count_likes|int|Quantidade de likes|
+  |count_dislikes|int|Quantidade de dislikes|
+  |count_comments|int|Quantidade de comentarios|
+  |twitch_user_view_count|int|Quantidade de views|
+  |follows|int|Quantidade de de seguidores|
+  |language_stream|string|Linguagens da stream|
+  |started_at|date|Momento que inicia a stream|
+  |type|string|Tipo de video|
+  |twitch_count_views|int|Quantidade de visualizações|
+  |date|DataField|Data|
