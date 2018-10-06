@@ -223,6 +223,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |id_igdb|int|Chave do jogo na IGDB|
   |name|string|Nome do jogo|
 
+  * Dados vindos da API IGDB
 
 5.2.1 Steam Data
 
@@ -244,6 +245,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
  |price|int|Preço do jogo|
  |languages|string|Linguages do jogo|
 
+ * Dados vindos da API Steam
 
 5.3.1 Twitch Data
 
@@ -278,6 +280,8 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |game|Game|Objeto Game|
   |user|User|Objeto User|
 
+  * Dados vindos da API Twitch
+
 5.4.1 Youtube Data
 
   <p align="middle"><img src="https://i.imgur.com/SD1MvBq.jpg"></p>
@@ -296,6 +300,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |count_comments|int|Quantidade de comentarios|
   |count_favorites|int|Quantidade de vezes que foi marcado como favorito|
 
+  * Dados vindos da API Youtube
 
 5.5.1 Cross Data
 
@@ -335,3 +340,5 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |type|string|Tipo de video|
   |twitch_count_views|int|Quantidade de visualizações|
   |date|DataField|Data|
+
+  * Dados vindos das API's internas (Steam, Twitch e Youtube) do projeto
