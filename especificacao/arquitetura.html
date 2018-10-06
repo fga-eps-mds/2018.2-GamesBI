@@ -458,29 +458,477 @@
 
                 <hr />
 
-                <p>5.1 IGDB Data</p>
 
+                <p>5.1.1 IGDB Data</p>
                 <p align="middle"><img src="https://i.imgur.com/xzeykEY.jpg"></p>
 
-                <p>5.2 Steam Data</p>
+                <p>5.1.2 Dicionacio de dados IGDB Data</p>
+
+                <p>Entidade: Game</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Atributo</th>
+                      <th>Dominio</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>id_igdb</td>
+                      <td>int</td>
+                      <td>Chave do jogo na IGDB</td>
+                    </tr>
+                    <tr>
+                      <td>name</td>
+                      <td>string</td>
+                      <td>Nome do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>hypes</td>
+                      <td>int</td>
+                      <td>Quantidade de procuras naquele jogo antes do lançamento</td>
+                    </tr>
+                    <tr>
+                      <td>popularity</td>
+                      <td>double</td>
+                      <td>Popularidade do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>critics_rating</td>
+                      <td>double</td>
+                      <td>Avaliação do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>time_to_beat</td>
+                      <td>int</td>
+                      <td>Horas jogadas</td>
+                    </tr>
+                    <tr>
+                      <td>genres</td>
+                      <td>Genre</td>
+                      <td>Objeto genres</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Entidade: Genre</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Atributo</th>
+                      <th>Dominio</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>id_igdb</td>
+                      <td>int</td>
+                      <td>Chave do jogo na IGDB</td>
+                    </tr>
+                    <tr>
+                      <td>name</td>
+                      <td>string</td>
+                      <td>Nome do jogo</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>5.2.1 Steam Data</p>
 
                 <p align="middle"><img src="https://i.imgur.com/um3A0Kw.jpg"></p>
 
-                <p>5.3 Twitch Data</p>
+                <p>5.2.2 Dicionacio de dados Steam Data</p>
+
+                <p>Entidade: Game</p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Atributo</th>
+                      <th>Dominio</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>id_steam</td>
+                      <td>int</td>
+                      <td>Chave do jogo na Steam</td>
+                    </tr>
+                    <tr>
+                      <td>name</td>
+                      <td>string</td>
+                      <td>Nome do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>positive_reviews_steam</td>
+                      <td>int</td>
+                      <td>Valor das avaliações positivas</td>
+                    </tr>
+                    <tr>
+                      <td>negative_reviews_steam</td>
+                      <td>int</td>
+                      <td>Valor das avaliações negativas</td>
+                    </tr>
+                    <tr>
+                      <td>owners</td>
+                      <td>int</td>
+                      <td>Média de quantidade de donos daquele jogo</td>
+                    </tr>
+                    <tr>
+                      <td>avarage_forever</td>
+                      <td>int</td>
+                      <td>Media da avaliação do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>avarage_2weeks</td>
+                      <td>int</td>
+                      <td>Media da avaliação do jogo das ultimas duas semanas</td>
+                    </tr>
+                    <tr>
+                      <td>price</td>
+                      <td>int</td>
+                      <td>Preço do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>languages</td>
+                      <td>string</td>
+                      <td>Linguages do jogo</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+                <p>5.3.1 Twitch Data</p>
 
                 <p align="middle"><img src="https://i.imgur.com/Zqpc89u.jpeg"></p>
 
-                <p>5.4 Youtube Data</p>
+                <p>5.3.2 Dicionacio de dados Twitch Data</p>
+
+                <p>Entidade: Game</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Atributo</th>
+                      <th>Dominio</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>game_name</td>
+                      <td>string</td>
+                      <td>Nome do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>game_id</td>
+                      <td>int</td>
+                      <td>Chave do jogo na IGDB</td>
+                    </tr>
+                    <tr>
+                      <td>total_views</td>
+                      <td>int</td>
+                      <td>Total de visualizações do jogo</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Entidade: User</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Atributo</th>
+                      <th>Dominio</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>user_id</td>
+                      <td>int</td>
+                      <td>Chave do jogo na Twitch</td>
+                    </tr>
+                    <tr>
+                      <td>display_name</td>
+                      <td>string</td>
+                      <td>Nome do usuário</td>
+                    </tr>
+                    <tr>
+                      <td>type</td>
+                      <td>string</td>
+                      <td>Tipo de video</td>
+                    </tr>
+                    <tr>
+                      <td>view_count</td>
+                      <td>int</td>
+                      <td>Quantidade de visualizações</td>
+                    </tr>
+                    <tr>
+                      <td>follows</td>
+                      <td>int</td>
+                      <td>Quantidade de seguidores</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>Entidade: Stream</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Atributo</th>
+                      <th>Dominio</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>id</td>
+                      <td>int</td>
+                      <td>Chave da Stream</td>
+                    </tr>
+                    <tr>
+                      <td>language</td>
+                      <td>string</td>
+                      <td>Linguagens da stream</td>
+                    </tr>
+                    <tr>
+                      <td>started_at</td>
+                      <td>date</td>
+                      <td>Momento que inicia a stream</td>
+                    </tr>
+                    <tr>
+                      <td>type</td>
+                      <td>string</td>
+                      <td>Tipo de video</td>
+                    </tr>
+                    <tr>
+                      <td>game</td>
+                      <td>Game</td>
+                      <td>Objeto Game</td>
+                    </tr>
+                    <tr>
+                      <td>user</td>
+                      <td>User</td>
+                      <td>Objeto User</td>
+                    </tr>
+                  </tbody>
+
+                </table>
+
+                <p>5.4.1 Youtube Data</p>
 
                 <p align="middle"><img src="https://i.imgur.com/SD1MvBq.jpg"></p>
 
-                <p>5.5 Cross Data</p>
+                <p>5.4.2 Dicionacio de dados Youtube Data</p>
+
+                <p>Entidade: YoutubeSearch</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Atributo</th>
+                      <th>Dominio</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>id</td>
+                      <td>string</td>
+                      <td>Chave do video</td>
+                    </tr>
+                    <tr>
+                      <td>name</td>
+                      <td>string</td>
+                      <td>Nome do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>count_views</td>
+                      <td>int</td>
+                      <td>Quantidade de visualizações</td>
+                    </tr>
+                    <tr>
+                      <td>count_likes</td>
+                      <td>int</td>
+                      <td>Quantidade de likes</td>
+                    </tr>
+                    <tr>
+                      <td>count_dislikes</td>
+                      <td>int</td>
+                      <td>Quantidade de dislikes</td>
+                    </tr>
+                    <tr>
+                      <td>count_comments</td>
+                      <td>int</td>
+                      <td>Quantidade de comentarios</td>
+                    </tr>
+                    <tr>
+                      <td>count_favorites</td>
+                      <td>int</td>
+                      <td>Quantidade de vezes que foi marcado como favorito</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>5.5.1 Cross Data</p>
 
                 <p align="middle"><img src="https://i.imgur.com/hKkerGx.jpg"></p>
+
+                <p>5.5.2 Dicionacio de dados Cross Data</p>
+
+                <p>Entidade: GeneralData</p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Atributo</th>
+                      <th>Dominio</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>id_igdb</td>
+                      <td>int</td>
+                      <td>Chave do jogo na IGdB</td>
+                    </tr>
+                    <tr>
+                      <td>id_steam</td>
+                      <td>int</td>
+                      <td>Chave do jogo na Steam</td>
+                    </tr>
+                    <tr>
+                      <td>id_twitch</td>
+                      <td>int</td>
+                      <td>Chave da Stream</td>
+                    </tr>
+                    <tr>
+                      <td>name</td>
+                      <td>string</td>
+                      <td>Nome do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>time_to_beat</td>
+                      <td>int</td>
+                      <td>Horas jogadas</td>
+                    </tr>
+                    <tr>
+                      <td>hypes</td>
+                      <td>int</td>
+                      <td>Quantidade de procuras naquele jogo antes do lançamento</td>
+                    </tr>
+                    <tr>
+                      <td>popularity</td>
+                      <td>double</td>
+                      <td>Popularidade do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>critics_rating</td>
+                      <td>double</td>
+                      <td>Avaliação do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>genres</td>
+                      <td>string</td>
+                      <td>Genero do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>positive_reviews_steam</td>
+                      <td>int</td>
+                      <td>Valor das avaliações positivas</td>
+                    </tr>
+                    <tr>
+                      <td>negative_reviews_steam</td>
+                      <td>int</td>
+                      <td>Valor das avaliações negativas</td>
+                    </tr>
+                    <tr>
+                      <td>owners</td>
+                      <td>int</td>
+                      <td>Média de quantidade de donos daquele jogo</td>
+                    </tr>
+                    <tr>
+                      <td>avarage_forever</td>
+                      <td>int</td>
+                      <td>Media da avaliação do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>avarage_2weeks</td>
+                      <td>int</td>
+                      <td>Media da avaliação do jogo das ultimas duas semanas</td>
+                    </tr>
+                    <tr>
+                      <td>price</td>
+                      <td>int</td>
+                      <td>Preço do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>languages_game</td>
+                      <td>string</td>
+                      <td>Linguages do jogo</td>
+                    </tr>
+                    <tr>
+                      <td>youtube_count_views</td>
+                      <td>int</td>
+                      <td>Quantidade de visualizações</td>
+                    </tr>
+                    <tr>
+                      <td>count_likes</td>
+                      <td>int</td>
+                      <td>Quantidade de likes</td>
+                    </tr>
+                    <tr>
+                      <td>count_dislikes</td>
+                      <td>int</td>
+                      <td>Quantidade de dislikes</td>
+                    </tr>
+                    <tr>
+                      <td>count_comments</td>
+                      <td>int</td>
+                      <td>Quantidade de comentarios</td>
+                    </tr>
+                    <tr>
+                      <td>twitch_user_view_count</td>
+                      <td>int</td>
+                      <td>Quantidade de views</td>
+                    </tr>
+                    <tr>
+                      <td>follows</td>
+                      <td>int</td>
+                      <td>Quantidade de de seguidores</td>
+                    </tr>
+                    <tr>
+                      <td>language_stream</td>
+                      <td>string</td>
+                      <td>Linguagens da stream</td>
+                    </tr>
+                    <tr>
+                      <td>started_at</td>
+                      <td>date</td>
+                      <td>Momento que inicia a stream</td>
+                    </tr>
+                    <tr>
+                      <td>type</td>
+                      <td>string</td>
+                      <td>Tipo de video</td>
+                    </tr>
+                    <tr>
+                      <td>twitch_count_views</td>
+                      <td>int</td>
+                      <td>Quantidade de visualizações</td>
+                    </tr>
+                    <tr>
+                      <td>date</td>
+                      <td>DataField</td>
+                      <td>Data</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
               </div>
 
             </div>
-
 
             <br /><br />
 
