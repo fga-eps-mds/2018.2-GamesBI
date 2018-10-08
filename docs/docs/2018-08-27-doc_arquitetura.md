@@ -8,7 +8,7 @@ categories: DEV
 ## Histórico de Revisões
 
 |Data|Versão|Descrição|Autor|
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 |28/08/2018|0.1|Criação da estrutura do documento|Ingrid Soares|
 |28/08/2018|0.1|Adição de tópicos|Bruno Rodrigues Santos|
 |29/08/2018|0.1|Adição de arquitetura MVT|Alan Lima|
@@ -20,6 +20,8 @@ categories: DEV
 |23/09/2018|1.2|Definição do padrão de arquitetura REST|Alan Lima|
 |25/09/2018|1.2|Atualização do MER do Youtube e da Twitch |Marco Antônio Lima|
 |26/09/2018|1.2|Atualização do MER do Crossdata |Ingrid, Lucas|
+|05/10/2018|1.3|Criação do dicionário de dados |Lucas|
+|06/10/2018|1.3|Acrescentar relevância ao dicionário de dados |Ingrid, Lucas|
 
 ## Documento de Arquitetura
 
@@ -134,7 +136,7 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 *   O projeto possui as seguintes restrições:
 *   Framework Django 2.1 com Python 3.6
 *   API's REST
-*   ReactJS 
+*   ReactJS
 
 ## 4\. Arquitetura dos Serviços e visão de Implementação
 
@@ -199,25 +201,146 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 * * *
 
-5.1 IGDB Data
+5.1.1 IGDB Data
 
   <p align="middle"><img src="https://i.imgur.com/xzeykEY.jpg"></p>
 
-5.2 Steam Data
+5.1.2 Dicionário de dados IGDB Data
+
+  ##### Entidade: Game
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- | --- | --- |
+  |id_igdb|int|Chave do jogo na IGDB|Identificar os jogos|
+  |name|string|Nome do jogo|Diferenciar quais jogos estao contidos no banco|
+  |hypes|int|Quantidade de procuras naquele jogo antes do lançamento|Descobrir a popularidade do jogo|
+  |popularity|double|Popularidade do jogo|Mostrar a relevância|
+  |critics_rating|double|Avaliação do jogo|Obter avaliação sobre um jogo|
+  |time_to_beat|int|Horas jogadas|Mostrar o tempo de jogo para definir a popularidade|
+  |genres|Genre|Objeto genres|Categorizar os jogos|
+
+  ##### Entidade: Genre
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- | --- | --- | --- |
+  |id_igdb|int|Chave do jogo na IGDB|Identificar os jogos|
+  |name|string|Nome do jogo|Diferenciar quais jogos estao contidos no banco|
+
+  * Dados vindos da API IGDB
+
+5.2.1 Steam Data
 
    <p align="middle"><img src="https://i.imgur.com/um3A0Kw.jpg"></p>
 
-5.3 Twitch Data
+5.2.2 Dicionário de dados Steam Data
+
+ ##### Entidade: Game
+
+ |Atributo|Dominio|Descrição|Relevância|
+ | --- | --- | --- | --- |
+ |id_steam |int|Chave do jogo na Steam|Identificador da Steam|
+ |name|string|Nome do jogo|Relacionar jogos com os outros dados do banco|
+ |positive_reviews_steam|int|Valor das avaliações positivas|Avaliações positivas para feedback do jogo|
+ |negative_reviews_steam|int|Valor das avaliações negativas|Avaliações negativas para feedback do jogo|
+ |owners|int|Média de quantidade de donos daquele jogo|Descobrir popularidade|
+ |avarage_forever|int|Media da avaliação do jogo|Receber feedback do jogo em um período geral|
+ |avarage_2weeks|int|Media da avaliação do jogo das ultimas duas semanas|Receber feedback do jogo em duas semanas|
+ |price|int|Preço do jogo|Obter preço|
+ |languages|string|Linguagens do jogo|Locais mais jogados|
+
+ * Dados vindos da API Steam
+
+5.3.1 Twitch Data
 
   <p align="middle"><img src="https://i.imgur.com/Zqpc89u.jpeg"></p>
 
-5.4 Youtube Data
+5.3.2 Dicionário de dados Twitch Data
+
+  ##### Entidade: Game
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |game_name|string|Nome do jogo|Relacionar jogos com os outros dados do banco|
+  |game_id|int|Chave do jogo na IGDB|Identificar os jogos|
+  |total_views|int|Total de visualizações do jogo|Popularidade do jogo|
+
+  ##### Entidade: User
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |user_id|int|Chave do jogo na Twitch|Identificar os usuários|
+  |display_name|string|Nome do usuário|--|
+  |type|string|Tipo de video|Categorizar os vídeos|
+  |view_count|int|Quantidade de visualizações|Popularidade do jogo|
+  |follows|int|Quantidade de seguidores|--|
+
+  ##### Entidade: Stream
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Chave da Stream|Identificar os jogos|
+  |language|string|Linguagens da stream|Locais mais jogados|
+  |started_at|date|Momento que inicia a stream|Descobrir período mais jogado|
+  |type|string|Tipo de video|Categorizar os vídeos|
+  |game|Game|Objeto Game|--|
+  |user|User|Objeto User|--|
+
+  * Dados vindos da API Twitch
+
+5.4.1 Youtube Data
 
   <p align="middle"><img src="https://i.imgur.com/SD1MvBq.jpg"></p>
 
-5.5 Cross Data
+5.4.2 Dicionário de dados Youtube Data
+
+  ##### Entidade: YoutubeSearch
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|string|Chave do video|Identificar os vídeos|
+  |name|string|Nome do jogo|Relacionar jogos com os outros dados do banco|
+  |count_views|int|Quantidade de visualizações|Popularidade do jogo|
+  |count_likes|int|Quantidade de likes|Popularidade do jogo|
+  |count_dislikes|int|Quantidade de dislikes|Popularidade do jogo|
+  |count_comments|int|Quantidade de comentarios|Popularidade do jogo|
+  |count_favorites|int|Quantidade de vezes que foi marcado como favorito|Popularidade do jogo|
+
+  * Dados vindos da API Youtube
+
+5.5.1 Cross Data
 
 
 <p align="middle"><img src="https://i.imgur.com/hKkerGx.jpg"></p>
 
+5.5.2 Dicionário de dados Cross Data
 
+  ##### Entidade: GeneralData
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id_igdb|int|Chave do jogo na IGdB|Identificar os jogos|
+  |id_steam |int|Chave do jogo na Steam|Identificador da Steam|
+  |id_twitch|int|Chave da Twitch|Identificar os jogos|
+  |name|string|Nome do jogo|Relacionar jogos com os outros dados do banco|
+  |time_to_beat|int|Horas jogadas|Mostrar o tempo de jogo para definir a popularidade|
+  |hypes|int|Quantidade de procuras naquele jogo antes do lançamento|Descobrir a popularidade do jogo|
+  |popularity|double|Popularidade do jogo|Mostrar a relevância|
+  |critics_rating|double|Avaliação do jogo|	Obter avaliação sobre um jogo|
+  |genres|string|Genero do jogo|Categorizar os jogos|
+  |positive_reviews_steam|int|Valor das avaliações positivas|Avaliações positivas para feedback do jogo|
+  |negative_reviews_steam|int|Valor das avaliações negativas|Avaliações negativas para feedback do jogo|
+  |owners|int|Média de quantidade de donos daquele jogo|Descobrir popularidade|
+  |avarage_forever|int|Media da avaliação do jogo|Receber feedback do jogo em um período geral|
+  |avarage_2weeks|int|Media da avaliação do jogo das ultimas duas semanas|Receber feedback do jogo em duas semanas|
+  |price|int|Preço do jogo|Obter preço|
+  |languages_game|string|Linguages do jogo|Locais mais jogados|
+  |youtube_count_views|int|Quantidade de visualizações|Popularidade do jogo|
+  |count_likes|int|Quantidade de likes|Popularidade do jogo|
+  |count_dislikes|int|Quantidade de dislikes|Popularidade do jogo|
+  |count_comments|int|Quantidade de comentarios|Popularidade do jogo|
+  |twitch_user_view_count|int|Quantidade de views|Popularidade do jogo|
+  |follows|int|Quantidade de de seguidores|--|
+  |language_stream|string|Linguagens da stream|Locais mais jogados|
+  |started_at|date|Momento que inicia a stream|Descobrir período mais jogado|
+  |type|string|Tipo de video|Categorizar o vídeo|
+  |twitch_count_views|int|Quantidade de visualizações|Popularidade do jogo|
+  |date|DataField|Data|--|
+
+  * Dados vindos das API's internas (Steam, Twitch e Youtube) do projeto
