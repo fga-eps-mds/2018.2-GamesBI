@@ -1,12 +1,6 @@
 ---
-name: Custom issue template
-about: Describe this issue template's purpose here.
-
----
-
----
-name: Issue Template
-about: Issue template for to standardize repo issues
+Template de issues GamesBI
+Sobre: Modelo de proposta de template aqui.
 
 ---
 
