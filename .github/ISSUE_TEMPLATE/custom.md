@@ -1,6 +1,6 @@
 ---
-Template de issues GamesBI
-Sobre: Modelo de proposta de template aqui.
+name: Template de issues GamesBI
+about: Modelo de proposta de template aqui.
 
 ---
 
