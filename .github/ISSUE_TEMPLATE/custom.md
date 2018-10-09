@@ -10,16 +10,16 @@ about: Issue template for to standardize repo issues
 
 ---
 
-## Issue Title
+## Titulo da Issue
 
-## Description
+## Descrição
 <!--- Describe the reason of the issue, what is the problem you want to solve, the bug you want to fix, etc -->
 
-## Tasks
-- [ ] task 1
-- [ ] task 2
+## Tarefas
+- [ ] tarefa 1
+- [ ] tarefa 2
 
-## Acceptance criteria
+## Critérios de aceitação
 <!--- describe what needs to be done so this issue can be closed -->
 
-## How this will benefit the project?
+## Como isso vai beneficiar o projeto?
