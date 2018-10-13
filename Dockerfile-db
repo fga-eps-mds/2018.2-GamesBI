@@ -1,0 +1,2 @@
+FROM mongo:latest
+ADD create_ddbb.js /docker-entrypoint-initdb.d/

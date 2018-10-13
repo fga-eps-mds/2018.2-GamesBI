@@ -1,0 +1,6 @@
+[run]
+omit =
+    */django/utils/autoreload.py
+    */*/apps.py
+    */wsgi.py
+    source = django

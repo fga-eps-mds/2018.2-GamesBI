@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'CrossData.importdata',
+    'rest_framework',
+    'CrossData.metabase'
 ]
 
 MIDDLEWARE = [
@@ -49,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'GameColorBI.urls'
+ROOT_URLCONF = 'CrossData.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'GameColorBI.wsgi.application'
+WSGI_APPLICATION = 'CrossData.wsgi.application'
 
 
 # Database
