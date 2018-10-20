@@ -1,5 +1,5 @@
 ---
-title: Sprint 4
+title: Sprint 3
 layout: post
 categories: SPRINT
 ---
@@ -30,12 +30,12 @@ Planning
 |-:|:-|
 |Augusto "augustovilarins" | Engenheiro de produto|
 |Bruno "BRZangado" | Arquiteto|
-|Emanoel "Nukdown" | Scrum Master|
+|Emanoel "Nukdown" | Desenvolvedor|
 |Felipe "felipe72" | DevOps|  
 |Alan "alanrslima" | Desenvolvedor|
 |André "Andre-Eduardo" | Desenvolvedor|
-|Arthur "arthurarp" | Desenvolvedor|
-|Ingrid "ingrdst" | Desenvolvedor|
+|Arthur "arthurarp" | Tracker|
+|Ingrid "ingrdst" | Scrum Master|
 |Marco "markinlimac" | Desenvolvedor|
 
 ## Quadro de conhecimento inicial da sprint
