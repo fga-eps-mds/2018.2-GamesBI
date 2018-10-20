@@ -22,23 +22,33 @@ categories: DEV
 |26/09/2018|1.2|Atualização do MER do Crossdata |Ingrid, Lucas|
 |05/10/2018|1.3|Criação do dicionário de dados |Lucas|
 |06/10/2018|1.3|Acrescentar relevância ao dicionário de dados |Ingrid, Lucas|
+|20/10/2018|2.0|Nova estrutura de dados criada |Alan, Bruno|
 
 ## Documento de Arquitetura
 
 
 * * *
 
-## 1\. Introdução
-
+## Sumário
+* 1 . [Introducao](#1-introducao)
+  * 1.1. [Finalidade](#11-finalidade)
+  * 1.2. [Escopo](#12-escopo)
+  * 1.3. [Definições, acrônimos e abreviações](#13-definicoes,-acronimos-e-abreviacoes)
+  * 1.4. [Referências](#14-referencias)
+  * 1.5. [Visão Geral](#15-visao-geral)
+* 2 . [Representação da Arquitetura](#2-representacao-da-arquitetura)
+  * 2.1. [Padrão de arquitetura REST](#21-padrap-de-arquitetura-rest)
+  * 2.2. [Arquitetura de microserviços](#22-arquitetura-de-microservicos)
+  * 2.3 [Padrão de arquitetura do REACT](#23-padrao-de-arquitetura-do-react)
 * 3 . [Metas e Restrições da Arquitetura](#3-metas-e-restrições-da-arquitetura)
-
+  * 3.1. [Metas](#31-metas)
+  * 3.2. [Restrições da arquitetura](#32-restricoes-da-arquitetura)
 * 4 . [Arquitetura dos Serviços e visão de Implementação](#4-arquitetura-dos-serviços-e-visão-de-implementação)
    * 4.1. [Visão Geral](#41-visão-geral)
    * 4.2. [Microserviços e Camadas](#42-microserviços-e-camadas)
    * 4.3. [Diagrama de pacotes](#43-diagrama-de-pacotes)
 
 * 5 . [Visão de Dados](#5-visão-de-dados)
-
 
 * * *
 
@@ -135,6 +145,7 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 *   O projeto possui as seguintes restrições:
 *   Framework Django 2.1 com Python 3.6
+*   Framework Flask
 *   API's REST
 *   ReactJS
 
@@ -144,7 +155,7 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 ### 4.1 Visão Geral
 
-![](https://i.imgur.com/faDwAzt.jpg)
+![](https://i.imgur.com/C41CCh4.jpg)
 
 ### 4.2 Microserviços e camadas
 
@@ -160,32 +171,63 @@ A arquitetura e sua versão atual está particionada em:
 
 *   3 - Cross Data
 
-    Fronteira responsável por receber os dados das API's da IGDB Service, Steam Service, Twitch Service, Youtube Service para mescla-los e entao persistir apenas uma tabela no banco de dados, para posteriormente fornecer esses dados para o Metabase.
+    Fronteira responsável por receber os dados da API Importer Service para mescla-los e entao persistir apenas uma tabela no banco de dados, para posteriormente fornecer esses dados para o Metabase.
 
-*   4 - IGDB Data
+*   4 - Importer Service
 
-    Fronteira responsável pela listagem dos jogos mais populares, será responsável por repassar a informação para os outros microserviços a respeito de quais jogos deveráo ser recuperados em suas respectivas fontes de dados.
+    Fronteira responsável pela busca de dados nas API's externas, irá mesclar e enviar via POST cada jogo individualmente para o crossData.
 
-*   5 - Steam Data
+    O Importer Service se caracteriza com o ETL do projeto GamesBI. Este módulo é responsável por extrair todos os dados os dados das API's externas, irá tratar e mesclar estes dados e manda-los via POST para o crossData.
 
-    Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e buscará por eles na API e oferecerá endpoint GET para recuperar informações por meio de requisições.
+* Dicionário de dados que será enviado:
 
-*   6 - Twitch Data
+```
+{
+  name: "",
+  languages: "",
+  genre: "",
+  count_videos: 0,
+  count_views: 0,
+  count_likes: 0,
+  count_dislikes: 0,
+  count_comments: 0,
+  positive_reviews_steam: 0,
+  negative_reviews_steam: 0,
+  owners: 0,
+  average_forever: 0,
+  average_2weeks: 0,
+  price: 0,
+  total_views: 0
+  streams:[
+    {
+      language: "",
+      started_at: "",
+      type: "",
+      viewer_count: 0
+    }
+  ]
+}
+```
 
-    Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e buscará por eles na respectiva API e disponibilizará informações por meio de requisições do tipo GET.
 
-*   7 - Youtube Data
-
-    Fronteira responsavel pela busca de dados na API do Youtube. Receberá os parâmetros de busca e buscará por eles na respectiva API e oferecerá endpoint GET para recuperar informações por meio de requisições.
 
 APIs Externas: Diferentes fontes de dados acerca de jogos digitais
 
 *   SteamSpy
 *   Twitch API
-*   IGDB API
 *   Youtube API
 
+<!-- CRIAR NOVO DIAGRAMA DE PACOTES  -->
 ### 4.3 Diagrama de pacotes
+
+<p align="middle"><img src="https://i.imgur.com/NgYCdkO.jpg"></p>
+
+*   Acima é demonstrada a implementação geral dos pacotes do Importer service respectivos microserviços.</x>
+
+Dentro de Aplicação Flask, os pacotes são representados pelos apps.
+
+*   resources O app importdata é responsável pela comunicação com as API's e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e envio via POST.
+
 
 <p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
 
@@ -201,146 +243,71 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 * * *
 
-5.1.1 IGDB Data
+5.1.1 Cross Data
 
-  <p align="middle"><img src="https://i.imgur.com/xzeykEY.jpg"></p>
 
-5.1.2 Dicionário de dados IGDB Data
+<p align="middle"><img src="https://i.imgur.com/vuxErRA.jpg"></p>
 
-  ##### Entidade: Game
-
-  |Atributo|Dominio|Descrição|Relevância|
-  | --- | --- | --- | --- | --- | --- |
-  |id_igdb|int|Chave do jogo na IGDB|Identificar os jogos|
-  |name|string|Nome do jogo|Diferenciar quais jogos estao contidos no banco|
-  |hypes|int|Quantidade de procuras naquele jogo antes do lançamento|Descobrir a popularidade do jogo|
-  |popularity|double|Popularidade do jogo|Mostrar a relevância|
-  |critics_rating|double|Avaliação do jogo|Obter avaliação sobre um jogo|
-  |time_to_beat|int|Horas jogadas|Mostrar o tempo de jogo para definir a popularidade|
-  |genres|Genre|Objeto genres|Categorizar os jogos|
-
-  ##### Entidade: Genre
-  |Atributo|Dominio|Descrição|Relevância|
-  | --- | --- | --- | --- | --- | --- | --- |
-  |id_igdb|int|Chave do jogo na IGDB|Identificar os jogos|
-  |name|string|Nome do jogo|Diferenciar quais jogos estao contidos no banco|
-
-  * Dados vindos da API IGDB
-
-5.2.1 Steam Data
-
-   <p align="middle"><img src="https://i.imgur.com/um3A0Kw.jpg"></p>
-
-5.2.2 Dicionário de dados Steam Data
-
- ##### Entidade: Game
-
- |Atributo|Dominio|Descrição|Relevância|
- | --- | --- | --- | --- |
- |id_steam |int|Chave do jogo na Steam|Identificador da Steam|
- |name|string|Nome do jogo|Relacionar jogos com os outros dados do banco|
- |positive_reviews_steam|int|Valor das avaliações positivas|Avaliações positivas para feedback do jogo|
- |negative_reviews_steam|int|Valor das avaliações negativas|Avaliações negativas para feedback do jogo|
- |owners|int|Média de quantidade de donos daquele jogo|Descobrir popularidade|
- |avarage_forever|int|Media da avaliação do jogo|Receber feedback do jogo em um período geral|
- |avarage_2weeks|int|Media da avaliação do jogo das ultimas duas semanas|Receber feedback do jogo em duas semanas|
- |price|int|Preço do jogo|Obter preço|
- |languages|string|Linguagens do jogo|Locais mais jogados|
-
- * Dados vindos da API Steam
-
-5.3.1 Twitch Data
-
-  <p align="middle"><img src="https://i.imgur.com/Zqpc89u.jpeg"></p>
-
-5.3.2 Dicionário de dados Twitch Data
+5.1.2 Dicionário de dados Cross Data
 
   ##### Entidade: Game
 
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
-  |game_name|string|Nome do jogo|Relacionar jogos com os outros dados do banco|
-  |game_id|int|Chave do jogo na IGDB|Identificar os jogos|
-  |total_views|int|Total de visualizações do jogo|Popularidade do jogo|
+  |id|int|Primary key da tabela|Identificar os dados|
+  |name|string|Nome do jogo|Categorizar os jogos|
+  |languages|string|Linguages do jogo|Locais mais jogados|
+  |genre|string|Genero do jogo|Categorizar os jogos|
 
-  ##### Entidade: User
-  |Atributo|Dominio|Descrição|Relevância|
-  | --- | --- | --- | --- |
-  |user_id|int|Chave do jogo na Twitch|Identificar os usuários|
-  |display_name|string|Nome do usuário|--|
-  |type|string|Tipo de video|Categorizar os vídeos|
-  |view_count|int|Quantidade de visualizações|Popularidade do jogo|
-  |follows|int|Quantidade de seguidores|--|
 
-  ##### Entidade: Stream
-  |Atributo|Dominio|Descrição|Relevância|
-  | --- | --- | --- | --- |
-  |id|int|Chave da Stream|Identificar os jogos|
-  |language|string|Linguagens da stream|Locais mais jogados|
-  |started_at|date|Momento que inicia a stream|Descobrir período mais jogado|
-  |type|string|Tipo de video|Categorizar os vídeos|
-  |game|Game|Objeto Game|--|
-  |user|User|Objeto User|--|
-
-  * Dados vindos da API Twitch
-
-5.4.1 Youtube Data
-
-  <p align="middle"><img src="https://i.imgur.com/SD1MvBq.jpg"></p>
-
-5.4.2 Dicionário de dados Youtube Data
-
-  ##### Entidade: YoutubeSearch
+  ##### Entidade: InfoYoutube
 
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
-  |id|string|Chave do video|Identificar os vídeos|
-  |name|string|Nome do jogo|Relacionar jogos com os outros dados do banco|
-  |count_views|int|Quantidade de visualizações|Popularidade do jogo|
+  |id|int|Primary key da tabela|Identificar os dados do youtube|
+  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |count_videos|int|Quantidade de videos relacionados do youtube|Controle de dados|  
+  |count_views|int|Quantidade de visualizações|Popularidade do jogo|  
   |count_likes|int|Quantidade de likes|Popularidade do jogo|
   |count_dislikes|int|Quantidade de dislikes|Popularidade do jogo|
   |count_comments|int|Quantidade de comentarios|Popularidade do jogo|
-  |count_favorites|int|Quantidade de vezes que foi marcado como favorito|Popularidade do jogo|
-
-  * Dados vindos da API Youtube
-
-5.5.1 Cross Data
+  |date|DataField|Data|--|
 
 
-<p align="middle"><img src="https://i.imgur.com/hKkerGx.jpg"></p>
-
-5.5.2 Dicionário de dados Cross Data
-
-  ##### Entidade: GeneralData
+  ##### Entidade: InfoSteam
 
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
-  |id_igdb|int|Chave do jogo na IGdB|Identificar os jogos|
-  |id_steam |int|Chave do jogo na Steam|Identificador da Steam|
-  |id_twitch|int|Chave da Twitch|Identificar os jogos|
-  |name|string|Nome do jogo|Relacionar jogos com os outros dados do banco|
-  |time_to_beat|int|Horas jogadas|Mostrar o tempo de jogo para definir a popularidade|
-  |hypes|int|Quantidade de procuras naquele jogo antes do lançamento|Descobrir a popularidade do jogo|
-  |popularity|double|Popularidade do jogo|Mostrar a relevância|
-  |critics_rating|double|Avaliação do jogo|	Obter avaliação sobre um jogo|
-  |genres|string|Genero do jogo|Categorizar os jogos|
+  |id|int|Primary key da tabela|Identificar os dados da steam|
+  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
   |positive_reviews_steam|int|Valor das avaliações positivas|Avaliações positivas para feedback do jogo|
   |negative_reviews_steam|int|Valor das avaliações negativas|Avaliações negativas para feedback do jogo|
   |owners|int|Média de quantidade de donos daquele jogo|Descobrir popularidade|
   |avarage_forever|int|Media da avaliação do jogo|Receber feedback do jogo em um período geral|
   |avarage_2weeks|int|Media da avaliação do jogo das ultimas duas semanas|Receber feedback do jogo em duas semanas|
   |price|int|Preço do jogo|Obter preço|
-  |languages_game|string|Linguages do jogo|Locais mais jogados|
-  |youtube_count_views|int|Quantidade de visualizações|Popularidade do jogo|
-  |count_likes|int|Quantidade de likes|Popularidade do jogo|
-  |count_dislikes|int|Quantidade de dislikes|Popularidade do jogo|
-  |count_comments|int|Quantidade de comentarios|Popularidade do jogo|
-  |twitch_user_view_count|int|Quantidade de views|Popularidade do jogo|
-  |follows|int|Quantidade de de seguidores|--|
-  |language_stream|string|Linguagens da stream|Locais mais jogados|
-  |started_at|date|Momento que inicia a stream|Descobrir período mais jogado|
-  |type|string|Tipo de video|Categorizar o vídeo|
-  |twitch_count_views|int|Quantidade de visualizações|Popularidade do jogo|
   |date|DataField|Data|--|
 
-  * Dados vindos das API's internas (Steam, Twitch e Youtube) do projeto
+
+  ##### Entidade: InfoTwich
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados da twich|
+  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |total_views|int|Quantidade de visualizações|Popularidade do jogo|
+  |date|DataField|Data|--|
+
+  ##### Entidade: StreamTwich
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados da stream|
+  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |language|string|Linguagem da stream|Informação de stream|
+  |started_at|DataField|Hora de início da stream|Informação de stream|
+  |type|string|Hora de início da stream|Informação de stream|
+  |viewer_count|int|Qunatidade de views da stream|Informação de stream|
+  |date|DataField|Data|--|
+
+  * Dados vindos da API importer do projeto
