@@ -278,13 +278,14 @@
                   <ul>
                     <li>O projeto possui as seguintes restrições:</li>
                     <li>Framework Django 2.1 com Python 3.6</li>
+                    <li>Framework Flask</li>
                     <li>API&#39;s REST</li>
                     <li>ReactJS</li>
                   </ul>
                   <h2 id="4-arquitetura-dos-servi-os-e-vis-o-de-implementa-o">4. Arquitetura dos Serviços e visão de Implementação</h2>
                   <hr>
                   <h3 id="4-1-vis-o-geral">4.1 Visão Geral</h3>
-                  <p><img src="https://i.imgur.com/faDwAzt.jpg" alt=""></p>
+                  <p><img src="https://i.imgur.com/C41CCh4.jpg" alt=""></p>
                   <h3 id="4-2-microservi-os-e-camadas">4.2 Microserviços e camadas</h3>
                   <p>A arquitetura e sua versão atual está particionada em:</p>
                   <ul>
@@ -295,29 +296,57 @@
                       <p>Fronteira responsavel por receber os dados do Cross Data. Assim, gerando gráficos e estatísticas que serão apresentados no Front-End.</p>
                     </li>
                     <li><p>3 - Cross Data</p>
-                      <p>Fronteira responsável por receber os dados das API&#39;s da IGDB Service, Steam Service, Twitch Service, Youtube Service para mescla-los e entao persistir apenas uma tabela no banco de dados, para posteriormente fornecer esses dados para o Metabase.</p>
+                      <p>Fronteira responsável pela fução de data warehouse, depósito onde se é persistido e mantido os dados relevantes para o produto. Recebendo requisições do front-end para busca de gráficos no metabase.</p>
                     </li>
-                    <li><p>4 - IGDB Data</p>
-                      <p>Fronteira responsável pela listagem dos jogos mais populares, será responsável por repassar a informação para os outros microserviços a respeito de quais jogos deveráo ser recuperados em suas respectivas fontes de dados.</p>
-                    </li>
-                    <li><p>5 - Steam Data</p>
-                      <p>Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e buscará por eles na API e oferecerá endpoint GET para recuperar informações por meio de requisições.</p>
-                    </li>
-                    <li><p>6 - Twitch Data</p>
-                      <p>Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e buscará por eles na respectiva API e disponibilizará informações por meio de requisições do tipo GET.</p>
-                    </li>
-                    <li><p>7 - Youtube Data</p>
-                      <p>Fronteira responsavel pela busca de dados na API do Youtube. Receberá os parâmetros de busca e buscará por eles na respectiva API e oferecerá endpoint GET para recuperar informações por meio de requisições.</p>
+                    <li><p>4 - Importer Service</p>
+                      <p>O Importer Service se caracteriza como o ETL do projeto GamesBI. Este módulo é responsável por extrair todos os dados os dados das API's externas, irá tratar e mesclar estes dados e manda-los via POST para o crossData.</p>
                     </li>
                   </ul>
+                  <p>Dicionário de dados que será enviado:</p>
+                  <br>
+                  <code>
+                    {
+                      name: "",
+                      languages: "",
+                      genre: "",
+                      count_videos: 0,
+                      count_views: 0,
+                      count_likes: 0,
+                      count_dislikes: 0,
+                      count_comments: 0,
+                      positive_reviews_steam: 0,
+                      negative_reviews_steam: 0,
+                      owners: 0,
+                      average_forever: 0,
+                      average_2weeks: 0,
+                      price: 0,
+                      total_views: 0
+                      streams:[
+                        {
+                          language: "",
+                          started_at: "",
+                          type: "",
+                          viewer_count: 0
+                        }
+                      ]
+                    }
+                  </code>
+                  <br>
+                  <br>
                   <p>APIs Externas: Diferentes fontes de dados acerca de jogos digitais</p>
                   <ul>
                     <li>SteamSpy</li>
                     <li>Twitch API</li>
-                    <li>IGDB API</li>
                     <li>Youtube API</li>
                   </ul>
-                  <h3 id="4-3-diagrama-de-pacotes">4.3 Diagrama de pacotes</h3>
+                  <br>
+                  <h3 id="4-3-diagrama-de-pacotes">4.3 Diagrama de pacotes</h3><br>s
+                  <p align="middle"><img src="https://i.imgur.com/NgYCdkO.jpg"></p>
+                  <br>
+                  <ul>
+                    <li>Acima é demonstrada a implementação geral dos pacotes do Importer service respectivos microserviços.<br>resources O app importdata é responsável pela comunicação com as API's e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e envio via POST.</li>
+                  </ul>
+                  <br>
                   <p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
 
                   <ul>
@@ -331,12 +360,13 @@
                     </li>
                   </ul>
                   <h2 id="5-vis-o-de-dados">5 Visão de dados</h2>
-                  <hr>
-                  <p>5.1.1 IGDB Data</p>
-                  <p align="middle"><img src="https://i.imgur.com/xzeykEY.jpg"></p>
+                  <br>
+                  <p>5.1 Cross Data</p>
+                  <p align="middle"><img src="https://i.imgur.com/vuxErRA.jpg"></p>
 
-                  <p>5.1.2 Dicionário de dados IGDB Data</p>
-                  <h5 id="entidade-game">Entidade: Game</h5>
+                  <p>5.2 Dicionário de dados Cross Data</p>
+
+                  <h5 id="entidade-generaldata"><b>Entidade: Game</b></h5>
                   <table>
                     <thead>
                       <tr>
@@ -348,50 +378,33 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>id_igdb</td>
+                        <td>id</td>
                         <td>int</td>
-                        <td>Chave do jogo na IGDB</td>
-                        <td>Identificar os jogos</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados</td>
                       </tr>
                       <tr>
                         <td>name</td>
                         <td>string</td>
                         <td>Nome do jogo</td>
-                        <td>Diferenciar quais jogos estao contidos no banco</td>
+                        <td>Categorizar os jogos</td>
                       </tr>
                       <tr>
-                        <td>hypes</td>
-                        <td>int</td>
-                        <td>Quantidade de procuras naquele jogo antes do lançamento</td>
-                        <td>Descobrir a popularidade do jogo</td>
+                        <td>languages</td>
+                        <td>string</td>
+                        <td>Linguages do jogo</td>
+                        <td>Locais mais jogados</td>
                       </tr>
                       <tr>
-                        <td>popularity</td>
-                        <td>double</td>
-                        <td>Popularidade do jogo</td>
-                        <td>Mostrar a relevância</td>
-                      </tr>
-                      <tr>
-                        <td>critics_rating</td>
-                        <td>double</td>
-                        <td>Avaliação do jogo</td>
-                        <td>Obter avaliação sobre um jogo</td>
-                      </tr>
-                      <tr>
-                        <td>time_to_beat</td>
-                        <td>int</td>
-                        <td>Horas jogadas</td>
-                        <td>Mostrar o tempo de jogo para definir a popularidade</td>
-                      </tr>
-                      <tr>
-                        <td>genres</td>
-                        <td>Genre</td>
-                        <td>Objeto genres</td>
+                        <td>genre</td>
+                        <td>string</td>
+                        <td>Genero do jogo</td>
                         <td>Categorizar os jogos</td>
                       </tr>
                     </tbody>
                   </table>
-                  <h5 id="entidade-genre">Entidade: Genre</h5>
+                  <br><br>
+                  <h5 id="entidade-youtube"><b>Entidade: InfoYoutube</b></h5>
                   <table>
                     <thead>
                       <tr>
@@ -403,27 +416,51 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>id_igdb</td>
+                        <td>id</td>
                         <td>int</td>
-                        <td>Chave do jogo na IGDB</td>
-                        <td>Identificar os jogos</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados do youtube</td>
                       </tr>
                       <tr>
-                        <td>name</td>
-                        <td>string</td>
-                        <td>Nome do jogo</td>
-                        <td>Diferenciar quais jogos estao contidos no banco</td>
+                        <td>id_game</td>
+                        <td>int</td>
+                        <td>Foreing key para a tabela game</td>
+                        <td>Relacionar com os dados de game</td>
+                      </tr>
+                      <tr>
+                        <td>count_videos</td>
+                        <td>int</td>
+                        <td>Quantidade de videos relacionados do youtube</td>
+                        <td>Controle de dados</td>
+                      </tr>
+                      <tr>
+                        <td>count_views</td>
+                        <td>int</td>
+                        <td>Quantidade de visualizações</td>
+                        <td>Popularidade do jogo</td>
+                      </tr>
+                       <tr>
+                        <td>count_likes</td>
+                        <td>int</td>
+                        <td>Quantidade de likes</td>
+                        <td>Popularidade do jogo</td>
+                      </tr>
+                       <tr>
+                        <td>count_dislikes</td>
+                        <td>int</td>
+                        <td>Quantidade de disli</td>
+                        <td>Popularidade do jogo</td>
+                      </tr>
+                      <tr>
+                        <td>date</td>
+                        <td>Date</td>
+                        <td>Data em que os dados foram obtidos</td>
+                        <td>Diff e análises temporais</td>
                       </tr>
                     </tbody>
                   </table>
-                  <ul>
-                    <li>Dados vindos da API IGDB</li>
-                  </ul>
-                  <p>5.2.1 Steam Data</p>
-                  <p align="middle"><img src="https://i.imgur.com/um3A0Kw.jpg"></p>
-
-                  <p>5.2.2 Dicionário de dados Steam Data</p>
-                  <h5 id="entidade-game">Entidade: Game</h5>
+                  <br><br>
+                  <h5 id="entidade-steam"><b>Entidade: InfoSteam</b></h5>
                   <table>
                     <thead>
                       <tr>
@@ -435,16 +472,16 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>id_steam</td>
+                        <td>id</td>
                         <td>int</td>
-                        <td>Chave do jogo na Steam</td>
-                        <td>Identificador da Steam</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados da steam</td>
                       </tr>
                       <tr>
-                        <td>name</td>
-                        <td>string</td>
-                        <td>Nome do jogo</td>
-                        <td>Relacionar jogos com os outros dados do banco</td>
+                        <td>id_game</td>
+                        <td>int</td>
+                        <td>Foreing key para a tabela game</td>
+                        <td>Relacionar com os dados de game</td>
                       </tr>
                       <tr>
                         <td>positive_reviews_steam</td>
@@ -464,7 +501,7 @@
                         <td>Média de quantidade de donos daquele jogo</td>
                         <td>Descobrir popularidade</td>
                       </tr>
-                      <tr>
+                       <tr>
                         <td>avarage_forever</td>
                         <td>int</td>
                         <td>Media da avaliação do jogo</td>
@@ -483,95 +520,15 @@
                         <td>Obter preço</td>
                       </tr>
                       <tr>
-                        <td>languages</td>
-                        <td>string</td>
-                        <td>Linguagens do jogo</td>
-                        <td>Locais mais jogados</td>
+                        <td>date</td>
+                        <td>Date</td>
+                        <td>Data em que os dados foram obtidos</td>
+                        <td>Diff e análises temporais</td>
                       </tr>
                     </tbody>
                   </table>
-                  <ul>
-                    <li>Dados vindos da API Steam</li>
-                  </ul>
-                  <p>5.3.1 Twitch Data</p>
-                  <p align="middle"><img src="https://i.imgur.com/Zqpc89u.jpeg"></p>
-
-                  <p>5.3.2 Dicionário de dados Twitch Data</p>
-                  <h5 id="entidade-game">Entidade: Game</h5>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Atributo</th>
-                        <th>Dominio</th>
-                        <th>Descrição</th>
-                        <th>Relevância</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>game_name</td>
-                        <td>string</td>
-                        <td>Nome do jogo</td>
-                        <td>Relacionar jogos com os outros dados do banco</td>
-                      </tr>
-                      <tr>
-                        <td>game_id</td>
-                        <td>int</td>
-                        <td>Chave do jogo na IGDB</td>
-                        <td>Identificar os jogos</td>
-                      </tr>
-                      <tr>
-                        <td>total_views</td>
-                        <td>int</td>
-                        <td>Total de visualizações do jogo</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <h5 id="entidade-user">Entidade: User</h5>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Atributo</th>
-                        <th>Dominio</th>
-                        <th>Descrição</th>
-                        <th>Relevância</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>user_id</td>
-                        <td>int</td>
-                        <td>Chave do jogo na Twitch</td>
-                        <td>Identificar os usuários</td>
-                      </tr>
-                      <tr>
-                        <td>display_name</td>
-                        <td>string</td>
-                        <td>Nome do usuário</td>
-                        <td>--</td>
-                      </tr>
-                      <tr>
-                        <td>type</td>
-                        <td>string</td>
-                        <td>Tipo de video</td>
-                        <td>Categorizar os vídeos</td>
-                      </tr>
-                      <tr>
-                        <td>view_count</td>
-                        <td>int</td>
-                        <td>Quantidade de visualizações</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>follows</td>
-                        <td>int</td>
-                        <td>Quantidade de seguidores</td>
-                        <td>--</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <h5 id="entidade-stream">Entidade: Stream</h5>
+                  <br><br>
+                  <h5 id="entidade-twitch"><b>Entidade: InfoTwitch</b></h5>
                   <table>
                     <thead>
                       <tr>
@@ -585,8 +542,64 @@
                       <tr>
                         <td>id</td>
                         <td>int</td>
-                        <td>Chave da Stream</td>
-                        <td>Identificar os jogos</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados da Twitch</td>
+                      </tr>
+                      <tr>
+                        <td>id_game</td>
+                        <td>int</td>
+                        <td>Foreing key para a tabela game</td>
+                        <td>Relacionar com os dados de game</td>
+                      </tr>
+                      <tr>
+                        <td>total_views</td>
+                        <td>int</td>
+                        <td>Total de visualizações do jogo</td>
+                        <td>Popularidade do jogo</td>
+                      </tr>
+                      <tr>
+                        <td>date</td>
+                        <td>Date</td>
+                        <td>Data em que os dados foram obtidos</td>
+                        <td>Diff e análises temporais</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br><br>
+                  <h5 id="entidade-twitch"><b>Entidade: StreamTwich</b></h5>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Atributo</th>
+                        <th>Dominio</th>
+                        <th>Descrição</th>
+                        <th>Relevância</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>id</td>
+                        <td>int</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados da Stream da Twitch</td>
+                      </tr>
+                      <tr>
+                        <td>id_game</td>
+                        <td>int</td>
+                        <td>Foreing key para a tabela game</td>
+                        <td>Relacionar com os dados de game</td>
+                      </tr>
+                      <tr>
+                        <td>viewer_count</td>
+                        <td>int</td>
+                        <td>Quantidade de visualizações</td>
+                        <td>Popularidade do jogo</td>
+                      </tr>
+                      <tr>
+                        <td>type</td>
+                        <td>string</td>
+                        <td>Tipo de video</td>
+                        <td>Categorizar os vídeos</td>
                       </tr>
                       <tr>
                         <td>language</td>
@@ -601,271 +614,17 @@
                         <td>Descobrir período mais jogado</td>
                       </tr>
                       <tr>
-                        <td>type</td>
-                        <td>string</td>
-                        <td>Tipo de video</td>
-                        <td>Categorizar os vídeos</td>
-                      </tr>
-                      <tr>
-                        <td>game</td>
-                        <td>Game</td>
-                        <td>Objeto Game</td>
-                        <td>--</td>
-                      </tr>
-                      <tr>
-                        <td>user</td>
-                        <td>User</td>
-                        <td>Objeto User</td>
-                        <td>--</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <ul>
-                    <li>Dados vindos da API Twitch</li>
-                  </ul>
-                  <p>5.4.1 Youtube Data</p>
-                  <p align="middle"><img src="https://i.imgur.com/SD1MvBq.jpg"></p>
-
-                  <p>5.4.2 Dicionário de dados Youtube Data</p>
-                  <h5 id="entidade-youtubesearch">Entidade: YoutubeSearch</h5>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Atributo</th>
-                        <th>Dominio</th>
-                        <th>Descrição</th>
-                        <th>Relevância</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>id</td>
-                        <td>string</td>
-                        <td>Chave do video</td>
-                        <td>Identificar os vídeos</td>
-                      </tr>
-                      <tr>
-                        <td>name</td>
-                        <td>string</td>
-                        <td>Nome do jogo</td>
-                        <td>Relacionar jogos com os outros dados do banco</td>
-                      </tr>
-                      <tr>
-                        <td>count_views</td>
-                        <td>int</td>
-                        <td>Quantidade de visualizações</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>count_likes</td>
-                        <td>int</td>
-                        <td>Quantidade de likes</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>count_dislikes</td>
-                        <td>int</td>
-                        <td>Quantidade de dislikes</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>count_comments</td>
-                        <td>int</td>
-                        <td>Quantidade de comentarios</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>count_favorites</td>
-                        <td>int</td>
-                        <td>Quantidade de vezes que foi marcado como favorito</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <ul>
-                    <li>Dados vindos da API Youtube</li>
-                  </ul>
-                  <p>5.5.1 Cross Data</p>
-                  <p align="middle"><img src="https://i.imgur.com/hKkerGx.jpg"></p>
-
-                  <p>5.5.2 Dicionário de dados Cross Data</p>
-                  <h5 id="entidade-generaldata">Entidade: GeneralData</h5>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Atributo</th>
-                        <th>Dominio</th>
-                        <th>Descrição</th>
-                        <th>Relevância</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>id_igdb</td>
-                        <td>int</td>
-                        <td>Chave do jogo na IGdB</td>
-                        <td>Identificar os jogos</td>
-                      </tr>
-                      <tr>
-                        <td>id_steam</td>
-                        <td>int</td>
-                        <td>Chave do jogo na Steam</td>
-                        <td>Identificador da Steam</td>
-                      </tr>
-                      <tr>
-                        <td>id_twitch</td>
-                        <td>int</td>
-                        <td>Chave da Twitch</td>
-                        <td>Identificar os jogos</td>
-                      </tr>
-                      <tr>
-                        <td>name</td>
-                        <td>string</td>
-                        <td>Nome do jogo</td>
-                        <td>Relacionar jogos com os outros dados do banco</td>
-                      </tr>
-                      <tr>
-                        <td>time_to_beat</td>
-                        <td>int</td>
-                        <td>Horas jogadas</td>
-                        <td>Mostrar o tempo de jogo para definir a popularidade</td>
-                      </tr>
-                      <tr>
-                        <td>hypes</td>
-                        <td>int</td>
-                        <td>Quantidade de procuras naquele jogo antes do lançamento</td>
-                        <td>Descobrir a popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>popularity</td>
-                        <td>double</td>
-                        <td>Popularidade do jogo</td>
-                        <td>Mostrar a relevância</td>
-                      </tr>
-                      <tr>
-                        <td>critics_rating</td>
-                        <td>double</td>
-                        <td>Avaliação do jogo</td>
-                        <td>Obter avaliação sobre um jogo</td>
-                      </tr>
-                      <tr>
-                        <td>genres</td>
-                        <td>string</td>
-                        <td>Genero do jogo</td>
-                        <td>Categorizar os jogos</td>
-                      </tr>
-                      <tr>
-                        <td>positive_reviews_steam</td>
-                        <td>int</td>
-                        <td>Valor das avaliações positivas</td>
-                        <td>Avaliações positivas para feedback do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>negative_reviews_steam</td>
-                        <td>int</td>
-                        <td>Valor das avaliações negativas</td>
-                        <td>Avaliações negativas para feedback do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>owners</td>
-                        <td>int</td>
-                        <td>Média de quantidade de donos daquele jogo</td>
-                        <td>Descobrir popularidade</td>
-                      </tr>
-                      <tr>
-                        <td>avarage_forever</td>
-                        <td>int</td>
-                        <td>Media da avaliação do jogo</td>
-                        <td>Receber feedback do jogo em um período geral</td>
-                      </tr>
-                      <tr>
-                        <td>avarage_2weeks</td>
-                        <td>int</td>
-                        <td>Media da avaliação do jogo das ultimas duas semanas</td>
-                        <td>Receber feedback do jogo em duas semanas</td>
-                      </tr>
-                      <tr>
-                        <td>price</td>
-                        <td>int</td>
-                        <td>Preço do jogo</td>
-                        <td>Obter preço</td>
-                      </tr>
-                      <tr>
-                        <td>languages_game</td>
-                        <td>string</td>
-                        <td>Linguages do jogo</td>
-                        <td>Locais mais jogados</td>
-                      </tr>
-                      <tr>
-                        <td>youtube_count_views</td>
-                        <td>int</td>
-                        <td>Quantidade de visualizações</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>count_likes</td>
-                        <td>int</td>
-                        <td>Quantidade de likes</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>count_dislikes</td>
-                        <td>int</td>
-                        <td>Quantidade de dislikes</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>count_comments</td>
-                        <td>int</td>
-                        <td>Quantidade de comentarios</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>twitch_user_view_count</td>
-                        <td>int</td>
-                        <td>Quantidade de views</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>follows</td>
-                        <td>int</td>
-                        <td>Quantidade de de seguidores</td>
-                        <td>--</td>
-                      </tr>
-                      <tr>
-                        <td>language_stream</td>
-                        <td>string</td>
-                        <td>Linguagens da stream</td>
-                        <td>Locais mais jogados</td>
-                      </tr>
-                      <tr>
-                        <td>started_at</td>
                         <td>date</td>
-                        <td>Momento que inicia a stream</td>
-                        <td>Descobrir período mais jogado</td>
-                      </tr>
-                      <tr>
-                        <td>type</td>
-                        <td>string</td>
-                        <td>Tipo de video</td>
-                        <td>Categorizar o vídeo</td>
-                      </tr>
-                      <tr>
-                        <td>twitch_count_views</td>
-                        <td>int</td>
-                        <td>Quantidade de visualizações</td>
-                        <td>Popularidade do jogo</td>
-                      </tr>
-                      <tr>
-                        <td>date</td>
-                        <td>DataField</td>
-                        <td>Data</td>
-                        <td>--</td>
+                        <td>Date</td>
+                        <td>Data em que os dados foram obtidos</td>
+                        <td>Diff e análises temporais</td>
                       </tr>
                     </tbody>
                   </table>
+
+                  <br><br>
                   <ul>
-                    <li>Dados vindos das API&#39;s internas (Steam, Twitch e Youtube) do projeto</li>
+                    <li>Dados obtidos das API&#39;s internas (Steam, Twitch e Youtube)</li>
                   </ul>
 
 
@@ -897,7 +656,6 @@
               </div>
             </footer>
             <ul>
-            <li>Dados vindos das API's internas (Steam, Twitch e Youtube) do projeto</li>
             </ul>
 
 </body>
