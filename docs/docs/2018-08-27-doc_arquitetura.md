@@ -171,13 +171,11 @@ A arquitetura e sua versão atual está particionada em:
 
 *   3 - Cross Data
 
-    Fronteira responsável por receber os dados da API Importer Service para mescla-los e entao persistir apenas uma tabela no banco de dados, para posteriormente fornecer esses dados para o Metabase.
+    Fronteira responsável pela fução de data warehouse, depósito onde se é persistido e mantido os dados relevantes para o produto. Recebendo requisições do front-end para busca de gráficos no metabase.
 
 *   4 - Importer Service
 
-    Fronteira responsável pela busca de dados nas API's externas, irá mesclar e enviar via POST cada jogo individualmente para o crossData.
-
-    O Importer Service se caracteriza com o ETL do projeto GamesBI. Este módulo é responsável por extrair todos os dados os dados das API's externas, irá tratar e mesclar estes dados e manda-los via POST para o crossData.
+    O Importer Service se caracteriza como o ETL do projeto GamesBI. Este módulo é responsável por extrair todos os dados os dados das API's externas, irá tratar e mesclar estes dados e manda-los via POST para o crossData.
 
 * Dicionário de dados que será enviado:
 
