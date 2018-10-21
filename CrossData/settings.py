@@ -78,9 +78,11 @@ WSGI_APPLICATION = 'CrossData.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'mongo',
-        'HOST': 'db'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gamesbi',
+        'USER': 'gamesbi',
+        'PASSWORD': 'gamesbi123',
+        'HOST': 'db',
     }
 }
 

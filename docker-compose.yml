@@ -3,15 +3,14 @@ version: '3.5'
 
 services:
   db:
-    build:
-      dockerfile: Dockerfile-db
-      context: .
-    ports:
-      - "27021:27017"
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: gamesbi
+      POSTGRES_PASSWORD: gamesbi123
+      POSTGRES_DB: gamesbi
+      PGDATA: /tmp/pgdata
     networks:
       - proxynet
-    environment:
-      MONGO_INITDB_DATABASE: mongo
   
   web:
     build: .

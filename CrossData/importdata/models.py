@@ -1,4 +1,4 @@
-from djongo import models
+from django.db import models
 
 class GeneralData(models.Model):
 
@@ -160,8 +160,7 @@ class GeneralData(models.Model):
 		help_text=("Number of views in stream"),
 		null=True
 	)
-
-	objects = models.DjongoManager()
+	
 	date = models.DateField(
 	    default=None
 	)
