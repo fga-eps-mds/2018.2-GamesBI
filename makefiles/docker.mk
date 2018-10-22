@@ -35,13 +35,11 @@ down:
 
 migrations:
 	# Create migrations from importdata models
-	sudo docker-compose run web python manage.py makemigrations importdata
-	sudo docker-compose run web python manage.py makemigrations metabase
+	sudo docker-compose run web python manage.py makemigrations
 
 migrate:
 	# Migrate migrations from importdata on database
-	sudo docker-compose run web python manage.py migrate importdata
-	sudo docker-compose run web python manage.py migrate metabase
+	sudo docker-compose run web python manage.py migrate
 
 fixture:
 	# Generate fixtures saved upon importdata models
