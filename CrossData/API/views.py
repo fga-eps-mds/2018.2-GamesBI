@@ -16,8 +16,6 @@ class GamesView(APIView):
 
 	def post(self, request, format=None):
 
-		Game.objects.all().delete()
-
 		game_list = request.data
 		mensagem = {"mensagem":"jogos salvos com sucesso"}
 
@@ -32,8 +30,11 @@ class GamesView(APIView):
 
 		return Response(data=mensagem)
 
-
 	def save_game(self, game_data):
+
+		if Game.objects.get(name=game_data['name']):
+			print("jogo já cadastrado")
+			return Game.objects.get(name=game_data['name'])
 
 		new_game = Game(
 			name=game_data['name'],
