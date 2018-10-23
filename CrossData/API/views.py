@@ -19,27 +19,50 @@ class GamesView(APIView):
 
 		game_list = request.data
 
-		for game_data in game_list:
+		if self.check_request_data(game_list):
 
-			new_game = self.save_game(game_data)
+			for game_data in game_list:
 
-			info_youtube = self.save_info_youtube(game_data, new_game)
-			info_steam = self.save_info_steam(game_data, new_game)
-			info_twitch = self.save_info_twitch(game_data, new_game)
-			streams = self.save_streams(game_data, new_game)
+				new_game = self.save_game(game_data)
 
-		for game in Game.objects.all():
-			print("")
-			print("")
-			print(game.name)
-			print("----------")
-			for steam_info in InfoSteam.objects.filter(game=game):
-				print(steam_info.owners)
+				info_youtube = self.save_info_youtube(game_data, new_game)
+				info_steam = self.save_info_steam(game_data, new_game)
+				info_twitch = self.save_info_twitch(game_data, new_game)
+				streams = self.save_streams(game_data, new_game)
+
+			for game in Game.objects.all():
+				print("")
+				print("")
+				print(game.name)
+				print("----------")
+				for steam_info in InfoSteam.objects.filter(game=game):
+					print(steam_info.owners)
+
+			return Response(
+				data={"mensagem":"Dados salvos com sucesso"},
+				status=status.HTTP_201_CREATED
+			)
 
 		return Response(
-			data={"mensagem":"Dados salvos com sucesso"},
-			status=status.HTTP_201_CREATED
-		)
+				data={"mensagem":"Erro ao Salvar dados"},
+				status=status.HTTP_400_BAD_REQUEST
+			)
+
+	def check_request_data(self, data):
+
+		attrs_list = [
+			"name", "languages", "genre",
+			"count_videos", "count_views", "count_likes",
+			"count_dislikes", "count_comments", "positive_reviews_steam",
+			"negative_reviews_steam", "owners", "average_forever",
+			"average_2weeks", "price", "total_views", "streams"
+		]
+
+		for record in data:
+			for attr in attrs_list:
+				if attr not in list(record.keys()):
+					return False
+		return True
 
 	def save_game(self, game_data):
 
