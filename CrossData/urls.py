@@ -18,6 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('import_data/', include('CrossData.importdata.urls')),
+    path('import_data/', include('CrossData.API.urls')),
     path('api/', include('CrossData.metabase.urls'))
 ]

@@ -233,6 +233,12 @@ class TwitchStream(models.Model):
 		null=True
 	)
 
+	stream_view_count = models.IntegerField(
+		('Stream view count'),
+		help_text=("Number of stream view count"),
+		null=True
+	)
+
 	date = models.DateTimeField(auto_now_add=True)
 
 	
