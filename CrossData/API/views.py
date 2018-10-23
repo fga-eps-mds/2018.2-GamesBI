@@ -1,6 +1,7 @@
 import requests
 
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.views import APIView
 from CrossData.importdata.models import *
 from CrossData.importdata.serializers import *
@@ -17,7 +18,6 @@ class GamesView(APIView):
 	def post(self, request, format=None):
 
 		game_list = request.data
-		mensagem = {"mensagem":"jogos salvos com sucesso"}
 
 		for game_data in game_list:
 
@@ -28,7 +28,18 @@ class GamesView(APIView):
 			info_twitch = self.save_info_twitch(game_data, new_game)
 			streams = self.save_streams(game_data, new_game)
 
-		return Response(data=mensagem)
+		for game in Game.objects.all():
+			print("")
+			print("")
+			print(game.name)
+			print("----------")
+			for steam_info in InfoSteam.objects.filter(game=game):
+				print(steam_info.owners)
+
+		return Response(
+			data={"mensagem":"Dados salvos com sucesso"},
+			status=status.HTTP_201_CREATED
+		)
 
 	def save_game(self, game_data):
 
@@ -42,9 +53,13 @@ class GamesView(APIView):
 			genres=game_data['genre'],
 		)
 
-		new_game.save()
+		if(new_game.save()):
+			return new_game
 
-		return new_game
+		return Response(
+			data={"mensagem":"ERRO ao salvar os dados"},
+			status=status.HTTP_400_BAD_REQUEST
+		)
 
 	def save_info_youtube(self, game_data, game):
 
@@ -58,9 +73,13 @@ class GamesView(APIView):
 
 		)
 
-		new_info_youtube.save()
+		if(new_info_youtube.save()):
+			return new_info_youtube
 
-		return new_info_youtube
+		return Response(
+			data={"mensagem":"ERRO ao salvar os dados"},
+			status=status.HTTP_400_BAD_REQUEST
+		)
 
 	def save_info_steam(self, game_data, game):
 
@@ -74,9 +93,13 @@ class GamesView(APIView):
 			price=game_data['price'],
 		)
 
-		new_info_steam.save()
-
-		return new_info_steam
+		if (new_info_steam.save()):
+			return new_info_steam
+		
+		return Response(
+			data={"mensagem":"ERRO ao salvar os dados"},
+			status=status.HTTP_400_BAD_REQUEST
+		)
 
 	def save_info_twitch(self, game_data, game):
 
@@ -85,9 +108,13 @@ class GamesView(APIView):
 			viewer_count=game_data['total_views'],
 		)
 
-		new_info_twitch.save()
+		if(new_info_twitch.save()):
+			return new_info_twitch
 
-		return new_info_twitch
+		return Response(
+			data={"mensagem":"ERRO ao salvar os dados"},
+			status=status.HTTP_400_BAD_REQUEST
+		)
 
 	def save_streams(self, game_data, game):
 
@@ -103,8 +130,12 @@ class GamesView(APIView):
 				stream_view_count=stream_data['viewer_count']
 			)
 
-			new_twitch_stream.save()
-
-			saved_streams.append(new_twitch_stream)
+			if(new_twitch_stream.save()):
+				saved_streams.append(new_twitch_stream)
+			else:
+				return Response(
+					data={"mensagem":"ERRO ao salvar os dados"},
+					status=status.HTTP_400_BAD_REQUEST
+				)
 
 		return saved_streams
