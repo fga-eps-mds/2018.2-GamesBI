@@ -2,6 +2,8 @@ Django==2.1.1
 psycopg2
 coverage
 coveralls
+pandas
 djangorestframework==3.8.2
 model_mommy
 djangorestframework-jwt
+django_heroku

@@ -4,11 +4,8 @@ version: '3.5'
 services:
   db:
     image: postgres:latest
-    environment:
-      POSTGRES_USER: gamesbi
-      POSTGRES_PASSWORD: gamesbi123
-      POSTGRES_DB: gamesbi
-      PGDATA: /tmp/pgdata
+    env_file:
+      - .env
     networks:
       - proxynet
   
@@ -23,17 +20,11 @@ services:
       - db
     networks:
       - proxynet
-    environment:
-      - COVERALLS_REPO_TOKEN
-      - MONGO_USERNAME
-      - MONGO_PASSWORD
-      - MONGO_DB_NAME
-      - MB_USERNAME
-      - MB_PASSWORD
-      - DB_NAME
+    env_file:
+      - .env
 
   metabase:
-    image: metabase/metabase
+    image: metabase/metabase:latest
     ports:
       - "4000:3000"
     networks:
