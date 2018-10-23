@@ -66,23 +66,21 @@ class GamesView(APIView):
 
 	def save_game(self, game_data):
 
-		if Game.objects.get(name=game_data['name']):
+		try:
+			Game.objects.get(name=game_data['name'])
 			print("jogo já cadastrado")
 			return Game.objects.get(name=game_data['name'])
 
-		new_game = Game(
-			name=game_data['name'],
-			languages_game=game_data['languages'],
-			genres=game_data['genre'],
-		)
+		except Game.DoesNotExist:
 
-		if(new_game.save()):
+			new_game = Game(
+				name=game_data['name'],
+				languages_game=game_data['languages'],
+				genres=game_data['genre'],
+			)
+
+			new_game.save()
 			return new_game
-
-		return Response(
-			data={"mensagem":"ERRO ao salvar os dados"},
-			status=status.HTTP_400_BAD_REQUEST
-		)
 
 	def save_info_youtube(self, game_data, game):
 
