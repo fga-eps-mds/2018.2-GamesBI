@@ -30,25 +30,6 @@ class GamesView(APIView):
 				info_twitch = self.save_info_twitch(game_data, new_game)
 				streams = self.save_streams(game_data, new_game)
 
-			for game in Game.objects.all():
-				print("")
-				print("")
-				print(game.name)
-				print("----------")
-				for steam_info in InfoSteam.objects.filter(game=game):
-					print(steam_info.owners)
-				print("----------")
-				for youtube_info in InfoYoutube.objects.filter(game=game):
-					print(youtube_info.count_videos)
-				print("----------")
-				for twitch_info in InfoTwitch.objects.filter(game=game):
-					print(twitch_info.viewer_count)
-				print("----------")
-				for stream_info in TwitchStream.objects.filter(game=game):
-					print(stream_info.stream_view_count)
-
-			Game.objects.all().delete()
-
 			return Response(
 				data={"mensagem":"Dados salvos com sucesso"},
 				status=status.HTTP_201_CREATED
