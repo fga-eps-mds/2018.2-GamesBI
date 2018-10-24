@@ -180,31 +180,35 @@ A arquitetura e sua versão atual está particionada em:
 * Dicionário de dados que será enviado:
 
 ```
-{
-  name: "",
-  languages: "",
-  genre: "",
-  count_videos: 0,
-  count_views: 0,
-  count_likes: 0,
-  count_dislikes: 0,
-  count_comments: 0,
-  positive_reviews_steam: 0,
-  negative_reviews_steam: 0,
-  owners: 0,
-  average_forever: 0,
-  average_2weeks: 0,
-  price: 0,
-  total_views: 0
-  streams:[
-    {
-      language: "",
-      started_at: "",
-      type: "",
-      viewer_count: 0
-    }
-  ]
-}
+[
+  {
+    "name": "Jogo Teste",
+    "languages": "Ingles",
+    "genre": "Ação",
+    "count_videos": 10,
+    "count_views": 11,
+    "count_likes": 20,
+    "count_dislikes": 110,
+    "count_comments": 10,
+    "positive_reviews_steam": 10,
+    "negative_reviews_steam": 11,
+    "owners": 10,
+    "average_forever": 20,
+    "average_2weeks": 40,
+    "price": 50,
+    "total_views": 70,
+    "streams":[ 
+      {
+        "language": "Portugues",
+        "started_at": "2018-09-30",
+        "type": "Live",
+        "viewer_count": 10
+        
+      } 
+    ]
+    
+  }
+]
 ```
 
 
