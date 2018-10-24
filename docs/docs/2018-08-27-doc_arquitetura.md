@@ -8,7 +8,7 @@ categories: DEV
 ## Histórico de Revisões
 
 |Data|Versão|Descrição|Autor|
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 |28/08/2018|0.1|Criação da estrutura do documento|Ingrid Soares|
 |28/08/2018|0.1|Adição de tópicos|Bruno Rodrigues Santos|
 |29/08/2018|0.1|Adição de arquitetura MVT|Alan Lima|
@@ -20,23 +20,35 @@ categories: DEV
 |23/09/2018|1.2|Definição do padrão de arquitetura REST|Alan Lima|
 |25/09/2018|1.2|Atualização do MER do Youtube e da Twitch |Marco Antônio Lima|
 |26/09/2018|1.2|Atualização do MER do Crossdata |Ingrid, Lucas|
+|05/10/2018|1.3|Criação do dicionário de dados |Lucas|
+|06/10/2018|1.3|Acrescentar relevância ao dicionário de dados |Ingrid, Lucas|
+|20/10/2018|2.0|Nova estrutura de dados criada |Alan, Bruno|
 
 ## Documento de Arquitetura
 
 
 * * *
 
-## 1\. Introdução
-
+## Sumário
+* 1 . [Introducao](#1-introducao)
+  * 1.1. [Finalidade](#11-finalidade)
+  * 1.2. [Escopo](#12-escopo)
+  * 1.3. [Definições, acrônimos e abreviações](#13-definicoes,-acronimos-e-abreviacoes)
+  * 1.4. [Referências](#14-referencias)
+  * 1.5. [Visão Geral](#15-visao-geral)
+* 2 . [Representação da Arquitetura](#2-representacao-da-arquitetura)
+  * 2.1. [Padrão de arquitetura REST](#21-padrap-de-arquitetura-rest)
+  * 2.2. [Arquitetura de microserviços](#22-arquitetura-de-microservicos)
+  * 2.3 [Padrão de arquitetura do REACT](#23-padrao-de-arquitetura-do-react)
 * 3 . [Metas e Restrições da Arquitetura](#3-metas-e-restrições-da-arquitetura)
-
+  * 3.1. [Metas](#31-metas)
+  * 3.2. [Restrições da arquitetura](#32-restricoes-da-arquitetura)
 * 4 . [Arquitetura dos Serviços e visão de Implementação](#4-arquitetura-dos-serviços-e-visão-de-implementação)
    * 4.1. [Visão Geral](#41-visão-geral)
    * 4.2. [Microserviços e Camadas](#42-microserviços-e-camadas)
    * 4.3. [Diagrama de pacotes](#43-diagrama-de-pacotes)
 
 * 5 . [Visão de Dados](#5-visão-de-dados)
-
 
 * * *
 
@@ -133,8 +145,9 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 *   O projeto possui as seguintes restrições:
 *   Framework Django 2.1 com Python 3.6
+*   Framework Flask
 *   API's REST
-*   ReactJS 
+*   ReactJS
 
 ## 4\. Arquitetura dos Serviços e visão de Implementação
 
@@ -142,7 +155,7 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 ### 4.1 Visão Geral
 
-![](https://i.imgur.com/faDwAzt.jpg)
+![](https://i.imgur.com/C41CCh4.jpg)
 
 ### 4.2 Microserviços e camadas
 
@@ -158,32 +171,65 @@ A arquitetura e sua versão atual está particionada em:
 
 *   3 - Cross Data
 
-    Fronteira responsável por receber os dados das API's da IGDB Service, Steam Service, Twitch Service, Youtube Service para mescla-los e entao persistir apenas uma tabela no banco de dados, para posteriormente fornecer esses dados para o Metabase.
+    Fronteira responsável pela fução de data warehouse, depósito onde se é persistido e mantido os dados relevantes para o produto. Recebendo requisições do front-end para busca de gráficos no metabase.
 
-*   4 - IGDB Data
+*   4 - Importer Service
 
-    Fronteira responsável pela listagem dos jogos mais populares, será responsável por repassar a informação para os outros microserviços a respeito de quais jogos deveráo ser recuperados em suas respectivas fontes de dados.
+    O Importer Service se caracteriza como o ETL do projeto GamesBI. Este módulo é responsável por extrair todos os dados os dados das API's externas, irá tratar e mesclar estes dados e manda-los via POST para o crossData.
 
-*   5 - Steam Data
+* Dicionário de dados que será enviado:
 
-    Fronteira responsável pela busca de dados na API da SteamSpy. Receberá os parâmetros de busca e buscará por eles na API e oferecerá endpoint GET para recuperar informações por meio de requisições.
+```
+[
+  {
+    "name": "Jogo Teste",
+    "languages": "Ingles",
+    "genre": "Ação",
+    "count_videos": 10,
+    "count_views": 11,
+    "count_likes": 20,
+    "count_dislikes": 110,
+    "count_comments": 10,
+    "positive_reviews_steam": 10,
+    "negative_reviews_steam": 11,
+    "owners": 10,
+    "average_forever": 20,
+    "average_2weeks": 40,
+    "price": 50,
+    "total_views": 70,
+    "streams":[ 
+      {
+        "language": "Portugues",
+        "started_at": "2018-09-30",
+        "type": "Live",
+        "viewer_count": 10
+        
+      } 
+    ]
+    
+  }
+]
+```
 
-*   6 - Twitch Data
 
-    Fronteira responsável pela busca de dados na API da Twitch. Receberá os parâmetros de busca e buscará por eles na respectiva API e disponibilizará informações por meio de requisições do tipo GET.
-
-*   7 - Youtube Data
-
-    Fronteira responsavel pela busca de dados na API do Youtube. Receberá os parâmetros de busca e buscará por eles na respectiva API e oferecerá endpoint GET para recuperar informações por meio de requisições.
 
 APIs Externas: Diferentes fontes de dados acerca de jogos digitais
 
 *   SteamSpy
 *   Twitch API
-*   IGDB API
 *   Youtube API
 
+<!-- CRIAR NOVO DIAGRAMA DE PACOTES  -->
 ### 4.3 Diagrama de pacotes
+
+<p align="middle"><img src="https://i.imgur.com/NgYCdkO.jpg"></p>
+
+*   Acima é demonstrada a implementação geral dos pacotes do Importer service respectivos microserviços.</x>
+
+Dentro de Aplicação Flask, os pacotes são representados pelos apps.
+
+*   resources O app importdata é responsável pela comunicação com as API's e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e envio via POST.
+
 
 <p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
 
@@ -199,25 +245,71 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 
 * * *
 
-5.1 IGDB Data
-
-  <p align="middle"><img src="https://i.imgur.com/xzeykEY.jpg"></p>
-
-5.2 Steam Data
-
-   <p align="middle"><img src="https://i.imgur.com/um3A0Kw.jpg"></p>
-
-5.3 Twitch Data
-
-  <p align="middle"><img src="https://i.imgur.com/Zqpc89u.jpeg"></p>
-
-5.4 Youtube Data
-
-  <p align="middle"><img src="https://i.imgur.com/SD1MvBq.jpg"></p>
-
-5.5 Cross Data
+5.1.1 Cross Data
 
 
-<p align="middle"><img src="https://i.imgur.com/hKkerGx.jpg"></p>
+<p align="middle"><img src="https://i.imgur.com/vuxErRA.jpg"></p>
+
+5.1.2 Dicionário de dados Cross Data
+
+  ##### Entidade: Game
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados|
+  |name|string|Nome do jogo|Categorizar os jogos|
+  |languages|string|Linguages do jogo|Locais mais jogados|
+  |genre|string|Genero do jogo|Categorizar os jogos|
 
 
+  ##### Entidade: InfoYoutube
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados do youtube|
+  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |count_videos|int|Quantidade de videos relacionados do youtube|Controle de dados|  
+  |count_views|int|Quantidade de visualizações|Popularidade do jogo|  
+  |count_likes|int|Quantidade de likes|Popularidade do jogo|
+  |count_dislikes|int|Quantidade de dislikes|Popularidade do jogo|
+  |count_comments|int|Quantidade de comentarios|Popularidade do jogo|
+  |date|DataField|Data|--|
+
+
+  ##### Entidade: InfoSteam
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados da steam|
+  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |positive_reviews_steam|int|Valor das avaliações positivas|Avaliações positivas para feedback do jogo|
+  |negative_reviews_steam|int|Valor das avaliações negativas|Avaliações negativas para feedback do jogo|
+  |owners|int|Média de quantidade de donos daquele jogo|Descobrir popularidade|
+  |avarage_forever|int|Media da avaliação do jogo|Receber feedback do jogo em um período geral|
+  |avarage_2weeks|int|Media da avaliação do jogo das ultimas duas semanas|Receber feedback do jogo em duas semanas|
+  |price|int|Preço do jogo|Obter preço|
+  |date|DataField|Data|--|
+
+
+  ##### Entidade: InfoTwich
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados da twich|
+  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |total_views|int|Quantidade de visualizações|Popularidade do jogo|
+  |date|DataField|Data|--|
+
+  ##### Entidade: StreamTwich
+
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados da stream|
+  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |language|string|Linguagem da stream|Informação de stream|
+  |started_at|DataField|Hora de início da stream|Informação de stream|
+  |type|string|Hora de início da stream|Informação de stream|
+  |viewer_count|int|Qunatidade de views da stream|Informação de stream|
+  |date|DataField|Data|--|
+
+  * Dados vindos da API importer do projeto
