@@ -7,3 +7,43 @@ class GameSerializer(serializers.ModelSerializer):
 
 		model = Game
 		fields = '__all__'
+
+
+class YoutubeInfoSerializer(serializers.ModelSerializer):
+
+	game = GameSerializer()
+
+	class Meta:
+
+		model = InfoYoutube
+		fields = '__all__'
+
+
+class SteamInfoSerializer(serializers.ModelSerializer):
+
+	game = GameSerializer()
+
+	class Meta:
+
+		model = InfoSteam
+		fields = '__all__'
+
+
+class TwitchInfoSerializer(serializers.ModelSerializer):
+
+	game = GameSerializer()
+
+	class Meta:
+
+		model = InfoTwitch
+		fields = '__all__'
+
+
+class TwitchStreamSerializer(serializers.ModelSerializer):
+
+	game = GameSerializer()
+
+	class Meta:
+
+		model = TwitchStream
+		fields = '__all__'
