@@ -7,3 +7,4 @@ djangorestframework==3.8.2
 model_mommy
 djangorestframework-jwt
 django_heroku
+django-cors-headers
