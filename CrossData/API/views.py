@@ -37,6 +37,17 @@ class GamesView(APIView):
 				print("----------")
 				for steam_info in InfoSteam.objects.filter(game=game):
 					print(steam_info.owners)
+				print("----------")
+				for youtube_info in InfoYoutube.objects.filter(game=game):
+					print(youtube_info.count_videos)
+				print("----------")
+				for twitch_info in InfoTwitch.objects.filter(game=game):
+					print(twitch_info.viewer_count)
+				print("----------")
+				for stream_info in TwitchStream.objects.filter(game=game):
+					print(stream_info.stream_view_count)
+
+			Game.objects.all().delete()
 
 			return Response(
 				data={"mensagem":"Dados salvos com sucesso"},
@@ -44,7 +55,7 @@ class GamesView(APIView):
 			)
 
 		return Response(
-				data={"mensagem":"Erro ao Salvar dados"},
+				data={"mensagem":"Erro ao Salvar dados. Alguns atributos podem estar faltando"},
 				status=status.HTTP_400_BAD_REQUEST
 			)
 
@@ -94,13 +105,12 @@ class GamesView(APIView):
 
 		)
 
-		if(new_info_youtube.save()):
+		try:
+			new_info_youtube.save()
 			return new_info_youtube
 
-		return Response(
-			data={"mensagem":"ERRO ao salvar os dados"},
-			status=status.HTTP_400_BAD_REQUEST
-		)
+		except ValueError:
+			return False
 
 	def save_info_steam(self, game_data, game):
 
@@ -114,13 +124,12 @@ class GamesView(APIView):
 			price=game_data['price'],
 		)
 
-		if (new_info_steam.save()):
+		try:
+			new_info_steam.save()
 			return new_info_steam
 		
-		return Response(
-			data={"mensagem":"ERRO ao salvar os dados"},
-			status=status.HTTP_400_BAD_REQUEST
-		)
+		except ValueError:
+			return False
 
 	def save_info_twitch(self, game_data, game):
 
@@ -129,13 +138,12 @@ class GamesView(APIView):
 			viewer_count=game_data['total_views'],
 		)
 
-		if(new_info_twitch.save()):
+		try:
+			new_info_twitch.save()
 			return new_info_twitch
 
-		return Response(
-			data={"mensagem":"ERRO ao salvar os dados"},
-			status=status.HTTP_400_BAD_REQUEST
-		)
+		except ValueError:
+			return False
 
 	def save_streams(self, game_data, game):
 
@@ -151,12 +159,11 @@ class GamesView(APIView):
 				stream_view_count=stream_data['viewer_count']
 			)
 
-			if(new_twitch_stream.save()):
+			try:
+				new_twitch_stream.save()
 				saved_streams.append(new_twitch_stream)
-			else:
-				return Response(
-					data={"mensagem":"ERRO ao salvar os dados"},
-					status=status.HTTP_400_BAD_REQUEST
-				)
+
+			except ValueError:
+				return False
 
 		return saved_streams
