@@ -3,7 +3,11 @@ file := "docker-compose.yml"
 
 up:
 	# Create and start containers
-	sudo docker-compose up
+	sudo docker-compose up -d db
+	sleep 10
+	sudo docker-compose up -d web
+	sudo docker-compose up -d metabase
+	sudo docker-compose logs -f
 
 build:
 	# Rebuild the docker compose
@@ -34,12 +38,16 @@ down:
 	sudo docker-compose down
 
 migrations:
-	# Create migrations from importdata models
+	# Create migrations
 	sudo docker-compose run web python manage.py makemigrations
+	sudo docker-compose run web python manage.py makemigrations importdata
+	sudo docker-compose run web python manage.py makemigrations metabase
 
 migrate:
-	# Migrate migrations from importdata on database
+	# Migrate migrations
 	sudo docker-compose run web python manage.py migrate
+	sudo docker-compose run web python manage.py migrate importdata
+	sudo docker-compose run web python manage.py migrate metabase
 
 fixture:
 	# Generate fixtures saved upon importdata models
