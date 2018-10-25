@@ -7,6 +7,7 @@ up:
 	sleep 10
 	sudo docker-compose up -d web
 	sudo docker-compose up -d metabase
+	sudo docker-compose logs -f
 
 build:
 	# Rebuild the docker compose
