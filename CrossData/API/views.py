@@ -16,7 +16,7 @@ class GamesView(APIView):
 
 	def get(self, request, format=None):
 		game_name = request.GET.get('name')
-		serializer = GameSerializer(Game.objects.filter(name__startswith=game_name), many=True)
+		serializer = GameNameSerializer(Game.objects.filter(name__startswith=game_name), many=True)
 		return Response(serializer.data)
 
 
