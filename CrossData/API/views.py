@@ -5,7 +5,6 @@ from rest_framework import status
 from rest_framework.views import APIView
 from CrossData.importdata.models import *
 from CrossData.importdata.serializers import *
-# from .serializers import GameSerializer
 
 
 class GamesView(APIView):
@@ -14,6 +13,12 @@ class GamesView(APIView):
 	Endpoint for receiving
 	data and persisting it on database
 	'''
+
+	def get(self, request, format=None):
+		game_name = request.GET.get('name')
+		serializer = GameSerializer(Game.objects.filter(name__startswith=game_name), many=True)
+		return Response(serializer.data)
+
 
 	def post(self, request, format=None):
 
@@ -108,7 +113,7 @@ class GamesView(APIView):
 		try:
 			new_info_steam.save()
 			return new_info_steam
-		
+
 		except ValueError:
 			return False
 
