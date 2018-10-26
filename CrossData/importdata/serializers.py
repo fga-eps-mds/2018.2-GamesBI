@@ -8,6 +8,13 @@ class GameSerializer(serializers.ModelSerializer):
 		model = Game
 		fields = '__all__'
 
+class GameNameSerializer(serializers.ModelSerializer):
+
+	class Meta:
+
+		model = Game
+		fields = ['name']
+
 
 class YoutubeInfoSerializer(serializers.ModelSerializer):
 
