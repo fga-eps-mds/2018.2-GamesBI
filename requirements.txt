@@ -2,10 +2,9 @@ Django==2.1.1
 psycopg2
 coverage
 coveralls
-djongo
+pandas
 djangorestframework==3.8.2
 model_mommy
-numpy
-scipy
-pandas
 djangorestframework-jwt
+django_heroku
+django-cors-headers

@@ -1,6 +1,6 @@
-from djongo import models
+from django.db import models
 
-class GeneralData(models.Model):
+class Game(models.Model):
 
 	id = models.AutoField(
 		primary_key=True
@@ -13,29 +13,11 @@ class GeneralData(models.Model):
 		null=True
 	)
 
-	#IGDB
-	time_to_beat = models.FloatField(
-		('Time To Beat'),
-		help_text=("Average time to beat the game"),
-		null=True
-	)
-
-	hypes = models.IntegerField(
-		('Hypes'),
-		help_text=("Number of access in the game befores its release"),
-		null=True
-	)
-
-	popularity = models.FloatField(
-		('Popularity'),
-		help_text=("Popularity of game"),
-		null=True
-	)
-
-	critics_rating = models.FloatField(
-		('Critics Rating'),
-		help_text=("Rating based on external critic scores"),
-		null=True
+	languages_game = models.CharField(
+		('Languages'),
+		help_text=("Language of the game"),
+		null=True,
+		max_length=150
 	)
 
 	genres = models.CharField(
@@ -45,7 +27,91 @@ class GeneralData(models.Model):
 		null=True
 	)
 
-	#Steam
+	def __str__(self):
+	    """
+	    Returns the object as a string, the attribute that will represent
+	    the object.
+	    """
+
+	    return self.name
+
+	class Meta:
+	    """
+	    Some information about feedback class.
+	    """
+	    verbose_name = ("Game Data")
+	    verbose_name_plural = ("Games Data")
+
+class InfoYoutube(models.Model):
+
+	id = models.AutoField(
+		primary_key=True
+	)
+
+	game = models.ForeignKey(
+		Game,
+		on_delete=models.CASCADE
+	)
+
+	count_videos = models.IntegerField(
+		('Youtube total videos number'),
+		help_text=("Number of videos found in youtube request"),
+		null=True
+	)
+
+	count_views = models.IntegerField(
+		('Youtube total views'),
+		help_text=("Number of views summed from youtube videos"),
+		null=True
+	)
+
+	count_likes = models.IntegerField(
+		('Youtube total likes'),
+		help_text=("Number of likes summed from youtube videos"),
+		null=True
+	)
+
+	count_dislikes = models.IntegerField(
+		('Youtube total dislikes'),
+		help_text=("Number of dislikes summed from youtube videos"),
+		null=True
+	)
+
+	count_comments = models.IntegerField(
+		('Youtube total comments count'),
+		help_text=("Number of comments summed from youtube videos"),
+		null=True
+	)
+
+	date = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+	    """
+	    Returns the object as a string, the attribute that will represent
+	    the object.
+	    """
+
+	    return "InfoYoutube"
+
+	class Meta:
+	    """
+	    Some information about feedback class.
+	    """
+	    verbose_name = ("Youtube Data")
+	    verbose_name_plural = ("Youtube Data")
+
+
+class InfoSteam(models.Model):
+
+	id = models.AutoField(
+		primary_key=True
+	)
+
+	game = models.ForeignKey(
+		Game,
+		on_delete=models.CASCADE
+	)
+
 	positive_reviews_steam = models.IntegerField(
 		('Steam Positive Reviews'),
 		help_text=("Number of positive reviews at Steam"),
@@ -82,56 +148,68 @@ class GeneralData(models.Model):
 		null=True
 	)
 
-	languages_game = models.CharField(
-		('Languages'),
-		help_text=("Language of the game"),
-		null=True,
-		max_length=150
+	date = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+	    """
+	    Returns the object as a string, the attribute that will represent
+	    the object.
+	    """
+
+	    return "InfoSteam"
+
+	class Meta:
+	    """
+	    Some information about feedback class.
+	    """
+	    verbose_name = ("Steam Data")
+	    verbose_name_plural = ("Steam Data")
+
+
+class InfoTwitch(models.Model):
+
+	id = models.AutoField(
+		primary_key=True
 	)
 
-
-	#YouTube
-	count_videos = models.IntegerField(
-		('Youtube total videos number'),
-		help_text=("Number of videos found in youtube request"),
+	game = models.ForeignKey(
+		Game,
+		on_delete=models.CASCADE
+	)
+	
+	viewer_count = models.IntegerField(
+		('Twitch Game streams Viewer count'),
+		help_text=("Number of views in stream"),
 		null=True
 	)
 
-	count_views = models.IntegerField(
-		('Youtube total views'),
-		help_text=("Number of views summed from youtube videos"),
-		null=True
+	date = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+	    """
+	    Returns the object as a string, the attribute that will represent
+	    the object.
+	    """
+
+	    return "InfoTwitch"
+
+	class Meta:
+	    """
+	    Some information about feedback class.
+	    """
+	    verbose_name = ("Twitch Data")
+	    verbose_name_plural = ("Twitch Data")
+
+
+class TwitchStream(models.Model):
+
+	id = models.AutoField(
+		primary_key=True
 	)
 
-	count_likes = models.IntegerField(
-		('Youtube total likes'),
-		help_text=("Number of likes summed from youtube videos"),
-		null=True
-	)
-
-	count_dislikes = models.IntegerField(
-		('Youtube total dislikes'),
-		help_text=("Number of dislikes summed from youtube videos"),
-		null=True
-	)
-
-	count_comments = models.IntegerField(
-		('Youtube total comments count'),
-		help_text=("Number of comments summed from youtube videos"),
-		null=True
-	)
-
-	#Twitch
-	view_count = models.IntegerField(
-		('Twitch users total views'),
-		help_text=("Total Views couting of twitch users"),
-		null=True
-	)
-
-	follows = models.IntegerField(
-		('Twitch users total follows'),
-		help_text=("Number of followers"),
-		null=True
+	game = models.ForeignKey(
+		Game,
+		on_delete=models.CASCADE
 	)
 
 	language_stream = models.CharField(
@@ -155,16 +233,15 @@ class GeneralData(models.Model):
 		null=True
 	)
 
-	viewer_count = models.IntegerField(
-		('Twitch Game streams Viewer count'),
-		help_text=("Number of views in stream"),
+	stream_view_count = models.IntegerField(
+		('Stream view count'),
+		help_text=("Number of stream view count"),
 		null=True
 	)
 
-	objects = models.DjongoManager()
-	date = models.DateField(
-	    default=None
-	)
+	date = models.DateTimeField(auto_now_add=True)
+
+	
 
 	def __str__(self):
 	    """
@@ -172,11 +249,11 @@ class GeneralData(models.Model):
 	    the object.
 	    """
 
-	    return self.name
+	    return "Info Stream"
 
 	class Meta:
 	    """
 	    Some information about feedback class.
 	    """
-	    verbose_name = ("Game Data")
-	    verbose_name_plural = ("Games Data")
+	    verbose_name = ("Stream Data")
+	    verbose_name_plural = ("Streams Data")

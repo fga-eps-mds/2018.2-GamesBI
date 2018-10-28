@@ -3,15 +3,11 @@ version: '3.5'
 
 services:
   db:
-    build:
-      dockerfile: Dockerfile-db
-      context: .
-    ports:
-      - "27021:27017"
+    image: postgres:latest
+    env_file:
+      - .env
     networks:
       - proxynet
-    environment:
-      MONGO_INITDB_DATABASE: mongo
   
   web:
     build: .
@@ -24,17 +20,11 @@ services:
       - db
     networks:
       - proxynet
-    environment:
-      - COVERALLS_REPO_TOKEN
-      - MONGO_USERNAME
-      - MONGO_PASSWORD
-      - MONGO_DB_NAME
-      - MB_USERNAME
-      - MB_PASSWORD
-      - DB_NAME
+    env_file:
+      - .env
 
   metabase:
-    image: metabase/metabase
+    image: metabase/metabase:latest
     ports:
       - "4000:3000"
     networks:

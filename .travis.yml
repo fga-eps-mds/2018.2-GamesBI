@@ -18,3 +18,21 @@ script:
 after_success:
   - docker-compose run web coveralls
 
+deploy:
+  - provider: heroku
+    skip_cleanup: true
+    api_key:
+      secure: ${HEROKU_KEY}
+    app: gbi-crossdata-staging
+    on:
+      repo: fga-eps-mds/2018.2-GamesBI
+      branch: develop
+
+  - provider: heroku
+    skip_cleanup: true
+    api_key:
+      secure: ${HEROKU_KEY}
+    app: gbi-crossdata-production
+    on:
+      repo: fga-eps-mds/2018.2-GamesBI
+      branch: master
