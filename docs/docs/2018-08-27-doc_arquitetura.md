@@ -23,6 +23,7 @@ categories: DEV
 |05/10/2018|1.3|Criação do dicionário de dados |Lucas|
 |06/10/2018|1.3|Acrescentar relevância ao dicionário de dados |Ingrid, Lucas|
 |20/10/2018|2.0|Nova estrutura de dados criada |Alan, Bruno|
+|29/10/2018|2.1|Adicionado tabelas referentes a imagens dos jogos e suas respectivas paletas de cores |Alan Lima|
 
 ## Documento de Arquitetura
 
@@ -197,16 +198,23 @@ A arquitetura e sua versão atual está particionada em:
     "average_2weeks": 40,
     "price": 50,
     "total_views": 70,
-    "streams":[ 
+    "streams":[
       {
         "language": "Portugues",
         "started_at": "2018-09-30",
         "type": "Live",
         "viewer_count": 10
-        
-      } 
+      }
+    ],
+    "r_average": 45,
+    "g_average": 34,
+    "b_average": 12,
+    "palette":[
+      "r": 10,
+      "g": 34,
+      "b": 76,
+      "hex": #7B68EE
     ]
-    
   }
 ]
 ```
@@ -248,7 +256,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 5.1.1 Cross Data
 
 
-<p align="middle"><img src="https://i.imgur.com/vuxErRA.jpg"></p>
+<p align="middle"><img src="https://i.imgur.com/QG2NG9t.jpg"></p>
 
 5.1.2 Dicionário de dados Cross Data
 
@@ -309,7 +317,25 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |language|string|Linguagem da stream|Informação de stream|
   |started_at|DataField|Hora de início da stream|Informação de stream|
   |type|string|Hora de início da stream|Informação de stream|
-  |viewer_count|int|Qunatidade de views da stream|Informação de stream|
+  |viewer_count|int|Quantidade de views da stream|Informação de stream|
   |date|DataField|Data|--|
+
+  ##### Entidade: Image
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados da stream|
+  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |url|string|Endereço da imagem hospedada na steam|Informação de jogo|
+
+  ##### Entidade: Palette
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados da stream|
+  |id_image|int|Foreing key para a tabela image|Relacionar com os dados de imagem|
+  |r|int|Representação da cor red (rgb)|Informação de imagem|
+  |g|int|Representação da cor green (rgb)|Informação de imagem|
+  |b|int|Representação da cor blue (rgb)|Informação de imagem|
+  |hex|string|Representação da cor da paleta em hexadecimal|Informação de imagem|
+
 
   * Dados vindos da API importer do projeto
