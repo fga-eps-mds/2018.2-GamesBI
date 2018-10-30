@@ -56,6 +56,7 @@ class GamesView(APIView):
 		]
 
 		for record in data:
+			print(record)
 			for attr in attrs_list:
 				if attr not in list(record.keys()):
 					return False
