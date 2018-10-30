@@ -24,6 +24,7 @@ categories: DEV
 |06/10/2018|1.3|Acrescentar relevância ao dicionário de dados |Ingrid, Lucas|
 |20/10/2018|2.0|Nova estrutura de dados criada |Alan, Bruno|
 |29/10/2018|2.1|Adicionado tabelas referentes a imagens dos jogos e suas respectivas paletas de cores |Alan Lima|
+|30/10/2018|2.2|Atualização do json que será criado no Importer |Alan Lima|
 
 ## Documento de Arquitetura
 
@@ -209,11 +210,18 @@ A arquitetura e sua versão atual está particionada em:
     "r_average": 45,
     "g_average": 34,
     "b_average": 12,
-    "palette":[
-      "r": 10,
-      "g": 34,
-      "b": 76,
-      "hex": #7B68EE
+    "images":[
+      {
+        "url": "http://s2.glbimg.com/C47b1PAM5mEJjLVum8VW7A9M2fc=/0x0:1280x1024/695x556/s.glbimg.com/po/tt2/f/original/2013/01/23/cs1.jpg"
+        "palette":[
+          {
+            "r": 10,
+            "g": 34,
+            "b": 76,
+            "hex": #7B68EE
+          }
+        ]
+      }
     ]
   }
 ]
