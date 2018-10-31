@@ -7,6 +7,69 @@ from CrossData.importdata.models import *
 from CrossData.importdata.serializers import *
 
 
+class SearchGame(APIView):
+
+	def get(self, request, format=None):
+		game_name = request.GET.get('name')
+		serializer = GameNameSerializer(Game.objects.filter(name__istartswith=game_name), many=True)
+		return Response(serializer.data)
+
+
+class GetData(APIView):
+
+	def get(self, request, graphtype, yaxys, xaxys, format=None):
+
+		graph_type = graphtype
+		steam_attrs = list(vars(InfoSteam()).keys())
+		youtube_attrs = list(vars(InfoYoutube()).keys())
+		twitch_attrs = list(vars(InfoTwitch()).keys())
+		streams_attrs = list(vars(TwitchStream()).keys())
+
+		y_axys = yaxys
+		x_axys = xaxys
+
+		game_data={}
+
+		if graph_type == "line":
+
+			if x_axys == 'games' or y_axys=='games':
+				game_data['x_axys'] = self.get_games()
+
+			if y_axys in steam_attrs:
+				game_data['y_axys'] = self.get_steam_data(y_axys)
+			if x_axys in steam_attrs:
+				game_data['x_axys'] = self.get_steam_data(x_axys)
+
+		return Response(game_data)
+
+	def get_steam_data(self, attr):
+
+		steamdata = InfoSteam.objects.all().order_by('owners')[:10]
+
+		collected_data = []
+
+		for steam_data in steamdata:
+			print(steam_data.game.name)
+			print(steam_data.average_2weeks)
+
+			try:
+				data = getattr(steam_data, attr)
+				collected_data.append(data)
+			except AttributeError:
+				pass
+
+		return collected_data
+
+	def get_games(self):
+
+		games = []
+		steamdata = InfoSteam.objects.all().order_by('owners')[:10]
+		for steam_data in steamdata:
+			games.append(steam_data.game.name)
+
+		return games
+
+
 class GamesView(APIView):
 
 	'''
@@ -15,8 +78,7 @@ class GamesView(APIView):
 	'''
 
 	def get(self, request, format=None):
-		game_name = request.GET.get('name')
-		serializer = GameNameSerializer(Game.objects.filter(name__istartswith=game_name), many=True)
+		serializer = GameNameSerializer(Game.objects.all(), many=True)
 		return Response(serializer.data)
 
 
