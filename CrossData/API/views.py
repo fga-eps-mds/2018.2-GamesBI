@@ -19,20 +19,9 @@ class GetTableData(APIView):
 
 	def get(self, request, table_type, format=None):
 
-		collected_data = {}
+		collected_data = []
 
 		if table_type == "trendingnow":
-
-			collected_data = {
-				'games':[],
-				'owners':[],
-				'price':[],
-				'positive_reviews_steam':[],
-				'youtube_views':[],
-				'youtube_count_likes':[],
-				'youtube_count_dislikes':[],
-				'twitch_viewer_count':[]
-			}
 
 			games = Game.objects.order_by(
 				'-infosteam__positive_reviews_steam',
@@ -41,32 +30,22 @@ class GetTableData(APIView):
 				'-infoyoutube__count_likes',
 				'-infotwitch__viewer_count',
 				'-infoyoutube__count_comments'
-			)[:20]
+			)[:10]
 
 			for game in games:
 
-				collected_data['games'].append(game.name)
-				collected_data['owners'].append(
-					InfoSteam.objects.filter(game=game).order_by('-id')[0].owners
-				)
-				collected_data['price'].append(
-					InfoSteam.objects.filter(game=game).order_by('-id')[0].price
-				)
-				collected_data['positive_reviews_steam'].append(
-					InfoSteam.objects.filter(game=game).order_by('-id')[0].positive_reviews_steam
-				)
-				collected_data['youtube_views'].append(
-					InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_views
-				)
-				collected_data['youtube_count_likes'].append(
-					InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_likes
-				)
-				collected_data['youtube_count_dislikes'].append(
-					InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_dislikes
-				)
-				collected_data['twitch_viewer_count'].append(
-					InfoTwitch.objects.filter(game=game).order_by('-id')[0].viewer_count
-				)
+				game_data = {}
+
+				game_data['game'] = game.name
+				game_data['owners'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].owners
+				game_data['price'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].price
+				game_data['positive_reviews_steam'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].positive_reviews_steam
+				game_data['youtube_views']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_views
+				game_data['youtube_count_likes']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_likes
+				game_data['youtube_count_dislikes']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_dislikes
+				game_data['twitch_viewer_count']=InfoTwitch.objects.filter(game=game).order_by('-id')[0].viewer_count
+
+				collected_data.append(game_data)
 
 
 		return Response(collected_data)
