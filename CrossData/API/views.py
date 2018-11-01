@@ -5,6 +5,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from CrossData.importdata.models import *
 from CrossData.importdata.serializers import *
+from .objects_attrs import *
 
 
 class SearchGame(APIView):
@@ -25,6 +26,7 @@ class GetTableData(APIView):
 
 			games = Game.objects.order_by(
 				'-infosteam__positive_reviews_steam',
+				'-infosteam__average_2weeks',
 				'-infoyoutube__count_views',
 				'-infoyoutube__count_videos',
 				'-infoyoutube__count_likes',
@@ -56,10 +58,7 @@ class GetGraphicData(APIView):
 	def get(self, request, graphtype, yaxys, xaxys, format=None):
 
 		graph_type = graphtype
-		steam_attrs = list(vars(InfoSteam()).keys())
-		youtube_attrs = list(vars(InfoYoutube()).keys())
-		twitch_attrs = list(vars(InfoTwitch()).keys())
-		streams_attrs = list(vars(TwitchStream()).keys())
+		print(twitch_attrs)
 
 		y_axys = yaxys
 		x_axys = xaxys
@@ -68,43 +67,66 @@ class GetGraphicData(APIView):
 
 		if graph_type == "line":
 
-			if x_axys == 'games' or y_axys=='games':
-				game_data['x_axys'] = self.get_games()
-
-			if y_axys in steam_attrs:
-				game_data['y_axys'] = self.get_data(
-					InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:15],
-					y_axys
-				)
-			if x_axys in steam_attrs:
-				game_data['x_axys'] = self.get_data(
-					InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:15],
-					x_axys
-				)
-
-			'''if y_axys in youtube_attrs:
-				game_data['y_axys'] = self.get_data(
-					InfoYoutube.objects.all().order_by('owners')[:10],
-					y_axys
-				)
-			if x_axys in youtube_attrs:
-				game_data['x_axys'] = self.get_data(
-					InfoYoutube.objects.all().order_by('owners')[:10],
-					x_axys
-				)
-
-			if y_axys in twitch_attrs:
-				game_data['y_axys'] = self.get_data(
-					InfoTwitch.objects.all().order_by('owners')[:10],
-					y_axys
-				)
-			if x_axys in twitch_attrs:
-				game_data['x_axys'] = self.get_data(
-					InfoTwitch.objects.all().order_by('owners')[:10],
-					x_axys
-				)'''
+			game_data = self.get_line_axys(y_axys, x_axys, game_data)
 
 		return Response(game_data)
+
+	def get_line_axys(self, y_axys, x_axys, game_data):
+
+		if x_axys == 'games' or y_axys=='games':
+				game_data['x_axys'] = self.get_games_name()
+
+		if y_axys in steam_attrs:
+			game_data['y_axys'] = self.get_data(
+				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
+				y_axys
+			)
+		if x_axys in steam_attrs:
+			game_data['x_axys'] = self.get_data(
+				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
+				x_axys
+			)
+
+		if y_axys in youtube_attrs:
+			game_data['y_axys'] = self.get_data(
+				InfoYoutube.objects.all().order_by(
+					'-game__infosteam__owners',
+					'-game__infosteam__positive_reviews_steam',
+					'-game__infosteam__average_2weeks',
+				)[:20],
+				y_axys
+			)
+		
+		if x_axys in youtube_attrs:
+			game_data['x_axys'] = self.get_data(
+				InfoYoutube.objects.all().order_by(
+					'-game__infosteam__owners',
+					'-game__infosteam__positive_reviews_steam',
+					'-game__infosteam__average_2weeks',
+				)[:20],
+				x_axys
+			)
+
+		if y_axys in twitch_attrs:
+			game_data['y_axys'] = self.get_data(
+				InfoTwitch.objects.all().order_by(
+					'-game__infosteam__owners',
+					'-game__infosteam__positive_reviews_steam',
+					'-game__infosteam__average_2weeks',
+				)[:20],
+				y_axys
+			)
+		if x_axys in twitch_attrs:
+			game_data['x_axys'] = self.get_data(
+				InfoTwitch.objects.all().order_by(
+					'-game__infosteam__owners',
+					'-game__infosteam__positive_reviews_steam',
+					'-game__infosteam__average_2weeks',
+				)[:20],
+				x_axys
+			)
+
+		return game_data
 
 	def get_data(self, db_data, attr):
 
@@ -120,14 +142,21 @@ class GetGraphicData(APIView):
 
 		return collected_data
 
-	def get_games(self):
+	def get_games_name(self):
 
-		games = []
-		steamdata = InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:15]
-		for steam_data in steamdata:
-			games.append(steam_data.game.name)
+		game_names = []
 
-		return games
+		games = Game.objects.order_by(
+			'-infosteam__positive_reviews_steam',
+			'-infosteam__owners',
+			'-infosteam__average_2weeks',
+			'-infoyoutube__count_videos',
+		)[:20]
+
+		for game in games:
+			game_names.append(game.name)
+
+		return game_names
 
 
 class GamesView(APIView):
