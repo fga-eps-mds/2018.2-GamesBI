@@ -59,5 +59,5 @@ A lot of its design ideas came from other sites, for example, [steamspy](steamsp
 Our belief is that there isn't a cross-platform and helpfull BI tool for games out there. Which is why our main goal is to deliver this very such thing, and also make it acessible for everyone willing to use it.
 
 # Other repos that are part of this project
-Importer https://github.com/fga-eps-mds/2018.2-GamesBI_Importadores
+Importer https://github.com/fga-eps-mds/2018.2-GamesBI_Importadores <br/>
 Front End https://github.com/fga-eps-mds/2018.2-GamesBI-FrontEnd
