@@ -109,18 +109,37 @@ class GetGraphicData(APIView):
 	def get(self, request, graphtype, yaxys, xaxys, name=None, format=None):
 
 		graph_type = graphtype
-		print(twitch_attrs)
+		data={}
 
-		y_axys = yaxys
-		x_axys = xaxys
+		if name==None:
 
-		game_data={}
+			y_axys = yaxys
+			x_axys = xaxys
 
-		if graph_type == "line":
+			if graph_type == "line":
 
-			game_data = self.get_line_axys(y_axys, x_axys, game_data)
+				data = self.get_line_axys(y_axys, x_axys, data)
 
-		return Response(game_data)
+		else:
+			game = self.get_game(name)
+			x_axys = self.get_dates(game)
+			y_axis = self.get_game_y_axys(game, yaxys)
+
+		return Response(data)
+
+	def get_game_y_axys(self, game, y_axis):
+		pass
+
+	def get_dates(game):
+		date = []
+		infos = InfoSteam.objects.filter(game=game)
+		for info in infos:
+			date.append(str(info.date))
+
+	def get_game(self, game_name):
+		
+		game = Game.objects.get(name=name)
+		return game
 
 	def get_line_axys(self, y_axys, x_axys, game_data):
 
