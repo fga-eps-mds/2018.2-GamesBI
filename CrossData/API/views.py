@@ -23,34 +23,85 @@ class GetTableData(APIView):
 		collected_data = []
 
 		if table_type == "trendingnow":
+			collected_data = self.get_tranding_now_data()
 
-			games = Game.objects.order_by(
-				'-infosteam__positive_reviews_steam',
-				'-infosteam__average_2weeks',
-				'-infoyoutube__count_views',
-				'-infoyoutube__count_videos',
-				'-infoyoutube__count_likes',
-				'-infotwitch__viewer_count',
-				'-infoyoutube__count_comments'
-			)[:10]
+		elif table_type == "mostwatched":
+			collected_data = self.get_most_watched_data()
 
-			for game in games:
+		elif table_type == "sales":
+			collected_data = self.get_sales_data()
 
-				game_data = {}
-
-				game_data['game'] = game.name
-				game_data['owners'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].owners
-				game_data['price'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].price
-				game_data['positive_reviews_steam'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].positive_reviews_steam
-				game_data['youtube_views']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_views
-				game_data['youtube_count_likes']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_likes
-				game_data['youtube_count_dislikes']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_dislikes
-				game_data['twitch_viewer_count']=InfoTwitch.objects.filter(game=game).order_by('-id')[0].viewer_count
-
-				collected_data.append(game_data)
+		elif table_type == "playedtime":
+			collected_data = self.get_by_playedtime()
 
 
 		return Response(collected_data)
+
+	def get_by_playedtime(self):
+
+		games = Game.objects.order_by(
+			'-infosteam__average_2weeks',
+			'-infosteam__average_forever',
+			'-infosteam__owners',
+		)[:20]
+
+		return self.get_data(games)
+
+	def get_sales_data(self):
+
+		games = Game.objects.exclude(infosteam__price=0).order_by(
+			'-infosteam__owners',
+			'-infosteam__average_2weeks',
+		)[:20]
+
+		return self.get_data(games)
+
+	def get_tranding_now_data(self):
+
+		games = Game.objects.order_by(
+			'-infosteam__positive_reviews_steam',
+			'-infosteam__average_2weeks',
+			'-infoyoutube__count_views',
+			'-infoyoutube__count_videos',
+			'-infoyoutube__count_likes',
+			'-infotwitch__viewer_count',
+			'-infoyoutube__count_comments'
+		)[:20]
+
+		return self.get_data(games)
+
+	def get_most_watched_data(self):
+		
+		games = Game.objects.all().order_by(
+			'-infoyoutube__count_views',
+			'-infoyoutube__count_videos',
+			'-infotwitch__viewer_count',
+			'-infoyoutube__count_comments',
+		)[:20]
+
+		return self.get_data(games)
+
+	def get_data(self, games):
+
+		collected_data = []
+
+		for game in games:
+
+			game_data = {}
+
+			game_data['game'] = game.name
+			game_data['owners'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].owners
+			game_data['price'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].price
+			game_data['positive_reviews_steam'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].positive_reviews_steam
+			game_data['youtube_views']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_views
+			game_data['youtube_count_likes']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_likes
+			game_data['youtube_count_dislikes']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_dislikes
+			game_data['twitch_viewer_count']=InfoTwitch.objects.filter(game=game).order_by('-id')[0].viewer_count
+
+			collected_data.append(game_data)
+
+		return collected_data
+		
 
 
 class GetGraphicData(APIView):
