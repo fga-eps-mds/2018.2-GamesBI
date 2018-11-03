@@ -106,7 +106,7 @@ class GetTableData(APIView):
 
 class GetGraphicData(APIView):
 
-	def get(self, request, graphtype, yaxys, xaxys, format=None):
+	def get(self, request, graphtype, yaxys, xaxys, name=None, format=None):
 
 		graph_type = graphtype
 		print(twitch_attrs)
