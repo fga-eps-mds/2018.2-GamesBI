@@ -8,12 +8,13 @@ class EndpointPOSTTestCase(APITestCase):
 	def setUp(self):
 
 		self.url = reverse("games_view")
-
+		
 		self.data = [
 			{
-				"name": "Jogo Teste",
-				"languages": "Ingles",
-				"genre": "Ação",
+			    'id_steam': 10,
+				"name": "jogo teste",
+				"language": "ingles",
+				"genre": "ação",
 				"count_videos": 10,
 				"count_views": 11,
 				"count_likes": 20,
@@ -22,46 +23,80 @@ class EndpointPOSTTestCase(APITestCase):
 				"positive_reviews_steam": 10,
 				"negative_reviews_steam": 11,
 				"owners": 10,
+				"main_image": 'google.com',
+				"screenshots": [ 
+				{
+					'url': "https://steamcdn-a.akamaihd.net/steam/apps/570/ss_86d675fdc73ba10462abb8f5ece7791c5047072c.600x338.jpg?t=1536248487",
+					'palette': [ 
+					{
+						'r': 138,
+						'g': 166,
+						'b': 82,
+						'hex': "#8aa652"
+					}],
+				}],
+				"release_date":  "9 jul, 2013",
+                "r_average": 10,
+                "g_average": 10,
+                "b_average": 10,
 				"average_forever": 20,
 				"average_2weeks": 40,
 				"price": 50,
 				"total_views": 70,
 				"streams":[
 					{
-						"language": "Portugues",
+						"language": "portugues",
 						"started_at": "2018-09-30",
-						"type": "Live",
+						"type": "live",
 						"viewer_count": 10
 					}
 				]
 
 			}
 		]
-
+		
 		self.data_2 = [
 			{
-				"languages": "Ingles",
-				"genre": "Tiro",
-				"count_videos": 14,
-				"count_views": 19,
-				"count_likes": 30,
-				"count_dislikes": 5,
-				"count_comments": 2,
-				"positive_reviews_steam": 15,
-				"negative_reviews_steam": 12,
-				"owners": 9,
-				"average_forever": 15,
-				"average_2weeks": 30,
-				"price": 60,
-				"total_views": 80,
+			    'id_steam': 10,
+				"name": "jogo teste",
+				"language": "ingles",
+				"count_videos": 10,
+				"count_views": 11,
+				"count_likes": 20,
+				"count_dislikes": 110,
+				"count_comments": 10,
+				"positive_reviews_steam": 10,
+				"negative_reviews_steam": 11,
+				"owners": 10,
+				"main_image": 'google.com',
+				"screenshots": [ 
+				{
+					'url': "https://steamcdn-a.akamaihd.net/steam/apps/570/ss_86d675fdc73ba10462abb8f5ece7791c5047072c.600x338.jpg?t=1536248487",
+					'palette': [ 
+					{
+						'r': 138,
+						'g': 166,
+						'b': 82,
+						'hex': "#8aa652"
+					}],
+				}],
+				"release_date":  "9 jul, 2013",
+                "r_average": 10,
+                "g_average": 10,
+                "b_average": 10,
+				"average_forever": 20,
+				"average_2weeks": 40,
+				"price": 50,
+				"total_views": 70,
 				"streams":[
 					{
-						"language": "Portugues",
+						"language": "portugues",
 						"started_at": "2018-09-30",
-						"type": "Live",
-						"viewer_count": 12
+						"type": "live",
+						"viewer_count": 10
 					}
 				]
+
 			}
 		]
 
