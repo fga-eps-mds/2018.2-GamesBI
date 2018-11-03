@@ -25,6 +25,7 @@ categories: DEV
 |20/10/2018|2.0|Nova estrutura de dados criada |Alan, Bruno|
 |29/10/2018|2.1|Adicionado tabelas referentes a imagens dos jogos e suas respectivas paletas de cores |Alan Lima|
 |30/10/2018|2.2|Atualização do json que será criado no Importer |Alan Lima|
+|03/11/2018|2.3|Atualização de tabelas de generos e linguagens e json que será criado no Importer |Alan Lima|
 
 ## Documento de Arquitetura
 
@@ -183,47 +184,79 @@ A arquitetura e sua versão atual está particionada em:
 
 ```
 [
-  {
-    "name": "Jogo Teste",
-    "languages": "Ingles",
-    "genre": "Ação",
-    "count_videos": 10,
-    "count_views": 11,
-    "count_likes": 20,
-    "count_dislikes": 110,
-    "count_comments": 10,
-    "positive_reviews_steam": 10,
-    "negative_reviews_steam": 11,
-    "owners": 10,
-    "average_forever": 20,
-    "average_2weeks": 40,
-    "price": 50,
-    "total_views": 70,
-    "streams":[
-      {
-        "language": "Portugues",
-        "started_at": "2018-09-30",
-        "type": "Live",
-        "viewer_count": 10
-      }
-    ],
-    "r_average": 45,
-    "g_average": 34,
-    "b_average": 12,
-    "images":[
-      {
-        "url": "http://s2.glbimg.com/C47b1PAM5mEJjLVum8VW7A9M2fc=/0x0:1280x1024/695x556/s.glbimg.com/po/tt2/f/original/2013/01/23/cs1.jpg"
-        "palette":[
-          {
-            "r": 10,
-            "g": 34,
-            "b": 76,
-            "hex": #7B68EE
-          }
-        ]
-      }
-    ]
-  }
+	{
+		"id_steam": 570,
+		"name": "Dota 2",
+		"positive_reviews_steam": 812527,
+		"negative_reviews_steam": 120671,
+		"owners": 150000000,
+		"average_forever": 26847,
+		"average_2weeks": 1549,
+		"price": "0",
+		"languages": [
+			"Portugues", "English"
+		],
+		"genres": [
+			"Action", "RPG"
+		],
+		"main_image": "https://steamcdn-a.akamaihd.net/steam/apps/570/header.jpg?t=1536248487",
+		"screenshots": [
+			{
+				"url": "https://steamcdn-a.akamaihd.net/steam/apps/570/ss_86d675fdc73ba10462abb8f5ece7791c5047072c.600x338.jpg?t=1536248487",
+				"palette": [
+					{
+						"r": 138,
+						"g": 166,
+						"b": 82,
+						"hex": "#8aa652"
+					},
+					{
+						"r": 94,
+						"g": 112,
+						"b": 77,
+						"hex": "#5e704d"
+					},
+					{
+						"r": 72,
+						"g": 68,
+						"b": 84,
+						"hex": "#484454"
+					},
+					{
+						"r": 181,
+						"g": 180,
+						"b": 154,
+						"hex": "#b5b49a"
+					},
+					{
+						"r": 59,
+						"g": 66,
+						"b": 51,
+						"hex": "#3b4233"
+					}
+				]
+			},
+		],
+		"release_date": "9 Jul, 2013",
+		"r_average": 83,
+		"g_average": 82,
+		"b_average": 74,
+		"count_videos": 1,
+		"count_views": 2609773,
+		"count_likes": 5555,
+		"count_dislikes": 1107,
+		"count_comments": 4152,
+		"total_views": 46939,
+		"streams": [
+			{
+				"language": "en",
+				"game_id": "29595",
+				"started_at": "2018-11-03T12:00:06Z",
+				"type": "live",
+				"viewer_count": 23661
+			},
+		]
+	},
 ]
 ```
 
@@ -264,7 +297,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
 5.1.1 Cross Data
 
 
-<p align="middle"><img src="https://i.imgur.com/QG2NG9t.jpg"></p>
+<p align="middle"><img src="https://i.imgur.com/KnBWa5z.jpg"></p>
 
 5.1.2 Dicionário de dados Cross Data
 
@@ -273,9 +306,16 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
   |id|int|Primary key da tabela|Identificar os dados|
+  |id_steam|int|Identificador de jogo|Identificar os dados|
   |name|string|Nome do jogo|Categorizar os jogos|
-  |languages|string|Linguages do jogo|Locais mais jogados|
-  |genre|string|Genero do jogo|Categorizar os jogos|
+  |languages|Language|Linguages do jogo|Locais mais jogados|
+  |genres|Genre|Generos do jogo|Categorizar os jogos|
+  |release_date|Date|Data de lançamento do jogo|Categorizar os jogos|
+  |main_image|String|Url da imagem principal do jogo|Imagem do jogo|
+  |r_average|int|Porcentagem de vermelho|Cor do jogo|
+  |g_average|int|Porcentagem de green|Cor do jogo|
+  |b_average|int|Porcentagem de blue|Cor do jogo|
+
 
 
   ##### Entidade: InfoYoutube
@@ -283,7 +323,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
   |id|int|Primary key da tabela|Identificar os dados do youtube|
-  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |game|Game|Foreing key para a tabela Game|Relacionar com os dados de game|
   |count_videos|int|Quantidade de videos relacionados do youtube|Controle de dados|  
   |count_views|int|Quantidade de visualizações|Popularidade do jogo|  
   |count_likes|int|Quantidade de likes|Popularidade do jogo|
@@ -297,7 +337,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
   |id|int|Primary key da tabela|Identificar os dados da steam|
-  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |game|Game|Foreing key para a tabela Game|Relacionar com os dados de game|
   |positive_reviews_steam|int|Valor das avaliações positivas|Avaliações positivas para feedback do jogo|
   |negative_reviews_steam|int|Valor das avaliações negativas|Avaliações negativas para feedback do jogo|
   |owners|int|Média de quantidade de donos daquele jogo|Descobrir popularidade|
@@ -312,7 +352,7 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
   |id|int|Primary key da tabela|Identificar os dados da twich|
-  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |game|Game|Foreing key para a tabela Game|Relacionar com os dados de game|
   |total_views|int|Quantidade de visualizações|Popularidade do jogo|
   |date|DataField|Data|--|
 
@@ -321,29 +361,41 @@ Dentro de Aplicações Django, os pacotes são representados pelos apps.
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
   |id|int|Primary key da tabela|Identificar os dados da stream|
-  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |gane|Game|Foreing key para a tabela Game|Relacionar com os dados de game|
   |language|string|Linguagem da stream|Informação de stream|
   |started_at|DataField|Hora de início da stream|Informação de stream|
   |type|string|Hora de início da stream|Informação de stream|
   |viewer_count|int|Quantidade de views da stream|Informação de stream|
   |date|DataField|Data|--|
 
-  ##### Entidade: Image
+  ##### Entidade: Screenshot
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
-  |id|int|Primary key da tabela|Identificar os dados da stream|
-  |id_game|int|Foreing key para a tabela game|Relacionar com os dados de game|
+  |id|int|Primary key da tabela|Identificar os dados de screenshots|
+  |game|Game|Foreing key para a tabela Game|Relacionar com os dados de game|
   |url|string|Endereço da imagem hospedada na steam|Informação de jogo|
 
   ##### Entidade: Palette
   |Atributo|Dominio|Descrição|Relevância|
   | --- | --- | --- | --- |
-  |id|int|Primary key da tabela|Identificar os dados da stream|
-  |id_image|int|Foreing key para a tabela image|Relacionar com os dados de imagem|
+  |id|int|Primary key da tabela|Identificar os dados de paleta de cores|
+  |image|Screenshot|Foreing key para a tabela Screenshots|Relacionar com os dados de imagem|
   |r|int|Representação da cor red (rgb)|Informação de imagem|
   |g|int|Representação da cor green (rgb)|Informação de imagem|
   |b|int|Representação da cor blue (rgb)|Informação de imagem|
   |hex|string|Representação da cor da paleta em hexadecimal|Informação de imagem|
+
+  ##### Entidade: Genre
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados de genêros|
+  |genre|string|Nome do gênero|Relacionar jogos por gêneros|
+
+  ##### Entidade: Language
+  |Atributo|Dominio|Descrição|Relevância|
+  | --- | --- | --- | --- |
+  |id|int|Primary key da tabela|Identificar os dados de linguagens|
+  |language|string|Linguagem do jogo|Informação de jogo|
 
 
   * Dados vindos da API importer do projeto
