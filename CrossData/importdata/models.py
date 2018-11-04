@@ -1,5 +1,62 @@
 from django.db import models
 
+
+class Language(models.Model):
+	id = models.AutoField(
+		primary_key=True
+	)
+
+	language = models.CharField(
+		('Language of game'),
+		help_text=("Language of the game"),
+		max_length=150,
+		null=True
+	)
+
+	def __str__(self):
+	    """
+	    Returns the object as a string, the attribute that will represent
+	    the object.
+	    """
+
+	    return "Language game"
+
+	class Meta:
+	    """
+	    Some information about feedback class.
+	    """
+	    verbose_name = ("Language Data")
+	    verbose_name_plural = ("Languages Data")
+
+
+class Genre(models.Model):
+	id = models.AutoField(
+		primary_key=True
+	)
+
+	genre = models.CharField(
+		('Genre of game'),
+		help_text=("Genre of the game"),
+		max_length=150,
+		null=True
+	)
+
+	def __str__(self):
+	    """
+	    Returns the object as a string, the attribute that will represent
+	    the object.
+	    """
+
+	    return "Genre game"
+
+	class Meta:
+	    """
+	    Some information about feedback class.
+	    """
+	    verbose_name = ("Genre Data")
+	    verbose_name_plural = ("Genres Data")
+
+
 class Game(models.Model):
 
 	id = models.AutoField(
@@ -13,18 +70,12 @@ class Game(models.Model):
 		null=True
 	)
 
-	languages_game = models.CharField(
-		('Languages'),
-		help_text=("Language of the game"),
-		null=True,
-		max_length=150
+	languages_game = models.ManyToManyField(
+		Language
 	)
 
-	genres = models.CharField(
-		('Game Genre'),
-		help_text=("Name of the Game Genre"),
-		max_length=50,
-		null=True
+	genres = models.ManyToManyField(
+		Genre
 	)
 
 	release_date = models.DateTimeField(
