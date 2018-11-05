@@ -179,58 +179,58 @@ class EndpointPOSTTestCase(APITestCase):
 
 	def test_game_data_persistence(self):
 
-		response = self.client.post(self.url, self.data, format='json')
+		self.client.post(self.url, self.data, format='json')
 		self.assertEqual(Game.objects.all().count(), 1)
 
 	def test_game_data_not_persistence(self):
 
-		response = self.client.post(self.url, self.data_2, format='json')
+		self.client.post(self.url, self.data_2, format='json')
 		self.assertNotEqual(Game.objects.all().count(), 0)
 
 	def test_steam_data_persistence(self):
 
-		response = self.client.post(self.url, self.data, format='json')
+		self.client.post(self.url, self.data, format='json')
 		self.assertEqual(InfoSteam.objects.all().count(), 1)
 		for info in InfoSteam.objects.all():
 			self.assertEqual(info.game.name, self.data[0]['name'])
 
 	def test_steam_data_not_persistence(self):
 
-		response = self.client.post(self.url, self.data_2, format='json')
+		self.client.post(self.url, self.data_2, format='json')
 		self.assertNotEqual(InfoSteam.objects.all().count(), 0)
 
 	def test_youtube_data_persistence(self):
 
-		response = self.client.post(self.url, self.data, format='json')
+		self.client.post(self.url, self.data, format='json')
 		self.assertEqual(InfoYoutube.objects.all().count(), 1)
 		for info in InfoYoutube.objects.all():
 			self.assertEqual(info.game.name, self.data[0]['name'])
 
 	def test_youtube_data_not_persistence(self):
 
-		response = self.client.post(self.url, self.data_2, format='json')
+		self.client.post(self.url, self.data_2, format='json')
 		self.assertNotEqual(InfoYoutube.objects.all().count(), 0)
 
 	def test_twitch_data_persistence(self):
 
-		response = self.client.post(self.url, self.data, format='json')
+		self.client.post(self.url, self.data, format='json')
 		self.assertEqual(InfoTwitch.objects.all().count(), 1)
 		for info in InfoTwitch.objects.all():
 			self.assertEqual(info.game.name, self.data[0]['name'])
 
 	def test_twitch_data_not_persistence(self):
 
-		response = self.client.post(self.url, self.data_2, format='json')
+		self.client.post(self.url, self.data_2, format='json')
 		self.assertNotEqual(InfoTwitch.objects.all().count(), 0)
 
 	def test_stream_data_persistence(self):
 
-		response = self.client.post(self.url, self.data, format='json')
+		self.client.post(self.url, self.data, format='json')
 		self.assertEqual(TwitchStream.objects.all().count(), 1)
 		for info in TwitchStream.objects.all():
 			self.assertEqual(info.game.name, self.data[0]['name'])
 
 	def test_stream_data_not_persistence(self):
 
-		response = self.client.post(self.url, self.data_2, format='json')
+		self.client.post(self.url, self.data_2, format='json')
 		self.assertNotEqual(TwitchStream.objects.all().count(), 0)
