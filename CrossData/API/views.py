@@ -40,7 +40,7 @@ class GetTableData(APIView):
 			collected_data = self.get_by_playedtime()
 
 
-		return Response(collected_data)
+		return Response(data=collected_data, status=status.HTTP_200_OK)
 
 	def get_by_playedtime(self):
 
@@ -132,7 +132,7 @@ class GetGraphicData(APIView):
 			data['x_axys'] = self.get_dates(game)
 			data['y_axis'] = self.get_game_y_axis(game, y_axis)
 
-		return Response(data)
+		return Response(data=data, status=status.HTTP_200_OK)
 
 	def get_game_y_axis(self, game, y_axis):
 
