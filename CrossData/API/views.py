@@ -18,6 +18,11 @@ class SearchGame(APIView):
 
 class GetTableData(APIView):
 
+	'''
+		Endpoint to return data
+		to be used in tables
+	'''
+
 	def get(self, request, table_type, format=None):
 
 		collected_data = []
@@ -106,6 +111,11 @@ class GetTableData(APIView):
 
 class GetGraphicData(APIView):
 
+	'''
+		Endpoint to return data
+		to be used in graphics
+	'''
+
 	def get(self, request, graphtype, yaxis, xaxis, name=None, format=None):
 
 		graph_type = graphtype
@@ -114,15 +124,10 @@ class GetGraphicData(APIView):
 		x_axis = xaxis
 
 		if name==None:
-
-			print("sem nome")
-
 			if graph_type == "line":
-
 				data = self.get_line_axys(y_axis, x_axis, data)
 
 		else:
-			print("achou o nome" + name)
 			game = self.get_game(name)
 			data['x_axys'] = self.get_dates(game)
 			data['y_axis'] = self.get_game_y_axis(game, y_axis)
@@ -250,15 +255,14 @@ class GetGraphicData(APIView):
 
 class GamesView(APIView):
 
-	'''
-	Endpoint for receiving
-	data and persisting it on database
-	'''
-
 	def get(self, request, format=None):
 		serializer = GameNameSerializer(Game.objects.all(), many=True)
 		return Response(serializer.data)
 
+	'''
+		Endpoint for receiving
+		data and persisting it on database
+	'''
 
 	def post(self, request, format=None):
 
