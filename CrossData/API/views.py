@@ -21,9 +21,7 @@ class GamesView(APIView):
 		serializer = GameNameSerializer(Game.objects.filter(name__istartswith=game_name), many=True)
 		return Response(serializer.data)
 
-
 	def post(self, request, format=None):
-
 		game_list = request.data
 		if self.check_request_data(game_list):
 			for game_data in game_list:
@@ -36,10 +34,12 @@ class GamesView(APIView):
 				data={"mensagem":"Dados salvos com sucesso"},
 				status=status.HTTP_201_CREATED
 			)
-		return Response(
+		else:
+			return Response(
 				data={"mensagem":"Erro ao Salvar dados. Alguns atributos podem estar faltando"},
 				status=status.HTTP_400_BAD_REQUEST
 			)
+
 
 	def check_request_data(self, data):
 		attrs_list = [
@@ -51,8 +51,8 @@ class GamesView(APIView):
             'average_forever',
             'average_2weeks',
             'price',
-            'language',
-            'genre',
+            'languages',
+            'genres',
             'main_image',
             'screenshots',
             'release_date',
@@ -68,7 +68,6 @@ class GamesView(APIView):
             'streams'
 		]
 		for record in data:
-			print(record)
 			for attr in attrs_list:
 				if attr not in list(record.keys()):
 					return False
@@ -83,8 +82,6 @@ class GamesView(APIView):
 		except Game.DoesNotExist:
 			new_game = Game(
 				name=game_data['name'],
-				languages_game=game_data['language'],
-				genres=game_data['genre'],
 				r_average=game_data['r_average'],
 				g_average=game_data['g_average'],
 				b_average=game_data['b_average'],
@@ -92,8 +89,20 @@ class GamesView(APIView):
 				release_date=self.get_release_data(game_data['release_date'])
 			)
 			new_game.save()
+			print("Jogo salvo: {}".format(new_game.name))
+			languages = self.save_languages(game_data)
+			print("Salvando linguagens ...")
+			for language in languages:
+				print(language)
+				new_game.languages_game.add(language)
+			genres = self.save_genres(game_data)
+			print("Salvando generos ...")
+			for genre in genres:
+				print(genre)
+				new_game.genres.add(genre)
 			self.save_screenshots(game_data, new_game)
 			return new_game
+
 
 	def save_info_youtube(self, game_data, game):
 		new_info_youtube = InfoYoutube(
@@ -167,6 +176,41 @@ class GamesView(APIView):
 				return False
 
 		return saved_streams
+
+
+	def save_languages(self, game_data):
+		array_languages = []
+		for language in game_data['languages']:
+			try:
+				Language.objects.get(language=language)
+				# print("linguagem já cadastrada")
+				array_languages.append(Language.objects.get(language=language))
+			except Language.DoesNotExist:
+				new_language = Language(
+					language=language,
+				)
+				new_language.save()
+				array_languages.append(new_language)
+
+		return array_languages
+
+
+	def save_genres(self, game_data):
+		array_genres = []
+		for genre in game_data['genres']:
+			try:
+				Genre.objects.get(genre=genre)
+				# print("Genero já cadastrado")
+				array_genres.append(Genre.objects.get(genre=genre))
+			except Genre.DoesNotExist:
+				new_genre = Genre(
+					genre=genre,
+				)
+				new_genre.save()
+				array_genres.append(new_genre)
+
+		return array_genres
+
 
 	def save_screenshots(self, game_data, game):
 		saved_screenshots = []
