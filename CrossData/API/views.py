@@ -106,39 +106,59 @@ class GetTableData(APIView):
 
 class GetGraphicData(APIView):
 
-	def get(self, request, graphtype, yaxys, xaxys, name=None, format=None):
+	def get(self, request, graphtype, yaxis, xaxis, name=None, format=None):
 
 		graph_type = graphtype
 		data={}
+		y_axis = yaxis
+		x_axis = xaxis
 
 		if name==None:
 
-			y_axys = yaxys
-			x_axys = xaxys
+			print("sem nome")
 
 			if graph_type == "line":
 
-				data = self.get_line_axys(y_axys, x_axys, data)
+				data = self.get_line_axys(y_axis, x_axis, data)
 
 		else:
+			print("achou o nome" + name)
 			game = self.get_game(name)
-			x_axys = self.get_dates(game)
-			y_axis = self.get_game_y_axys(game, yaxys)
+			data['x_axys'] = self.get_dates(game)
+			data['y_axis'] = self.get_game_y_axis(game, y_axis)
 
 		return Response(data)
 
-	def get_game_y_axys(self, game, y_axis):
-		pass
+	def get_game_y_axis(self, game, y_axis):
 
-	def get_dates(game):
-		date = []
+		y_axis_data = []
+		infos = []
+		
+		if y_axis in steam_attrs:
+			infos = InfoSteam.objects.all().filter(game=game)
+		elif y_axis in youtube_attrs:
+			infos = InfoYoutube.objects.all().filter(game=game)
+		elif y_axis in twitch_attrs:
+			infos = InfoTwitch.objects.all().filter(game=game)
+		elif y_axis in streams_attrs:
+			infos = TwitchStream.objects.all().filter(game=game)
+		
+		y_axis_data = self.get_data(infos, y_axis)
+
+		return y_axis_data
+
+
+	def get_dates(self, game):
+		dates = []
 		infos = InfoSteam.objects.filter(game=game)
 		for info in infos:
-			date.append(str(info.date))
+			dates.append(str(info.date))
+
+		return dates
 
 	def get_game(self, game_name):
 		
-		game = Game.objects.get(name=name)
+		game = Game.objects.get(name=game_name)
 		return game
 
 	def get_line_axys(self, y_axys, x_axys, game_data):
@@ -217,10 +237,9 @@ class GetGraphicData(APIView):
 		game_names = []
 
 		games = Game.objects.order_by(
-			'-infosteam__positive_reviews_steam',
 			'-infosteam__owners',
+			'-infosteam__positive_reviews_steam',
 			'-infosteam__average_2weeks',
-			'-infoyoutube__count_videos',
 		)[:20]
 
 		for game in games:
