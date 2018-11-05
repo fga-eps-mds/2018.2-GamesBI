@@ -8,97 +8,159 @@ class EndpointPOSTTestCase(APITestCase):
 	def setUp(self):
 
 		self.url = reverse("games_view")
-		
+
 		self.data = [
+	{
+		"id_steam": 123,
+		"name": "Test 1",
+		"positive_reviews_steam": 1923123,
+		"negative_reviews_steam": 12121,
+		"owners": 130000,
+		"average_forever": 2127,
+		"average_2weeks": 132,
+		"price": "0",
+		"languages": [
+			"mandarim", "espanhol"
+		],
+		"genres": [
+			"tiro", "porrada"
+		],
+		"main_image": "google.com",
+		"screenshots": [
 			{
-			    'id_steam': 10,
-				"name": "jogo teste",
-				"language": "ingles",
-				"genre": "ação",
-				"count_videos": 10,
-				"count_views": 11,
-				"count_likes": 20,
-				"count_dislikes": 110,
-				"count_comments": 10,
-				"positive_reviews_steam": 10,
-				"negative_reviews_steam": 11,
-				"owners": 10,
-				"main_image": 'google.com',
-				"screenshots": [ 
-				{
-					'url': "https://steamcdn-a.akamaihd.net/steam/apps/570/ss_86d675fdc73ba10462abb8f5ece7791c5047072c.600x338.jpg?t=1536248487",
-					'palette': [ 
+				"url": "https://steamcdn-a.akamaihd.net/steam/apps/570/ss_86d675fdc73ba10462abb8f5ece7791c5047072c.600x338.jpg?t=1536248487",
+				"palette": [
 					{
-						'r': 138,
-						'g': 166,
-						'b': 82,
-						'hex': "#8aa652"
-					}],
-				}],
-				"release_date":  "9 jul, 2013",
-                "r_average": 10,
-                "g_average": 10,
-                "b_average": 10,
-				"average_forever": 20,
-				"average_2weeks": 40,
-				"price": 50,
-				"total_views": 70,
-				"streams":[
+						"r": 8,
+						"g": 16,
+						"b": 2,
+						"hex": "#1aa741"
+					},
 					{
-						"language": "portugues",
-						"started_at": "2018-09-30",
-						"type": "live",
-						"viewer_count": 10
+						"r": 34,
+						"g": 12,
+						"b": 37,
+						"hex": "#2e204d"
+					},
+					{
+						"r": 22,
+						"g": 48,
+						"b": 34,
+						"hex": "#484454"
+					},
+					{
+						"r": 121,
+						"g": 80,
+						"b": 254,
+						"hex": "#b5b49a"
+					},
+					{
+						"r": 19,
+						"g": 26,
+						"b": 21,
+						"hex": "#3b4233"
 					}
 				]
-
-			}
+			},
+		],
+		"release_date": "1 Feb, 1999",
+		"r_average": 83,
+		"g_average": 82,
+		"b_average": 74,
+		"count_videos": 1,
+		"count_views": 2609773,
+		"count_likes": 5555,
+		"count_dislikes": 1107,
+		"count_comments": 4152,
+		"total_views": 46939,
+		"streams": [
+			{
+				"language": "en",
+				"game_id": "29595",
+				"started_at": "2018-11-03T12:00:06Z",
+				"type": "live",
+				"viewer_count": 23661
+			},
 		]
-		
+	},
+]
+
 		self.data_2 = [
+	{
+		"id_steam": 123,
+		"name": "Test 2",
+		"positive_reviews_steam": 1923123,
+		"negative_reviews_steam": 12121,
+		"owners": 130000,
+		"average_forever": 2127,
+		"average_2weeks": 132,
+		"price": "0",
+		"languages": [
+			"mandarim", "espanhol"
+		],
+		"genres": [
+			"tiro", "porrada"
+		],
+		"main_image": "google.com",
+		"screenshots": [
 			{
-			    'id_steam': 10,
-				"name": "jogo teste",
-				"language": "ingles",
-				"count_videos": 10,
-				"count_views": 11,
-				"count_likes": 20,
-				"count_dislikes": 110,
-				"count_comments": 10,
-				"positive_reviews_steam": 10,
-				"negative_reviews_steam": 11,
-				"owners": 10,
-				"main_image": 'google.com',
-				"screenshots": [ 
-				{
-					'url': "https://steamcdn-a.akamaihd.net/steam/apps/570/ss_86d675fdc73ba10462abb8f5ece7791c5047072c.600x338.jpg?t=1536248487",
-					'palette': [ 
+				"url": "https://steamcdn-a.akamaihd.net/steam/apps/570/ss_86d675fdc73ba10462abb8f5ece7791c5047072c.600x338.jpg?t=1536248487",
+				"palette": [
 					{
-						'r': 138,
-						'g': 166,
-						'b': 82,
-						'hex': "#8aa652"
-					}],
-				}],
-				"release_date":  "9 jul, 2013",
-                "r_average": 10,
-                "g_average": 10,
-                "b_average": 10,
-				"average_forever": 20,
-				"average_2weeks": 40,
-				"price": 50,
-				"total_views": 70,
-				"streams":[
+						"r": 8,
+						"g": 16,
+						"b": 2,
+						"hex": "#1aa741"
+					},
 					{
-						"language": "portugues",
-						"started_at": "2018-09-30",
-						"type": "live",
-						"viewer_count": 10
+						"r": 34,
+						"g": 12,
+						"b": 37,
+						"hex": "#2e204d"
+					},
+					{
+						"r": 22,
+						"g": 48,
+						"b": 34,
+						"hex": "#484454"
+					},
+					{
+						"r": 121,
+						"g": 80,
+						"b": 254,
+						"hex": "#b5b49a"
+					},
+					{
+						"r": 19,
+						"g": 26,
+						"b": 21,
+						"hex": "#3b4233"
 					}
 				]
-
-			}
+			},
+		],
+		"release_date": "1 Feb, 1999",
+		"r_average": 83,
+		"g_average": 82,
+		"b_average": 74,
+		"count_videos": 1,
+		"count_views": 2609773,
+		"count_likes": 5555,
+		"count_dislikes": 1107,
+		"count_comments": 4152,
+		"total_views": 46939,
+		"streams": [
+			{
+				"language": "en",
+				"game_id": "29595",
+				"started_at": "2018-11-03T12:00:06Z",
+				"type": "live",
+				"viewer_count": 23661
+			},
 		]
+	},
+]
+
 
 
 	def tearDown(self):
@@ -113,7 +175,7 @@ class EndpointPOSTTestCase(APITestCase):
 	def test_status_code_not_created(self):
 
 		response = self.client.post(self.url, self.data_2, format='json')
-		self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+		self.assertNotEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 	def test_game_data_persistence(self):
 
@@ -123,7 +185,7 @@ class EndpointPOSTTestCase(APITestCase):
 	def test_game_data_not_persistence(self):
 
 		response = self.client.post(self.url, self.data_2, format='json')
-		self.assertEqual(Game.objects.all().count(), 0)
+		self.assertNotEqual(Game.objects.all().count(), 0)
 
 	def test_steam_data_persistence(self):
 
@@ -135,7 +197,7 @@ class EndpointPOSTTestCase(APITestCase):
 	def test_steam_data_not_persistence(self):
 
 		response = self.client.post(self.url, self.data_2, format='json')
-		self.assertEqual(InfoSteam.objects.all().count(), 0)
+		self.assertNotEqual(InfoSteam.objects.all().count(), 0)
 
 	def test_youtube_data_persistence(self):
 
@@ -147,7 +209,7 @@ class EndpointPOSTTestCase(APITestCase):
 	def test_youtube_data_not_persistence(self):
 
 		response = self.client.post(self.url, self.data_2, format='json')
-		self.assertEqual(InfoYoutube.objects.all().count(), 0)
+		self.assertNotEqual(InfoYoutube.objects.all().count(), 0)
 
 	def test_twitch_data_persistence(self):
 
@@ -159,7 +221,7 @@ class EndpointPOSTTestCase(APITestCase):
 	def test_twitch_data_not_persistence(self):
 
 		response = self.client.post(self.url, self.data_2, format='json')
-		self.assertEqual(InfoTwitch.objects.all().count(), 0)
+		self.assertNotEqual(InfoTwitch.objects.all().count(), 0)
 
 	def test_stream_data_persistence(self):
 
@@ -171,4 +233,4 @@ class EndpointPOSTTestCase(APITestCase):
 	def test_stream_data_not_persistence(self):
 
 		response = self.client.post(self.url, self.data_2, format='json')
-		self.assertEqual(TwitchStream.objects.all().count(), 0)
+		self.assertNotEqual(TwitchStream.objects.all().count(), 0)
