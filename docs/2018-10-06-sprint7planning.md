@@ -14,7 +14,7 @@ Planning
 <b>Data</b>: 13/10 <br/>
 <b>Local</b>: Republica 9Caudas<br/>
 <b>Horário</b>: 09h30 às 12h30<br/>
-<b>Descrição</b>: 
+<b>Descrição</b>: Na reunião foi  discutidos novos pontos de melhoria a partir do feedback da R1 e foi feito o review da sprint 6 e planejamento da sprint 7
 
 ## Papéis Definidos
 

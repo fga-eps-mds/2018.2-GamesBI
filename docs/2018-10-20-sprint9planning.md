@@ -42,7 +42,7 @@ Planning
 
 | *Identificador* | ***História*** | **Pontuação** | **Responsáveis** | **Status** |
 | ------ | ------------ |     :---:     |  ---------------- | :---:  |
-| [#US02](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como usuário desejo visualizar sessão por tag |     3    | Marco e Lucas | **Nova**  |
+| [#US02](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como usuário desejo visualizar sessão por tag para visualizar dados |     3    | Marco e Lucas | **Nova**  |
 |[#US03](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/191) | Eu como usuário desejo visualizar os jogos mais vendidos  |     2    | Marco e Lucas | **Nova**  |
 |[#US15](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/147) | Eu como usuário desejo pesquisar um jogo para visualizar suas informações | 5 | Augusto e André | **Debito**  |
 |[#US18](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como usuário desejo visualizar os principais indicadores para ajudar no desenvolvimento do jogo | 13 | Bruno e Emanoel | **Nova**  |
