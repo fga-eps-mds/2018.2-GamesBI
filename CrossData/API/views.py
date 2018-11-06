@@ -6,7 +6,9 @@ from rest_framework.views import APIView
 from CrossData.importdata.models import *
 from CrossData.importdata.serializers import *
 from .objects_attrs import *
+from urllib.parse import unquote
 
+import calendar
 import datetime
 
 
@@ -258,14 +260,22 @@ class GetGraphicData(APIView):
 class GamesView(APIView):
 
 	def get(self, request, format=None):
-		serializer = GameNameSerializer(Game.objects.all(), many=True)
-		return Response(serializer.data)
+		partial = request.GET.get('partial')
+		game_name = unquote(request.GET.get('name'))
+
+		if partial != None:
+			data = GameNameSerializer(Game.objects.filter(name__istartswith=game_name), many=True).data
+		else:
+			game = Game.objects.get(name=game_name)
+			data = self.all_data(game)
+
+		return Response(data)
+
 
 	'''
 		Endpoint for receiving
 		data and persisting it on database
 	'''
-
 	def post(self, request, format=None):
 		game_list = request.data
 		if self.check_request_data(game_list):
@@ -285,6 +295,19 @@ class GamesView(APIView):
 				status=status.HTTP_400_BAD_REQUEST
 			)
 
+	def all_data(self, game):
+		twitch_info = InfoTwitch.objects.get(game=game)
+		youtube_info = InfoYoutube.objects.get(game=game)
+		steam_info = InfoSteam.objects.get(game=game)
+
+		data = {}
+		data.update(TwitchInfoSerializer(twitch_info).data)
+		data.update(YoutubeInfoSerializer(youtube_info).data)
+		data.update(SteamInfoSerializer(steam_info).data)
+
+		del data['game']
+
+		return data
 
 	def check_request_data(self, data):
 		attrs_list = [
@@ -503,28 +526,7 @@ class GamesView(APIView):
 		return datetime.date(year,month, day)
 
 	def convert_month_str_to_integer(self, month_str):
-		if month_str == "Jan":
+		if month_str in calendar.month_abbr:
+			return list(calendar.month_abbr).index(month_str)
+		else:
 			return 1
-		elif month_str == "Feb":
-			return 2
-		elif month_str == "Mar":
-			return 3
-		elif month_str == "Apr":
-			return 4
-		elif month_str == "May":
-			return 5
-		elif month_str == "Jun":
-			return 6
-		elif month_str == "Jul":
-			return 7
-		elif month_str == "Aug":
-			return 8
-		elif month_str == "Sep":
-			return 9
-		elif month_str == "Oct":
-			return 10
-		elif month_str == "Nov":
-			return 11
-		elif month_str == "Dec":
-			return 12
-		else: return 1
