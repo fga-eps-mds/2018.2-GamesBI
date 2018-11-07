@@ -299,11 +299,35 @@ class GamesView(APIView):
 		twitch_info = InfoTwitch.objects.get(game=game)
 		youtube_info = InfoYoutube.objects.get(game=game)
 		steam_info = InfoSteam.objects.get(game=game)
+		languages = Language.objects.filter(game=game)
+		genres = Genre.objects.filter(game=game)
+		streams = TwitchStream.objects.filter(game=game)
+		screenshots = Screenshot.objects.filter(game=game)
+
+		lang_dict = {"languages" : [ x.language for x in languages ]}
+		genres_dict = {"genres" : [ x.genre for x in genres ]}
+
+		streams_array = [TwitchStreamSerializer(x).data for x in streams]
+		for stream in streams_array:
+			del stream['game']
+
+		screenshots_array = [ScreenshotSerializer(x).data for x in screenshots]
+		for screenshot in screenshots_array:
+			palette_array = [PaletteSerializer(x).data for x in Palette.objects.filter(screenshot_id=screenshot['id']).defer('screenshot')]
+			for palette in palette_array:
+				del palette['screenshot']
+			screenshot.update({'palettes' : palette_array})
+			del screenshot['game']
 
 		data = {}
 		data.update(TwitchInfoSerializer(twitch_info).data)
 		data.update(YoutubeInfoSerializer(youtube_info).data)
 		data.update(SteamInfoSerializer(steam_info).data)
+		data.update(lang_dict)
+		data.update(genres_dict)
+		data.update({'streams': streams_array})
+		data.update({'screenshots': screenshots_array})
+
 
 		del data['game']
 

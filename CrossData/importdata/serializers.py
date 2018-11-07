@@ -54,3 +54,18 @@ class TwitchStreamSerializer(serializers.ModelSerializer):
 
 		model = TwitchStream
 		fields = '__all__'
+
+class ScreenshotSerializer(serializers.ModelSerializer):
+    
+    game = GameSerializer()
+
+    class Meta:
+        model = Screenshot
+        fields = '__all__'
+
+class PaletteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Palette
+        fields = '__all__'
+
