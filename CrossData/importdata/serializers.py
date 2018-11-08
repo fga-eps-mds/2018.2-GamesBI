@@ -69,3 +69,8 @@ class PaletteSerializer(serializers.ModelSerializer):
         model = Palette
         fields = '__all__'
 
+class GenreSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Genre
+        fields = '__all__'

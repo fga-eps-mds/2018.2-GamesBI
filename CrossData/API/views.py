@@ -12,15 +12,6 @@ from operator import itemgetter
 import calendar
 import datetime
 
-
-class SearchGame(APIView):
-
-	def get(self, request, format=None):
-		game_name = request.GET.get('name')
-		serializer = GameNameSerializer(Game.objects.filter(name__istartswith=game_name), many=True)
-		return Response(serializer.data)
-
-
 class GetTableData(APIView):
 
 	'''
@@ -564,30 +555,14 @@ class GenreColors(APIView):
 		genre = Genre.objects.get(genre=genre_name)
 
 		colors_array = []
-		for game in Game.objects.filter(genre=genre):
+		for game in Game.objects.filter(genres=genre):
 			colors_array.append([game.r_average, game.g_average, game.b_average])
 
 		index = ['r', 'g', 'b'].index(color_name)
 		data = {"colors": sorted(colors_array, key=itemgetter(index))}
-		return Response(serializer.data)
+		return Response(data)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class Genres(APIView):
+	def get(self, request, format=None):
+		return Response(GenreSerializer(Genre.objects.all(), many=True).data)
 
