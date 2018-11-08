@@ -7,6 +7,7 @@ from CrossData.importdata.models import *
 from CrossData.importdata.serializers import *
 from .objects_attrs import *
 from urllib.parse import unquote
+from operator import itemgetter
 
 import calendar
 import datetime
@@ -554,3 +555,39 @@ class GamesView(APIView):
 			return list(calendar.month_abbr).index(month_str)
 		else:
 			return 1
+
+class GenreColors(APIView):
+	def get(self, request, format=None):
+		genre_name = request.GET.get('genre')
+		color_name = request.GET.get('color')
+		
+		genre = Genre.objects.get(genre=genre_name)
+
+		colors_array = []
+		for game in Game.objects.filter(genre=genre):
+			colors_array.append([game.r_average, game.g_average, game.b_average])
+
+		index = ['r', 'g', 'b'].index(color_name)
+		data = {"colors": sorted(colors_array, key=itemgetter(index))}
+		return Response(serializer.data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
