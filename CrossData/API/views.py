@@ -6,17 +6,11 @@ from rest_framework.views import APIView
 from CrossData.importdata.models import *
 from CrossData.importdata.serializers import *
 from .objects_attrs import *
+from urllib.parse import unquote
+from operator import itemgetter
 
+import calendar
 import datetime
-
-
-class SearchGame(APIView):
-
-	def get(self, request, format=None):
-		game_name = request.GET.get('name')
-		serializer = GameNameSerializer(Game.objects.filter(name__istartswith=game_name), many=True)
-		return Response(serializer.data)
-
 
 class GetTableData(APIView):
 
@@ -159,7 +153,10 @@ class GetGraphicData(APIView):
 		dates = []
 		infos = InfoSteam.objects.filter(game=game)
 		for info in infos:
-			dates.append(str(info.date))
+			date = (
+				str(info.date.date().year)+"/"+str(info.date.date().month)+"/"+str(info.date.date().day)
+			)
+			dates.append(date)
 
 		return dates
 
@@ -258,14 +255,22 @@ class GetGraphicData(APIView):
 class GamesView(APIView):
 
 	def get(self, request, format=None):
-		serializer = GameNameSerializer(Game.objects.all(), many=True)
-		return Response(serializer.data)
+		partial = request.GET.get('partial')
+		game_name = unquote(request.GET.get('name'))
+
+		if partial != None:
+			data = GameNameSerializer(Game.objects.filter(name__istartswith=game_name), many=True).data
+		else:
+			game = Game.objects.get(name=game_name)
+			data = self.all_data(game)
+
+		return Response(data)
+
 
 	'''
 		Endpoint for receiving
 		data and persisting it on database
 	'''
-
 	def post(self, request, format=None):
 		game_list = request.data
 		if self.check_request_data(game_list):
@@ -285,6 +290,43 @@ class GamesView(APIView):
 				status=status.HTTP_400_BAD_REQUEST
 			)
 
+	def all_data(self, game):
+		twitch_info = InfoTwitch.objects.get(game=game)
+		youtube_info = InfoYoutube.objects.get(game=game)
+		steam_info = InfoSteam.objects.get(game=game)
+		languages = Language.objects.filter(game=game)
+		genres = Genre.objects.filter(game=game)
+		streams = TwitchStream.objects.filter(game=game)
+		screenshots = Screenshot.objects.filter(game=game)
+
+		lang_dict = {"languages" : [ x.language for x in languages ]}
+		genres_dict = {"genres" : [ x.genre for x in genres ]}
+
+		streams_array = [TwitchStreamSerializer(x).data for x in streams]
+		for stream in streams_array:
+			del stream['game']
+
+		screenshots_array = [ScreenshotSerializer(x).data for x in screenshots]
+		for screenshot in screenshots_array:
+			palette_array = [PaletteSerializer(x).data for x in Palette.objects.filter(screenshot_id=screenshot['id']).defer('screenshot')]
+			for palette in palette_array:
+				del palette['screenshot']
+			screenshot.update({'palettes' : palette_array})
+			del screenshot['game']
+
+		data = {}
+		data.update(TwitchInfoSerializer(twitch_info).data)
+		data.update(YoutubeInfoSerializer(youtube_info).data)
+		data.update(SteamInfoSerializer(steam_info).data)
+		data.update(lang_dict)
+		data.update(genres_dict)
+		data.update({'streams': streams_array})
+		data.update({'screenshots': screenshots_array})
+
+
+		del data['game']
+
+		return data
 
 	def check_request_data(self, data):
 		attrs_list = [
@@ -503,28 +545,27 @@ class GamesView(APIView):
 		return datetime.date(year,month, day)
 
 	def convert_month_str_to_integer(self, month_str):
-		if month_str == "Jan":
+		if month_str in calendar.month_abbr:
+			return list(calendar.month_abbr).index(month_str)
+		else:
 			return 1
-		elif month_str == "Feb":
-			return 2
-		elif month_str == "Mar":
-			return 3
-		elif month_str == "Apr":
-			return 4
-		elif month_str == "May":
-			return 5
-		elif month_str == "Jun":
-			return 6
-		elif month_str == "Jul":
-			return 7
-		elif month_str == "Aug":
-			return 8
-		elif month_str == "Sep":
-			return 9
-		elif month_str == "Oct":
-			return 10
-		elif month_str == "Nov":
-			return 11
-		elif month_str == "Dec":
-			return 12
-		else: return 1
+
+class GenreColors(APIView):
+	def get(self, request, format=None):
+		genre_name = request.GET.get('genre')
+		color_name = request.GET.get('color')
+		
+		genre = Genre.objects.get(genre=genre_name)
+
+		colors_array = []
+		for game in Game.objects.filter(genres=genre):
+			colors_array.append([game.r_average, game.g_average, game.b_average])
+
+		index = ['r', 'g', 'b'].index(color_name)
+		data = {"colors": sorted(colors_array, key=itemgetter(index))}
+		return Response(data)
+
+class Genres(APIView):
+	def get(self, request, format=None):
+		return Response(GenreSerializer(Genre.objects.all(), many=True).data)
+
