@@ -315,6 +315,7 @@ class GamesView(APIView):
 			del screenshot['game']
 
 		data = {}
+		data.update(GameSerializer(game).data)
 		data.update(TwitchInfoSerializer(twitch_info).data)
 		data.update(YoutubeInfoSerializer(youtube_info).data)
 		data.update(SteamInfoSerializer(steam_info).data)
@@ -322,8 +323,11 @@ class GamesView(APIView):
 		data.update(genres_dict)
 		data.update({'streams': streams_array})
 		data.update({'screenshots': screenshots_array})
+        
+		if data["release_date"] != None:
+			data["release_date"] = data["release_date"].split('T')[0]
 
-
+		del data["languages_game"]
 		del data['game']
 
 		return data
