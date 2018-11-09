@@ -14,7 +14,7 @@ Planning
 <b>Data</b>: 20/10 <br/>
 <b>Local</b>: FGA<br/>
 <b>Horário</b>: 08h30 às 12h30<br/>
-<b>Descrição</b>: Foi realizada a sprint review da sprint 7 e plannig da sprint 8.
+<b>Descrição</b>: Foi realizada a sprint review da sprint 7 e planning da sprint 8.
 
 ## Papéis Definidos
 
