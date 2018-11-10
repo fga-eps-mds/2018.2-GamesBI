@@ -9,6 +9,7 @@ from .objects_attrs import *
 from urllib.parse import unquote
 from operator import itemgetter
 
+import os
 import calendar
 import datetime
 
@@ -546,11 +547,10 @@ class GamesView(APIView):
 	def get_release_data(self, str_date):
 		if str_date == None:
 			return
-		fragment = str_date.split(' ')
-		day = int(fragment[0])
-		month = self.convert_month_str_to_integer(fragment[1].split(",")[0])
-		year = int(fragment[2])
-		return datetime.date(year,month, day)
+
+		tmp_datetime = datetime.datetime.strptime(str_date, os.environ['DATE_FORMAT'])
+
+		return tmp_datetime.date()
 
 	def convert_month_str_to_integer(self, month_str):
 		if month_str in calendar.month_abbr:
