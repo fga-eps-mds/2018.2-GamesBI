@@ -90,14 +90,18 @@ class GetTableData(APIView):
 
 			game_data = {}
 
+			info_steam = InfoSteam.objects.filter(game=game).latest('date')
+			info_youtube = InfoYoutube.objects.filter(game=game).latest('date')
+			info_twitch = InfoTwitch.objects.filter(game=game).latest('date')
+
 			game_data['game'] = game.name
-			game_data['owners'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].owners
-			game_data['price'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].price
-			game_data['positive_reviews_steam'] = InfoSteam.objects.filter(game=game).order_by('-id')[0].positive_reviews_steam
-			game_data['youtube_views']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_views
-			game_data['youtube_count_likes']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_likes
-			game_data['youtube_count_dislikes']=InfoYoutube.objects.filter(game=game).order_by('-id')[0].count_dislikes
-			game_data['twitch_viewer_count']=InfoTwitch.objects.filter(game=game).order_by('-id')[0].viewer_count
+			game_data['owners'] = info_steam.owners
+			game_data['price'] = info_steam.price
+			game_data['positive_reviews_steam'] = info_steam.positive_reviews_steam
+			game_data['youtube_views'] = info_youtube.count_views
+			game_data['youtube_count_likes'] = info_youtube.count_likes
+			game_data['youtube_count_dislikes'] = info_youtube.count_dislikes
+			game_data['twitch_viewer_count'] = info_twitch.viewer_count
 
 			collected_data.append(game_data)
 
@@ -291,9 +295,9 @@ class GamesView(APIView):
 			)
 
 	def all_data(self, game):
-		twitch_info = InfoTwitch.objects.get(game=game)
-		youtube_info = InfoYoutube.objects.get(game=game)
-		steam_info = InfoSteam.objects.get(game=game)
+		twitch_info = InfoTwitch.objects.filter(game=game).latest('date')
+		youtube_info = InfoYoutube.objects.filter(game=game).latest('date')
+		steam_info = InfoSteam.objects.filter(game=game).latest('date')
 		languages = Language.objects.filter(game=game)
 		genres = Genre.objects.filter(game=game)
 		streams = TwitchStream.objects.filter(game=game)
