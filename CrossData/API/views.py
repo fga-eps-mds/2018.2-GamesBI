@@ -8,6 +8,7 @@ from CrossData.importdata.serializers import *
 from .objects_attrs import *
 from urllib.parse import unquote
 from operator import itemgetter
+import dateutil.parser
 
 import os
 import calendar
@@ -547,8 +548,8 @@ class GamesView(APIView):
 	def get_release_data(self, str_date):
 		if str_date == None:
 			return
-
-		tmp_datetime = datetime.datetime.strptime(str_date, os.environ['DATE_FORMAT'])
+        
+		tmp_datetime = dateutil.parser.parse(str_date)
 
 		return tmp_datetime.date()
 

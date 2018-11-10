@@ -8,3 +8,4 @@ model_mommy
 djangorestframework-jwt
 django_heroku
 django-cors-headers
+python-dateutil
