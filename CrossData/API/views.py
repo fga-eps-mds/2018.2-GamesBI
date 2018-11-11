@@ -127,7 +127,7 @@ class GetGraphicData(APIView):
 
 		if name==None:
 			if graph_type == "line":
-				data = self.get_line_axys(y_axis, x_axis, data)
+				data = self.get_line_axis(y_axis, x_axis, data)
 
 		else:
 			game = self.get_game(name)
@@ -171,59 +171,59 @@ class GetGraphicData(APIView):
 		game = Game.objects.get(name=game_name)
 		return game
 
-	def get_line_axys(self, y_axys, x_axys, game_data):
+	def get_line_axis(self, y_axis, x_axis, game_data):
 
-		if x_axys == 'games' or y_axys=='games':
-				game_data['x_axys'] = self.get_games_name()
+		if x_axis == 'games' or y_axis=='games':
+				game_data['x_axis'] = self.get_games_name()
 
-		if y_axys in steam_attrs:
-			game_data['y_axys'] = self.get_data(
+		if y_axis in steam_attrs:
+			game_data['y_axis'] = self.get_data(
 				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
-				y_axys
+				y_axis
 			)
-		if x_axys in steam_attrs:
-			game_data['x_axys'] = self.get_data(
+		if x_axis in steam_attrs:
+			game_data['x_axis'] = self.get_data(
 				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
-				x_axys
+				x_axis
 			)
 
-		if y_axys in youtube_attrs:
-			game_data['y_axys'] = self.get_data(
+		if y_axis in youtube_attrs:
+			game_data['y_axis'] = self.get_data(
 				InfoYoutube.objects.all().order_by(
 					'-game__infosteam__owners',
 					'-game__infosteam__positive_reviews_steam',
 					'-game__infosteam__average_2weeks',
 				)[:20],
-				y_axys
+				y_axis
 			)
 
-		if x_axys in youtube_attrs:
-			game_data['x_axys'] = self.get_data(
+		if x_axis in youtube_attrs:
+			game_data['x_axis'] = self.get_data(
 				InfoYoutube.objects.all().order_by(
 					'-game__infosteam__owners',
 					'-game__infosteam__positive_reviews_steam',
 					'-game__infosteam__average_2weeks',
 				)[:20],
-				x_axys
+				x_axis
 			)
 
-		if y_axys in twitch_attrs:
-			game_data['y_axys'] = self.get_data(
+		if y_axis in twitch_attrs:
+			game_data['y_axis'] = self.get_data(
 				InfoTwitch.objects.all().order_by(
 					'-game__infosteam__owners',
 					'-game__infosteam__positive_reviews_steam',
 					'-game__infosteam__average_2weeks',
 				)[:20],
-				y_axys
+				y_axis
 			)
-		if x_axys in twitch_attrs:
-			game_data['x_axys'] = self.get_data(
+		if x_axis in twitch_attrs:
+			game_data['x_axis'] = self.get_data(
 				InfoTwitch.objects.all().order_by(
 					'-game__infosteam__owners',
 					'-game__infosteam__positive_reviews_steam',
 					'-game__infosteam__average_2weeks',
 				)[:20],
-				x_axys
+				x_axis
 			)
 
 		return game_data
