@@ -74,7 +74,7 @@ class GetTableData(APIView):
 		return self.get_data(games)
 
 	def get_most_watched_data(self):
-		
+
 		games = Game.objects.all().order_by(
 			'-infoyoutube__count_views',
 			'-infoyoutube__count_videos',
@@ -108,7 +108,7 @@ class GetTableData(APIView):
 			collected_data.append(game_data)
 
 		return collected_data
-		
+
 
 
 class GetGraphicData(APIView):
@@ -131,7 +131,7 @@ class GetGraphicData(APIView):
 
 		else:
 			game = self.get_game(name)
-			data['x_axys'] = self.get_dates(game)
+			data['x_axis'] = self.get_dates(game)
 			data['y_axis'] = self.get_game_y_axis(game, y_axis)
 
 		return Response(data=data, status=status.HTTP_200_OK)
@@ -140,7 +140,7 @@ class GetGraphicData(APIView):
 
 		y_axis_data = []
 		infos = []
-		
+
 		if y_axis in steam_attrs:
 			infos = InfoSteam.objects.all().filter(game=game)
 		elif y_axis in youtube_attrs:
@@ -149,7 +149,7 @@ class GetGraphicData(APIView):
 			infos = InfoTwitch.objects.all().filter(game=game)
 		elif y_axis in streams_attrs:
 			infos = TwitchStream.objects.all().filter(game=game)
-		
+
 		y_axis_data = self.get_data(infos, y_axis)
 
 		return y_axis_data
@@ -167,7 +167,7 @@ class GetGraphicData(APIView):
 		return dates
 
 	def get_game(self, game_name):
-		
+
 		game = Game.objects.get(name=game_name)
 		return game
 
@@ -196,7 +196,7 @@ class GetGraphicData(APIView):
 				)[:20],
 				y_axys
 			)
-		
+
 		if x_axys in youtube_attrs:
 			game_data['x_axys'] = self.get_data(
 				InfoYoutube.objects.all().order_by(
@@ -329,7 +329,7 @@ class GamesView(APIView):
 		data.update(genres_dict)
 		data.update({'streams': streams_array})
 		data.update({'screenshots': screenshots_array})
-        
+
 		if data["release_date"] != None:
 			data["release_date"] = data["release_date"].split('T')[0]
 
@@ -563,7 +563,7 @@ class GenreColors(APIView):
 	def get(self, request, format=None):
 		genre_name = request.GET.get('genre')
 		color_name = request.GET.get('color')
-		
+
 		genre = Genre.objects.get(genre=genre_name)
 
 		colors_array = []
@@ -577,4 +577,3 @@ class GenreColors(APIView):
 class Genres(APIView):
 	def get(self, request, format=None):
 		return Response(GenreSerializer(Genre.objects.all(), many=True).data)
-
