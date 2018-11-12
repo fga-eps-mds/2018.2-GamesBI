@@ -39,19 +39,19 @@ down:
 migrations:
 	# Create migrations
 	sudo docker-compose run web python manage.py makemigrations
-	sudo docker-compose run web python manage.py makemigrations importdata
+	sudo docker-compose run web python manage.py makemigrations API
 
 migrate:
 	# Migrate migrations
 	sudo docker-compose run web python manage.py migrate
-	sudo docker-compose run web python manage.py migrate importdata
+	sudo docker-compose run web python manage.py migrate API
 
 fixture:
-	# Generate fixtures saved upon importdata models
-	sudo docker-compose run web python manage.py dumpdata importdata --format json > CrossData/importdata/fixtures/data.json
+	# Generate fixtures saved upon API models
+	sudo docker-compose run web python manage.py dumpdata API --format json > CrossData/API/fixtures/data.json
 
 loaddata:
-	# load fixtures saved upon importdata models
+	# load fixtures saved upon API models
 	sudo docker-compose run web python manage.py loaddata data.json
 
 test:

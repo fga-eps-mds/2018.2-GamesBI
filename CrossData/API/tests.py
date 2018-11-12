@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from CrossData.importdata.models import *
+from CrossData.API.models import *
 
 class EndpointPOSTTestCase(APITestCase):
 

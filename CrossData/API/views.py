@@ -3,8 +3,8 @@ import requests
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from CrossData.importdata.models import *
-from CrossData.importdata.serializers import *
+from CrossData.API.models import *
+from CrossData.API.serializers import *
 from .objects_attrs import *
 from urllib.parse import unquote
 from operator import itemgetter
@@ -548,7 +548,7 @@ class GamesView(APIView):
 	def get_release_data(self, str_date):
 		if str_date == None:
 			return
-        
+
 		tmp_datetime = dateutil.parser.parse(str_date)
 
 		return tmp_datetime.date()
