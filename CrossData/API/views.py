@@ -9,6 +9,7 @@ from .objects_attrs import *
 from urllib.parse import unquote
 from operator import itemgetter
 import dateutil.parser
+import datetime
 
 import os
 import calendar
@@ -37,50 +38,43 @@ class GetTableData(APIView):
 		elif table_type == "playedtime":
 			collected_data = self.get_by_playedtime()
 
+		if len(collected_data) != 0:
+			status_code = status.HTTP_200_OK
+		else:
+			status_code = status.HTTP_400_BAD_REQUEST
 
-		return Response(data=collected_data, status=status.HTTP_200_OK)
+		return Response(data=collected_data, status=status_code)
 
 	def get_by_playedtime(self):
-
-		games = Game.objects.order_by(
-			'-infosteam__average_2weeks',
-			'-infosteam__average_forever',
-			'-infosteam__owners',
-		)[:20]
+		infos = order(InfoSteam.objects, ['average_2weeks', 'average_forever', 'positive_reviews_steam'], 20)
+		games = [x.game for x in infos]
 
 		return self.get_data(games)
 
 	def get_sales_data(self):
-
-		games = Game.objects.exclude(infosteam__price=0).order_by(
-			'-infosteam__owners',
-			'-infosteam__average_2weeks',
-		)[:20]
+		infos = order(InfoSteam.objects.exclude(price=0), ['owners', 'average_2weeks'], 20)
+		games = [x.game for x in infos]
 
 		return self.get_data(games)
 
 	def get_tranding_now_data(self):
+		if Game.objects.all().count() == 0:
+			return []
 
-		games = Game.objects.order_by(
-			'-infosteam__positive_reviews_steam',
-			'-infosteam__average_2weeks',
-			'-infoyoutube__count_views',
-			'-infoyoutube__count_videos',
-			'-infoyoutube__count_likes',
-			'-infotwitch__viewer_count',
-			'-infoyoutube__count_comments'
-		)[:20]
+		recent_games = list(Game.objects.order_by('-release_date')[:25])
+		date = recent_games[-1].release_date
+
+		infos = order(InfoSteam.objects.filter(game__release_date__range=[date, datetime.datetime.now()]) , ['positive_reviews_steam', 'average_2weeks'], 20)
+		games = [x.game for x in infos]
 
 		return self.get_data(games)
 
 	def get_most_watched_data(self):
 
-		games = Game.objects.all().order_by(
-			'-infoyoutube__count_views',
-			'-infoyoutube__count_videos',
-			'-infotwitch__viewer_count',
-			'-infoyoutube__count_comments',
-		)[:20]
+		attrs = ['count_views', 'count_videos', 'count_comments']
+
+		infos = order(InfoYoutube.objects, attrs, 20)
+		games = [x.game for x in infos]
 
 		return self.get_data(games)
 
@@ -172,57 +166,42 @@ class GetGraphicData(APIView):
 		return game
 
 	def get_line_axis(self, y_axis, x_axis, game_data):
-
 		if x_axis == 'games' or y_axis=='games':
 				game_data['x_axis'] = self.get_games_name()
 
+		ordered = order(InfoSteam.objects, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20)
+
 		if y_axis in steam_attrs:
 			game_data['y_axis'] = self.get_data(
-				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
+				ordered,
 				y_axis
 			)
 		if x_axis in steam_attrs:
 			game_data['x_axis'] = self.get_data(
-				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
+				ordered,
 				x_axis
 			)
 
 		if y_axis in youtube_attrs:
 			game_data['y_axis'] = self.get_data(
-				InfoYoutube.objects.all().order_by(
-					'-game__infosteam__owners',
-					'-game__infosteam__positive_reviews_steam',
-					'-game__infosteam__average_2weeks',
-				)[:20],
+				ordered,
 				y_axis
 			)
 
 		if x_axis in youtube_attrs:
 			game_data['x_axis'] = self.get_data(
-				InfoYoutube.objects.all().order_by(
-					'-game__infosteam__owners',
-					'-game__infosteam__positive_reviews_steam',
-					'-game__infosteam__average_2weeks',
-				)[:20],
+				ordered,
 				x_axis
 			)
 
 		if y_axis in twitch_attrs:
 			game_data['y_axis'] = self.get_data(
-				InfoTwitch.objects.all().order_by(
-					'-game__infosteam__owners',
-					'-game__infosteam__positive_reviews_steam',
-					'-game__infosteam__average_2weeks',
-				)[:20],
+				ordered,
 				y_axis
 			)
 		if x_axis in twitch_attrs:
 			game_data['x_axis'] = self.get_data(
-				InfoTwitch.objects.all().order_by(
-					'-game__infosteam__owners',
-					'-game__infosteam__positive_reviews_steam',
-					'-game__infosteam__average_2weeks',
-				)[:20],
+				ordered,
 				x_axis
 			)
 
@@ -243,17 +222,233 @@ class GetGraphicData(APIView):
 		return collected_data
 
 	def get_games_name(self):
-
 		game_names = []
+		for game in order(InfoSteam.objects, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20):
+			game_names.append(game.game.name)
 
-		games = Game.objects.order_by(
-			'-infosteam__owners',
-			'-infosteam__positive_reviews_steam',
-			'-infosteam__average_2weeks',
-		)[:20]
+		return game_names
+
+
+class GamesView(APIView):
+
+	def get(self, request, format=None):
+		partial = request.GET.get('partial')
+		game_name = unquote(request.GET.get('name'))
+
+		if partial != None:
+			data = GameNameSerializer(Game.objects.filter(name__istartswith=game_name), many=True).data
+		else:
+			game = Game.objects.get(name=game_name)
+			data = self.all_data(game)
+
+		return Response(data)
+
+
+	'''
+		Endpoint for receiving
+		data and persisting it on database
+	'''
+	def post(self, request, format=None):
+		game_list = request.data
+		if self.check_request_data(game_list):
+			for game_data in game_list:
+				new_game = self.save_game(game_data)
+				self.save_info_youtube(game_data, new_game)
+				self.save_info_steam(game_data, new_game)
+				self.save_info_twitch(game_data, new_game)
+				self.save_streams(game_data, new_game)
+			return Response(
+				data={"mensagem":"Dados salvos com sucesso"},
+				status=status.HTTP_201_CREATED
+			)
+		else:
+			return Response(
+				data={"mensagem":"Erro ao Salvar dados. Alguns atributos podem estar faltando"},
+				status=status.HTTP_400_BAD_REQUEST
+			)
+
+		return Response(data=collected_data, status=status.HTTP_200_OK)
+
+	def get_by_playedtime(self):
+		infos = order(InfoSteam.objects, ['average_2weeks', 'average_forever', 'positive_reviews_steam'], 20)
+		games = [x.game for x in infos]
+
+		return self.get_data(games)
+
+	def get_sales_data(self):
+		infos = order(InfoSteam.objects.exclude(price=0), ['owners', 'average_2weeks'], 20)
+		games = [x.game for x in infos]
+
+		return self.get_data(games)
+
+	def get_tranding_now_data(self):
+		if Game.objects.all().count() == 0:
+			return []
+
+		recent_games = list(Game.objects.order_by('-release_date')[:25])
+		date = recent_games[-1].release_date
+
+		infos = order(InfoSteam.objects.filter(game__release_date__range=[date, datetime.datetime.now()]) , ['positive_reviews_steam', 'average_2weeks'], 20)
+		games = [x.game for x in infos]
+
+		return self.get_data(games)
+
+	def get_most_watched_data(self):
+
+		attrs = ['count_views', 'count_videos', 'count_comments']
+
+		infos = order(InfoYoutube.objects, attrs, 20)
+		games = [x.game for x in infos]
+
+		return self.get_data(games)
+
+	def get_data(self, games):
+
+		collected_data = []
 
 		for game in games:
-			game_names.append(game.name)
+
+			game_data = {}
+
+			info_steam = InfoSteam.objects.filter(game=game).latest('date')
+			info_youtube = InfoYoutube.objects.filter(game=game).latest('date')
+			info_twitch = InfoTwitch.objects.filter(game=game).latest('date')
+
+			game_data['game'] = game.name
+			game_data['owners'] = info_steam.owners
+			game_data['price'] = info_steam.price
+			game_data['positive_reviews_steam'] = info_steam.positive_reviews_steam
+			game_data['youtube_views'] = info_youtube.count_views
+			game_data['youtube_count_likes'] = info_youtube.count_likes
+			game_data['youtube_count_dislikes'] = info_youtube.count_dislikes
+			game_data['twitch_viewer_count'] = info_twitch.viewer_count
+
+			collected_data.append(game_data)
+
+		return collected_data
+
+
+
+class GetGraphicData(APIView):
+
+	'''
+		Endpoint to return data
+		to be used in graphics
+	'''
+
+	def get(self, request, graphtype, yaxis, xaxis, name=None, format=None):
+
+		graph_type = graphtype
+		data={}
+		y_axis = yaxis
+		x_axis = xaxis
+
+		if name==None:
+			if graph_type == "line":
+				data = self.get_line_axis(y_axis, x_axis, data)
+
+		else:
+			game = self.get_game(name)
+			data['x_axis'] = self.get_dates(game)
+			data['y_axis'] = self.get_game_y_axis(game, y_axis)
+
+		return Response(data=data, status=status.HTTP_200_OK)
+
+	def get_game_y_axis(self, game, y_axis):
+
+		y_axis_data = []
+		infos = []
+
+		if y_axis in steam_attrs:
+			infos = InfoSteam.objects.all().filter(game=game)
+		elif y_axis in youtube_attrs:
+			infos = InfoYoutube.objects.all().filter(game=game)
+		elif y_axis in twitch_attrs:
+			infos = InfoTwitch.objects.all().filter(game=game)
+		elif y_axis in streams_attrs:
+			infos = TwitchStream.objects.all().filter(game=game)
+
+		y_axis_data = self.get_data(infos, y_axis)
+
+		return y_axis_data
+
+
+	def get_dates(self, game):
+		dates = []
+		infos = InfoSteam.objects.filter(game=game)
+		for info in infos:
+			date = (
+				str(info.date.date().year)+"/"+str(info.date.date().month)+"/"+str(info.date.date().day)
+			)
+			dates.append(date)
+
+		return dates
+
+	def get_game(self, game_name):
+
+		game = Game.objects.get(name=game_name)
+		return game
+
+	def get_line_axis(self, y_axis, x_axis, game_data):
+		if x_axis == 'games' or y_axis=='games':
+				game_data['x_axis'] = self.get_games_name()
+
+		ordered = order(InfoSteam.objects, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20)
+
+		if y_axis in steam_attrs:
+			game_data['y_axis'] = self.get_data(
+				ordered,
+				y_axis
+			)
+		if x_axis in steam_attrs:
+			game_data['x_axis'] = self.get_data(
+				ordered,
+				x_axis
+			)
+
+		if y_axis in youtube_attrs:
+			game_data['y_axis'] = self.get_data(
+				ordered,
+				y_axis
+			)
+
+		if x_axis in youtube_attrs:
+			game_data['x_axis'] = self.get_data(
+				ordered,
+				x_axis
+			)
+
+		if y_axis in twitch_attrs:
+			game_data['y_axis'] = self.get_data(
+				ordered,
+				y_axis
+			)
+		if x_axis in twitch_attrs:
+			game_data['x_axis'] = self.get_data(
+				ordered,
+				x_axis
+			)
+
+		return game_data
+
+	def get_data(self, db_data, attr):
+
+		collected_data = []
+
+		for data in db_data:
+
+			try:
+				new_data = getattr(data, attr)
+				collected_data.append(new_data)
+			except AttributeError:
+				pass
+
+		return collected_data
+
+	def get_games_name(self):
+		game_names = []
+		for game in order(InfoSteam.objects, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20):
+			game_names.append(game.game.name)
 
 		return game_names
 
@@ -577,3 +772,17 @@ class GenreColors(APIView):
 class Genres(APIView):
 	def get(self, request, format=None):
 		return Response(GenreSerializer(Genre.objects.all(), many=True).data)
+
+
+def order(query_set, attrs, quantity, reverse=True):
+		all_games = Game.objects.all()
+
+
+		updated_infos = []
+		for game in all_games:
+			if(len(query_set.filter(game=game)) != 0):
+				updated_infos.append(query_set.filter(game=game).latest('date'))
+
+		games = sorted(updated_infos, key=lambda x: [getattr(x, y) for y in attrs], reverse=reverse)[:quantity]
+		return games
+
