@@ -42,11 +42,8 @@ class GetTableData(APIView):
 
 	def get_by_playedtime(self):
 
-		games = Game.objects.order_by(
-			'-infosteam__average_2weeks',
-			'-infosteam__average_forever',
-			'-infosteam__owners',
-		)[:20]
+	
+		games = self.order(InfoSteam, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20)
 
 		return self.get_data(games)
 
@@ -172,61 +169,57 @@ class GetGraphicData(APIView):
 		return game
 
 	def get_line_axis(self, y_axis, x_axis, game_data):
-
 		if x_axis == 'games' or y_axis=='games':
 				game_data['x_axis'] = self.get_games_name()
 
+		ordered = self.order(InfoSteam, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20)
+
 		if y_axis in steam_attrs:
 			game_data['y_axis'] = self.get_data(
-				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
+				ordered,
 				y_axis
 			)
 		if x_axis in steam_attrs:
 			game_data['x_axis'] = self.get_data(
-				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
+				ordered,
 				x_axis
 			)
 
 		if y_axis in youtube_attrs:
 			game_data['y_axis'] = self.get_data(
-				InfoYoutube.objects.all().order_by(
-					'-game__infosteam__owners',
-					'-game__infosteam__positive_reviews_steam',
-					'-game__infosteam__average_2weeks',
-				)[:20],
+				ordered,
 				y_axis
 			)
 
 		if x_axis in youtube_attrs:
 			game_data['x_axis'] = self.get_data(
-				InfoYoutube.objects.all().order_by(
-					'-game__infosteam__owners',
-					'-game__infosteam__positive_reviews_steam',
-					'-game__infosteam__average_2weeks',
-				)[:20],
+				ordered,
 				x_axis
 			)
 
 		if y_axis in twitch_attrs:
 			game_data['y_axis'] = self.get_data(
-				InfoTwitch.objects.all().order_by(
-					'-game__infosteam__owners',
-					'-game__infosteam__positive_reviews_steam',
-					'-game__infosteam__average_2weeks',
-				)[:20],
+				ordered,
 				y_axis
 			)
 		if x_axis in twitch_attrs:
 			game_data['x_axis'] = self.get_data(
-				InfoTwitch.objects.all().order_by(
-					'-game__infosteam__owners',
-					'-game__infosteam__positive_reviews_steam',
-					'-game__infosteam__average_2weeks',
-				)[:20],
+				ordered,
 				x_axis
 			)
 
 		return game_data
+
+	def order(self, Model, attrs, quantity):
+		all_games = Game.objects.all()
+
+		updated_infos = []
+		for game in all_games:
+			updated_infos.append(Model.objects.filter(game=game).latest('date'))
+
+		games = sorted(updated_infos, key=lambda x: [getattr(x, y) for y in attrs], reverse=True)[:quantity]
+		return games
+
 
 	def get_data(self, db_data, attr):
 
@@ -243,17 +236,9 @@ class GetGraphicData(APIView):
 		return collected_data
 
 	def get_games_name(self):
-
 		game_names = []
-
-		games = Game.objects.order_by(
-			'-infosteam__owners',
-			'-infosteam__positive_reviews_steam',
-			'-infosteam__average_2weeks',
-		)[:20]
-
-		for game in games:
-			game_names.append(game.name)
+		for game in self.order(InfoSteam, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20):
+			game_names.append(game.game.name)
 
 		return game_names
 
