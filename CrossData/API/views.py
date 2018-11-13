@@ -9,6 +9,7 @@ from .objects_attrs import *
 from urllib.parse import unquote
 from operator import itemgetter
 import dateutil.parser
+import datetime
 
 import os
 import calendar
@@ -41,43 +42,32 @@ class GetTableData(APIView):
 		return Response(data=collected_data, status=status.HTTP_200_OK)
 
 	def get_by_playedtime(self):
-
-	
-		games = self.order(InfoSteam, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20)
+		infos = order(InfoSteam.objects, ['average_2weeks', 'average_forever', 'positive_reviews_steam'], 20)
+		games = [x.game for x in infos]
 
 		return self.get_data(games)
 
 	def get_sales_data(self):
-
-		games = Game.objects.exclude(infosteam__price=0).order_by(
-			'-infosteam__owners',
-			'-infosteam__average_2weeks',
-		)[:20]
+		infos = order(InfoSteam.objects.exclude(price=0), ['owners', 'average_2weeks'], 20)
+		games = [x.game for x in infos]
 
 		return self.get_data(games)
 
 	def get_tranding_now_data(self):
+		date = Game.objects.order_by('-release_date')[25].release_date
+		print(date)
 
-		games = Game.objects.order_by(
-			'-infosteam__positive_reviews_steam',
-			'-infosteam__average_2weeks',
-			'-infoyoutube__count_views',
-			'-infoyoutube__count_videos',
-			'-infoyoutube__count_likes',
-			'-infotwitch__viewer_count',
-			'-infoyoutube__count_comments'
-		)[:20]
+		infos = order(InfoSteam.objects.filter(game__release_date__range=[date, datetime.datetime.now()]) , ['positive_reviews_steam', 'average_2weeks'], 20)
+		games = [x.game for x in infos]
 
 		return self.get_data(games)
 
 	def get_most_watched_data(self):
 
-		games = Game.objects.all().order_by(
-			'-infoyoutube__count_views',
-			'-infoyoutube__count_videos',
-			'-infotwitch__viewer_count',
-			'-infoyoutube__count_comments',
-		)[:20]
+		attrs = ['count_views', 'count_videos', 'count_comments']
+
+		infos = order(InfoYoutube.objects, attrs, 20)
+		games = [x.game for x in infos]
 
 		return self.get_data(games)
 
@@ -172,7 +162,7 @@ class GetGraphicData(APIView):
 		if x_axis == 'games' or y_axis=='games':
 				game_data['x_axis'] = self.get_games_name()
 
-		ordered = self.order(InfoSteam, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20)
+		ordered = order(InfoSteam.objects, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20)
 
 		if y_axis in steam_attrs:
 			game_data['y_axis'] = self.get_data(
@@ -210,17 +200,6 @@ class GetGraphicData(APIView):
 
 		return game_data
 
-	def order(self, Model, attrs, quantity):
-		all_games = Game.objects.all()
-
-		updated_infos = []
-		for game in all_games:
-			updated_infos.append(Model.objects.filter(game=game).latest('date'))
-
-		games = sorted(updated_infos, key=lambda x: [getattr(x, y) for y in attrs], reverse=True)[:quantity]
-		return games
-
-
 	def get_data(self, db_data, attr):
 
 		collected_data = []
@@ -237,7 +216,7 @@ class GetGraphicData(APIView):
 
 	def get_games_name(self):
 		game_names = []
-		for game in self.order(InfoSteam, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20):
+		for game in order(InfoSteam.objects, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20):
 			game_names.append(game.game.name)
 
 		return game_names
@@ -562,3 +541,17 @@ class GenreColors(APIView):
 class Genres(APIView):
 	def get(self, request, format=None):
 		return Response(GenreSerializer(Genre.objects.all(), many=True).data)
+
+
+def order(query_set, attrs, quantity, reverse=True):
+		all_games = Game.objects.all()
+
+
+		updated_infos = []
+		for game in all_games:
+			if(len(query_set.filter(game=game)) != 0):
+				updated_infos.append(query_set.filter(game=game).latest('date'))
+
+		games = sorted(updated_infos, key=lambda x: [getattr(x, y) for y in attrs], reverse=reverse)[:quantity]
+		return games
+
