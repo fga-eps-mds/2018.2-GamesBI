@@ -3,8 +3,8 @@ import requests
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from CrossData.importdata.models import *
-from CrossData.importdata.serializers import *
+from CrossData.API.models import *
+from CrossData.API.serializers import *
 from .objects_attrs import *
 from urllib.parse import unquote
 from operator import itemgetter
@@ -74,7 +74,7 @@ class GetTableData(APIView):
 		return self.get_data(games)
 
 	def get_most_watched_data(self):
-		
+
 		games = Game.objects.all().order_by(
 			'-infoyoutube__count_views',
 			'-infoyoutube__count_videos',
@@ -108,7 +108,7 @@ class GetTableData(APIView):
 			collected_data.append(game_data)
 
 		return collected_data
-		
+
 
 
 class GetGraphicData(APIView):
@@ -127,11 +127,11 @@ class GetGraphicData(APIView):
 
 		if name==None:
 			if graph_type == "line":
-				data = self.get_line_axys(y_axis, x_axis, data)
+				data = self.get_line_axis(y_axis, x_axis, data)
 
 		else:
 			game = self.get_game(name)
-			data['x_axys'] = self.get_dates(game)
+			data['x_axis'] = self.get_dates(game)
 			data['y_axis'] = self.get_game_y_axis(game, y_axis)
 
 		return Response(data=data, status=status.HTTP_200_OK)
@@ -140,7 +140,7 @@ class GetGraphicData(APIView):
 
 		y_axis_data = []
 		infos = []
-		
+
 		if y_axis in steam_attrs:
 			infos = InfoSteam.objects.all().filter(game=game)
 		elif y_axis in youtube_attrs:
@@ -149,7 +149,7 @@ class GetGraphicData(APIView):
 			infos = InfoTwitch.objects.all().filter(game=game)
 		elif y_axis in streams_attrs:
 			infos = TwitchStream.objects.all().filter(game=game)
-		
+
 		y_axis_data = self.get_data(infos, y_axis)
 
 		return y_axis_data
@@ -167,63 +167,63 @@ class GetGraphicData(APIView):
 		return dates
 
 	def get_game(self, game_name):
-		
+
 		game = Game.objects.get(name=game_name)
 		return game
 
-	def get_line_axys(self, y_axys, x_axys, game_data):
+	def get_line_axis(self, y_axis, x_axis, game_data):
 
-		if x_axys == 'games' or y_axys=='games':
-				game_data['x_axys'] = self.get_games_name()
+		if x_axis == 'games' or y_axis=='games':
+				game_data['x_axis'] = self.get_games_name()
 
-		if y_axys in steam_attrs:
-			game_data['y_axys'] = self.get_data(
+		if y_axis in steam_attrs:
+			game_data['y_axis'] = self.get_data(
 				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
-				y_axys
+				y_axis
 			)
-		if x_axys in steam_attrs:
-			game_data['x_axys'] = self.get_data(
+		if x_axis in steam_attrs:
+			game_data['x_axis'] = self.get_data(
 				InfoSteam.objects.order_by('-owners','-positive_reviews_steam', 'average_2weeks')[:20],
-				x_axys
+				x_axis
 			)
 
-		if y_axys in youtube_attrs:
-			game_data['y_axys'] = self.get_data(
+		if y_axis in youtube_attrs:
+			game_data['y_axis'] = self.get_data(
 				InfoYoutube.objects.all().order_by(
 					'-game__infosteam__owners',
 					'-game__infosteam__positive_reviews_steam',
 					'-game__infosteam__average_2weeks',
 				)[:20],
-				y_axys
+				y_axis
 			)
-		
-		if x_axys in youtube_attrs:
-			game_data['x_axys'] = self.get_data(
+
+		if x_axis in youtube_attrs:
+			game_data['x_axis'] = self.get_data(
 				InfoYoutube.objects.all().order_by(
 					'-game__infosteam__owners',
 					'-game__infosteam__positive_reviews_steam',
 					'-game__infosteam__average_2weeks',
 				)[:20],
-				x_axys
+				x_axis
 			)
 
-		if y_axys in twitch_attrs:
-			game_data['y_axys'] = self.get_data(
+		if y_axis in twitch_attrs:
+			game_data['y_axis'] = self.get_data(
 				InfoTwitch.objects.all().order_by(
 					'-game__infosteam__owners',
 					'-game__infosteam__positive_reviews_steam',
 					'-game__infosteam__average_2weeks',
 				)[:20],
-				y_axys
+				y_axis
 			)
-		if x_axys in twitch_attrs:
-			game_data['x_axys'] = self.get_data(
+		if x_axis in twitch_attrs:
+			game_data['x_axis'] = self.get_data(
 				InfoTwitch.objects.all().order_by(
 					'-game__infosteam__owners',
 					'-game__infosteam__positive_reviews_steam',
 					'-game__infosteam__average_2weeks',
 				)[:20],
-				x_axys
+				x_axis
 			)
 
 		return game_data
@@ -329,7 +329,7 @@ class GamesView(APIView):
 		data.update(genres_dict)
 		data.update({'streams': streams_array})
 		data.update({'screenshots': screenshots_array})
-        
+
 		if data["release_date"] != None:
 			data["release_date"] = data["release_date"].split('T')[0]
 
@@ -548,7 +548,7 @@ class GamesView(APIView):
 	def get_release_data(self, str_date):
 		if str_date == None:
 			return
-        
+
 		tmp_datetime = dateutil.parser.parse(str_date)
 
 		return tmp_datetime.date()
@@ -563,7 +563,7 @@ class GenreColors(APIView):
 	def get(self, request, format=None):
 		genre_name = request.GET.get('genre')
 		color_name = request.GET.get('color')
-		
+
 		genre = Genre.objects.get(genre=genre_name)
 
 		colors_array = []
@@ -577,4 +577,3 @@ class GenreColors(APIView):
 class Genres(APIView):
 	def get(self, request, format=None):
 		return Response(GenreSerializer(Genre.objects.all(), many=True).data)
-

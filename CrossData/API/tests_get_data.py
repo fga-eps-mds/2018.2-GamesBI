@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from CrossData.importdata.models import *
+from CrossData.API.models import *
 
 class EndpointGETTestCase(APITestCase):
 
@@ -21,7 +21,7 @@ class EndpointGETTestCase(APITestCase):
 
 	def test_graphic_return_json(self):
 
-		json_ideal_return = {'x_axys': [], 'y_axys': []}
+		json_ideal_return = {'x_axis': [], 'y_axis': []}
 		response = self.client.get(self.url_graphic)
 		self.assertEqual(response.data, json_ideal_return)
 

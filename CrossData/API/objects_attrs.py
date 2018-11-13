@@ -1,4 +1,4 @@
-from CrossData.importdata.models import *
+from CrossData.API.models import *
 
 steam_attrs = list(vars(InfoSteam()).keys())
 youtube_attrs = list(vars(InfoYoutube()).keys())
