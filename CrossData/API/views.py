@@ -11,10 +11,6 @@ from operator import itemgetter
 import dateutil.parser
 import datetime
 
-import os
-import calendar
-import datetime
-
 
 class GetTableData(APIView):
 
@@ -48,7 +44,8 @@ class GetTableData(APIView):
 
     def get_by_playedtime(self):
         infos = order(InfoSteam.objects, [
-                      'average_2weeks', 'average_forever', 'positive_reviews_steam'], 20)
+                      'average_2weeks', 'average_forever',
+                      'positive_reviews_steam'], 20)
         games = [x.game for x in infos]
 
         return self.get_data(games)
@@ -68,7 +65,9 @@ class GetTableData(APIView):
         date = recent_games[-1].release_date
 
         infos = order(InfoSteam.objects.filter(game__release_date__range=[
-                      date, datetime.datetime.now()]), ['positive_reviews_steam', 'average_2weeks'], 20)
+                      date, datetime.datetime.now()]),
+                      ['positive_reviews_steam', 'average_2weeks'], 20)
+
         games = [x.game for x in infos]
 
         return self.get_data(games)
@@ -122,7 +121,7 @@ class GetGraphicData(APIView):
         y_axis = yaxis
         x_axis = xaxis
 
-        if name == None:
+        if name is None:
             if graph_type == "line":
                 data = self.get_line_axis(y_axis, x_axis, data)
 
@@ -172,8 +171,8 @@ class GetGraphicData(APIView):
         if x_axis == 'games' or y_axis == 'games':
             game_data['x_axis'] = self.get_games_name()
 
-        ordered = order(InfoSteam.objects, [
-                        'owners', 'positive_reviews_steam', 'average_2weeks'], 20)
+        ordered = order(InfoSteam.objects, ['owners', 'positive_reviews_steam',
+                                            'average_2weeks'], 20)
 
         if y_axis in steam_attrs:
             game_data['y_axis'] = self.get_data(
@@ -227,7 +226,8 @@ class GetGraphicData(APIView):
 
     def get_games_name(self):
         game_names = []
-        for game in order(InfoSteam.objects, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20):
+        for game in order(InfoSteam.objects, ['owners',
+                              'positive_reviews_steam', 'average_2weeks'], 20):
             game_names.append(game.game.name)
 
         return game_names
@@ -239,7 +239,7 @@ class GamesView(APIView):
         partial = request.GET.get('partial')
         game_name = unquote(request.GET.get('name'))
 
-        if partial != None:
+        if partial is not None:
             data = GameNameSerializer(Game.objects.filter(
                 name__istartswith=game_name), many=True).data
         else:
@@ -249,9 +249,9 @@ class GamesView(APIView):
         return Response(data)
 
     '''
-		Endpoint for receiving
-		data and persisting it on database
-	'''
+        Endpoint for receiving
+        data and persisting it on database
+    '''
 
     def post(self, request, format=None):
         game_list = request.data
@@ -277,7 +277,8 @@ class GamesView(APIView):
 
     def get_by_playedtime(self):
         infos = order(InfoSteam.objects, [
-                      'average_2weeks', 'average_forever', 'positive_reviews_steam'], 20)
+                      'average_2weeks', 'average_forever',
+                      'positive_reviews_steam'], 20)
         games = [x.game for x in infos]
 
         return self.get_data(games)
@@ -297,7 +298,8 @@ class GamesView(APIView):
         date = recent_games[-1].release_date
 
         infos = order(InfoSteam.objects.filter(game__release_date__range=[
-                      date, datetime.datetime.now()]), ['positive_reviews_steam', 'average_2weeks'], 20)
+                      date, datetime.datetime.now()]), [
+                               'positive_reviews_steam', 'average_2weeks'], 20)
         games = [x.game for x in infos]
 
         return self.get_data(games)
@@ -351,7 +353,7 @@ class GetGraphicData(APIView):
         y_axis = yaxis
         x_axis = xaxis
 
-        if name == None:
+        if name is None:
             if graph_type == "line":
                 data = self.get_line_axis(y_axis, x_axis, data)
 
@@ -456,7 +458,8 @@ class GetGraphicData(APIView):
 
     def get_games_name(self):
         game_names = []
-        for game in order(InfoSteam.objects, ['owners', 'positive_reviews_steam', 'average_2weeks'], 20):
+        for game in order(InfoSteam.objects, ['owners',
+                              'positive_reviews_steam', 'average_2weeks'], 20):
             game_names.append(game.game.name)
 
         return game_names
