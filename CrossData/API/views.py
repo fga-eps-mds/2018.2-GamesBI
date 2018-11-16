@@ -227,7 +227,8 @@ class GetGraphicData(APIView):
     def get_games_name(self):
         game_names = []
         for game in order(InfoSteam.objects, ['owners',
-                              'positive_reviews_steam', 'average_2weeks'], 20):
+                                              'positive_reviews_steam',
+                                              'average_2weeks'], 20):
             game_names.append(game.game.name)
 
         return game_names
@@ -299,7 +300,7 @@ class GamesView(APIView):
 
         infos = order(InfoSteam.objects.filter(game__release_date__range=[
                       date, datetime.datetime.now()]), [
-                               'positive_reviews_steam', 'average_2weeks'], 20)
+            'positive_reviews_steam', 'average_2weeks'], 20)
         games = [x.game for x in infos]
 
         return self.get_data(games)
@@ -404,7 +405,8 @@ class GetGraphicData(APIView):
             game_data['x_axis'] = self.get_games_name()
 
         ordered = order(InfoSteam.objects, [
-                        'owners', 'positive_reviews_steam', 'average_2weeks'], 20)
+                        'owners', 'positive_reviews_steam',
+                        'average_2weeks'], 20)
 
         if y_axis in steam_attrs:
             game_data['y_axis'] = self.get_data(
@@ -459,7 +461,8 @@ class GetGraphicData(APIView):
     def get_games_name(self):
         game_names = []
         for game in order(InfoSteam.objects, ['owners',
-                              'positive_reviews_steam', 'average_2weeks'], 20):
+                                              'positive_reviews_steam',
+                                              'average_2weeks'], 20):
             game_names.append(game.game.name)
 
         return game_names
@@ -471,7 +474,7 @@ class GamesView(APIView):
         partial = request.GET.get('partial')
         game_name = unquote(request.GET.get('name'))
 
-        if partial != None:
+        if partial is not None:
             data = GameNameSerializer(Game.objects.filter(
                 name__istartswith=game_name), many=True).data
         else:
@@ -481,9 +484,9 @@ class GamesView(APIView):
         return Response(data)
 
     '''
-		Endpoint for receiving
-		data and persisting it on database
-	'''
+    Endpoint for receiving
+    data and persisting it on database
+    '''
 
     def post(self, request, format=None):
         game_list = request.data
@@ -540,7 +543,7 @@ class GamesView(APIView):
         data.update({'streams': streams_array})
         data.update({'screenshots': screenshots_array})
 
-        if data["release_date"] != None:
+        if data["release_date"] is not None:
             data["release_date"] = data["release_date"].split('T')[0]
 
         del data["languages_game"]
@@ -749,7 +752,7 @@ class GamesView(APIView):
         return saved_palettes
 
     def get_release_data(self, str_date):
-        if str_date == None:
+        if str_date is None:
             return
 
         tmp_datetime = dateutil.parser.parse(str_date)
