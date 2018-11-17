@@ -42,9 +42,9 @@ Planning
 
 | *Identificador* | ***História*** | **Pontuação** | **Responsáveis** | **Status** |
 | ------ | ------------ |     :---:     |  ---------------- | :---:  |
-| [#TS16](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/190) | Eu como desenvolvedor desejo alterar o modo de importação dos dados da API Youtube para unificar a importação |     5    | Ingrid e Lucas | **Debito**  |
-|[#TS17](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/191) | Eu como desenvolvedor desejo alterar o modo de importação dos dados da API Twitch para unificar a importação  |     5    | Marco e Arthur | **Debito**  |
-|[#TS18](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/188) |  Eu como desenvolvedor desejo persistir os dados das requisiçoes para manter os dados do banco |  8       | Felipe e Andre | **Nova**  |
-| [#TS19](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/192) | Eu como desenvolvedor desejo criar a pagina do jogo para visualizar suas informaçoes  | 5 | Felipe e Augusto | **Nova**  |
+| [#TS16](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/191) | Eu como desenvolvedor desejo alterar o modo de importação dos dados da API Youtube para unificar a importação |     5    | Ingrid e Lucas | **Debito**  |
+|[#TS17](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/192) | Eu como desenvolvedor desejo alterar o modo de importação dos dados da API Twitch para unificar a importação  |     5    | Marco e Arthur | **Debito**  |
+|[#TS18](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/194) |  Eu como desenvolvedor desejo persistir os dados das requisiçoes para manter os dados do banco |  8       | Felipe e Andre | **Nova**  |
+| [#TS19](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/195) | Eu como desenvolvedor desejo criar a pagina do jogo para visualizar suas informaçoes  | 5 | Felipe e Augusto | **Nova**  |
 | [#Issue186](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/186) | Melhorar os pontos indicados no feedback da Release 1 | 8 | Emanoel e Augusto | **Pendente**  |
 | [#Issue196](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/192) | Eu como arquiteto desejo atualizar o documento de arquitetura para os desenvolvedores acompanharem a nova demanda de desenvolvimento | 3 | Bruno e Alan | **Nova**  |

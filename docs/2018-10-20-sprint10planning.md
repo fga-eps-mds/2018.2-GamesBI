@@ -7,7 +7,7 @@ Planning
 
 ## Período
 
-**Duração**: 04/10 à 10/11
+**Duração**: 04/11 à 10/11
 
 ## Reunião
 
