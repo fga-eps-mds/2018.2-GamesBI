@@ -199,13 +199,15 @@
                   <h3 id="1-3-defini-es-acr-nimos-e-abrevia-es">1.3 Definições, acrônimos e abreviações</h3>
                   <ul>
                     <li>REST - Representational State Transfer</li>
+                    <li>ETL - Extract, transform, load</li>
                   </ul>
                   <h3 id="1-4-refer-ncias">1.4 Referências</h3>
                   <h3 id="1-5-vis-o-geral">1.5 Visão Geral</h3>
-                  <p>O presente documento faz o detalhamento e descrição de características da arquitetura escolhidas pela equipe. Estaremos descrevento o padrão arquitetural MVT, arquitetura de Microserviços e APIs Rest</p>
+                  <p>O presente documento faz o detalhamento e descrição de características da arquitetura escolhidas pela equipe. Estaremos descrevento o padrão de arquitetura de Microserviços e APIs Rest, assim como detalhando o funcionamento da comunicação entre os microserviços e a representação dos dados</p>
                   <h2 id="2-representa-o-da-arquitetura">2. Representação da Arquitetura</h2>
                   <hr>
-                  <p>A arquitetura do projeto possuirá ambientes diferentes: API&#39;s REST, por debaixo do framework Django, assim como o ambiente WEB de interação com usuário, feito em react. Juntando todos os ambientes e coordenando-os, formamos assim uma arquitetura de Microserviços.</p>
+                  <p>A arquitetura do projeto possuirá ambientes diferentes: API&#39;s REST, por debaixo do framework Django, ambiente WEB de interação com usuário, feito em react e por último o worker de extração Importer. Juntando todos os ambientes e coordenando-os, formamos assim uma arquitetura de Microserviços integrada que tem como objetivo formar um processo de ETL e Data Warehouse para que no fim sejam apresentados dados conscistentes e relevantes para o nosso usuário final.</p>
+                  <br>
                   <h3 id="2-1-padr-o-de-arquitetura-rest">2.1 Padrão de Arquitetura REST</h3>
                   <p>O termo foi definido no ano 2000, na tese de doutorado de Roy Fielding e é a sigla para Representational State Transfer: é um design de arquitetura construído para servir aplicações em rede.</p>
                   <p>Conceitualmente falando, o modelo REST representa nada mais que uma possibilidade para a criação de web services, cujas principais diferenças em relação ao modelo tradicional (SOAP) estão na utilização semântica dos métodos HTTP (GET, POST, PUT e DELETE), na leveza dos pacotes de dados transmitidos na rede e na simplicidade, fazendo desnecessária a criação de camadas intermediárias (Ex.: Envelope SOAP) para encapsular os dados.</p>
