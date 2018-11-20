@@ -1,5 +1,5 @@
 ---
-title: Sprint 10
+title: Sprint 11
 layout: post
 categories: SPRINT
 ---
@@ -7,23 +7,23 @@ Planning
 
 ## Período
 
-**Duração**: 04/11 à 10/11
+**Duração**: 11/10 à 18/11
 
 ## Reunião
 
-<b>Data</b>: 03/11 <br/>
+<b>Data</b>: 10/11 <br/>
 <b>Local</b>: Republica 9 Caudas<br/>
 <b>Horário</b>: 08h00 às 13h00<br/>
-<b>Descrição</b>: Foi realizada a sprint review da sprint 9 e planning da sprint 10.
+<b>Descrição</b>: Foi realizada a sprint review da sprint 10 e planning da sprint 11.
 
 ## Papéis Definidos
 
 |Membro|Papel|
 |-:|:-|
 |Augusto "augustovilarins" | Engenheiro de produto|
-|Bruno "BRZangado" | DevOps |
+|Bruno "BRZangado" | Arquiteto |
 |Emanoel "Nukdown" | Scrum Master |
-|Felipe "felipe72" | Arquiteto |  
+|Felipe "felipe72" | DevOps |  
 |Ingrid "ingrdst" | Tracker |
 |Alan "alanrslima" | Desenvolvedor |
 |Arthur "arthurarp" | Desenvolvedor |

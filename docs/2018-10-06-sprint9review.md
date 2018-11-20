@@ -51,25 +51,32 @@
 |[#US18](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como usuário desejo visualizar os principais indicadores para ajudar no desenvolvimento do jogo | **Débito**  |
 |[#TS20](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como desenvolvedor desejo importar imagens para gerar paleta de cores | **Finalizada**  |
 |[#TS26](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como desenvolvedor desejo gerar paleta de cores para possibilitar a visualização desse indicador | **Finalizada**  |
-|[#US15](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/188) | Eu como usuário desejo pesquisar um jogo para visualizar suas informações  | **Finalizada**  |
-
 
 
 ## Retrospectiva
 
-<img src="https://i.imgur.com/6HbC7Dh.png">
-
+<img src="https://i.imgur.com/rhfT15H.png">
 
 #### Ações Tomadas
 
--
 
 ## Evolução do Conhecimento
 
-<img src="https://i.imgur.com/udVg1M8.png">
+<img src="https://i.imgur.com/mpgwFDv.png">
+
+
+## Velocity
+
+<img src="">
+
+## Burndown
+<img src="https://i.imgur.com/5Mdmost.jpg">
+
+## Throughtput
+
+<img src="https://i.imgur.com/s8oA9bZ.png">
 
 ## Análise do <i>Scrum Master</i>    
-
 
 
 

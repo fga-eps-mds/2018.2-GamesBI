@@ -60,20 +60,28 @@
 
 ## Retrospectiva
 
-<img src="https://i.imgur.com/6HbC7Dh.png">
-
+<img src="https://i.imgur.com/rhfT15H.png">
 
 #### Ações Tomadas
 
--
 
 ## Evolução do Conhecimento
 
-<img src="https://i.imgur.com/udVg1M8.png">
+<img src="https://i.imgur.com/mpgwFDv.png">
+
+
+## Velocity
+
+<img src="">
+
+## Burndown
+<img src="">
+
+## Throughtput
+
+<img src="https://i.imgur.com/tWJxLcP.png">
 
 ## Análise do <i>Scrum Master</i>    
-
-
 
 
 
