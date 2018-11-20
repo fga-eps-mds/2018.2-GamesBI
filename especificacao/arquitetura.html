@@ -161,7 +161,9 @@
 
                     <ul>
                       <li>2.1. <a href="#2-1-arquitetura-de-microservi-os">Representação da Arquitetura de Microserviços</a>
-                      <li>2.2. <a href="#2-2-padr-o-de-arquitetura-rest">Representação do padrão de Arquitetura REST</a></li>
+                      <li>2.2. <a href="#2-2-etl">O Processo de ETL</a>
+                      <li>2.3. <a href="#2-3-padr-o-de-arquitetura-rest">Representação do padrão de Arquitetura REST</a></li>
+                      <li>2.4. <a href="#2-4-padr-o-de-arquitetura-do-react">2.4 Padrão de arquitetura do REACT</a>
                       </li>
                     </ul>
                   </li>
@@ -199,6 +201,8 @@
                   <ul>
                     <li>REST - Representational State Transfer</li>
                     <li>ETL - Extract, transform, load</li>
+                    <li>DW / DWH - Data Warehouse</li>
+                    <li>BI - Business Intelligence</li>
                   </ul>
                   <h3 id="1-4-refer-ncias">1.4 Referências</h3>
                   <h3 id="1-5-vis-o-geral">1.5 Visão Geral</h3>
@@ -217,7 +221,17 @@
                     <li>Redução da complexidade de manutenção.</li>
                   </ul>
 
-                  <h3 id="2-2-padr-o-de-arquitetura-rest">2.2 Padrão de Arquitetura REST</h3>
+                  <h3 id="2-2-etl">2.2 Processo de ETL</h3>
+                  <br>
+                  <p><img src="https://panoply.io/uploads/versions/diagram4---x----750-328x---.jpg" alt=""></p>
+                  <br>
+                  <p>
+                    Quando se trata de BI, o processo de ETL pode ser fundamental e necessário.
+                    É a etapa que mais exige esforço e trabalho dos envolvidos, e não foi diferente dentro da GamesBI.<br>
+                    O ETL trata-se do processo de extração, tratamento e carregamento dos dados. O primeiro passo, a extração, são obtidos e extraídos os dados de múltiplas fontes externas ou internas. Esses dados podem vir de diferentes e variadas formas, em consequência disso, os dados obtidos podem muitas vezes ser incompatíveis com as regras de negócio, inconsistentes ou irrelevantes. Então, na parte de tratamento, são resolvidos essas inconsistências e ocorre a integração dos dados, para que os dados se tornem homogêneos e façam sentido juntos. Ao final do processo, os dados tratados então podem ser carregados em um Data Warehouse, um armazenamento de dados, aonde estarão disponíveis para a fase de analytics.  
+                  </p>
+
+                  <h3 id="2-3-padr-o-de-arquitetura-rest">2.3 Padrão de Arquitetura REST</h3>
                   <p>O termo foi definido no ano 2000, na tese de doutorado de Roy Fielding e é a sigla para Representational State Transfer: é um design de arquitetura construído para servir aplicações em rede.</p>
                   <p>Conceitualmente falando, o modelo REST representa nada mais que uma possibilidade para a criação de web services, cujas principais diferenças em relação ao modelo tradicional (SOAP) estão na utilização semântica dos métodos HTTP (GET, POST, PUT e DELETE), na leveza dos pacotes de dados transmitidos na rede e na simplicidade, fazendo desnecessária a criação de camadas intermediárias (Ex.: Envelope SOAP) para encapsular os dados.</p>
                   <p><img src="https://i.imgur.com/QtD42Z2.png" alt=""></p>
@@ -237,7 +251,7 @@
                   </ul>
                   <hr>
                 
-                  <h3 id="2-3-padr-o-de-arquitetura-do-react">2.3 Padrão de arquitetura do REACT</h3>
+                  <h3 id="2-4-padr-o-de-arquitetura-do-react">2.4 Padrão de arquitetura do REACT</h3>
                   <p><img src="https://imgur.com/v64CEFp.jpg" alt=""></p>
                   <ul>
                     <li><p>View: um contêiner responsavel por escutar o estado da aplicação, atualizar e renderizar componentes.</p>
@@ -249,6 +263,8 @@
                     <li><p>Dispatcher: recebem e tratam as informações para que sejam (ou não) enviadas à Store.</p>
                     </li>
                   </ul>
+
+
                   <h2 id="3-metas-e-restri-es-da-arquitetura">3. Metas e Restrições da Arquitetura</h2>
                   <hr>
                   <h3 id="3-1-metas">3.1 Metas</h3>
