@@ -158,7 +158,7 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 ### 4.1 Visão Geral
 
-![](https://i.imgur.com/C41CCh4.jpg)
+![](https://i.imgur.com/Zif27T6.jpg)
 
 ### 4.2 Microserviços e camadas
 
