@@ -299,13 +299,13 @@
                   <p>A arquitetura e sua versão atual está particionada em:</p>
                   <ul>
                     <li><p>1 - Front-End</p>
-                      <p>Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Metabase e apresentar para o usuário final.</p>
+                      <p>Esta fronteira é responsável por resgatar os dados armazenados no DW (CrossData) para geração dos analytics, apresentando para o usuário final.</p>
                     </li>
-                    <li><p>3 - Cross Data</p>
-                      <p>Fronteira responsável pela fução de data warehouse, depósito onde se é persistido e mantido os dados relevantes para o produto. Através de uma API, disponibiliza os dados para analytics.</p>
+                    <li><p>2 - Cross Data (Data Warehouse)</p>
+                      <p>Fronteira responsável pela função de DW, depósito onde se é persistido e mantido os dados relevantes para o produto. Através de uma API, disponibiliza os dados para a fronteira de analytics (Front-End).</p>
                     </li>
-                    <li><p>4 - Importer</p>
-                      <p>O Importer Service se caracteriza como o ETL do projeto GamesBI. Este módulo é responsável por extrair todos os dados os dados das API's externas, irá tratar e mesclar estes dados e manda-los via POST para o CrossData.</p>
+                    <li><p>3 - Importer (Extract, Transform, Load)</p>
+                      <p>O Importer é a fronteira responsável no processo de ETL, pela extração dos dados das API's externas, tratamento e separação de dados relevantes, e carregamento para o DW (CrossData). Para a alimentação contínua de dados atualizados e com datas diferentes para geração de análises temporais, o Importer funciona como um Worker, fazendo todo o processo periodicamente a automaticamente.</p>
                     </li>
                   </ul>
                   <p>Json de dados que será enviado:</p>
