@@ -160,9 +160,8 @@
                     <p>2 . <a href="#2-representação-da-arquitetura">Representação da Arquitetura</a></p>
 
                     <ul>
-                      <li>2.1. <a href="#2-1-padr-o-de-arquitetura-rest">Representação do padrão de Arquitetura REST</a></li>
-
-                      <li>2.2. <a href="#22-arquitetura-de-microserviços">Representação da Arquitetura de Microserviços</a>
+                      <li>2.1. <a href="#2-1-arquitetura-de-microservi-os">Representação da Arquitetura de Microserviços</a>
+                      <li>2.2. <a href="#2-2-padr-o-de-arquitetura-rest">Representação do padrão de Arquitetura REST</a></li>
                       </li>
                     </ul>
                   </li>
@@ -203,12 +202,22 @@
                   </ul>
                   <h3 id="1-4-refer-ncias">1.4 Referências</h3>
                   <h3 id="1-5-vis-o-geral">1.5 Visão Geral</h3>
-                  <p>O presente documento faz o detalhamento e descrição de características da arquitetura escolhidas pela equipe. Estaremos descrevento o padrão de arquitetura de Microserviços e APIs Rest, assim como detalhando o funcionamento da comunicação entre os microserviços e a representação dos dados</p>
+                  <p>O presente documento faz o detalhamento e descrição de características da arquitetura escolhidas pela equipe. Estaremos descrevendo o padrão de arquitetura de Microserviços e APIs Rest, assim como detalhando o funcionamento da comunicação entre os microserviços e a representação dos dados</p>
                   <h2 id="2-representa-o-da-arquitetura">2. Representação da Arquitetura</h2>
                   <hr>
                   <p>A arquitetura do projeto possuirá ambientes diferentes: API&#39;s REST, por debaixo do framework Django, ambiente WEB de interação com usuário, feito em react e por último o worker de extração Importer. Juntando todos os ambientes e coordenando-os, formamos assim uma arquitetura de Microserviços integrada que tem como objetivo formar um processo de ETL e Data Warehouse para que no fim sejam apresentados dados conscistentes e relevantes para o nosso usuário final.</p>
                   <br>
-                  <h3 id="2-1-padr-o-de-arquitetura-rest">2.1 Padrão de Arquitetura REST</h3>
+
+                  <h3 id="2-1-arquitetura-de-microservi-os">2.1 Arquitetura de Microserviços</h3>
+                  <p>arquitetura orientada a micro serviços foi adotada para este projeto devido a suas vantagens em relação a estrutura monolítica, dentre elas estão:</p>
+                  <ul>
+                    <li>Disponibilização de novos processos ou serviços sem impacto nos processos e serviços existentes.</li>
+                    <li>Alterações em processos e serviços sem a necessidade de parada de todo o sistema.</li>
+                    <li>Otimização da utilização da infraestrutura de nuvem.</li>
+                    <li>Redução da complexidade de manutenção.</li>
+                  </ul>
+
+                  <h3 id="2-2-padr-o-de-arquitetura-rest">2.2 Padrão de Arquitetura REST</h3>
                   <p>O termo foi definido no ano 2000, na tese de doutorado de Roy Fielding e é a sigla para Representational State Transfer: é um design de arquitetura construído para servir aplicações em rede.</p>
                   <p>Conceitualmente falando, o modelo REST representa nada mais que uma possibilidade para a criação de web services, cujas principais diferenças em relação ao modelo tradicional (SOAP) estão na utilização semântica dos métodos HTTP (GET, POST, PUT e DELETE), na leveza dos pacotes de dados transmitidos na rede e na simplicidade, fazendo desnecessária a criação de camadas intermediárias (Ex.: Envelope SOAP) para encapsular os dados.</p>
                   <p><img src="https://i.imgur.com/QtD42Z2.png" alt=""></p>
@@ -226,18 +235,8 @@
                     <li>REST: conjunto de princípios de arquitetura</li>
                     <li>RESTful: capacidade de determinado sistema aplicar os princípios de REST.</li>
                   </ul>
-                  <h4 id="aplica-o">Aplicação</h4>
-                  <p>Tendo em vista estes conceitos, podemos mencionar a maneira pela qual são aplicados no GamesBI. Que se baseia em sua arquitetura de microserviços, de forma com que cada serviço se define como uma API RESTful que trabalha com JSON como dados de resposta.</p>
-                  <p>Por fim, todos estes dados são centralizados e tratados no CrossData para que posteriormente possam ser disponibilizados para o Front End da GamesBI.</p>
                   <hr>
-                  <h3 id="2-2-arquitetura-de-microservi-os">2.2 Arquitetura de Microserviços</h3>
-                  <p>arquitetura orientada a micro serviços foi adotada para este projeto devido a suas vantagens em relação a estrutura monolítica, dentre elas estão:</p>
-                  <ul>
-                    <li>Disponibilização de novos processos ou serviços sem impacto nos processos e serviços existentes.</li>
-                    <li>Alterações em processos e serviços sem a necessidade de parada de todo o sistema.</li>
-                    <li>Otimização da utilização da infraestrutura de nuvem.</li>
-                    <li>Redução da complexidade de manutenção.</li>
-                  </ul>
+                
                   <h3 id="2-3-padr-o-de-arquitetura-do-react">2.3 Padrão de arquitetura do REACT</h3>
                   <p><img src="https://imgur.com/v64CEFp.jpg" alt=""></p>
                   <ul>
