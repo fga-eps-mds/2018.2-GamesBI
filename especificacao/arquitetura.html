@@ -347,7 +347,7 @@
                   <h2 id="5-vis-o-de-dados">5 Visão de dados</h2>
                   <br>
                   <p>5.1 Cross Data</p>
-                  <p align="middle"><img src="https://i.imgur.com/vuxErRA.jpg"></p>
+                  <p align="middle"><img src="https://i.imgur.com/JvVZ3CT.jpg"></p>
 
                   <p>5.2 Dicionário de dados Cross Data</p>
 
@@ -369,6 +369,12 @@
                         <td>Identificar os dados</td>
                       </tr>
                       <tr>
+                        <td>id_steam</td>
+                        <td>int</td>
+                        <td>Id na steam</td>
+                        <td>Identificar o jogo no banco de dadso da steam</td>
+                      </tr>
+                      <tr>
                         <td>name</td>
                         <td>string</td>
                         <td>Nome do jogo</td>
@@ -381,10 +387,40 @@
                         <td>Locais mais jogados</td>
                       </tr>
                       <tr>
-                        <td>genre</td>
-                        <td>string</td>
-                        <td>Genero do jogo</td>
+                        <td>genres</td>
+                        <td>Genre</td>
+                        <td>Foreign Key de relacionamento NxM com a entidade Genre</td>
                         <td>Categorizar os jogos</td>
+                      </tr>
+                      <tr>
+                        <td>release_date</td>
+                        <td>date</td>
+                        <td>Data de lançamento do jogo</td>
+                        <td>Categorizar os jogos, análise temporal</td>
+                      </tr>
+                      <tr>
+                        <td>main_image</td>
+                        <td>string</td>
+                        <td>Imagem representante do jogo</td>
+                        <td>Visual</td>
+                      </tr>
+                      <tr>
+                        <td>r_average</td>
+                        <td>int</td>
+                        <td>Média de cor R</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>g_average</td>
+                        <td>int</td>
+                        <td>Média de cor G</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>b_average</td>
+                        <td>int</td>
+                        <td>Média de cor B</td>
+                        <td>Análise de paleta de cores</td>
                       </tr>
                     </tbody>
                   </table>
@@ -608,8 +644,119 @@
                   </table>
 
                   <br><br>
+                  <h5 id="entidade-twitch"><b>Entidade: Genre</b></h5>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Atributo</th>
+                        <th>Dominio</th>
+                        <th>Descrição</th>
+                        <th>Relevância</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>id</td>
+                        <td>int</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados</td>
+                      </tr>
+                      <tr>
+                        <td>genre</td>
+                        <td>string</td>
+                        <td>Nome do gênero</td>
+                        <td>Categorizar os jogos</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <br><br>
+                  <h5 id="entidade-twitch"><b>Entidade: Screenshot</b></h5>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Atributo</th>
+                        <th>Dominio</th>
+                        <th>Descrição</th>
+                        <th>Relevância</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>id</td>
+                        <td>int</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados</td>
+                      </tr>
+                      <tr>
+                        <td>game</td>
+                        <td>Game</td>
+                        <td>Foreign Key para relacionar com a entidade Game</td>
+                        <td>Identificar a qual jogo pertecendo o screenshot</td>
+                      </tr>
+                      <tr>
+                        <td>url</td>
+                        <td>string</td>
+                        <td>Url para onde a imagem está hospedada</td>
+                        <td>Buscar a imagem</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <br><br>
+                  <h5 id="entidade-twitch"><b>Entidade: Pallete</b></h5>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Atributo</th>
+                        <th>Dominio</th>
+                        <th>Descrição</th>
+                        <th>Relevância</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>id</td>
+                        <td>int</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados</td>
+                      </tr>
+                      <tr>
+                        <td>image</td>
+                        <td>Screenshot</td>
+                        <td>Foreign Key para relacionar com a entidade Screenshot</td>
+                        <td>Identificar a qual imagem pertence a paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>r</td>
+                        <td>int</td>
+                        <td>Quantidade de R na imagem</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>g</td>
+                        <td>int</td>
+                        <td>Quantidade de G na imagem</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>b</td>
+                        <td>int</td>
+                        <td>Quantidade de B na imagem</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>hex</td>
+                        <td>string</td>
+                        <td>Hexadecimal da cor</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <br><br>
                   <ul>
-                    <li>Dados obtidos das API&#39;s internas (Steam, Twitch e Youtube)</li>
+                    <li>Dados obtidos das API&#39;s externas (Steam, Twitch e Youtube)</li>
                   </ul>
 
 
