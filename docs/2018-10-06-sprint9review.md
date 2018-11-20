@@ -53,24 +53,30 @@
 |[#TS26](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como desenvolvedor desejo gerar paleta de cores para possibilitar a visualização desse indicador | **Finalizada**  |
 
 
-
 ## Retrospectiva
 
-<img src="https://i.imgur.com/6HbC7Dh.png">
-
+<img src="https://i.imgur.com/rhfT15H.png">
 
 #### Ações Tomadas
 
--
+
 ## Evolução do Conhecimento
 
-<img src="https://i.imgur.com/udVg1M8.png">
+<img src="https://i.imgur.com/mpgwFDv.png">
+
+
+## Velocity
+
+<img src="">
 
 ## Burndown
 <img src="https://i.imgur.com/5Mdmost.jpg">
 
-## Análise do <i>Scrum Master</i>    
+## Throughtput
 
+<img src="https://i.imgur.com/s8oA9bZ.png">
+
+## Análise do <i>Scrum Master</i>    
 
 
 

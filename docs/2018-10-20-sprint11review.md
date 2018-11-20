@@ -1,6 +1,6 @@
 ## Período
 
-**Duração**: 04/11 à 10/11
+**Duração**: 11/10 à 18/11
 
 
 # Monitoramento e Controle
@@ -54,7 +54,7 @@
 
 ## Retrospectiva
 
-<img src="https://i.imgur.com/rhfT15H.png">
+<img src="">
 
 #### Ações Tomadas
 
@@ -73,7 +73,7 @@
 
 ## Throughtput
 
-<img src="https://i.imgur.com/21zAGlL.png">
+<img src="">
 
 ## Análise do <i>Scrum Master</i>    
 

@@ -64,19 +64,32 @@
 
 ## Retrospectiva
 
-<img src="">
+<img src="https://i.imgur.com/6HbC7Dh.png">
 
 #### Ações Tomadas
 
-- 
+- Ingrid como Scrum Master
+- Arthur como Tracker 
 
 ## Evolução do Conhecimento
 
-<img src="https://i.imgur.com/McZX2FD.png">
+<img src="https://i.imgur.com/mpgwFDv.png">
+
+
+## Velocity
+
+<img src="https://i.imgur.com/xu9fi89.png">
+
+## Burndown
+<img src="">
+
+## Throughtput
+
+<img src="https://i.imgur.com/QckM86a.png">
 
 ## Análise do <i>Scrum Master</i>    
 
-O Bruno refatorou o front, mas estava com problemas em enviar o pr para fechar a issue. O Felipe tentou ao longo da semana integrar o Travis com os repositorios. Na sprint 6 tivemos 5 das 6 estórias planejadas entregues, dentre elas 1 divida tecnica. A equipe se demostrou motivada pelo progresso das estórias e o reconhecimento da evolução de conhecimento.
+O front foi refatorado, mas houve problema em enviar o pr para fechar a issue. A tentativa de integracao com o Travis com os repositorios foi realizada ao longo da semana. Na sprint 6 tivemos 5 das 6 estórias planejadas entregues, dentre elas 1 divida tecnica.
 
 
 

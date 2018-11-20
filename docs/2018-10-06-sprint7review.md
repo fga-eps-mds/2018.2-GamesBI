@@ -59,18 +59,28 @@
 
 <img src="https://i.imgur.com/6HbC7Dh.png">
 
-
 #### Ações Tomadas
 
--
+- Ingrid como Scrum Master
+- Alan como Arquiteto
 
 ## Evolução do Conhecimento
 
-<img src="https://i.imgur.com/udVg1M8.png">
+<img src="https://i.imgur.com/mpgwFDv.png">
+
+
+## Velocity
+
+<img src="">
+
+## Burndown
+<img src="">
+
+## Throughtput
+
+<img src="https://i.imgur.com/zu6EtIB.png">
 
 ## Análise do <i>Scrum Master</i>    
-
-
 
 
 
