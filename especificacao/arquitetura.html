@@ -288,7 +288,6 @@
                   <ul>
                     <li>O projeto possui as seguintes restrições:</li>
                     <li>Framework Django 2.1 com Python 3.6</li>
-                    <li>Framework Flask</li>
                     <li>API&#39;s REST</li>
                     <li>ReactJS</li>
                   </ul>
@@ -302,14 +301,11 @@
                     <li><p>1 - Front-End</p>
                       <p>Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Metabase e apresentar para o usuário final.</p>
                     </li>
-                    <li><p>2 - Metabase</p>
-                      <p>Fronteira responsavel por receber os dados do Cross Data. Assim, gerando gráficos e estatísticas que serão apresentados no Front-End.</p>
-                    </li>
                     <li><p>3 - Cross Data</p>
-                      <p>Fronteira responsável pela fução de data warehouse, depósito onde se é persistido e mantido os dados relevantes para o produto. Recebendo requisições do front-end para busca de gráficos no metabase.</p>
+                      <p>Fronteira responsável pela fução de data warehouse, depósito onde se é persistido e mantido os dados relevantes para o produto. Através de uma API, disponibiliza os dados para analytics.</p>
                     </li>
-                    <li><p>4 - Importer Service</p>
-                      <p>O Importer Service se caracteriza como o ETL do projeto GamesBI. Este módulo é responsável por extrair todos os dados os dados das API's externas, irá tratar e mesclar estes dados e manda-los via POST para o crossData.</p>
+                    <li><p>4 - Importer</p>
+                      <p>O Importer Service se caracteriza como o ETL do projeto GamesBI. Este módulo é responsável por extrair todos os dados os dados das API's externas, irá tratar e mesclar estes dados e manda-los via POST para o CrossData.</p>
                     </li>
                   </ul>
                   <p>Json de dados que será enviado:</p>
