@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Riscos | 2018.1-TropicalHazards-BI</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Riscos" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Projeto de sistema e serviços para monitoramento de doenças tropicais e geração de indicadores de possíveis epidemias." />
+<meta property="og:description" content="Projeto de sistema e serviços para monitoramento de doenças tropicais e geração de indicadores de possíveis epidemias." />
+<link rel="canonical" href="https://fga-eps-mds.github.io/2018.1-TropicalHazards-BI/metodology/riscos.html" />
+<meta property="og:url" content="https://fga-eps-mds.github.io/2018.1-TropicalHazards-BI/metodology/riscos.html" />
+<meta property="og:site_name" content="2018.1-TropicalHazards-BI" />
+<script type="application/ld+json">
+{"description":"Projeto de sistema e serviços para monitoramento de doenças tropicais e geração de indicadores de possíveis epidemias.","@type":"WebPage","url":"https://fga-eps-mds.github.io/2018.1-TropicalHazards-BI/metodology/riscos.html","headline":"Riscos","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Open+Sans|Roboto|Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body class="grey lighten-4">
+
+    <style>
+      .btn-large {
+        margin: .4em;
+      }
+
+      #bug-btn {
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+      }
+
+      .row a,
+      footer a {
+        color: inherit;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      footer a {
+        text-decoration: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'IBM Plex Sans', 'Roboto', sans-serif;
+        color: #3f3f3f;
+        padding-top: .5em;
+        padding-bottom: .7em;
+        margin-top: .2em;
+        margin-bottom: .2em;
+        margin-left: 0;
+        margin-right: 0;
+        word-break: break-word;
+      }
+
+      p {
+        font-family: 'Source Sans Pro', 'Open Sans', sans-serif;
+        color: #303030;
+        text-align: justify;
+      }
+
+      footer {
+        margin-top: 2em;
+        color: #fafafa;
+        padding-top: 4em !important;
+        padding-bottom: 4em;
+        font-size: .7em;
+      }
+
+      .col .s12 h1,
+      .col .s12 h2,
+      .col .s12 h3,
+      .col .s12 h4,
+      .col .s12 h5,
+      .col .s12 h6,
+      .col .s12 p {
+        padding-top: .3em;
+        padding-bottom: .3em;
+      }
+
+      header h1,
+      header p {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-top: none;
+      }
+
+      .has-background {
+        padding-bottom: 3em;
+      }
+
+      .has-background .container h1 {
+        padding: .3em;
+      }
+
+      .nav-wrapper {
+        padding-left: 10vw;
+        padding-right: 10vw;
+      }
+
+      .btn-large .fa {
+        font-size: 1.5em;
+      }
+
+      main .container .row {
+        background-color: #fefefe;
+      }
+
+      header {
+        margin-bottom: 2em;
+      }
+
+      header h5 {
+        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+      }
+
+      .hide-on-small-only {
+        font-size: 1.2em;
+      }
+
+      #sidebar-md a {
+        text-decoration: none;
+      }
+
+      nav ul li a {
+        font-size: 1em;
+      }
+
+      nav .brand-logo ,
+      nav ul li a {
+        color: inherit;
+      }
+
+      #slide-out li a {
+        padding-left: 2vw;
+      }
+
+      .button-collapse {
+        display: inherit !important;
+      }
+
+      @media (max-width: 600px) {
+        .nav-wrapper {
+          padding-right: 2vw;
+        }
+
+        #menu-btn {
+          margin-right: 0;
+        }
+      }
+
+    </style>
+
+    <div class="main main-raised">
+        <div class="section section-basic">
+            <div class="container">
+
+                <div class="section section-white">
+                    <div class="container">
+                        <div id="title">
+
+                            <h3>Viabilidade</h3>
+                            <br>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <ul class="nav nav-pills nav-pills-icons" role="tablist">
+                                    <!--color-classes: "nav-pills-primary" "nav-pills-info",
+                      "nav-pills-success", "nav-pills-warning","nav-pills-danger"-->
+                                    <li class="nav-item">
+                                        <a class="nav-link  " href="index.html  ">
+                                            <i class="nc-icon nc-vector"></i> Metodologia
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="ritos.html">
+                                            <i class="nc-icon nc-tile-56"></i> Ritos adotados
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="analise-de-mercado.html">
+                                            <i class="nc-icon nc-tile-56"></i> Análise de mercado
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="metricas.html">
+                                            <i class="nc-icon nc-map-big"></i> Métricas e indicadores
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="roadmaps.html">
+                                            <i class="nc-icon nc-map-big"></i> Roadmaps
+                                        </a>
+                                    </li>
+                                </ul>
+
+
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <ul class="nav nav-pills nav-pills-icons" role="tablist">
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="Pipeline.html">
+                                          <i class="nc-icon nc-map-big"></i> Pipeline DevOps
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link active" href="riscos.html">
+                                          <i class="nc-icon nc-map-big"></i> Planejamento de riscos
+                                      </a>
+                                  </li>
+
+                              </ul>
+
+                            </div>
+                        </div>
+
+
+
+    \
+    <!doctype html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <title>GamesBI - Documentação</title>
+
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta name="viewport" content="width=device-width" />
+
+        <!-- Bootstrap core CSS     -->
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../assets/css/paper-kit.css?v=2.1.0" rel="stylesheet" />
+
+        <!--  CSS for Demo Purpose, don't include it in your project     -->
+        <link href="../assets/css/demo.css" rel="stylesheet" />
+
+        <!--     Fonts and icons     -->
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-md fixed-top " color-on-scroll="500">
+            <div class="container">
+                <div class="navbar-translate">
+                    <button class="navbar-toggler navbar-toggler-right navbar-burger" type="button" data-toggle="collapse"
+                        data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://fga-eps-mds.github.io/2018.2-GamesBI/">GamesBI</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <ul class="navbar-nav ml-auto">
+
+
+
+                      <div class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk"
+                              role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-single-copy-04"></i>Documentação
+                          </a>
+                          <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
+                              <li class="dropdown-header">Documentação do projeto</li>
+                              <a class="dropdown-item" href="../abertura/index.html"> <i class="nc-icon nc-paper"></i> Abertura </a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="../especificacao/index.html"> <i class="nc-icon nc-paper"></i>
+                                  Especificação</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="index.html"> <i class="nc-icon nc-paper"></i> Viabilidade técnica</a>
+                          </ul>
+                      </div>
+
+
+
+                      <li class="nav-item">
+                          <a href="../sprints/index.html" target="_blank" class="nav-link"><i class="nc-icon nc-chart-bar-32"></i>Sprints</a>
+                      </li>
+
+                      <li class="nav-item">
+                          <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://github.com/fga-eps-mds/2018.2-GameColorBI"
+                              target="_blank">
+                              <i class="fa fa-github"></i>
+                              <p class="d-lg-none">GitHub</p>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+      </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="container">
+          <h1 id="riscos">Riscos</h1>
+
+<h2 id="1-relação-de-riscos">1. Relação de riscos</h2>
+
+<p>A tabela a seguir exibe os possíveis riscos existentes no decorrer do projeto, bem como sua causa, impacto e probabilidade de ocorrência. Dessa lista serão monitorados e avaliados por Sprint os <strong>dez primeiros</strong> riscos, considerados os mais importantes.</p>
+
+<table style="text-align: center" class="responsive-table highlight bordered">
+    <thead>
+        <tr>
+            <th>Risco</th>
+            <th>Descrição</th>
+            <th>Causa</th>
+            <th>Impacto</th>
+            <th>Probabilidade</th>
+            <th>Avaliação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>R01</th>
+            <td>Projeto não atender os requisitos</td>
+            <td>Levantamento de requisitos falho e falta de validação constante</td>
+            <td>Crítico</td>
+            <td>Muito Alta</td>
+            <td style="background: red"><b>25</b></td>
+        </tr>
+        <tr>
+            <th>R02</th>
+            <td>Inexperiência com a tecnologia de desenvolvimento</td>
+            <td>Nova tecnologia</td>
+            <td>Grande</td>
+            <td>Média</td>
+            <td style="background: red"><b>12</b></td>
+        </tr>
+        <tr>
+            <th>R03</th>
+            <td>Comunicação falha entre os membros</td>
+            <td>Negligenciar meio de comunicação com o time</td>
+            <td>Crítico</td>
+            <td>Média</td>
+            <td style="background: red"><b>15</b></td>
+        </tr>
+        <tr>
+            <th>R04</th>
+            <td>Arquitetura não ser orientada a micro-serviços</td>
+            <td>Inexperiência dos membros com micro-serviços</td>
+            <td>Crítico</td>
+            <td>Média</td>
+            <td style="background: red"><b>15</b></td>
+        </tr>
+        <tr>
+            <th>R05</th>
+            <td>Membro desestimulado</td>
+            <td>Falta de interesse com o projeto ou fatores pessoais</td>
+            <td>Crítico</td>
+            <td>Média</td>
+            <td style="background: red"><b>15</b></td>
+        </tr>
+        <tr>
+            <th>R06</th>
+            <td>Falta de compromentimento</td>
+            <td>Membro desinteressado</td>
+            <td>Crítico</td>
+            <td>Média</td>
+            <td style="background: red"><b>15</b></td>
+        </tr>
+        <tr>
+            <th>R07</th>
+            <td>Baixa Produtividade</td>
+            <td>Desmotivação de membros</td>
+            <td>Grande</td>
+            <td>Alta</td>
+            <td style="background: red"><b>16</b></td>
+        </tr>
+        <tr>
+            <th>R08</th>
+            <td>Conhecimento desnivelado</td>
+            <td>Falha pareamento</td>
+            <td>Grande</td>
+            <td>Alta</td>
+            <td style="background: red"><b>16</b></td>
+        </tr>
+        <tr>
+            <th>R09</th>
+            <td>Membro abandonar a disciplina</td>
+            <td>Falta de compromentimento com a disciplina ou fatores pessoais</td>
+            <td>Crítico</td>
+            <td>Baixa</td>
+            <td style="background: yellow"><b>10</b></td>
+        </tr>
+        <tr>
+            <th>R10</th>
+            <td>Dificuldade de aprendizado ao trabalhar com tecnologias diferentes ao mesmo tempo</td>
+            <td>Inexperiência com ambas tecnologias</td>
+            <td>Grande</td>
+            <td>Alta</td>
+            <td style="background: red"><b>16</b></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>R11</td>
+            <td>Tarefas planejadas não entregues</td>
+            <td>Falha no planejamento da Sprint</td>
+            <td>Grande</td>
+            <td>Alto</td>
+        </tr>
+        <tr>
+            <td>R12</td>
+            <td>Não ocorrer evolução de conhecimento entre membros do time</td>
+            <td>Pareamento, treinamentos falhos ou falta de compromentimento do membro</td>
+            <td>Crítico</td>
+            <td>Baixa</td>
+        </tr>
+        <tr>
+            <td>R13</td>
+            <td>Product Backlog incompleto</td>
+            <td>Falha no elicitação de requisitos</td>
+            <td>Grande</td>
+            <td>Alta</td>
+        </tr>
+        <tr>
+            <td>R14</td>
+            <td>Falta de ambiente de desenvolvimento</td>
+            <td>Falha no DevOps</td>
+            <td>Grande</td>
+            <td>Baixa</td>
+        </tr>
+        <tr>
+            <td>R15</td>
+            <td>Alteração no escopo</td>
+            <td>Falta de validação constante com o cliente</td>
+            <td>Médio</td>
+            <td>Moderada</td>
+        </tr>
+        <tr>
+            <td>R16</td>
+            <td>Falha no acompanhamento das métricas</td>
+            <td>Planejamento incorreto  e negligenciamento das métricas</td>
+            <td>Médio</td>
+            <td>Moderada</td>
+        </tr>
+        <tr>
+            <td>R17</td>
+            <td>Inexperiência com design e usabilidade</td>
+            <td>Membros não possuem conhecimento sobre desenvolvimento de produto</td>
+            <td>Médio</td>
+            <td>Moderada</td>
+        </tr>
+        <tr>
+            <td>R18</td>
+            <td>Falta de equipamentos</td>
+            <td>Motivos pessoais</td>
+            <td>Grande</td>
+            <td>Muito baixa</td>
+        </tr>
+        <tr>
+            <td>R19</td>
+            <td>Comunicação falha com o cliente</td>
+            <td>Falta de disponibilidade</td>
+            <td>Grande</td>
+            <td>Baixa</td>
+        </tr>
+        <tr>
+            <td>R20</td>
+            <td>Ineficiência dos treinamento</td>
+            <td>Falha no planejamento,execução ou pouca participação</td>
+            <td>Médio</td>
+            <td>Moderada</td>
+        </tr>
+        <tr>
+            <td>R21</td>
+            <td>Ineficiência dos pareamentos</td>
+            <td>Horários incompatíveis e falha no planejamento</td>
+            <td>Médio</td>
+            <td>Alta</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><b>Observação:</b> Os riscos citados acima foram classificados para os campos de impacto e probabilidade a partir de valores indicados nas tabelas a seguir:</p>
+
+<h3 id="11-tabela-de-probabilidade">1.1 Tabela de Probabilidade</h3>
+<table style="text-align: center" class="responsive-table highlight bordered">
+  <tr>
+    <th>Probabilidade</th>
+    <th>Intervalo</th>
+    <th>Peso</th>
+  </tr>
+  <tr>
+    <td>Muito Baixa</td>
+    <td>menor que 10%</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Baixa</td>
+    <td>de 10% a 25%</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>Média</td>
+    <td>de 25% a 50%</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Alta</td>
+    <td>de 50% a 75%</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>Muito alta</td>
+    <td>maior que 75%</td>
+    <td>5</td>
+  </tr>
+</table>
+
+<h3 id="12-tabela-de-impacto">1.2 Tabela de Impacto</h3>
+<table style="text-align: center" class="responsive-table highlight bordered">
+  <tr>
+    <th>Impacto</th>
+    <th>Descrição</th>
+    <th>Peso</th>
+  </tr>
+  <tr>
+    <td>Insignificante</td>
+    <td>Impacto insignificante para o andamento do projeto</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Pequeno</td>
+    <td>Impacto com pouca influência no andamento do projeto</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>Moderado</td>
+    <td>Impacto notável para o andamento do projeto</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>Grande</td>
+    <td>Impacto grave para o andamento do projeto</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>Crítico</td>
+    <td>Impacto crítico para o andamento do projeto</td>
+    <td>5</td>
+  </tr>
+</table>
+
+<h3 id="13-avaliação-dos-riscos">1.3 Avaliação dos riscos</h3>
+
+<p>A avaliação dos riscos é feita multiplicando o peso da probabilidade pelo peso do impacto.</p>
+
+<table style="text-align: center" class="responsive-table highlight bordered">
+    <thead>
+        <th>Probabilidade/Impacto</th>
+        <th>Muito Baixa</th>
+        <th>Baixa</th>
+        <th>Média</th>
+        <th>Alta</th>
+        <th>Muito alta</th>
+    </thead>
+    <tbody style="font-weight: bold">
+        <tr>
+            <th>Insignificante</th>
+            <td style="background: green">1</td>
+            <td style="background: green">2</td>
+            <td style="background: green">3</td>
+            <td style="background: green">4</td>
+            <td style="background: green">5</td>
+        </tr>
+        <tr>
+            <th>Pequeno</th>
+            <td style="background: green">2</td>
+            <td style="background: green">4</td>
+            <td style="background: yellow">6</td>
+            <td style="background: yellow">8</td>
+            <td style="background: yellow">10</td>
+        </tr>
+        <tr>
+            <th>Moderado</th>
+            <td style="background: green">3</td>
+            <td style="background: yellow">6</td>
+            <td style="background: yellow">9</td>
+            <td style="background: red">12</td>
+            <td style="background: red">15</td>
+        </tr>
+        <tr>
+            <th>Grande</th>
+            <td style="background: green">4</td>
+            <td style="background: yellow">8</td>
+            <td style="background: red">12</td>
+            <td style="background: red">16</td>
+            <td style="background: red">20</td>
+        </tr>
+        <tr>
+            <th>Crítico</th>
+            <td style="background: green">5</td>
+            <td style="background: yellow">10</td>
+            <td style="background: red">15</td>
+            <td style="background: red">20</td>
+            <td style="background: red">25</td>
+        </tr>
+    </tbody>
+</table>
+
+
+        </div>
+
+<!--
+
+-->
+
+  </body>
+</html>
