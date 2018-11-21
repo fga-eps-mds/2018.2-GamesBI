@@ -294,7 +294,7 @@
                   <h2 id="4-arquitetura-dos-servi-os-e-vis-o-de-implementa-o">4. Arquitetura dos Serviços e visão de Implementação</h2>
                   <hr>
                   <h3 id="4-1-vis-o-geral">4.1 Visão Geral</h3>
-                  <p><img src="https://i.imgur.com/Zif27T6.jpg" alt=""></p>
+                  <p><img src="https://i.imgur.com/tbkSJtA.jpg" alt=""></p>
                   <h3 id="4-2-microservi-os-e-camadas">4.2 Microserviços e camadas</h3>
                   <p>A arquitetura e sua versão atual está particionada em:</p>
                   <ul>
@@ -397,24 +397,25 @@
                   </ul>
                   <br>
                   <h3 id="4-3-diagrama-de-pacotes">4.3 Diagrama de pacotes</h3><br>
-                  <p align="middle"><img src="https://i.imgur.com/QyzP35c.jpg"></p>
-                  <br>
-                  <ul>
-                    <li>Acima é demonstrada a implementação geral dos pacotes do Importer service.
-                    <li>Os arquivos Steam.py, Youtube.py, Twitch.py são responsáveis pela comunicação com as API's e fontes de dados externas. O Importer.py tem como tarefa a centralização dos dados requisitados e tratamento destes.</li>
-                    <li>No arquivo tasks.py se encontra o celery, que é responsável por fazer um requisição GET no Importer.py e logo após um POST com os dados dos jogos para o CrossData, de forma periódica.</li>
-                  </ul>
-                  <br>
-                  <p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
+                  <p align="middle"><img src="https://i.imgur.com/qJjQApm.jpg"></p>
 
                   <ul>
-                    <li>Acima é demonstrada a implementação geral dos pacotes de cada microserviço, onde o &quot;<x>&quot; será substituído pelo nome dos respectivos microserviços.</x></li>
+                    <li>Acima é demonstrada a implementação geral dos pacotes do Importer service.</li>
+                  </ul>
+                  <ul>
+                    <p>Os arquivos Steam.py, Youtube.py, Twitch.py são responsáveis pela comunicação com as API's e fontes de dados externas. O Importer.py tem como tarefa a centralização dos dados requisitados e tratamento destes.</p>
+                    <p>No arquivo tasks.py se encontra o celery, que é responsável por fazer um requisição GET no Importer.py e logo após um POST com os dados dos jogos para o CrossData, de forma periódica.</p>
+                  </ul>
+                  <br>
+                  <p align="middle"><img src="https://i.imgur.com/sVYM16A.jpg"></p>
+
+                  <ul>
+                    <li>Acima é demonstrada a implementação geral dos pacotes do CrossData service.</li>
                   </ul>
                   <p>Dentro de Aplicações Django, os pacotes são representados pelos apps.</p>
                   <ul>
-                    <li><p>IMPORTDATA O app importdata é responsável pela comunicação com as API&#39;s e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e persistência no banco de dados</p>
                     </li>
-                    <li><p>API O app API é responsável pela disponibilização dos dados persistidos no banco de dados para os outros microserviços através de endpoints específicos, também podendo ser usado por qualquer outra aplicação que deseja acessar os dados.</p>
+                      <p>API é o app responsável pela comunicação com as API&#39;s e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e persistência no banco de dados e disponibilização dos dados persistidos no banco de dados para os outros microserviços através de endpoints específicos, também podendo ser usado por qualquer outra aplicação que deseja acessar os dados.</p>
                     </li>
                   </ul>
                   <h2 id="5-vis-o-de-dados">5 Visão de dados</h2>
