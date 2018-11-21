@@ -415,7 +415,7 @@
                   <p>Dentro de Aplicações Django, os pacotes são representados pelos apps.</p>
                   <ul>
                     </li>
-                      <p>API é o app responsável pela comunicação com as API&#39;s e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e persistência no banco de dados e disponibilização dos dados persistidos no banco de dados para os outros microserviços através de endpoints específicos, também podendo ser usado por qualquer outra aplicação que deseja acessar os dados.</p>
+                      <p>o pacote API é responsável pelo recebimento dos dados mandados através de requisições POST vindos do worker Importer, que então são persistidos no banco de dados. A API também disponibiliza os dados através de endpoints por requisições GET.</p>
                     </li>
                   </ul>
                   <h2 id="5-vis-o-de-dados">5 Visão de dados</h2>
