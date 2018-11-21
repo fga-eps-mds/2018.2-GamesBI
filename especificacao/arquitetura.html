@@ -243,7 +243,7 @@
                     Quando se trata de BI, o processo de ETL pode ser fundamental e necessário.
                     É a etapa que mais exige esforço e trabalho dos envolvidos, e não foi diferente dentro da GamesBI.<br>
                     O ETL trata-se do processo de extração, tratamento e carregamento dos dados. O primeiro passo, a extração, são obtidos e extraídos os dados de múltiplas fontes externas ou internas. Esses dados podem vir de diferentes e variadas formas, em consequência disso, os dados obtidos podem muitas vezes ser incompatíveis com as regras de negócio, inconsistentes ou irrelevantes. Então, na parte de tratamento, são resolvidos essas inconsistências e ocorre a integração dos dados, para que se tornem homogêneos e façam sentido juntos. Ao final do processo, os dados tratados então podem ser carregados em um Data Warehouse, um armazenamento de dados, aonde estarão disponíveis para a fase de analytics.<br>
-                    A arquitetura do GamesBI foi planejada para seguir o processo de ETL com eficiência, apartir da separação do sistema em microserviços, cada qual com sua responsabilidade dentro do processo de ETL. 
+                    A arquitetura do GamesBI foi planejada para seguir o processo de ETL com eficiência, apartir da separação do sistema em microserviços, cada qual com sua responsabilidade dentro do processo de ETL.
                   </p>
 
                   <h3 id="2-3-padr-o-de-arquitetura-rest">2.3 Padrão de Arquitetura REST</h3>
@@ -265,7 +265,7 @@
                     <li>RESTful: capacidade de determinado sistema aplicar os princípios de REST.</li>
                   </ul>
                   <hr>
-                
+
                   <h3 id="2-4-padr-o-de-arquitetura-do-react">2.4 Padrão de arquitetura do REACT</h3>
                   <p><img src="https://imgur.com/v64CEFp.jpg" alt=""></p>
                   <ul>
@@ -294,7 +294,7 @@
                   <h2 id="4-arquitetura-dos-servi-os-e-vis-o-de-implementa-o">4. Arquitetura dos Serviços e visão de Implementação</h2>
                   <hr>
                   <h3 id="4-1-vis-o-geral">4.1 Visão Geral</h3>
-                  <p><img src="https://i.imgur.com/C41CCh4.jpg" alt=""></p>
+                  <p><img src="https://i.imgur.com/Zif27T6.jpg" alt=""></p>
                   <h3 id="4-2-microservi-os-e-camadas">4.2 Microserviços e camadas</h3>
                   <p>A arquitetura e sua versão atual está particionada em:</p>
                   <ul>
@@ -396,11 +396,13 @@
                     <li>Youtube API</li>
                   </ul>
                   <br>
-                  <h3 id="4-3-diagrama-de-pacotes">4.3 Diagrama de pacotes</h3><br>s
-                  <p align="middle"><img src="https://i.imgur.com/NgYCdkO.jpg"></p>
+                  <h3 id="4-3-diagrama-de-pacotes">4.3 Diagrama de pacotes</h3><br>
+                  <p align="middle"><img src="https://i.imgur.com/QyzP35c.jpg"></p>
                   <br>
                   <ul>
-                    <li>Acima é demonstrada a implementação geral dos pacotes do Importer service respectivos microserviços.<br>resources O app importdata é responsável pela comunicação com as API's e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e envio via POST.</li>
+                    <li>Acima é demonstrada a implementação geral dos pacotes do Importer service.
+                    <li>Os arquivos Steam.py, Youtube.py, Twitch.py são responsáveis pela comunicação com as API's e fontes de dados externas. O Importer.py tem como tarefa a centralização dos dados requisitados e tratamento destes.</li>
+                    <li>No arquivo tasks.py se encontra o celery, que é responsável por fazer um requisição GET no Importer.py e logo após um POST com os dados dos jogos para o CrossData, de forma periódica.</li>
                   </ul>
                   <br>
                   <p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
