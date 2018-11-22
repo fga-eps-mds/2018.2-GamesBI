@@ -115,3 +115,11 @@ class EndpointGETTestCase(APITestCase):
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic)
 		self.assertNotEqual(response.data, json_ideal_return)
+
+	def test_table_return_not_null(self):
+
+		json_not_ideal_return = {'x_axis': [], 'y_axis': []}
+
+		self.client.post(self.url, self.data, format='json')
+		response = self.client.get(self.url_table)
+		self.assertNotEqual(response.data, json_not_ideal_return)
