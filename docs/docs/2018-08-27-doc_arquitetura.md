@@ -158,7 +158,7 @@ A Arquitetura desse projeto tem como principal objetivo o desacoplamento do sist
 
 ### 4.1 Visão Geral
 
-![](https://i.imgur.com/C41CCh4.jpg)
+![](https://i.imgur.com/Zif27T6.jpg)
 
 ### 4.2 Microserviços e camadas
 
@@ -268,17 +268,16 @@ APIs Externas: Diferentes fontes de dados acerca de jogos digitais
 *   Twitch API
 *   Youtube API
 
-<!-- CRIAR NOVO DIAGRAMA DE PACOTES  -->
 ### 4.3 Diagrama de pacotes
 
-<p align="middle"><img src="https://i.imgur.com/NgYCdkO.jpg"></p>
+<p align="middle"><img src="https://i.imgur.com/QyzP35c.jpg"></p>
 
-*   Acima é demonstrada a implementação geral dos pacotes do Importer service respectivos microserviços.</x>
+*   Acima é demonstrada a implementação geral dos pacotes do Importer service.</x>
 
-Dentro de Aplicação Flask, os pacotes são representados pelos apps.
 
-*   resources O app importdata é responsável pela comunicação com as API's e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e envio via POST.
+*   Os arquivos Steam.py, Youtube.py, Twitch.py são responsáveis pela comunicação com as API's e fontes de dados externas. O Importer.py tem como tarefa a centralização dos dados requisitados e tratamento destes.
 
+*   No arquivo tasks.py se encontra o celery, que é responsável por fazer um requisição GET no Importer.py e logo após um POST com os dados dos jogos para o CrossData, de forma periódica.
 
 <p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
 

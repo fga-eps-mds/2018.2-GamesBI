@@ -160,9 +160,10 @@
                     <p>2 . <a href="#2-representação-da-arquitetura">Representação da Arquitetura</a></p>
 
                     <ul>
-                      <li>2.1. <a href="#21-padrão-de-arquitetura-mvt">Representação do padrão de Arquitetura MVT</a></li>
-
-                      <li>2.2. <a href="#22-arquitetura-de-microserviços">Representação da Arquitetura de Microserviços</a>
+                      <li>2.1. <a href="#2-1-arquitetura-de-microservi-os">Representação da Arquitetura de Microserviços</a>
+                      <li>2.2. <a href="#2-2-etl">O Processo de ETL</a>
+                      <li>2.3. <a href="#2-3-padr-o-de-arquitetura-rest">Representação do padrão de Arquitetura REST</a></li>
+                      <li>2.4. <a href="#2-4-padr-o-de-arquitetura-do-react">2.4 Padrão de arquitetura do REACT</a>
                       </li>
                     </ul>
                   </li>
@@ -198,20 +199,56 @@
                   <p>Neste documento serão retratados os modelos arquiteturais implementados, descrição e utilização de frameworks que compõe o projeto GamesBI, plataforma de business intelligence com temática de jogos digitais. Exploramos de maneira detalhada o funcionamento e a visão arquitetural do projeto.</p>
                   <h3 id="1-3-defini-es-acr-nimos-e-abrevia-es">1.3 Definições, acrônimos e abreviações</h3>
                   <ul>
-                    <li>MVT - Model, View, Template</li>
-                    <li>MVC - Model, View, Controller</li>
-                    <li>ORM - Object Relational Mapper</li>
-                    <li>DRM - Document Relational Mapper</li>
+                    <li>REST - Representational State Transfer</li>
+                    <li>ETL - Extract, transform, load</li>
+                    <li>DW / DWH - Data Warehouse</li>
+                    <li>BI - Business Intelligence</li>
                   </ul>
                   <h3 id="1-4-refer-ncias">1.4 Referências</h3>
+                  <ul>
+                    <li>
+                      Silva Gomes da Gama e Abreu, Fábio. DESMISTIFICANDO O CONCEITO DE ETL<br>
+                      <a href="http://www.fsma.edu.br/si/Artigos/V2_Artigo1.pdf">http://www.fsma.edu.br/si/Artigos/V2_Artigo1.pdf</a>
+                    </li>
+                    <li>
+                      Vassiliadis, Panos; Simitsis, Alkis. EXTRACTION, TRANSFORMATION, AND LOADING
+                      <a href="http://www.cs.uoi.gr/~pvassil/downloads/ETL/SHORT_DESCR/08SpringerEncyclopedia_draft.pdf">http://www.cs.uoi.gr/~pvassil/downloads/ETL/SHORT_DESCR/08SpringerEncyclopedia_draft.pdf</a>
+                    </li>
+                    <li>
+                      Newman, Sam. Building Microservices.<br>
+                      <a href="https://www.nginx.com/wp-content/uploads/2015/01/Building_Microservices_Nginx.pdf">https://www.nginx.com/wp-content/uploads/2015/01/Building_Microservices_Nginx.pdf</a>
+                    </li>
+                  </ul>
                   <h3 id="1-5-vis-o-geral">1.5 Visão Geral</h3>
-                  <p>O presente documento faz o detalhamento e descrição de características da arquitetura escolhidas pela equipe. Estaremos descrevento o padrão arquitetural MVT, arquitetura de Microserviços e APIs Rest</p>
+                  <p>O presente documento faz o detalhamento e descrição de características da arquitetura escolhidas pela equipe. Estaremos descrevendo o padrão de arquitetura de Microserviços e APIs Rest, assim como detalhando o funcionamento da comunicação entre os microserviços e a representação dos dados</p>
                   <h2 id="2-representa-o-da-arquitetura">2. Representação da Arquitetura</h2>
                   <hr>
-                  <p>A arquitetura do projeto possuirá ambientes diferentes: API&#39;s REST, por debaixo do framework Django, assim como o ambiente WEB de interação com usuário, feito em react. Juntando todos os ambientes e coordenando-os, formamos assim uma arquitetura de Microserviços.</p>
-                  <h3 id="2-1-padr-o-de-arquitetura-rest">2.1 Padrão de Arquitetura REST</h3>
+                  <p>A arquitetura do projeto possuirá ambientes diferentes: API&#39;s REST, por debaixo do framework Django, ambiente WEB de interação com usuário, feito em react e por último o worker de extração Importer. Juntando todos os ambientes e coordenando-os, formamos assim uma arquitetura de Microserviços integrada que tem como objetivo formar um processo de ETL e Data Warehouse para que no fim sejam apresentados dados conscistentes e relevantes para o nosso usuário final.</p>
+                  <br>
+
+                  <h3 id="2-1-arquitetura-de-microservi-os">2.1 Arquitetura de Microserviços</h3>
+                  <p>arquitetura orientada a micro serviços foi adotada para este projeto devido a suas vantagens em relação a estrutura monolítica, dentre elas estão:</p>
+                  <ul>
+                    <li>Disponibilização de novos processos ou serviços sem impacto nos processos e serviços existentes.</li>
+                    <li>Alterações em processos e serviços sem a necessidade de parada de todo o sistema.</li>
+                    <li>Otimização da utilização da infraestrutura de nuvem.</li>
+                    <li>Redução da complexidade de manutenção.</li>
+                  </ul>
+
+                  <h3 id="2-2-etl">2.2 Processo de ETL</h3>
+                  <br>
+                  <p><img src="https://panoply.io/uploads/versions/diagram4---x----750-328x---.jpg" alt=""></p>
+                  <br>
+                  <p>
+                    Quando se trata de BI, o processo de ETL pode ser fundamental e necessário.
+                    É a etapa que mais exige esforço e trabalho dos envolvidos, e não foi diferente dentro da GamesBI.<br>
+                    O ETL trata-se do processo de extração, tratamento e carregamento dos dados. O primeiro passo, a extração, são obtidos e extraídos os dados de múltiplas fontes externas ou internas. Esses dados podem vir de diferentes e variadas formas, em consequência disso, os dados obtidos podem muitas vezes ser incompatíveis com as regras de negócio, inconsistentes ou irrelevantes. Então, na parte de tratamento, são resolvidos essas inconsistências e ocorre a integração dos dados, para que se tornem homogêneos e façam sentido juntos. Ao final do processo, os dados tratados então podem ser carregados em um Data Warehouse, um armazenamento de dados, aonde estarão disponíveis para a fase de analytics.<br>
+                    A arquitetura do GamesBI foi planejada para seguir o processo de ETL com eficiência, apartir da separação do sistema em microserviços, cada qual com sua responsabilidade dentro do processo de ETL.
+                  </p>
+
+                  <h3 id="2-3-padr-o-de-arquitetura-rest">2.3 Padrão de Arquitetura REST</h3>
                   <p>O termo foi definido no ano 2000, na tese de doutorado de Roy Fielding e é a sigla para Representational State Transfer: é um design de arquitetura construído para servir aplicações em rede.</p>
-                  <p>Conceitualmente falando, o modelo REST (REpresentational State Transfer) representa nada mais que uma possibilidade para a criação de web services, cujas principais diferenças em relação ao modelo tradicional (SOAP) estão na utilização semântica dos métodos HTTP (GET, POST, PUT e DELETE), na leveza dos pacotes de dados transmitidos na rede e na simplicidade, fazendo desnecessária a criação de camadas intermediárias (Ex.: Envelope SOAP) para encapsular os dados.</p>
+                  <p>Conceitualmente falando, o modelo REST representa nada mais que uma possibilidade para a criação de web services, cujas principais diferenças em relação ao modelo tradicional (SOAP) estão na utilização semântica dos métodos HTTP (GET, POST, PUT e DELETE), na leveza dos pacotes de dados transmitidos na rede e na simplicidade, fazendo desnecessária a criação de camadas intermediárias (Ex.: Envelope SOAP) para encapsular os dados.</p>
                   <p><img src="https://i.imgur.com/QtD42Z2.png" alt=""></p>
                   <hr>
                   <h4 id="caracter-sticas-de-uma-requisi-o-rest-">Características de uma requisição REST:</h4>
@@ -227,19 +264,9 @@
                     <li>REST: conjunto de princípios de arquitetura</li>
                     <li>RESTful: capacidade de determinado sistema aplicar os princípios de REST.</li>
                   </ul>
-                  <h4 id="aplica-o">Aplicação</h4>
-                  <p>Tendo em vista estes conceitos, podemos mencionar a maneira pela qual são aplicados no GamesBI. Que se baseia em sua arquitetura de microserviços, de forma com que cada serviço se define como uma API RESTful que trabalha com JSON como dados de resposta.</p>
-                  <p>Por fim, todos estes dados são centralizados e tratados no CrossData para que posteriormente possam ser disponibilizados para o Front End da GamesBI.</p>
                   <hr>
-                  <h3 id="2-2-arquitetura-de-microservi-os">2.2 Arquitetura de Microserviços</h3>
-                  <p>arquitetura orientada a micro serviços foi adotada para este projeto devido a suas vantagens em relação a estrutura monolítica, dentre elas estão:</p>
-                  <ul>
-                    <li>Disponibilização de novos processos ou serviços sem impacto nos processos e serviços existentes.</li>
-                    <li>Alterações em processos e serviços sem a necessidade de parada de todo o sistema.</li>
-                    <li>Otimização da utilização da infraestrutura de nuvem.</li>
-                    <li>Redução da complexidade de manutenção.</li>
-                  </ul>
-                  <h3 id="2-3-padr-o-de-arquitetura-do-react">2.3 Padrão de arquitetura do REACT</h3>
+
+                  <h3 id="2-4-padr-o-de-arquitetura-do-react">2.4 Padrão de arquitetura do REACT</h3>
                   <p><img src="https://imgur.com/v64CEFp.jpg" alt=""></p>
                   <ul>
                     <li><p>View: um contêiner responsavel por escutar o estado da aplicação, atualizar e renderizar componentes.</p>
@@ -251,6 +278,8 @@
                     <li><p>Dispatcher: recebem e tratam as informações para que sejam (ou não) enviadas à Store.</p>
                     </li>
                   </ul>
+
+
                   <h2 id="3-metas-e-restri-es-da-arquitetura">3. Metas e Restrições da Arquitetura</h2>
                   <hr>
                   <h3 id="3-1-metas">3.1 Metas</h3>
@@ -259,62 +288,104 @@
                   <ul>
                     <li>O projeto possui as seguintes restrições:</li>
                     <li>Framework Django 2.1 com Python 3.6</li>
-                    <li>Framework Flask</li>
                     <li>API&#39;s REST</li>
                     <li>ReactJS</li>
                   </ul>
                   <h2 id="4-arquitetura-dos-servi-os-e-vis-o-de-implementa-o">4. Arquitetura dos Serviços e visão de Implementação</h2>
                   <hr>
                   <h3 id="4-1-vis-o-geral">4.1 Visão Geral</h3>
-                  <p><img src="https://i.imgur.com/C41CCh4.jpg" alt=""></p>
+                  <p><img src="https://i.imgur.com/tbkSJtA.jpg" alt=""></p>
                   <h3 id="4-2-microservi-os-e-camadas">4.2 Microserviços e camadas</h3>
                   <p>A arquitetura e sua versão atual está particionada em:</p>
                   <ul>
-                    <li><p>1 - Front-End</p>
-                      <p>Esta fronteira é responsável por resgatar as estatísticas geradas pelo microserviço Metabase e apresentar para o usuário final.</p>
+                    <li><p>1 - Front-End (Analytics)</p>
+                      <p>Esta fronteira é responsável por resgatar os dados armazenados no DW (CrossData) para geração dos analytics, apresentando para o usuário final.</p>
                     </li>
-                    <li><p>2 - Metabase</p>
-                      <p>Fronteira responsavel por receber os dados do Cross Data. Assim, gerando gráficos e estatísticas que serão apresentados no Front-End.</p>
+                    <li><p>2 - Cross Data (Data Warehouse)</p>
+                      <p>Fronteira responsável pela função de DW, depósito onde se é persistido e mantido os dados relevantes para o produto. Através de uma API, disponibiliza os dados para a fronteira de analytics (Front-End).</p>
                     </li>
-                    <li><p>3 - Cross Data</p>
-                      <p>Fronteira responsável pela fução de data warehouse, depósito onde se é persistido e mantido os dados relevantes para o produto. Recebendo requisições do front-end para busca de gráficos no metabase.</p>
-                    </li>
-                    <li><p>4 - Importer Service</p>
-                      <p>O Importer Service se caracteriza como o ETL do projeto GamesBI. Este módulo é responsável por extrair todos os dados os dados das API's externas, irá tratar e mesclar estes dados e manda-los via POST para o crossData.</p>
+                    <li><p>3 - Importer (Extract, Transform, Load)</p>
+                      <p>O Importer é a fronteira responsável no processo de ETL, pela extração dos dados das API's externas, tratamento e separação de dados relevantes, e carregamento para o DW (CrossData). Para a alimentação contínua de dados atualizados e com datas diferentes para geração de análises temporais, o Importer funciona como um Worker, fazendo todo o processo periodicamente a automaticamente.</p>
                     </li>
                   </ul>
-                  <p>Dicionário de dados que será enviado:</p>
+                  <p>Json de dados que será enviado:</p>
                   <br>
-                  <code>
-                    [
-                      {
-                        "name": "Jogo Teste",
-                        "languages": "Ingles",
-                        "genre": "Ação",
-                        "count_videos": 10,
-                        "count_views": 11,
-                        "count_likes": 20,
-                        "count_dislikes": 110,
-                        "count_comments": 10,
-                        "positive_reviews_steam": 10,
-                        "negative_reviews_steam": 11,
-                        "owners": 10,
-                        "average_forever": 20,
-                        "average_2weeks": 40,
-                        "price": 50,
-                        "total_views": 70,
-                        "streams":[ 
-                          {
-                            "language": "Portugues",
-                            "started_at": "2018-09-30",
-                            "type": "Live",
-                            "viewer_count": 10
-                            
-                          } 
-                        ]
-                        
-                      }
-                    ]
+                  <code style=display:block;white-space:pre-wrap>
+[
+  {
+      "id_steam": 123,
+      "name": "Test 1",
+      "positive_reviews_steam": 1923123,
+      "negative_reviews_steam": 12121,
+      "owners": 130000,
+      "average_forever": 2127,
+      "average_2weeks": 132,
+      "price": "0",
+      "languages": [
+          "mandarim", "espanhol"
+      ],
+      "genres": [
+          "tiro", "porrada"
+      ],
+      "main_image": "google.com",
+      "screenshots": [
+          {
+              "url": "https://steamcdn-a.akamaihd.net/steam/apps/570/ss_86d675fdc73ba10462abb8f5ece7791c5047072c.600x338.jpg?t=1536248487",
+              "palette": [
+                  {
+                      "r": 8,
+                      "g": 16,
+                      "b": 2,
+                      "hex": "#1aa741"
+                  },
+                  {
+                      "r": 34,
+                      "g": 12,
+                      "b": 37,
+                      "hex": "#2e204d"
+                  },
+                  {
+                      "r": 22,
+                      "g": 48,
+                      "b": 34,
+                      "hex": "#484454"
+                  },
+                  {
+                      "r": 121,
+                      "g": 80,
+                      "b": 254,
+                      "hex": "#b5b49a"
+                  },
+                  {
+                      "r": 19,
+                      "g": 26,
+                      "b": 21,
+                      "hex": "#3b4233"
+                  }
+              ]
+          },
+      ],
+      "release_date": "1 Feb, 1999",
+      "r_average": 83,
+      "g_average": 82,
+      "b_average": 74,
+      "count_videos": 1,
+      "count_views": 2609773,
+      "count_likes": 5555,
+      "count_dislikes": 1107,
+      "count_comments": 4152,
+      "total_views": 46939,
+      "streams": [
+          {
+              "language": "en",
+              "game_id": "29595",
+              "started_at": "2018-11-03T12:00:06Z",
+              "type": "live",
+              "viewer_count": 23661
+          },
+      ]
+  },
+]
                   </code>
                   <br>
                   <br>
@@ -325,29 +396,32 @@
                     <li>Youtube API</li>
                   </ul>
                   <br>
-                  <h3 id="4-3-diagrama-de-pacotes">4.3 Diagrama de pacotes</h3><br>s
-                  <p align="middle"><img src="https://i.imgur.com/NgYCdkO.jpg"></p>
-                  <br>
-                  <ul>
-                    <li>Acima é demonstrada a implementação geral dos pacotes do Importer service respectivos microserviços.<br>resources O app importdata é responsável pela comunicação com as API's e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e envio via POST.</li>
-                  </ul>
-                  <br>
-                  <p align="middle"><img src="https://i.imgur.com/6ncZkMh.jpg"></p>
+                  <h3 id="4-3-diagrama-de-pacotes">4.3 Diagrama de pacotes</h3><br>
+                  <p align="middle"><img src="https://i.imgur.com/qJjQApm.jpg"></p>
 
                   <ul>
-                    <li>Acima é demonstrada a implementação geral dos pacotes de cada microserviço, onde o &quot;<x>&quot; será substituído pelo nome dos respectivos microserviços.</x></li>
+                    <li>Acima é demonstrada a implementação geral dos pacotes do Importer service.</li>
+                  </ul>
+                  <ul>
+                    <p>Os arquivos Steam.py, Youtube.py, Twitch.py são responsáveis pela comunicação com as API's e fontes de dados externas. O Importer.py tem como tarefa a centralização dos dados requisitados e tratamento destes.</p>
+                    <p>No arquivo tasks.py se encontra o celery, que é responsável por fazer um requisição GET no Importer.py e logo após um POST com os dados dos jogos para o CrossData, de forma periódica.</p>
+                  </ul>
+                  <br>
+                  <p align="middle"><img src="https://i.imgur.com/sVYM16A.jpg"></p>
+
+                  <ul>
+                    <li>Acima é demonstrada a implementação geral dos pacotes do CrossData service.</li>
                   </ul>
                   <p>Dentro de Aplicações Django, os pacotes são representados pelos apps.</p>
                   <ul>
-                    <li><p>IMPORTDATA O app importdata é responsável pela comunicação com as API&#39;s e fontes de dados externas. Tendo como tarefa a importação dos dados, tratamento e persistência no banco de dados</p>
                     </li>
-                    <li><p>API O app API é responsável pela disponibilização dos dados persistidos no banco de dados para os outros microserviços através de endpoints específicos, também podendo ser usado por qualquer outra aplicação que deseja acessar os dados.</p>
+                      <p>o pacote API é responsável pelo recebimento dos dados mandados através de requisições POST vindos do worker Importer, que então são persistidos no banco de dados. A API também disponibiliza os dados através de endpoints por requisições GET.</p>
                     </li>
                   </ul>
                   <h2 id="5-vis-o-de-dados">5 Visão de dados</h2>
                   <br>
                   <p>5.1 Cross Data</p>
-                  <p align="middle"><img src="https://i.imgur.com/vuxErRA.jpg"></p>
+                  <p align="middle"><img src="https://i.imgur.com/JvVZ3CT.jpg"></p>
 
                   <p>5.2 Dicionário de dados Cross Data</p>
 
@@ -369,6 +443,12 @@
                         <td>Identificar os dados</td>
                       </tr>
                       <tr>
+                        <td>id_steam</td>
+                        <td>int</td>
+                        <td>Id na steam</td>
+                        <td>Identificar o jogo no banco de dadso da steam</td>
+                      </tr>
+                      <tr>
                         <td>name</td>
                         <td>string</td>
                         <td>Nome do jogo</td>
@@ -381,10 +461,40 @@
                         <td>Locais mais jogados</td>
                       </tr>
                       <tr>
-                        <td>genre</td>
-                        <td>string</td>
-                        <td>Genero do jogo</td>
+                        <td>genres</td>
+                        <td>Genre</td>
+                        <td>Foreign Key de relacionamento NxM com a entidade Genre</td>
                         <td>Categorizar os jogos</td>
+                      </tr>
+                      <tr>
+                        <td>release_date</td>
+                        <td>date</td>
+                        <td>Data de lançamento do jogo</td>
+                        <td>Categorizar os jogos, análise temporal</td>
+                      </tr>
+                      <tr>
+                        <td>main_image</td>
+                        <td>string</td>
+                        <td>Imagem representante do jogo</td>
+                        <td>Visual</td>
+                      </tr>
+                      <tr>
+                        <td>r_average</td>
+                        <td>int</td>
+                        <td>Média de cor R</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>g_average</td>
+                        <td>int</td>
+                        <td>Média de cor G</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>b_average</td>
+                        <td>int</td>
+                        <td>Média de cor B</td>
+                        <td>Análise de paleta de cores</td>
                       </tr>
                     </tbody>
                   </table>
@@ -608,8 +718,119 @@
                   </table>
 
                   <br><br>
+                  <h5 id="entidade-twitch"><b>Entidade: Genre</b></h5>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Atributo</th>
+                        <th>Dominio</th>
+                        <th>Descrição</th>
+                        <th>Relevância</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>id</td>
+                        <td>int</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados</td>
+                      </tr>
+                      <tr>
+                        <td>genre</td>
+                        <td>string</td>
+                        <td>Nome do gênero</td>
+                        <td>Categorizar os jogos</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <br><br>
+                  <h5 id="entidade-twitch"><b>Entidade: Screenshot</b></h5>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Atributo</th>
+                        <th>Dominio</th>
+                        <th>Descrição</th>
+                        <th>Relevância</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>id</td>
+                        <td>int</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados</td>
+                      </tr>
+                      <tr>
+                        <td>game</td>
+                        <td>Game</td>
+                        <td>Foreign Key para relacionar com a entidade Game</td>
+                        <td>Identificar a qual jogo pertecendo o screenshot</td>
+                      </tr>
+                      <tr>
+                        <td>url</td>
+                        <td>string</td>
+                        <td>Url para onde a imagem está hospedada</td>
+                        <td>Buscar a imagem</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <br><br>
+                  <h5 id="entidade-twitch"><b>Entidade: Pallete</b></h5>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Atributo</th>
+                        <th>Dominio</th>
+                        <th>Descrição</th>
+                        <th>Relevância</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>id</td>
+                        <td>int</td>
+                        <td>Primary key da tabela</td>
+                        <td>Identificar os dados</td>
+                      </tr>
+                      <tr>
+                        <td>image</td>
+                        <td>Screenshot</td>
+                        <td>Foreign Key para relacionar com a entidade Screenshot</td>
+                        <td>Identificar a qual imagem pertence a paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>r</td>
+                        <td>int</td>
+                        <td>Quantidade de R na imagem</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>g</td>
+                        <td>int</td>
+                        <td>Quantidade de G na imagem</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>b</td>
+                        <td>int</td>
+                        <td>Quantidade de B na imagem</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                      <tr>
+                        <td>hex</td>
+                        <td>string</td>
+                        <td>Hexadecimal da cor</td>
+                        <td>Análise de paleta de cores</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <br><br>
                   <ul>
-                    <li>Dados obtidos das API&#39;s internas (Steam, Twitch e Youtube)</li>
+                    <li>Dados obtidos das API&#39;s externas (Steam, Twitch e Youtube)</li>
                   </ul>
 
 
