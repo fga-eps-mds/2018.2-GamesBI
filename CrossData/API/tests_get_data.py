@@ -84,8 +84,12 @@ class EndpointGETTestCase(APITestCase):
 ]
 
 		self.url_graphic = reverse("get_data", kwargs={'graphtype':'line', 'yaxis':'average_2weeks', 'xaxis':'games'})
-		self.url_table = reverse("get_table_data", kwargs={'table_type':'trendingnow'})
+		self.url_table_tn = reverse("get_table_data", kwargs={'table_type':'trendingnow'})
+		self.url_table_mw = reverse("get_table_data", kwargs={'table_type':'mostwatched'})
+		self.url_table_s = reverse("get_table_data", kwargs={'table_type':'sales'})
+		self.url_table_pt = reverse("get_table_data", kwargs={'table_type':'playedtime'})
 		self.url = reverse("games_view")
+		self.url_genres = reverse("genres")
 
 	def tearDown(self):
 
@@ -104,9 +108,8 @@ class EndpointGETTestCase(APITestCase):
 
 	def test_table_status_code(self):
 
-		response = self.client.get(self.url_table)
+		response = self.client.get(self.url_table_tn)
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
-
 
 	def test_graphic_return_not_null(self):
 
@@ -121,5 +124,24 @@ class EndpointGETTestCase(APITestCase):
 		json_not_ideal_return = {'x_axis': [], 'y_axis': []}
 
 		self.client.post(self.url, self.data, format='json')
-		response = self.client.get(self.url_table)
+		response = self.client.get(self.url_table_tn)
 		self.assertNotEqual(response.data, json_not_ideal_return)
+
+	def test_table_most_watched(self):
+		json_ideal_return = {'x_axis': [], 'y_axis': []}
+		self.client.post(self.url, self.data, format='json')
+		response = self.client.get(self.url_table_mw)
+		self.assertNotEqual(response.data, json_ideal_return)
+
+	def test_table_sales(self):
+		json_ideal_return = {'x_axis': [], 'y_axis': []}
+		self.client.post(self.url, self.data, format='json')
+		response = self.client.get(self.url_table_s)
+		self.assertNotEqual(response.data, json_ideal_return)
+
+
+	def test_table_played_time(self):
+		json_ideal_return = {'x_axis': [], 'y_axis': []}
+		self.client.post(self.url, self.data, format='json')
+		response = self.client.get(self.url_table_pt)
+		self.assertNotEqual(response.data, json_ideal_return)
