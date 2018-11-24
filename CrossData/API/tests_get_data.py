@@ -84,6 +84,8 @@ class EndpointGETTestCase(APITestCase):
 ]
 
 		self.url_graphic = reverse("get_data", kwargs={'graphtype':'line', 'yaxis':'average_2weeks', 'xaxis':'games'})
+		self.url_graphic_name = reverse("get_game_data", kwargs={'graphtype':'line', 'yaxis':'average_2weeks', 'xaxis':'games', 'name':'Test 1'})
+		self.url_graphic_yt = reverse("get_game_data", kwargs={'graphtype':'line', 'yaxis':'count_views', 'xaxis':'games', 'name':'Test 1'})
 		self.url_table_tn = reverse("get_table_data", kwargs={'table_type':'trendingnow'})
 		self.url_table_mw = reverse("get_table_data", kwargs={'table_type':'mostwatched'})
 		self.url_table_s = reverse("get_table_data", kwargs={'table_type':'sales'})
@@ -94,6 +96,7 @@ class EndpointGETTestCase(APITestCase):
 	def tearDown(self):
 
 		Game.objects.all().delete()
+
 
 	def test_graphic_status_code(self):
 
@@ -145,3 +148,15 @@ class EndpointGETTestCase(APITestCase):
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_table_pt)
 		self.assertNotEqual(response.data, json_ideal_return)
+
+	def test_graphic_with_name(self):
+		json_not_ideal_return = {'x_axis': [], 'y_axis': []}
+		self.client.post(self.url, self.data, format='json')
+		response = self.client.get(self.url_graphic_name)
+		self.assertNotEqual(response.data, json_not_ideal_return)
+
+	def test_function_with_youtube_attr(self):
+		json_not_ideal_return = {'x_axis': [], 'y_axis': []}
+		self.client.post(self.url, self.data, format='json')
+		response = self.client.get(self.url_graphic_yt)
+		self.assertNotEqual(response.data, json_not_ideal_return)
