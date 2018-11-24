@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from CrossData.API.models import *
 from CrossData.API.serializers import *
 from .objects_attrs import *
+from .table_data import *
 
 
 class GetGraphicData(APIView):
@@ -72,7 +73,7 @@ class GetGraphicData(APIView):
         if x_axis == 'games' or y_axis == 'games':
             game_data['x_axis'] = self.get_games_name()
 
-        ordered = order(InfoSteam.objects, [
+        ordered = GetTableData().order(InfoSteam.objects, [
                         'owners', 'positive_reviews_steam',
                         'average_2weeks'], 20)
 
@@ -128,21 +129,9 @@ class GetGraphicData(APIView):
 
     def get_games_name(self):
         game_names = []
-        for game in order(InfoSteam.objects, ['owners',
+        for game in GetTableData().order(InfoSteam.objects, ['owners',
                                               'positive_reviews_steam',
                                               'average_2weeks'], 20):
             game_names.append(game.game.name)
 
         return game_names
-
-def order(query_set, attrs, quantity, reverse=True):
-    all_games = Game.objects.all()
-
-    updated_infos = []
-    for game in all_games:
-        if(len(query_set.filter(game=game)) != 0):
-            updated_infos.append(query_set.filter(game=game).latest('date'))
-
-    games = sorted(updated_infos, key=lambda x: [getattr(
-        x, y) for y in attrs], reverse=reverse)[:quantity]
-    return games

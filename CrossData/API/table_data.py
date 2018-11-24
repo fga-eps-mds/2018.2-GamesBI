@@ -39,7 +39,7 @@ class GetTableData(APIView):
         return Response(data=collected_data, status=status_code)
 
     def get_by_playedtime(self):
-        infos = order(InfoSteam.objects, [
+        infos = self.order(InfoSteam.objects, [
                       'average_2weeks', 'average_forever',
                       'positive_reviews_steam'], 20)
         games = [x.game for x in infos]
@@ -47,7 +47,7 @@ class GetTableData(APIView):
         return self.get_data(games)
 
     def get_sales_data(self):
-        infos = order(InfoSteam.objects.exclude(price=0),
+        infos = self.order(InfoSteam.objects.exclude(price=0),
                       ['owners', 'average_2weeks'], 20)
         games = [x.game for x in infos]
 
@@ -60,7 +60,7 @@ class GetTableData(APIView):
         recent_games = list(Game.objects.order_by('-release_date')[:25])
         date = recent_games[-1].release_date
 
-        infos = order(InfoSteam.objects.filter(game__release_date__range=[
+        infos = self.order(InfoSteam.objects.filter(game__release_date__range=[
                       date, datetime.datetime.now()]),
                       ['positive_reviews_steam', 'average_2weeks'], 20)
 
@@ -72,7 +72,7 @@ class GetTableData(APIView):
 
         attrs = ['count_views', 'count_videos', 'count_comments']
 
-        infos = order(InfoYoutube.objects, attrs, 20)
+        infos = self.order(InfoYoutube.objects, attrs, 20)
         games = [x.game for x in infos]
 
         return self.get_data(games)
@@ -102,14 +102,14 @@ class GetTableData(APIView):
 
         return collected_data
 
-def order(query_set, attrs, quantity, reverse=True):
-    all_games = Game.objects.all()
+    def order(self, query_set, attrs, quantity, reverse=True):
+        all_games = Game.objects.all()
 
-    updated_infos = []
-    for game in all_games:
-        if(len(query_set.filter(game=game)) != 0):
-            updated_infos.append(query_set.filter(game=game).latest('date'))
+        updated_infos = []
+        for game in all_games:
+            if(len(query_set.filter(game=game)) != 0):
+                updated_infos.append(query_set.filter(game=game).latest('date'))
 
-    games = sorted(updated_infos, key=lambda x: [getattr(
-        x, y) for y in attrs], reverse=reverse)[:quantity]
-    return games
+        games = sorted(updated_infos, key=lambda x: [getattr(
+            x, y) for y in attrs], reverse=reverse)[:quantity]
+        return games
