@@ -20,9 +20,12 @@ class GetGamesView(APIView):
             data = GameNameSerializer(Game.objects.filter(
                 name__istartswith=game_name), many=True).data
         else:
-            game = Game.objects.get(name=game_name)
-            data = self.all_data(game)
-
+            try:
+                game = Game.objects.get(name=game_name)
+                data = self.all_data(game)
+            except Game.DoesNotExist:
+                game = None
+                data = []
         return Response(data)
 
     '''
