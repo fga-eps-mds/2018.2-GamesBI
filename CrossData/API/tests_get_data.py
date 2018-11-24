@@ -11,7 +11,7 @@ class EndpointGETTestCase(APITestCase):
 	{
 		"id_steam": 123,
 		"name": "Test 1",
-		"positive_reviews_steam": 1923123,
+		"positive_reviews_steam": 49223,
 		"negative_reviews_steam": 12121,
 		"owners": 130000,
 		"average_forever": 2127,
@@ -105,20 +105,14 @@ class EndpointGETTestCase(APITestCase):
 
 	def test_graphic_return_json(self):
 
-		json_ideal_return = {'x_axis': [], 'y_axis': []}
+		self.client.post(self.url, self.data, format='json')
+		json_ideal_return = {'x_axis': ["Test 1"], 'y_axis': [132]}
 		response = self.client.get(self.url_graphic)
 		self.assertEqual(response.data, json_ideal_return)
-
-	def test_table_status_code_400(self):
-
-		response = self.client.get(self.url_table)
-		self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-
 
 	def test_table_status_code_200(self):
 
 		self.client.post(self.url, self.data, format='json')
-
 		response = self.client.get(self.url_table_tn)
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -139,32 +133,64 @@ class EndpointGETTestCase(APITestCase):
 		self.assertNotEqual(response.data, json_not_ideal_return)
 
 	def test_table_most_watched(self):
-		json_ideal_return = {'x_axis': [], 'y_axis': []}
+
+		json_ideal_return = [{
+			"game": "Test 1",
+	        "owners": 130000,
+	        "price": 0,
+	        "positive_reviews_steam": 49223,
+	        "youtube_views": 2609773,
+	        "youtube_count_likes": 5555,
+	        "youtube_count_dislikes": 1107,
+	        "twitch_viewer_count": 46939
+		}]
+
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_table_mw)
-		self.assertNotEqual(response.data, json_ideal_return)
-
+		self.assertEqual(response.data, json_ideal_return)
+	'''
 	def test_table_sales(self):
-		json_ideal_return = {'x_axis': [], 'y_axis': []}
+
+		json_ideal_return = [{
+			"game": "Test 1",
+			"owners": 130000,
+			"price": 0,
+			"positive_reviews_steam": 49223,
+			"youtube_views": 2609773,
+			"youtube_count_likes": 5555,
+			"youtube_count_dislikes": 1107,
+			"twitch_viewer_count": 46939
+		}]
+
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_table_s)
-		self.assertNotEqual(response.data, json_ideal_return)
-
-
+		self.assertEqual(response.data, json_ideal_return)
+	'''
 	def test_table_played_time(self):
-		json_ideal_return = {'x_axis': [], 'y_axis': []}
+
+		json_ideal_return = [{
+			"game": "Test 1",
+	        "owners": 130000,
+	        "price": 0,
+	        "positive_reviews_steam": 49223,
+	        "youtube_views": 2609773,
+	        "youtube_count_likes": 5555,
+	        "youtube_count_dislikes": 1107,
+	        "twitch_viewer_count": 46939
+		}]
+
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_table_pt)
-		self.assertNotEqual(response.data, json_ideal_return)
+		self.assertEqual(response.data, json_ideal_return)
 
 	def test_graphic_with_name(self):
-		json_not_ideal_return = {'x_axis': [], 'y_axis': []}
+		json_not_ideal_return = {'x_axis': ["2018/11/24"], 'y_axis': [132]}
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic_name)
-		self.assertNotEqual(response.data, json_not_ideal_return)
+		self.assertEqual(response.data, json_not_ideal_return)
 
 	def test_function_with_youtube_attr(self):
-		json_not_ideal_return = {'x_axis': [], 'y_axis': []}
+		json_not_ideal_return = {'x_axis': ["2018/11/24"], 'y_axis': [2609773]}
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic_yt)
 		self.assertNotEqual(response.data, json_not_ideal_return)
