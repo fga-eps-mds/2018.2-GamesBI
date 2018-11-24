@@ -229,12 +229,15 @@
 <p>A aplicação desenvolvida irá consistir de apenas 3 serviços. Os serviços implementados são: uma API escrita em django, que se comunica diretamente com o front-end, um front-end escrito em React.js e por fim um worker escrito em python que utiliza o celery para realizar a importação de dados diariamente</p>
 <h2><a id="3_Deploy_Contnuo_98"></a>3. Deploy Contínuo</h2>
 
+<p>Como dito anteriormente, existem 2 ambientes de deploy, homologação e produção. Ambos os ambientes se encotram no heroku.</p>
+<p>Após o desenvolvedor escolher uma história e codifica-la e abrir um PR com sua modificação para a develop, os CI's irão executar suas análises e comentar suas respectivas análises no PR aberto.</p>
+<p>Um mantenedor deverá revisar o insumo de código e caso haja necessidade de modificações, requisitar elas. Caso contrário, o PR é aprovado e o insumo de código é adicionado à develop</p>
+<p>Após o travis realizar a build desse novo insumo de código na develop, ele realiza o deploy para o ambiente de homologação</p>
+<p>Ao final da sprint é realizado um PR da develop para a master. Assim que esse novo insumo chegar na master, e o travis concluir a build, o deploy é realizado para o ambiente de produção</p>
+<p>Todos os ambientes de homologação e produção são feitos à partir de uma imagem gerada pelo travis, com exceção do repositório do front-end, que é executado diretamente pela build gerada pelo npm</p>
 
 <h3><a id="31_Pipeline_100"></a>3.1 Pipeline</h3>
-
-
-
-
+<center> <img src="https://i.imgur.com/OP36tMy.png" height="80%"> </center>
 
                             </div>
 
