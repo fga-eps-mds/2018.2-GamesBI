@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from CrossData.importdata.models import *
+from CrossData.API.models import *
 
 class EndpointGETTestCase(APITestCase):
 
@@ -109,7 +109,15 @@ class EndpointGETTestCase(APITestCase):
 		response = self.client.get(self.url_graphic)
 		self.assertEqual(response.data, json_ideal_return)
 
-	def test_table_status_code(self):
+	def test_table_status_code_400(self):
+
+		response = self.client.get(self.url_table)
+		self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+
+	def test_table_status_code_200(self):
+
+		self.client.post(self.url, self.data, format='json')
 
 		response = self.client.get(self.url_table_tn)
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
