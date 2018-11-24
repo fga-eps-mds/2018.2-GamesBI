@@ -119,7 +119,7 @@
                                           <i class="nc-icon nc-map-big"></i> Roadmaps
                                       </a>
                                   </li>
-                              </ul>
+                              </ul> 
 
 
                           </div>
@@ -171,13 +171,14 @@
 <li>Onde &lt;1&gt; é a operação feita:
 <ul>
 <li>[ADD] - Quando novo código/feature é adicionada ao repositório</li>
-<li>[DEL] - QUando código/feature é deletada</li>
+<li>[DEL] - Quando código/feature é deletada</li>
 <li>[UPDATE] - Quando código/feature existente é atualizada ou refatorada</li>
 <li>[DOC] - Quando for relacionado à documentação do projeto</li>
 <li>[FIX] - Correção de bugs, código quebrado, etc</li>
+<li>[HOTFIX] - Correção de bugs críticos, que já se encontram no ambiente de homologação ou produçãoc</li>
 </ul>
 </li>
-<li>&lt;2&gt; o número da issue relacionada</li>
+<li>&lt;2&gt; o número da issue relacionada e caso esteja em um repositório diferente do repositório onde se encontram as issues, adicionar fga-eps-mds/2018.2-GamesBI</li>
 <li>&lt;3&gt; Texto explicativo sobre o que foi realizado:
 <ul>
 <li>Todos os textos em INGLÊS</li>
@@ -187,8 +188,8 @@
 <h3><a id="22_Polticas_de_branches_50"></a>2.2 Políticas de branches</h3>
 <p>Para a política de branches, utilizamos seguir o padrão utilizado pelo gitflow, que utiliza as seguintes branches:</p>
 <ul>
-<li><strong>master</strong>, é utlizada para guardar a história oficial de releases do software, no qual está contido a versão mais recente e estável da aplicação.</li>
-<li><strong>develop</strong>, é utilizada para a integração de todas as features desenvolvidas neste novo insumo de código.</li>
+<li><strong>master</strong>, é utlizada para guardar a história oficial de releases do software, no qual está contido a versão mais recente e estável da aplicação. Essa é a branch utilizada como ambiente de produção.</li>
+<li><strong>develop</strong>, é utilizada para a integração de todas as features desenvolvidas neste novo insumo de código. Essa é a branch utilizada como ambiente de homologação.</li>
 <li><strong>feature</strong>, é utilizada para a codificação da feature em questão.
 <ul>
 <li>A nomeação dessa feature é dada da seguinte forma: feature_#0, no qual #0 é o número da issue(ex: feature_#23, caso a issue em questão seja a issue de número 23).</li>
@@ -225,14 +226,18 @@
 <p>Os ambientes de homologação e de produção irão ser atualizados sempre ao fim da sprint, ou seja, uma vez por semana, com exceção dos casos que se faça necessário utilizar hotfixes para atualização de um bug urgente dentro de um desses ambientes.</p>
 <p>O ambiente de desenvolvimento é exclusivo para cada desenvolvedor, cabe a ele utilizar do docker e docker-compose disponível no repositório para subir o seu próprio ambiente de desenvolvimento.</p>
 <h3><a id="28_Servios_93"></a>2.8 Serviços</h3>
-<p>A aplicação desenvolvida irá consistir de apenas 2 serviços, que são o back-end, na forma de uma API escrita em python utilizando a biblioteca REST do Django. E de um front end, desenvolvido em Node.js.</p>
-<p>Por se consistir de uma API, existe a possibilidade de criar novos serviços, como por exemplo um aplicativo mobile que consome essa API.</p>
+<p>A aplicação desenvolvida irá consistir de apenas 3 serviços. Os serviços implementados são: uma API escrita em django, que se comunica diretamente com o front-end, um front-end escrito em React.js e por fim um worker escrito em python que utiliza o celery para realizar a importação de dados diariamente</p>
 <h2><a id="3_Deploy_Contnuo_98"></a>3. Deploy Contínuo</h2>
+
+<p>Como dito anteriormente, existem 2 ambientes de deploy, homologação e produção. Ambos os ambientes se encotram no heroku.</p>
+<p>Após o desenvolvedor escolher uma história e codifica-la e abrir um PR com sua modificação para a develop, os CI's irão executar suas análises e comentar suas respectivas análises no PR aberto.</p>
+<p>Um mantenedor deverá revisar o insumo de código e caso haja necessidade de modificações, requisitar elas. Caso contrário, o PR é aprovado e o insumo de código é adicionado à develop</p>
+<p>Após o travis realizar a build desse novo insumo de código na develop, ele realiza o deploy para o ambiente de homologação</p>
+<p>Ao final da sprint é realizado um PR da develop para a master. Assim que esse novo insumo chegar na master, e o travis concluir a build, o deploy é realizado para o ambiente de produção</p>
+<p>Todos os ambientes de homologação e produção são feitos à partir de uma imagem gerada pelo travis, com exceção do repositório do front-end, que é executado diretamente pela build gerada pelo npm</p>
+
 <h3><a id="31_Pipeline_100"></a>3.1 Pipeline</h3>
-
-
-
-
+<center> <img src="https://i.imgur.com/OP36tMy.png" height="80%"> </center>
 
                             </div>
 
