@@ -21,7 +21,7 @@ class EndpointGETTestCase(APITestCase):
 			"mandarim", "espanhol"
 		],
 		"genres": [
-			"tiro", "porrada"
+			"Action"
 		],
 		"main_image": "google.com",
 		"screenshots": [
@@ -92,6 +92,7 @@ class EndpointGETTestCase(APITestCase):
 		self.url_table_pt = reverse("get_table_data", kwargs={'table_type':'playedtime'})
 		self.url = reverse("games_view")
 		self.url_genres = reverse("genres")
+		self.url_colors = reverse ("genre_colors") + '?genre=Action&color=r'
 
 	def tearDown(self):
 
@@ -193,4 +194,11 @@ class EndpointGETTestCase(APITestCase):
 		json_not_ideal_return = {'x_axis': ["2018/11/24"], 'y_axis': [2609773]}
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic_yt)
-		self.assertNotEqual(response.data, json_not_ideal_return)
+		self.assertEqual(response.data, json_not_ideal_return)
+
+	def test_method_genre_colors(self):
+		json_ideal_return = {'colors': [[83, 82, 74]]}
+
+		self.client.post(self.url, self.data, format='json')
+		response = self.client.get(self.url_colors)
+		self.assertEqual(response.data, json_ideal_return)
