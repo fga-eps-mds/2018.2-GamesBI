@@ -93,6 +93,8 @@ class EndpointGETTestCase(APITestCase):
 		self.url = reverse("games_view")
 		self.url_genres = reverse("genres")
 		self.url_colors = reverse ("genre_colors") + '?genre=Action&color=r'
+		self.url_name = reverse("games_view") + '?name=Test 1'
+		self.url_name_partial = reverse("games_view") + '?name=&partial'
 
 	def tearDown(self):
 
@@ -185,13 +187,13 @@ class EndpointGETTestCase(APITestCase):
 		self.assertEqual(response.data, json_ideal_return)
 
 	def test_graphic_with_name(self):
-		json_not_ideal_return = {'x_axis': ["2018/11/24"], 'y_axis': [132]}
+		json_not_ideal_return = {'x_axis': ["2018/11/25"], 'y_axis': [132]}
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic_name)
 		self.assertEqual(response.data, json_not_ideal_return)
 
 	def test_function_with_youtube_attr(self):
-		json_not_ideal_return = {'x_axis': ["2018/11/24"], 'y_axis': [2609773]}
+		json_not_ideal_return = {'x_axis': ["2018/11/25"], 'y_axis': [2609773]}
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic_yt)
 		self.assertEqual(response.data, json_not_ideal_return)
@@ -202,3 +204,12 @@ class EndpointGETTestCase(APITestCase):
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_colors)
 		self.assertEqual(response.data, json_ideal_return)
+
+	def test_method_get_partial_none(self):
+
+		json_ideal_return = {'name': self.data[0]['name'], 'release_date': '1999-02-01'}
+		self.client.post(self.url, self.data, format='json')
+		response = self.client.get(self.url_name)
+		print(response.data)
+		json_response = {'name': response.data['name'], 'release_date': response.data['release_date'] }
+		self.assertEqual(json_response, json_ideal_return)
