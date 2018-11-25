@@ -1,6 +1,6 @@
 <!--- Provide a general resume of yours modifications -->
 
-## Description
+## Descrição
 <!--- Describe your modifications in detail -->
 
 ## Related _Issue_
@@ -8,25 +8,23 @@
 <!--- If you are proposing a new feature or modification, first, discuss it with a issue -->
 <!--- Please, link the issue below: -->
 
-## Motivation and Context
+## Motivação e contexto
 <!--- Why is this modification necessary? Which problem it solves?  -->
 
-## How it was tested?
+## Como isso foi testado?
 <!--- Please, write all details of how your modifications where tested -->
 
-## Screenshots:
-
-## Type of modifications
+## Tipo de modificação
 <!--- Which type of modifications -->
 - [ ] _Bug fix_
-- [ ] New _feature_
-- [ ] _Breaking change_ (Modification that changes the status of current implemented features)
+- [ ] Nova _feature_
+- [] _Breaking change_ (Modificação que altera o status dos recursos atuais implementados)
 
-## Checklist:
-- [ ] My code follows the implemented style sheet
-- [ ] My _commits_ follows the repo commits policy.
-- [ ] My modifications requires modification on the current documentation.
-- [ ] I updated the documentation
-- [ ] I read the repo contributing guide (**CONTRIBUTING**).
-- [ ] I added testes to cover my modifications
-- [ ] All tests passed
+## Check List:
+- [ ] Meu código segue a folha de estilos implementada
+- [ ] Meu _commits_ segue a política de commits do repo.
+- [ ] Minhas modificações requerem modificações na documentação atual.
+- [ ] eu atualizei a documentação
+- [ ] Eu li o guia de contribuição
+- [ ] Eu adicionei testes para cobrir minhas modificações
+- [ ] Todos os testes foram aprovados
