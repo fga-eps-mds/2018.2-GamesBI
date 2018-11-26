@@ -313,8 +313,3 @@ class EndpointPOSTTestCase(APITestCase):
         self.client.post(self.url, self.data_2, format='json')
         self.client.post(self.url, self.data_ok_2, format='json')
         self.assertEqual(Game.objects.all().count(), 1)
-
-    def test_data_not_duplication(self):
-        self.client.post(self.url, self.data_2, format='json')
-        self.client.post(self.url, self.data_ok_2, format='json')
-        self.assertNotEqual(Game.objects.all().count(), 2)
