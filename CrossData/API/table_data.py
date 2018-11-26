@@ -84,8 +84,13 @@ class GetTableData(APIView):
         for game in games:
 
             game_data = {}
+            info_steam = InfoSteam.objects.filter(game=game)
 
-            info_steam = InfoSteam.objects.filter(game=game).latest('date')
+            if len(info_steam) == 0:
+                continue
+            else:
+                info_steam = info_steam.latest('date')
+
             info_youtube = InfoYoutube.objects.filter(game=game).latest('date')
             info_twitch = InfoTwitch.objects.filter(game=game).latest('date')
 
