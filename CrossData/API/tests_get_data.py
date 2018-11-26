@@ -151,24 +151,7 @@ class EndpointGETTestCase(APITestCase):
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_table_mw)
 		self.assertEqual(response.data, json_ideal_return)
-	'''
-	def test_table_sales(self):
 
-		json_ideal_return = [{
-			"game": "Test 1",
-			"owners": 130000,
-			"price": 0,
-			"positive_reviews_steam": 49223,
-			"youtube_views": 2609773,
-			"youtube_count_likes": 5555,
-			"youtube_count_dislikes": 1107,
-			"twitch_viewer_count": 46939
-		}]
-
-		self.client.post(self.url, self.data, format='json')
-		response = self.client.get(self.url_table_s)
-		self.assertEqual(response.data, json_ideal_return)
-	'''
 	def test_table_played_time(self):
 
 		json_ideal_return = [{
@@ -187,13 +170,13 @@ class EndpointGETTestCase(APITestCase):
 		self.assertEqual(response.data, json_ideal_return)
 
 	def test_graphic_with_name(self):
-		json_not_ideal_return = {'x_axis': ["2018/11/25"], 'y_axis': [132]}
+		json_not_ideal_return = {'x_axis': ["2018/11/26"], 'y_axis': [132]}
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic_name)
 		self.assertEqual(response.data, json_not_ideal_return)
 
 	def test_function_with_youtube_attr(self):
-		json_not_ideal_return = {'x_axis': ["2018/11/25"], 'y_axis': [2609773]}
+		json_not_ideal_return = {'x_axis': ["2018/11/26"], 'y_axis': [2609773]}
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic_yt)
 		self.assertEqual(response.data, json_not_ideal_return)
@@ -203,6 +186,13 @@ class EndpointGETTestCase(APITestCase):
 
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_colors)
+		self.assertEqual(response.data, json_ideal_return)
+
+	def test_method_get(self):
+
+		json_ideal_return = [{'name': "Test 1"}]
+		self.client.post(self.url, self.data, format='json')
+		response = self.client.get(self.url_name_partial)
 		self.assertEqual(response.data, json_ideal_return)
 
 	def test_method_get_partial_none(self):
