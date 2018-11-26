@@ -170,16 +170,16 @@ class EndpointGETTestCase(APITestCase):
 		self.assertEqual(response.data, json_ideal_return)
 
 	def test_graphic_with_name(self):
-		json_not_ideal_return = {'x_axis': ["2018/11/26"], 'y_axis': [132]}
+		json_ideal_return = [132]
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic_name)
-		self.assertEqual(response.data, json_not_ideal_return)
+		self.assertEqual(response.data['y_axis'], json_ideal_return)
 
 	def test_function_with_youtube_attr(self):
-		json_not_ideal_return = {'x_axis': ["2018/11/26"], 'y_axis': [2609773]}
+		json_ideal_return = [2609773]
 		self.client.post(self.url, self.data, format='json')
 		response = self.client.get(self.url_graphic_yt)
-		self.assertEqual(response.data, json_not_ideal_return)
+		self.assertEqual(response.data['y_axis'], json_ideal_return)
 
 	def test_method_genre_colors(self):
 		json_ideal_return = {'colors': [[83, 82, 74]]}
