@@ -33,7 +33,7 @@ Planning
 
 ## Quadro de conhecimento inicial da sprint
 
-<img src="" />
+<img src="https://i.imgur.com/noVYKuS.png" />
 
 <img src="" />
 

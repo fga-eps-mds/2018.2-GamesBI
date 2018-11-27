@@ -45,17 +45,17 @@
 
 | *Identificador* | ***História*** | **Status** |
 | ------ | ------------ |     :---:     |  ---------------- | :---:  |
-|[#US02](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como usuário desejo visualizar sessão por tag | DUPLICADA  |
-|[#US03](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/191) | Eu como usuário desejo visualizar os jogos mais vendidos  | DUPLICADA  |
+|[#US02](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/219) | Eu como usuário desejo visualizar sessão por tag | DUPLICADA  |
+|[#US03](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/220) | Eu como usuário desejo visualizar os jogos mais vendidos  | DUPLICADA  |
 |[#US15](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/147) | Eu como usuário desejo pesquisar um jogo para visualizar suas informações | **Finalizada**  |
-|[#US18](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como usuário desejo visualizar os principais indicadores para ajudar no desenvolvimento do jogo | **Débito**  |
-|[#TS20](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como desenvolvedor desejo importar imagens para gerar paleta de cores | **Finalizada**  |
-|[#TS26](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/) | Eu como desenvolvedor desejo gerar paleta de cores para possibilitar a visualização desse indicador | **Finalizada**  |
+|[#US18](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/224) | Eu como usuário desejo visualizar os principais indicadores para ajudar no desenvolvimento do jogo | **Débito**  |
+|[#TS20](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/221) | Eu como desenvolvedor desejo importar imagens para gerar paleta de cores | **Finalizada**  |
+|[#TS26](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/222) | Eu como desenvolvedor desejo gerar paleta de cores para possibilitar a visualização desse indicador | **Finalizada**  |
 
 
 ## Retrospectiva
 
-<img src="https://i.imgur.com/rhfT15H.png">
+<img src="https://i.imgur.com/3TpOWyB.png">
 
 #### Ações Tomadas
 

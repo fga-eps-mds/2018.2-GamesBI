@@ -49,7 +49,7 @@
 | [#TS17](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/192) | Eu como desenvolvedor desejo alterar o modo de importação dos dados da API Twitch para unificar a importação | **Divida tecnica**  |
 |[#TS18 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/194) | Eu como desenvolvedor desejo persistir os dados das requisiçoes para manter os dados do banco | **Finalizada**  |
 | [#TS19 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/195) | Eu como desenvolvedor desejo criar a pagina do jogo para visualizar suas informaçoes | **Finalizada**  |
-| [#Issue196 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/196) | Melhorar os pontos indicados no feedback da Release 1 | **Finalizada**  |
+| [#Issue186 ](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/186) | Melhorar os pontos indicados no feedback da Release 1 | **Finalizada**  |
 |[#Issue196](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/196) | Eu como arquiteto desejo atualizar o documento de arquitetura para os desenvolvedores acompanharem a nova demanda de desenvolvimento |  **Finalizada**  |
 
 
