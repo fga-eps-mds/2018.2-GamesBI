@@ -4,6 +4,9 @@
 [![Maintainability Status](https://api.codeclimate.com/v1/badges/8c2acf5fb7871faf9e0f/maintainability)](https://codeclimate.com/github/fga-eps-mds/2018.2-GamesBI/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/fga-eps-mds/2018.2-GamesBI/badge.svg?branch=HEAD)](https://coveralls.io/github/fga-eps-mds/2018.2-GamesBI?branch=HEAD)
 
+Staging environment: https://gbi-crossdata-staging.herokuapp.com
+
+Production environment: https://gbi-crossdata-production.herokuapp.com
 
 # Getting started
 
@@ -54,7 +57,7 @@ or any other supported by Django.
 # More about the project
 This project aims to offer a competitive BI for games. This includes, game development, content creation for youtube and twitch and whether you should invest in a game if you're a publisher.
 
-A lot of its design ideas came from other sites, for example, [steamspy](steamspy.com). Although we're not only using information from Steam, but also from Youtube, Twitch and IGDB, which is another API for game data.
+A lot of its design ideas came from other sites, for example, [steamspy](steamspy.com). Although we're not only using information from Steam, but also from Youtube and Twitch.
 
 Our belief is that there isn't a cross-platform and helpfull BI tool for games out there. Which is why our main goal is to deliver this very such thing, and also make it acessible for everyone willing to use it.
 
