@@ -38,15 +38,15 @@ Planning
 <img src="" />
 
 
-## Backlog Sprint 10
+## Backlog Sprint 11
 
-| *Identificador* | ***História*** | **Responsáveis** | **Status** |
+| *Identificador* | ***História*** | **Pontuação** | **Responsáveis** | **Status** |
 | ------ | ------------ |     :---:     |  ---------------- | :---:  |
-|[#Issue254](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/254) | Melhorar a qualidade de codigo do frontend | André e Augusto | **Nova**  |
-|[#Issue253](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/253) |	Testes unitários no frontend |  André e Augusto | **Nova**  |
-|[#Issue252](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/252) | Teste unitário no crossdata |  Marco e Arthur| **Débito**  |
-|[#Issue251](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/251) | Teste unitário nos importadores | Ingrid e Lucas| **Nova**  |
-|[#Issue250](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/250) | Teste de usabilidade | Equipe | **Nova**  |
-|[#Issue256](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/256) | Melhorar a qualidade de codigo do crossdata | Emanoel e Lucas | **Nova**  |
-|[#Issue255](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/255) | Melhorar a qualidade de codigo dos importadores | Alan e Ingrid | **Nova**  |
-|[#Issue249](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/249) | Testes de aceitação no frontend | Arthur e Felipe | **Nova**  |
+|[#Issue254](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/254) | Melhorar a qualidade de codigo do frontend | 5| André e Augusto | **Nova**  |
+|[#Issue253](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/253) |	Testes unitários no frontend | 5|  André e Augusto | **Nova**  |
+|[#Issue252](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/252) | Teste unitário no crossdata | 5|  Marco e Arthur| **Débito**  |
+|[#Issue251](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/251) | Teste unitário nos importadores | 5|  Ingrid e Lucas| **Nova**  |
+|[#Issue250](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/250) | Teste de usabilidade | 3| Equipe | **Nova**  |
+|[#Issue256](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/256) | Melhorar a qualidade de codigo do crossdata |5| Emanoel e Lucas | **Nova**  |
+|[#Issue255](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/255) | Melhorar a qualidade de codigo dos importadores |5| Alan e Ingrid | **Nova**  |
+|[#Issue249](https://github.com/fga-eps-mds/2018.2-GamesBI/issues/249) | Testes de aceitação no frontend |5| Arthur e Felipe | **Nova**  |

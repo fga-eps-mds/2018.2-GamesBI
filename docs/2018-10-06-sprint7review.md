@@ -80,8 +80,11 @@
 
 <img src="https://i.imgur.com/zu6EtIB.png">
 
-## Análise do <i>Scrum Master</i>    
+## Dividas Tecnicas
+TS16 e TS17 Continuam com debito, existe a necessidade de um novo metodo de importação e mesclagem de dados vindos das API's externas.  
 
+## Análise do <i>Scrum Master</i>    
+A taxa de vazão da sprint
 
 
 ***
