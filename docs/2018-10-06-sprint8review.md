@@ -64,6 +64,7 @@
 
 #### Ações Tomadas
 
+O pareamento da semana foi escolhido de acordo com as afinidades de cada membro da equipe de desenvolvimento. O resultado foi possitivo já que ambos os membros colaboraram para o desenvolvimento das estórias.
 
 ## Evolução do Conhecimento
 
